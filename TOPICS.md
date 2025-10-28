@@ -12,7 +12,7 @@
    - React Native + Expo Snack: Përdor `TextInput` për shënime, ruaji në Supabase me fusha tags si array dhe imito gjenerimin e etiketave me një funksion lokal deri sa të lidhet shërbimi AI.
 04. Personal Finance Tracker with budgets (Supabase: transactions{id, amount, category, user_id}) — (Available)
    - React Native + Expo Snack: Implemento formular me `react-hook-form`, vizualizo shpenzimet me grafikë `VictoryPie` dhe filtro transaksionet duke pyetur Supabase.
-05. Pomodoro Timer + Focus Stats (Supabase: sessions{id, start_at, length, user_id}) — (Taken by Festim Bunjaku)
+05. Pomodoro Timer + Focus Stats (Supabase: sessions{id, start_at, length, user_id}) — (Taken by: Festim Bunjaku)
    - React Native + Expo Snack: Shfrytëzo `useEffect` për timers me `setInterval`, ruaj sesionet në Supabase dhe shfaq statistika ditore me tabela dinamike.
 06. Document Scanner + OCR + AI summaries (Storage + docs{id, url, summary, user_id}) — (Available)
    - React Native + Expo Snack: Prototipo me `expo-document-picker`, ngarko skedarët në Supabase Storage dhe vendos tekste OCR/AI të simuluara derisa të integrosh shërbime reale.
