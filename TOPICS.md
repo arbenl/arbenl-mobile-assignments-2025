@@ -100,7 +100,7 @@
    - React Native + Expo Snack: Shfaq vendet me `SectionList`, ruaj të dhënat në Supabase dhe përdor `expo-file-system` për cache të thjeshtë offline.
 44. Expense Splitter for trips (splits{id, amt, who[], trip_id}) — (Available)
    - React Native + Expo Snack: Ndërto tabelë për shpenzimet, ruaj në Supabase dhe përdor funksione JavaScript për të llogaritur balancat midis shokëve.
-45. Parking Finder + Favorites (spots{id, address, rating, user_id}) — (Available)
+45. Parking Finder + Favorites (spots{id, address, rating, user_id}) — (Taken by Flokart Pajaziti)
    - React Native + Expo Snack: Shfaq vendparkimet në `MapView`, ruaj preferencat në Supabase dhe lejo filtrime sipas vlerësimit.
 46. Fuel Log + Consumption stats (fuel{dt, liters, km, user_id}) — (Available)
    - React Native + Expo Snack: Regjistro furnizimet me formular, ruaj në Supabase dhe llogarit konsumin mesatar me diagramë `LineChart`.
