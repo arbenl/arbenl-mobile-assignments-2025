@@ -4,7 +4,7 @@
 > Suggested Supabase tables are indicated for each topic.
 
 ## Productivity & Utilities
-01. Task Manager with AI summaries (Supabase: tasks{id, title, is_done, owner_id}) — (Available)
+01. Task Manager with AI summaries (Supabase: tasks{id, title, is_done, owner_id}) — (Taken by Malsor Hyseni)
    - React Native + Expo Snack: Krijo lista detyrash me komponentë `FlatList`, përdor Supabase REST për CRUD dhe lidhe summarizimin me një endpoint AI të thjeshtë dummy gjatë prototipit.
 02. Habit Tracker + Streaks + Reminders (Supabase: habits{id, name, streak, user_id}) — (Available)
    - React Native + Expo Snack: Ndërto karta zakonesh me AsyncStorage për cache lokale, vizato streak me `VictoryChart` ose `react-native-svg`, dhe sinkronizo me Supabase.
