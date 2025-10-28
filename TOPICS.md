@@ -28,7 +28,7 @@
 ## Health & Wellness
 11. Water Intake Tracker + Notifications (hydration{dt, amount, user_id}) — (Available)
    - React Native + Expo Snack: Përdor `expo-notifications` për kujtesa, regjistro gotat e ujit në Supabase dhe shfaq grafikun ditor me `VictoryBar`.
-12. Step Counter + Goals + Badges (steps{dt, count, user_id}) — (Available)
+12. Step Counter + Goals + Badges (steps{dt, count, user_id}) — (Taken by Leotrim Haliti)
    - React Native + Expo Snack: Imito numërimin e hapave me të dhëna mock, ruaji në Supabase dhe jep `Animated` badges kur arrihen objektivat.
 13. Sleep Log + AI Sleep Hygiene tips (sleep{dt, hours, quality, user_id}) — (Available)
    - React Native + Expo Snack: Ndërto formular për orarin e gjumit, vizualizo orët e fjetura me `LineChart` dhe gjenero këshilla përmes një funksioni lokal AI.
