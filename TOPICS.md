@@ -82,7 +82,7 @@
    - React Native + Expo Snack: Shfaq profilet si swipe cards, ruaj preferencat në Supabase dhe gjenero ndeshje me një algoritëm bazë në klient.
 36. Pet Adoption Browser + Faves (pets{id, name, breed, status, user_id}) — (Available)
    - React Native + Expo Snack: Shfaq kafshët me `ImageBackground`, ruaj preferencat në Supabase dhe filtro sipas statusit të adoptimit.
-37. Sports Pickup Games (create/join) (games{id, sport, place, dt, created_by}) — (Available)
+37. Sports Pickup Games (create/join) (games{id, sport, place, dt, created_by}) — (Taken by Qefser Karpuzi)
    - React Native + Expo Snack: Përdor forms për krijim ndeshjesh, ruaj pjesëmarrësit në Supabase dhe shfaq ndeshjet në listë kronologjike.
 38. Mentorship Matching (mentors{id, skill, slots}, mentees{id, goal}) — (Available)
    - React Native + Expo Snack: Menaxho dy tabela Supabase, shfaq profilet me `SectionList` dhe implemento logjikën e ndeshjes në klien.
