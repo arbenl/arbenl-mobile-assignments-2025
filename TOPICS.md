@@ -72,7 +72,7 @@
 ## Social & Community
 31. Campus Events (map + RSVP) (events{id, title, place, dt, user_id}) — (Available)
    - React Native + Expo Snack: Përdor `expo-location` për hartën, regjistro RSVP në Supabase dhe shfaq eventet me `MapView` plus listën e filtruar.
-32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Available)
+32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Taken by Suad Pllana)
    - React Native + Expo Snack: Shfaq libra në `FlatList`, ruaj review në Supabase dhe shto filtër sipas statusit të leximit.
 33. Volunteer Finder + Hours Log (volunteer{id, org, hours, user_id}) — (Available)
    - React Native + Expo Snack: Ndërto listë organizatash nga Supabase, lejo logim orësh me formular dhe vizualizo progresin me një progress bar.
