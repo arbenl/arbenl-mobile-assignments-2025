@@ -6,7 +6,7 @@
 ## Productivity & Utilities
 01. Task Manager with AI summaries (Supabase: tasks{id, title, is_done, owner_id}) — (Available)
    - React Native + Expo Snack: Krijo lista detyrash me komponentë `FlatList`, përdor Supabase REST për CRUD dhe lidhe summarizimin me një endpoint AI të thjeshtë dummy gjatë prototipit.
-02. Habit Tracker + Streaks + Reminders (Supabase: habits{id, name, streak, user_id}) — (Available)
+02. Habit Tracker + Streaks + Reminders (Supabase: habits{id, name, streak, user_id}) — (Taken by Roni Morina)
    - React Native + Expo Snack: Ndërto karta zakonesh me AsyncStorage për cache lokale, vizato streak me `VictoryChart` ose `react-native-svg`, dhe sinkronizo me Supabase.
 03. Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Available)
    - React Native + Expo Snack: Përdor `TextInput` për shënime, ruaji në Supabase me fusha tags si array dhe imito gjenerimin e etiketave me një funksion lokal deri sa të lidhet shërbimi AI.
