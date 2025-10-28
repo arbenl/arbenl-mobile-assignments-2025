@@ -30,7 +30,7 @@
    - React Native + Expo Snack: Përdor `expo-notifications` për kujtesa, regjistro gotat e ujit në Supabase dhe shfaq grafikun ditor me `VictoryBar`.
 12. Step Counter + Goals + Badges (steps{dt, count, user_id}) — (Taken by Leotrim Haliti)
    - React Native + Expo Snack: Imito numërimin e hapave me të dhëna mock, ruaji në Supabase dhe jep `Animated` badges kur arrihen objektivat.
-13. Sleep Log + AI Sleep Hygiene tips (sleep{dt, hours, quality, user_id}) — (Available)
+13. Sleep Log + AI Sleep Hygiene tips (sleep{dt, hours, quality, user_id}) — (Taken by Fiona Sadiku)
    - React Native + Expo Snack: Ndërto formular për orarin e gjumit, vizualizo orët e fjetura me `LineChart` dhe gjenero këshilla përmes një funksioni lokal AI.
 14. Mood Journal + Sentiment with AI (moods{dt, note, sentiment, user_id}) — (Available)
    - React Native + Expo Snack: Përdor `DatePicker` dhe `TextInput`, ruaj shënimet në Supabase dhe llogarit sentiment me funksion mock që kategorizon humorin.
