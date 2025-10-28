@@ -10,7 +10,7 @@
    - React Native + Expo Snack: Ndërto karta zakonesh me AsyncStorage për cache lokale, vizato streak me `VictoryChart` ose `react-native-svg`, dhe sinkronizo me Supabase.
 03. Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Available)
    - React Native + Expo Snack: Përdor `TextInput` për shënime, ruaji në Supabase me fusha tags si array dhe imito gjenerimin e etiketave me një funksion lokal deri sa të lidhet shërbimi AI.
-04. Personal Finance Tracker with budgets (Supabase: transactions{id, amount, category, user_id}) — (Available)
+04. Personal Finance Tracker with budgets (Supabase: transactions{id, amount, category, user_id}) — (Taken by Gentrit Hyseni)
    - React Native + Expo Snack: Implemento formular me `react-hook-form`, vizualizo shpenzimet me grafikë `VictoryPie` dhe filtro transaksionet duke pyetur Supabase.
 05. Pomodoro Timer + Focus Stats (Supabase: sessions{id, start_at, length, user_id}) — (Available)
    - React Native + Expo Snack: Shfrytëzo `useEffect` për timers me `setInterval`, ruaj sesionet në Supabase dhe shfaq statistika ditore me tabela dinamike.
