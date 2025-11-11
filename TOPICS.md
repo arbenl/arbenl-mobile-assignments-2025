@@ -26,7 +26,7 @@
    - React Native + Expo Snack: Përdor komponentë kalendari si `react-native-calendars`, sinkronizo ngjarjet me Supabase dhe gjenero përmbledhje të agjendës me një helper AI të mockuar.
 
 ## Health & Wellness
-11. Water Intake Tracker + Notifications (hydration{dt, amount, user_id}) — (Available)
+11. Water Intake Tracker + Notifications (hydration{dt, amount, user_id}) — (Taken by Argjend Kozhani)
    - React Native + Expo Snack: Përdor `expo-notifications` për kujtesa, regjistro gotat e ujit në Supabase dhe shfaq grafikun ditor me `VictoryBar`.
 12. Step Counter + Goals + Badges (steps{dt, count, user_id}) — (Taken by Leotrim Haliti)
    - React Native + Expo Snack: Imito numërimin e hapave me të dhëna mock, ruaji në Supabase dhe jep `Animated` badges kur arrihen objektivat.
