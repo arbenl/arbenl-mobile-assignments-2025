@@ -76,7 +76,7 @@
    - React Native + Expo Snack: Shfaq libra në `FlatList`, ruaj review në Supabase dhe shto filtër sipas statusit të leximit.
 33. Volunteer Finder + Hours Log (volunteer{id, org, hours, user_id}) — (Available)
    - React Native + Expo Snack: Ndërto listë organizatash nga Supabase, lejo logim orësh me formular dhe vizualizo progresin me një progress bar.
-34. Local Marketplace (listings + chat) (listings{id, title, price, seller_id}) — (Available)
+34. Local Marketplace (listings + chat) (listings{id, title, price, seller_id}) — (Taken by Valon Hoti)
    - React Native + Expo Snack: Krijo karta të postimeve, ruaj listimet dhe preferencat në Supabase dhe përdor `gifted-chat` për biseda të thjeshta.
 35. Study Buddy Match (profiles{id, major, time, user_id}) — (Available)
    - React Native + Expo Snack: Shfaq profilet si swipe cards, ruaj preferencat në Supabase dhe gjenero ndeshje me një algoritëm bazë në klient.
