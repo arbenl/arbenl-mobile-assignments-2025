@@ -16,7 +16,7 @@
    - React Native + Expo Snack: Shfrytëzo `useEffect` për timers me `setInterval`, ruaj sesionet në Supabase dhe shfaq statistika ditore me tabela dinamike.
 06. Document Scanner + OCR + AI summaries (Storage + docs{id, url, summary, user_id}) — (Available)
    - React Native + Expo Snack: Prototipo me `expo-document-picker`, ngarko skedarët në Supabase Storage dhe vendos tekste OCR/AI të simuluara derisa të integrosh shërbime reale.
-07. Multi-language Translator Phrasebook (phrases{id, lang_src, lang_dst, text, user_id}) — (Available)
+07. Multi-language Translator Phrasebook (phrases{id, lang_src, lang_dst, text, user_id}) — (Taken by Orges Gerkuqi)
    - React Native + Expo Snack: Ndërto formë për shtim frazash, ruaji në Supabase dhe shfaq listën me filtrime sipas gjuhës; thirrja AI për përkthim mund të zëvendësohet me funksion dummy në Snack.
 08. Goal Planner + AI milestone generator (goals{id, title, milestones[], user_id}) — (Available)
    - React Native + Expo Snack: Organizoi qëllimet në `SectionList`, ruaj milestones si array JSON në Supabase dhe jep sugjerime për milestone me një modal që përdor funksion lokal AI.
