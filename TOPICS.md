@@ -8,7 +8,7 @@
    - React Native + Expo Snack: Krijo lista detyrash me komponentë `FlatList`, përdor Supabase REST për CRUD dhe lidhe summarizimin me një endpoint AI të thjeshtë dummy gjatë prototipit.
 02. Habit Tracker + Streaks + Reminders (Supabase: habits{id, name, streak, user_id}) — (Taken by Roni Morina)
    - React Native + Expo Snack: Ndërto karta zakonesh me AsyncStorage për cache lokale, vizato streak me `VictoryChart` ose `react-native-svg`, dhe sinkronizo me Supabase.
-03. Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Available)
+03. Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Taken by Blerina Krasniqi)
    - React Native + Expo Snack: Përdor `TextInput` për shënime, ruaji në Supabase me fusha tags si array dhe imito gjenerimin e etiketave me një funksion lokal deri sa të lidhet shërbimi AI.
 04. Personal Finance Tracker with budgets (Supabase: transactions{id, amount, category, user_id}) — (Taken by Gentrit Hyseni)
    - React Native + Expo Snack: Implemento formular me `react-hook-form`, vizualizo shpenzimet me grafikë `VictoryPie` dhe filtro transaksionet duke pyetur Supabase.
@@ -16,7 +16,7 @@
    - React Native + Expo Snack: Shfrytëzo `useEffect` për timers me `setInterval`, ruaj sesionet në Supabase dhe shfaq statistika ditore me tabela dinamike.
 06. Document Scanner + OCR + AI summaries (Storage + docs{id, url, summary, user_id}) — (Available)
    - React Native + Expo Snack: Prototipo me `expo-document-picker`, ngarko skedarët në Supabase Storage dhe vendos tekste OCR/AI të simuluara derisa të integrosh shërbime reale.
-07. Multi-language Translator Phrasebook (phrases{id, lang_src, lang_dst, text, user_id}) — (Available)
+07. Multi-language Translator Phrasebook (phrases{id, lang_src, lang_dst, text, user_id}) — (Taken by Orges Gerkuqi)
    - React Native + Expo Snack: Ndërto formë për shtim frazash, ruaji në Supabase dhe shfaq listën me filtrime sipas gjuhës; thirrja AI për përkthim mund të zëvendësohet me funksion dummy në Snack.
 08. Goal Planner + AI milestone generator (goals{id, title, milestones[], user_id}) — (Available)
    - React Native + Expo Snack: Organizoi qëllimet në `SectionList`, ruaj milestones si array JSON në Supabase dhe jep sugjerime për milestone me një modal që përdor funksion lokal AI.
@@ -26,19 +26,19 @@
    - React Native + Expo Snack: Përdor komponentë kalendari si `react-native-calendars`, sinkronizo ngjarjet me Supabase dhe gjenero përmbledhje të agjendës me një helper AI të mockuar.
 
 ## Health & Wellness
-11. Water Intake Tracker + Notifications (hydration{dt, amount, user_id}) — (Available)
+11. Water Intake Tracker + Notifications (hydration{dt, amount, user_id}) — (Taken by Argjend Kozhani)
    - React Native + Expo Snack: Përdor `expo-notifications` për kujtesa, regjistro gotat e ujit në Supabase dhe shfaq grafikun ditor me `VictoryBar`.
 12. Step Counter + Goals + Badges (steps{dt, count, user_id}) — (Taken by Leotrim Haliti)
    - React Native + Expo Snack: Imito numërimin e hapave me të dhëna mock, ruaji në Supabase dhe jep `Animated` badges kur arrihen objektivat.
 13. Sleep Log + AI Sleep Hygiene tips (sleep{dt, hours, quality, user_id}) — (Taken by Fiona Sadiku)
    - React Native + Expo Snack: Ndërto formular për orarin e gjumit, vizualizo orët e fjetura me `LineChart` dhe gjenero këshilla përmes një funksioni lokal AI.
-14. Mood Journal + Sentiment with AI (moods{dt, note, sentiment, user_id}) — (Available)
+14. Mood Journal + Sentiment with AI (moods{dt, note, sentiment, user_id}) — (Taken by Erina Gjota)
    - React Native + Expo Snack: Përdor `DatePicker` dhe `TextInput`, ruaj shënimet në Supabase dhe llogarit sentiment me funksion mock që kategorizon humorin.
 15. Simple Workout Planner + History (workouts{id, name, plan[], user_id}) — (Taken by Erion Mustafa)
    - React Native + Expo Snack: Krijo lista ushtrimesh me drag-and-drop (p.sh. `react-native-draggable-flatlist`) dhe sinkronizo planin në Supabase si JSON.
 16. Healthy Recipes + AI nutrition facts (recipes{id, title, tags[], user_id}) — (Donart Selmani)
    - React Native + Expo Snack: Shfaq karta recetash me `Image` dhe `Card`, ruaj të dhënat në Supabase dhe llogarit makronutrientë me një helper të thjeshtë.
-17. Medication Reminder + Stock check (meds{id, name, schedule[], user_id}) — (Available)
+17. Medication Reminder + Stock check (meds{id, name, schedule[], user_id}) — (Take by Flamur Syla)
    - React Native + Expo Snack: Shto medikamente përmes një forme me `DateTimePicker`, planifiko njoftime push dhe ruaj sasitë në Supabase me logjikë të thjeshtë stock-u.
 18. Guided Breathing + HR estimate (sessions{id, pattern, user_id}) — (Available)
    - React Native + Expo Snack: Animoni udhëzimet e frymëmarrjes me `Animated API`, regjistro sesionet në Supabase dhe shfaq HR të llogaritur me funksion dummy.
@@ -52,7 +52,7 @@
    - React Native + Expo Snack: Ndërto `Swipeable` kartat për të praktikuar, ruaj progresin e kutive në Supabase dhe programo rishikimet me një queue lokale.
 22. AI Essay Outline Generator (outlines{id, topic, bullets[], user_id}) — (Available)
    - React Native + Expo Snack: Harto formë për temat, ruaj bullets si array në Supabase dhe prodho një outline të shembullt me funksion pseud-AI për prototipim.
-23. Interview Prep (Q/A bank + AI hints) (qa{id, question, answer, user_id}) — (Available)
+23. Interview Prep (Q/A bank + AI hints) (qa{id, question, answer, user_id}) — (Taken by Gresa Bruqi)
    - React Native + Expo Snack: Përdor `Accordion` për pyetje/përgjigje, ruaj koleksionet në Supabase dhe gjenero këshilla të personalizuara me helper lokal.
 24. CV Builder + Skill Gap Advisor (profiles{id, name, skills[], user_id}) — (Taken by Leona Berisha)
    - React Native + Expo Snack: Krijo forma me seksione të editueshme, sinkronizo me Supabase dhe sugjero aftësi të reja përmes krahasimit të listave.
@@ -64,7 +64,7 @@
    - React Native + Expo Snack: Ruaj skriptet si tekst, shfaq countdown për prova dhe gjenero këshilla të personalizuara me funksion të thjeshtë AI.
 28. Study Planner + AI weekly plan (plans{id, week, items[], user_id}) — (Taken by Dzemilje Sulejmanovic)
    - React Native + Expo Snack: Organizoi planin me `CalendarList`, sinkronizo në Supabase dhe ofro plane javore të sugjeruara nga një generator JavaScript.
-29. Portfolio Tracker (projects{id, title, url, user_id}) — (Available)
+29. Portfolio Tracker (projects{id, title, url, user_id}) — (Taken by Kushtrim Bicaj)
    - React Native + Expo Snack: Shfaq projektet si `Card` me buton `Linking.openURL`, ruaj të dhënat në Supabase dhe krijo përmbledhje statistikore me hooks.
 30. Quiz Builder + Results (quizzes{id, items[], score, user_id}) — (Available)
    - React Native + Expo Snack: Mundëso krijimin e pyetjeve dinamike, ruaj rezultatet në Supabase dhe shfaq raportet me grafiqe të thjeshta.
@@ -72,7 +72,7 @@
 ## Social & Community
 31. Campus Events (map + RSVP) (events{id, title, place, dt, user_id}) — (Available)
    - React Native + Expo Snack: Përdor `expo-location` për hartën, regjistro RSVP në Supabase dhe shfaq eventet me `MapView` plus listën e filtruar.
-32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Available)
+32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Taken by Suad Pllana)
    - React Native + Expo Snack: Shfaq libra në `FlatList`, ruaj review në Supabase dhe shto filtër sipas statusit të leximit.
 33. Volunteer Finder + Hours Log (volunteer{id, org, hours, user_id}) — (Available)
    - React Native + Expo Snack: Ndërto listë organizatash nga Supabase, lejo logim orësh me formular dhe vizualizo progresin me një progress bar.
@@ -92,7 +92,7 @@
    - React Native + Expo Snack: Përdor `expo-image-picker` për foto, ruaj metadata në Supabase dhe filtro sipas statusit Hum-betur/Gjetur.
 
 ## Travel & Logistics
-41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Available)
+41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Taken by Gentijan Lajqi)
    - React Native + Expo Snack: Marr skedar statik JSON për oraret, sinkronizo ndryshimet në Supabase dhe përdor `Notifications` për paralajmërime nisjeje.
 42. Packing List + Weather Hints (items{id, name, qty, trip_id}) — (Available)
    - React Native + Expo Snack: Gjenero listën me `Checkbox` komponentë, ruaj udhëtimet në Supabase dhe thirr API moti për sugjerime (mock në Snack).
@@ -106,7 +106,7 @@
    - React Native + Expo Snack: Regjistro furnizimet me formular, ruaj në Supabase dhe llogarit konsumin mesatar me diagramë `LineChart`.
 47. Commute Optimizer (history + tips) (commutes{dt, mode, time, user_id}) — (Available)
    - React Native + Expo Snack: Regjistro udhëtimet si log Supabase, vizualizo kohën mesatare dhe sugjero opsione më të mira me logjikë të thjeshtë në klien.
-48. Travel Journal + AI captions (photos{id, url, caption}) — (Available)
+48. Travel Journal + AI captions (photos{id, url, caption}) — (Taken by Alkan Zilgir)
    - React Native + Expo Snack: Përdor `expo-image-picker` për foto, ruaj URL në Supabase Storage dhe prodho përshkrime me helper AI të simulueshëm.
 49. EV Charge Planner (stations + notes) (stations{id, name, kw, fav}) — (Available)
    - React Native + Expo Snack: Shfaq stacionet në hartë, ruaj pikat e preferuara në Supabase dhe llogarit distancat me `geolib`.
