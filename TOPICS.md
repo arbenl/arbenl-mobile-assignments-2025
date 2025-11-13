@@ -52,7 +52,7 @@
    - React Native + Expo Snack: Ndërto `Swipeable` kartat për të praktikuar, ruaj progresin e kutive në Supabase dhe programo rishikimet me një queue lokale.
 22. AI Essay Outline Generator (outlines{id, topic, bullets[], user_id}) — (Available)
    - React Native + Expo Snack: Harto formë për temat, ruaj bullets si array në Supabase dhe prodho një outline të shembullt me funksion pseud-AI për prototipim.
-23. Interview Prep (Q/A bank + AI hints) (qa{id, question, answer, user_id}) — (Available)
+23. Interview Prep (Q/A bank + AI hints) (qa{id, question, answer, user_id}) — (Taken by Gresa Bruqi)
    - React Native + Expo Snack: Përdor `Accordion` për pyetje/përgjigje, ruaj koleksionet në Supabase dhe gjenero këshilla të personalizuara me helper lokal.
 24. CV Builder + Skill Gap Advisor (profiles{id, name, skills[], user_id}) — (Taken by Leona Berisha)
    - React Native + Expo Snack: Krijo forma me seksione të editueshme, sinkronizo me Supabase dhe sugjero aftësi të reja përmes krahasimit të listave.
