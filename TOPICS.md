@@ -106,7 +106,7 @@
    - React Native + Expo Snack: Regjistro furnizimet me formular, ruaj në Supabase dhe llogarit konsumin mesatar me diagramë `LineChart`.
 47. Commute Optimizer (history + tips) (commutes{dt, mode, time, user_id}) — (Available)
    - React Native + Expo Snack: Regjistro udhëtimet si log Supabase, vizualizo kohën mesatare dhe sugjero opsione më të mira me logjikë të thjeshtë në klien.
-48. Travel Journal + AI captions (photos{id, url, caption}) — (Available)
+48. Travel Journal + AI captions (photos{id, url, caption}) — (Taken by Alkan Zilgir)
    - React Native + Expo Snack: Përdor `expo-image-picker` për foto, ruaj URL në Supabase Storage dhe prodho përshkrime me helper AI të simulueshëm.
 49. EV Charge Planner (stations + notes) (stations{id, name, kw, fav}) — (Available)
    - React Native + Expo Snack: Shfaq stacionet në hartë, ruaj pikat e preferuara në Supabase dhe llogarit distancat me `geolib`.
