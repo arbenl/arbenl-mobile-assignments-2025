@@ -64,7 +64,7 @@
    - React Native + Expo Snack: Ruaj skriptet si tekst, shfaq countdown për prova dhe gjenero këshilla të personalizuara me funksion të thjeshtë AI.
 28. Study Planner + AI weekly plan (plans{id, week, items[], user_id}) — (Taken by Dzemilje Sulejmanovic)
    - React Native + Expo Snack: Organizoi planin me `CalendarList`, sinkronizo në Supabase dhe ofro plane javore të sugjeruara nga një generator JavaScript.
-29. Portfolio Tracker (projects{id, title, url, user_id}) — (Available)
+29. Portfolio Tracker (projects{id, title, url, user_id}) — (Taken by Kushtrim Bicaj)
    - React Native + Expo Snack: Shfaq projektet si `Card` me buton `Linking.openURL`, ruaj të dhënat në Supabase dhe krijo përmbledhje statistikore me hooks.
 30. Quiz Builder + Results (quizzes{id, items[], score, user_id}) — (Available)
    - React Native + Expo Snack: Mundëso krijimin e pyetjeve dinamike, ruaj rezultatet në Supabase dhe shfaq raportet me grafiqe të thjeshta.
