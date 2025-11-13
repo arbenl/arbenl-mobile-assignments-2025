@@ -92,7 +92,7 @@
    - React Native + Expo Snack: Përdor `expo-image-picker` për foto, ruaj metadata në Supabase dhe filtro sipas statusit Hum-betur/Gjetur.
 
 ## Travel & Logistics
-41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Available)
+41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Taken by Gentijan Lajqi)
    - React Native + Expo Snack: Marr skedar statik JSON për oraret, sinkronizo ndryshimet në Supabase dhe përdor `Notifications` për paralajmërime nisjeje.
 42. Packing List + Weather Hints (items{id, name, qty, trip_id}) — (Available)
    - React Native + Expo Snack: Gjenero listën me `Checkbox` komponentë, ruaj udhëtimet në Supabase dhe thirr API moti për sugjerime (mock në Snack).
