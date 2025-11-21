@@ -59,7 +59,7 @@
 
 - React Native + Expo Snack: Ndërto formular për orarin e gjumit, vizualizo orët e fjetura me `LineChart` dhe gjenero këshilla përmes një funksioni lokal AI.
 
-14. Mood Journal + Sentiment with AI (moods{dt, note, sentiment, user_id}) — (Available)
+14. Mood Journal + Sentiment with AI (moods{dt, note, sentiment, user_id}) — (Taken by Lis Vokshi)
 
 - React Native + Expo Snack: Përdor `DatePicker` dhe `TextInput`, ruaj shënimet në Supabase dhe llogarit sentiment me funksion mock që kategorizon humorin.
 
