@@ -173,7 +173,7 @@
 
 ## Travel & Logistics
 
-41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Available)
+41. Bus/Train Schedule + Alerts (routes{id, name}, trips{dt, route_id}) — (Taken by Eris Selimi)
 
 - React Native + Expo Snack: Marr skedar statik JSON për oraret, sinkronizo ndryshimet në Supabase dhe përdor `Notifications` për paralajmërime nisjeje.
 
