@@ -33,7 +33,7 @@
 
 - React Native + Expo Snack: Ndërto formë për shtim frazash, ruaji në Supabase dhe shfaq listën me filtrime sipas gjuhës; thirrja AI për përkthim mund të zëvendësohet me funksion dummy në Snack.
 
-8.  Goal Planner + AI milestone generator (goals{id, title, milestones[], user_id}) — (Available)
+8.  Goal Planner + AI milestone generator (goals{id, title, milestones[], user_id}) — (Taken by Labinot Sadiku)
 
 - React Native + Expo Snack: Organizoi qëllimet në `SectionList`, ruaj milestones si array JSON në Supabase dhe jep sugjerime për milestone me një modal që përdor funksion lokal AI.
 
