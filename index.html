@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Programming 2025 - Student Tracker</title>
+    <meta name="description" content="Track and manage student assignments for Mobile Programming 2025 course">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: hsl(220, 90%, 56%);
+            --primary-dark: hsl(220, 90%, 46%);
+            --success: hsl(142, 71%, 45%);
+            --warning: hsl(38, 92%, 50%);
+            --danger: hsl(0, 72%, 51%);
+            --bg-primary: hsl(220, 20%, 98%);
+            --bg-secondary: hsl(220, 20%, 95%);
+            --bg-card: hsl(0, 0%, 100%);
+            --text-primary: hsl(220, 20%, 10%);
+            --text-secondary: hsl(220, 10%, 40%);
+            --border: hsl(220, 20%, 90%);
+            --shadow: 0 2px 8px hsla(220, 20%, 10%, 0.08);
+            --shadow-hover: 0 4px 16px hsla(220, 20%, 10%, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .controls {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        select, button {
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--bg-card);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .table-container {
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        th {
+            padding: 1.25rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        td {
+            padding: 1.25rem 1rem;
+            vertical-align: middle;
+        }
+
+        .student-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .topic-id {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .theme-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .score-high {
+            background: hsla(142, 71%, 45%, 0.15);
+            color: var(--success);
+        }
+
+        .score-medium {
+            background: hsla(38, 92%, 50%, 0.15);
+            color: var(--warning);
+        }
+
+        .score-low {
+            background: hsla(0, 72%, 51%, 0.15);
+            color: var(--danger);
+        }
+
+        .score-pending {
+            background: hsla(220, 10%, 40%, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        tbody tr {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @media (max-width: 1024px) {
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 1rem 0.75rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box, .filter-group {
+                width: 100%;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 Mobile Programming 2025</h1>
+            <p class="subtitle">Student Assignment Tracker</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <span class="stat-value" id="totalStudents">0</span>
+                <span class="stat-label">Total Students</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="scoredStudents">0</span>
+                <span class="stat-label">Scored</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="pendingStudents">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="avgScore">-</span>
+                <span class="stat-label">Average Score</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name or theme...">
+            </div>
+            <div class="filter-group">
+                <select id="filterStatus">
+                    <option value="all">All Students</option>
+                    <option value="scored">Scored</option>
+                    <option value="pending">Pending</option>
+                </select>
+                <select id="sortBy">
+                    <option value="name">Sort by Name</option>
+                    <option value="score">Sort by Score</option>
+                    <option value="date">Sort by Date</option>
+                    <option value="topic">Sort by Topic ID</option>
+                </select>
+            </div>
+        </div>
+                
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Topic ID</th>
+                        <th>Student Name</th>
+                        <th>Theme</th>
+                        <th>Score</th>
+                        <th>Date Scored</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable">
+                    <!-- Student rows will be inserted here -->
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-state-icon">📋</div>
+                <p>No students found matching your criteria</p>
+            </div>
+        </div>
+    </div>
+                
+    <script>
+        // Data is now read-only and embedded in the page.
+        const studentsData = [
+            { id: '01', name: 'Malsor Hyseni', theme: 'Task Manager with AI summaries', score: null, dateScored: null },
+            { id: '02', name: 'Roni Morina', theme: 'Habit Tracker + Streaks + Reminders', score: null, dateScored: null },
+            { id: '04', name: 'Gentrit Hyseni', theme: 'Personal Finance Tracker with budgets', score: null, dateScored: null },
+            { id: '05', name: 'Festim Bunjaku', theme: 'Pomodoro Timer + Focus Stats', score: null, dateScored: null },
+            { id: '12', name: 'Leotrim Haliti', theme: 'Step Counter + Goals + Badges', score: null, dateScored: null },
+            { id: '13', name: 'Fiona Sadiku', theme: 'Sleep Log + AI Sleep Hygiene tips', score: null, dateScored: null },
+            { id: '15', name: 'Erion Mustafa', theme: 'Simple Workout Planner + History', score: null, dateScored: null },
+            { id: '16', name: 'Donart Selmani', theme: 'Healthy Recipes + AI nutrition facts', score: null, dateScored: null },
+            { id: '24', name: 'Leona Berisha', theme: 'CV Builder + Skill Gap Advisor', score: null, dateScored: null },
+            { id: '28', name: 'Dzemilje Sulejmanovic', theme: 'Study Planner + AI weekly plan', score: null, dateScored: null },
+            { id: '36', name: 'Elona Halitaj', theme: 'Pet Adoption Browser + Faves', score: null, dateScored: null },
+            { id: '37', name: 'Qefser Karpuzi', theme: 'Sports Pickup Games (create/join)', score: null, dateScored: null },
+            { id: '45', name: 'Flokart Pajaziti', theme: 'Parking Finder + Favorites', score: null, dateScored: null },
+            { id: '55', name: 'Enes Jashari', theme: 'Movie Watchlist + Ratings', score: null, dateScored: null }
+        ];
+
+        // The localStorage functionality has been removed to make this page read-only.
+        // The data is now static as defined above.
+
+        // Render table
+        function renderTable(data = studentsData) {
+            const tbody = document.getElementById('studentTable');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (data.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            tbody.innerHTML = data.map((student, index) => `
+                <tr style="animation-delay: ${index * 0.05}s">
+                    <td><span class="topic-id">#${student.id}</span></td>
+                    <td><span class="student-name">${student.name}</span></td>
+                    <td><span class="theme-text">${student.theme}</span></td>
+                    <td>
+                        ${student.score !== null ? `<span class="score-badge ${getScoreClass(student.score)}">${student.score}/100</span>` : '<span class="score-badge score-pending">Pending</span>'}
+                    </td>
+                    <td>${student.dateScored || ''}</td>
+                </tr>
+            `).join('');
+            
+            updateStats();
+        }
+
+        // Get score class
+        function getScoreClass(score) {
+            if (score === null) return 'score-pending';
+            if (score >= 80) return 'score-high';
+            if (score >= 60) return 'score-medium';
+            return 'score-low';
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = studentsData.length;
+            const scored = studentsData.filter(s => s.score !== null).length;
+            const pending = total - scored;
+            const scores = studentsData.filter(s => s.score !== null).map(s => s.score);
+            const avg = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : '-';
+            
+            document.getElementById('totalStudents').textContent = total;
+            document.getElementById('scoredStudents').textContent = scored;
+            document.getElementById('pendingStudents').textContent = pending;
+            document.getElementById('avgScore').textContent = avg !== '-' ? avg : '-';
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            applyFilters();
+        });
+
+        // Filter functionality
+        document.getElementById('filterStatus').addEventListener('change', applyFilters);
+        document.getElementById('sortBy').addEventListener('change', applyFilters);
+
+        function getCurrentFilteredData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filterStatus = document.getElementById('filterStatus').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            let filtered = studentsData.filter(student => {
+                const matchesSearch = student.name.toLowerCase().includes(searchTerm) || 
+                                    student.theme.toLowerCase().includes(searchTerm);
+                
+                if (filterStatus === 'scored') {
+                    return matchesSearch && student.score !== null;
+                } else if (filterStatus === 'pending') {
+                    return matchesSearch && student.score === null;
+                }
+                
+                return matchesSearch;
+            });
+            
+            // Sort
+            filtered.sort((a, b) => {
+                switch(sortBy) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'score':
+                        return (b.score || 0) - (a.score || 0);
+                    case 'date':
+                        if (!a.dateScored) return 1;
+                        if (!b.dateScored) return -1;
+                        return new Date(b.dateScored) - new Date(a.dateScored);
+                    case 'topic':
+                        return a.id.localeCompare(b.id);
+                    default:
+                        return 0;
+                }
+            });
+            
+            return filtered;
+        }
+
+        function applyFilters() {
+            renderTable(getCurrentFilteredData());
+        }
+
+        // Initialize
+        renderTable();
+    </script>
+</body>
+</html>
