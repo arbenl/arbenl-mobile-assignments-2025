@@ -193,7 +193,7 @@
 
 - React Native + Expo Snack: Shfaq vendparkimet në `MapView`, ruaj preferencat në Supabase dhe lejo filtrime sipas vlerësimit.
 
-46. Fuel Log + Consumption stats (fuel{dt, liters, km, user_id}) — (Available)
+46. Fuel Log + Consumption stats (fuel{dt, liters, km, user_id}) — (Taken by Nektar Dervishi)
 
 - React Native + Expo Snack: Regjistro furnizimet me formular, ruaj në Supabase dhe llogarit konsumin mesatar me diagramë `LineChart`.
 
