@@ -135,7 +135,7 @@
 
 - React Native + Expo Snack: Përdor `expo-location` për hartën, regjistro RSVP në Supabase dhe shfaq eventet me `MapView` plus listën e filtruar.
 
-32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Available)
+32. Book Club (reading list + reviews) (books{id, title, note, user_id}) — (Taken by Arti Ramosaj)
 
 - React Native + Expo Snack: Shfaq libra në `FlatList`, ruaj review në Supabase dhe shto filtër sipas statusit të leximit.
 
