@@ -13,7 +13,7 @@
 
 - React Native + Expo Snack: Ndërto karta zakonesh me AsyncStorage për cache lokale, vizato streak me `VictoryChart` ose `react-native-svg`, dhe sinkronizo me Supabase.
 
-3.  Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Available)
+3.  Smart Notes with AI tagging & search (Supabase: notes{id, title, body, tags[], user_id}) — (Muhamet Rexhepi)
 
 - React Native + Expo Snack: Përdor `TextInput` për shënime, ruaji në Supabase me fusha tags si array dhe imito gjenerimin e etiketave me një funksion lokal deri sa të lidhet shërbimi AI.
 
