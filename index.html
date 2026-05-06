@@ -79,6 +79,34 @@
             font-size: 1.1rem;
         }
 
+        .course-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+
+        .course-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+
+        .course-link.secondary {
+            background: var(--bg-card);
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -342,6 +370,10 @@
         <header>
             <h1>📱 Mobile Programming 2025</h1>
             <p class="subtitle">Student Assignment Tracker</p>
+            <div class="course-links" aria-label="Course pages">
+                <a class="course-link" href="mcc-2026.html">Cloud Computing & MCC 2026</a>
+                <a class="course-link secondary" href="udhezime-mcc-2026.html">Udhëzime Shqip</a>
+            </div>
         </header>
 
         <div class="stats-bar">
