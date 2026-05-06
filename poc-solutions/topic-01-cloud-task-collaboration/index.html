@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Task Collaboration POC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Topic 01 proof of concept</p>
+        <h1>Cloud-hosted Task Collaboration Platform</h1>
+        <p class="summary">A compact demo for task CRUD, collaborators, attachment metadata, activity tracking, and cloud readiness.</p>
+      </div>
+      <div class="identity">
+        <span>Signed in as</span>
+        <strong>Proof Student</strong>
+        <small>proof.student@example.com</small>
+      </div>
+    </header>
+
+    <section class="cloud-grid" aria-label="Cloud service checklist">
+      <article>
+        <span>Auth</span>
+        <strong>Managed login ready</strong>
+      </article>
+      <article>
+        <span>Database</span>
+        <strong>tasks + activity</strong>
+      </article>
+      <article>
+        <span>Storage</span>
+        <strong>attachment metadata</strong>
+      </article>
+      <article>
+        <span>Deploy</span>
+        <strong>static hosting ready</strong>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <form id="taskForm" class="panel" aria-label="Create task">
+        <h2>Create task</h2>
+        <label>
+          Title
+          <input id="titleInput" required maxlength="80" placeholder="Prepare cloud architecture diagram">
+        </label>
+        <label>
+          Assignee
+          <select id="assigneeInput">
+            <option>Proof Student</option>
+            <option>Backend Partner</option>
+            <option>Mobile Partner</option>
+            <option>Instructor Review</option>
+          </select>
+        </label>
+        <label>
+          Priority
+          <select id="priorityInput">
+            <option>Medium</option>
+            <option>High</option>
+            <option>Low</option>
+          </select>
+        </label>
+        <label>
+          Attachment name
+          <input id="attachmentInput" placeholder="architecture-notes.pdf">
+        </label>
+        <button type="submit">Add task</button>
+      </form>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Team board</h2>
+          <button id="seedButton" type="button">Load demo data</button>
+        </div>
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+      </section>
+
+      <section class="panel activity-panel">
+        <h2>Activity stream</h2>
+        <ol id="activityList" class="activity-list"></ol>
+      </section>
+    </section>
+  </main>
+
+  <template id="taskTemplate">
+    <article class="task">
+      <div>
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="task-actions">
+        <button class="done-button" type="button">Done</button>
+        <button class="delete-button" type="button">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

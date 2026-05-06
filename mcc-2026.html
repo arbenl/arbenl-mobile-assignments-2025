@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud & MCC 2026 Topic Reservations</title>
+  <meta name="description" content="Browse and reserve Cloud Computing and Mobile Cloud Computing 2026 assignments.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300897b'/%3E%3Cpath d='M18 40h28a10 10 0 0 0-1.7-19.9A14 14 0 0 0 18.8 24 8 8 0 0 0 18 40Z' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --soft: #eef2f6;
+      --line: #d9e0e8;
+      --paper: #ffffff;
+      --wash: #f7f9fb;
+      --teal: #00897b;
+      --teal-dark: #00695f;
+      --amber: #f59e0b;
+      --rose: #d9466f;
+      --violet: #6d5dfc;
+      --green: #16a34a;
+      --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(0, 137, 123, 0.12), transparent 30rem),
+        linear-gradient(180deg, #fbfcfd 0%, #eef2f6 100%);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    .shell {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: var(--radius);
+      background: conic-gradient(from 120deg, var(--teal), var(--violet), var(--amber), var(--teal));
+      color: white;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .github-link.primary {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: white;
+    }
+
+    .control-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .finder {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(217, 224, 232, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(18px);
+    }
+
+    .finder-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .field span {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    .field input,
+    select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfd;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .field input {
+      padding: 0 14px 0 40px;
+    }
+
+    select {
+      padding: 0 12px;
+    }
+
+    .field input:focus,
+    select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(0, 137, 123, 0.13);
+      background: var(--paper);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .chip:not(.active) {
+      border-color: var(--set-soft, var(--line));
+      color: var(--set, var(--muted));
+    }
+
+    .chip.active {
+      border-color: transparent;
+      background: var(--set, var(--ink));
+      color: white;
+    }
+
+    .visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(0, 105, 95, 0.78)),
+        url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+      padding: 18px;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+
+    .metric {
+      align-self: end;
+      position: relative;
+      z-index: 1;
+      min-height: 92px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .catalogue {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .topic-card {
+      display: grid;
+      gap: 12px;
+      min-height: 250px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--set, var(--teal));
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 26px rgba(17, 24, 39, 0.06);
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--set-soft, rgba(0, 137, 123, 0.45));
+      border-top-color: var(--set, var(--teal));
+      box-shadow: var(--shadow);
+    }
+
+    .topic-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .topic-id {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 44px;
+      height: 32px;
+      border-radius: var(--radius);
+      background: var(--set-soft, #e6f4f1);
+      color: var(--set, var(--teal-dark));
+      font-weight: 800;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .status.available {
+      background: rgba(22, 163, 74, 0.12);
+      color: #13713a;
+    }
+
+    .status.taken {
+      background: rgba(217, 70, 111, 0.12);
+      color: #a8294e;
+    }
+
+    .topic-title {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .topic-focus {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .topic-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 98px;
+      gap: 10px;
+      align-items: end;
+      padding-top: 2px;
+    }
+
+    .topic-foot {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .category-pill {
+      min-width: 0;
+      color: var(--set, var(--muted));
+      font-size: 0.82rem;
+      font-weight: 800;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .score-display {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 10px;
+      border-radius: var(--radius);
+      background: #f2f5f8;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .score-display.graded {
+      background: rgba(109, 93, 252, 0.12);
+      color: #4f46c4;
+    }
+
+    .reserve {
+      max-width: 100%;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      background: var(--teal);
+      color: white;
+      cursor: pointer;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reserve:hover {
+      background: var(--teal-dark);
+    }
+
+    .reserve[disabled] {
+      background: #d8dee6;
+      color: #687386;
+      cursor: not-allowed;
+    }
+
+    .empty {
+      display: none;
+      padding: 32px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.68);
+      font-weight: 700;
+    }
+
+    .empty.visible {
+      display: block;
+    }
+
+    dialog {
+      width: min(680px, calc(100% - 28px));
+      border: 0;
+      border-radius: var(--radius);
+      padding: 0;
+      box-shadow: 0 28px 80px rgba(17, 24, 39, 0.28);
+    }
+
+    dialog::backdrop {
+      background: rgba(17, 24, 39, 0.46);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal {
+      padding: 20px;
+      background: var(--paper);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal h2 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+    }
+
+    .modal p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .close {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius);
+      background: var(--soft);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .form-line {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-line.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .modal input,
+    .modal textarea,
+    .modal select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfd;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .modal input,
+    .modal select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+
+    .modal textarea {
+      min-height: 86px;
+      padding: 12px;
+      resize: vertical;
+    }
+
+    .claim-box {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: #111827;
+      color: white;
+    }
+
+    .claim-box code {
+      display: block;
+      overflow-x: auto;
+      color: #d5fff8;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    .claim-note {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .claim-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .primary-action,
+    .secondary-action {
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .primary-action {
+      background: var(--teal);
+      color: white;
+    }
+
+    .secondary-action {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      transform: translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      background: #111827;
+      color: white;
+      box-shadow: var(--shadow);
+      transition: opacity 180ms ease, transform 180ms ease;
+      font-weight: 700;
+      z-index: 5;
+    }
+
+    .toast.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .control-panel,
+      .finder-row {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 180px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 20px, 1440px);
+        padding-top: 14px;
+      }
+
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .top-actions,
+      .github-link {
+        width: 100%;
+      }
+
+      .visual {
+        grid-template-columns: 1fr;
+      }
+
+      .metric {
+        min-height: 76px;
+      }
+
+      .catalogue {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">MCC</div>
+        <div>
+          <h1>Cloud & MCC 2026 Reservations</h1>
+          <p>First valid merged PR reserves the topic.</p>
+        </div>
+      </div>
+      <div class="top-actions" aria-label="Language and catalogue links">
+        <a class="github-link" href="instructions-mcc-2026.html">Instructions EN</a>
+        <a class="github-link primary" href="udhezime-mcc-2026.html">Udhëzime Shqip</a>
+        <a class="github-link" href="CLOUD_TOPICS_2026.md">Open catalogue</a>
+      </div>
+    </header>
+
+    <section class="control-panel" aria-label="Topic finder">
+      <div class="finder">
+        <div class="finder-row">
+          <label class="field" aria-label="Search topics">
+            <span aria-hidden="true">/</span>
+            <input id="searchInput" type="search" placeholder="Search topic, cloud service, or keyword">
+          </label>
+          <select id="statusFilter" aria-label="Filter by availability">
+            <option value="all">All topics</option>
+            <option value="Available">Available only</option>
+            <option value="Taken">Reserved only</option>
+          </select>
+        </div>
+        <div class="chips" id="categoryChips" aria-label="Filter by category"></div>
+      </div>
+
+      <div class="visual" aria-label="Catalogue summary">
+        <div class="metric">
+          <strong id="availableCount">0</strong>
+          <span>available</span>
+        </div>
+        <div class="metric">
+          <strong id="reservedCount">0</strong>
+          <span>reserved</span>
+        </div>
+        <div class="metric">
+          <strong id="visibleCount">0</strong>
+          <span>matching filter</span>
+        </div>
+        <div class="metric">
+          <strong>2026</strong>
+          <span>Cloud Computing + MCC</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalogue" id="catalogue" aria-live="polite"></section>
+    <div class="empty" id="emptyState">No topics match the current filters.</div>
+  </main>
+
+  <dialog id="reserveDialog">
+    <form class="modal" method="dialog">
+      <div class="modal-head">
+        <div>
+          <h2 id="modalTitle">Reserve topic</h2>
+          <p id="modalFocus"></p>
+        </div>
+        <button class="close" value="cancel" aria-label="Close reservation dialog">x</button>
+      </div>
+
+      <div class="modal-grid">
+        <div class="form-line">
+          <label for="studentName">Full name</label>
+          <input id="studentName" autocomplete="name" placeholder="Firstname Lastname">
+        </div>
+        <div class="form-line">
+          <label for="studentEmail">Student email</label>
+          <input id="studentEmail" type="email" autocomplete="email" placeholder="student@example.com">
+        </div>
+        <div class="form-line">
+          <label for="stackChoice">Chosen stack</label>
+          <select id="stackChoice">
+            <option>Next.js + serverless functions</option>
+            <option>React + Node.js API</option>
+            <option>FastAPI + managed database</option>
+            <option>Flutter + cloud backend</option>
+            <option>React Native + cloud backend</option>
+            <option>Kotlin/Swift + cloud backend</option>
+            <option>Docker/Kubernetes service</option>
+          </select>
+        </div>
+        <div class="form-line full">
+          <label for="cloudServices">Cloud/mobile-cloud services</label>
+          <textarea id="cloudServices" placeholder="Auth, database, object storage, functions, push notifications, monitoring..."></textarea>
+        </div>
+      </div>
+
+      <div class="claim-box">
+        <span>Copy this line, then replace the same topic line on GitHub:</span>
+        <code id="claimLine"></code>
+        <span class="claim-note">GitHub will guide you to propose the change as a Pull Request. The topic is officially reserved only after that PR is merged.</span>
+      </div>
+
+      <div class="claim-actions">
+        <button class="primary-action" type="button" id="copyClaim">Copy line + preview</button>
+        <button class="secondary-action" type="button" id="copyPr">Copy PR details</button>
+        <button class="secondary-action" type="button" id="openCatalogue">Edit on GitHub</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const fallbackMarkdown = `# Cloud Computing and MCC Project Topics 2026 (IDs 01-60)
+
+## Cloud Foundations & Web Platforms
+01. Cloud-hosted Task Collaboration Platform — (Available)
+  - Cloud focus: Deploy a CRUD web app with managed database, authentication, object storage for attachments, and environment-based configuration.
+02. Multi-tenant Course Resource Portal — (Available)
+  - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
+03. Server-rendered Portfolio CMS on the Cloud — (Available)
+  - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
+04. Cloud Expense Tracker with Budget Alerts — (Available)
+  - Cloud focus: Store transactions in a managed database, schedule monthly budget checks, and send email or push alerts.
+05. Real-time Classroom Polling System — (Available)
+  - Cloud focus: Use real-time channels or WebSockets, managed auth, live charts, and deployment logs for debugging.
+06. Event Registration Platform with QR Check-in — (Available)
+  - Cloud focus: Combine cloud database, serverless check-in endpoint, QR code generation, and admin dashboard metrics.
+07. Cloud-hosted Knowledge Base with Search — (Available)
+  - Cloud focus: Index articles in managed search or Postgres full-text search, add file uploads, and deploy a searchable public UI.
+08. Subscription Newsletter Platform — (Available)
+  - Cloud focus: Store subscribers, expose serverless signup APIs, integrate an email provider, and protect admin routes.
+09. Team Kanban Board with Activity Stream — (Available)
+  - Cloud focus: Persist board state in a managed database, sync updates in real time, and record audit/activity events.
+10. Cloud-native Resume Builder — (Available)
+  - Cloud focus: Save profile sections to managed storage, generate PDF exports through a backend function, and deploy with CI.
+
+## Serverless APIs & Automation
+11. Serverless Contact Form with Spam Scoring — (Available)
+  - Cloud focus: Build an HTTP function, store submissions, add rate limiting or CAPTCHA verification, and notify admins.
+12. Scheduled Weather Digest Service — (Available)
+  - Cloud focus: Run a cron-triggered function, call a public weather API, cache results, and deliver daily summaries.
+13. Image Thumbnail Processing Pipeline — (Available)
+  - Cloud focus: Upload images to object storage, trigger background resizing, and expose transformed image URLs.
+14. PDF Invoice Generator API — (Available)
+  - Cloud focus: Accept structured invoice data, generate PDFs in a serverless function, store outputs, and secure download links.
+15. Webhook Receiver and Event Replay Tool — (Available)
+  - Cloud focus: Receive external webhooks, validate signatures, persist raw events, and provide replay from an admin UI.
+16. URL Shortener with Analytics — (Available)
+  - Cloud focus: Implement serverless redirects, track clicks, aggregate analytics, and protect custom alias creation.
+17. Cloud Function Job Queue Dashboard — (Available)
+  - Cloud focus: Model queued jobs, process them with background workers or scheduled functions, and show retry/error states.
+18. Automated Certificate Expiry Monitor — (Available)
+  - Cloud focus: Schedule domain checks, persist certificate metadata, trigger alerts before expiry, and display history.
+19. Serverless Form Builder — (Available)
+  - Cloud focus: Let users define forms, publish hosted endpoints, store submissions, and export CSV from cloud storage.
+20. API Gateway for Public Dataset Access — (Available)
+  - Cloud focus: Wrap a dataset behind authenticated endpoints, add caching, pagination, request logging, and usage quotas.
+
+## Data, Storage & Analytics
+21. Cloud Data Warehouse Mini Dashboard — (Available)
+  - Cloud focus: Ingest CSV data into a managed database or warehouse, transform it, and visualize KPIs in a hosted dashboard.
+22. Object Storage Photo Archive — (Available)
+  - Cloud focus: Upload photos, store metadata, generate signed URLs, tag content, and support search/filter workflows.
+23. IoT Sensor Data Ingestion Pipeline — (Available)
+  - Cloud focus: Simulate device telemetry, ingest through HTTP or MQTT, store time-series records, and chart live metrics.
+24. Log Analytics Explorer — (Available)
+  - Cloud focus: Collect app logs, structure them in cloud storage/database, filter by severity, and visualize error trends.
+25. Data Backup and Restore Portal — (Available)
+  - Cloud focus: Export database snapshots to object storage, list backup versions, and implement a safe restore simulation.
+26. Cloud File Sharing with Expiring Links — (Available)
+  - Cloud focus: Store files in object storage, create signed links with expiry, track downloads, and enforce owner permissions.
+27. Stream Processing Demo for Click Events — (Available)
+  - Cloud focus: Generate clickstream events, process them in batches or streams, and show near-real-time aggregates.
+28. Geospatial Store Locator API — (Available)
+  - Cloud focus: Store locations with coordinates, query nearest entries, cache frequent requests, and expose map-ready results.
+29. Student Performance Analytics Platform — (Available)
+  - Cloud focus: Import assessment data, compute summaries in scheduled jobs, and present role-based analytics.
+30. Cloud Database Migration Playground — (Available)
+  - Cloud focus: Design schema migrations, seed sample data, run migration checks in CI, and document rollback steps.
+
+## DevOps, Containers & Observability
+31. Containerized Microservice Deployment — (Available)
+  - Cloud focus: Package a small API in Docker, deploy it to a cloud container platform, configure secrets, and expose health checks.
+32. CI/CD Pipeline for a Cloud Web App — (Available)
+  - Cloud focus: Build automated tests, preview deployments, production deploy gates, and environment-specific variables.
+33. Infrastructure as Code Starter Stack — (Available)
+  - Cloud focus: Provision database, storage, and compute resources with IaC, then document apply/destroy workflows.
+34. Blue-Green Deployment Simulator — (Available)
+  - Cloud focus: Deploy two app versions, switch traffic gradually or manually, monitor errors, and implement rollback.
+35. Cloud Monitoring and Alerting Dashboard — (Available)
+  - Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
+36. Distributed Tracing Demo App — (Available)
+  - Cloud focus: Split a workflow across two or more services, propagate trace IDs, and inspect latency across calls.
+37. Kubernetes Mini Lab for a Web API — (Available)
+  - Cloud focus: Define deployment, service, config map, secret, and autoscaling manifests for a small cloud-hosted API.
+38. Feature Flag Service for Cloud Releases — (Available)
+  - Cloud focus: Store flag definitions, evaluate them in an app, add audit logging, and test rollout/rollback scenarios.
+39. Cloud Cost Estimator Dashboard — (Available)
+  - Cloud focus: Model usage inputs, estimate monthly costs for compute/storage/database, and compare deployment options.
+40. Resilient Cloud App with Retry Patterns — (Available)
+  - Cloud focus: Add retries, timeouts, circuit breakers, idempotency keys, and failure-mode documentation to an API workflow.
+
+## Security, Identity & Governance
+41. Authentication and Role Management Portal — (Available)
+  - Cloud focus: Use managed auth, implement roles/permissions, protect routes, and document least-privilege decisions.
+42. Secrets Rotation Practice App — (Available)
+  - Cloud focus: Store secrets outside source control, rotate an API key safely, and record before/after deployment behavior.
+43. Secure File Vault with Audit Logs — (Available)
+  - Cloud focus: Enforce file ownership, use signed URLs, record access attempts, and display an auditable activity trail.
+44. Cloud Security Posture Checklist Tool — (Available)
+  - Cloud focus: Build a checklist app for common controls, persist evidence links, score readiness, and export reports.
+45. OAuth Login Integration Demo — (Available)
+  - Cloud focus: Add third-party OAuth login, map user profiles, protect API routes, and handle callback errors.
+46. API Rate Limiting and Abuse Protection — (Available)
+  - Cloud focus: Implement per-user limits, request logging, admin override, and clear client error responses.
+47. Data Privacy Request Manager — (Available)
+  - Cloud focus: Track export/delete requests, queue background jobs, store evidence, and model privacy workflow states.
+48. Secure Configuration Scanner — (Available)
+  - Cloud focus: Scan app configuration for unsafe settings, report findings, and explain remediation steps.
+49. Cloud Audit Log Anomaly Detector — (Available)
+  - Cloud focus: Ingest sample audit events, flag unusual patterns, and present confidence/reasoning in a dashboard.
+50. Encrypted Notes with Cloud Sync — (Available)
+  - Cloud focus: Encrypt note content client-side or server-side, sync records, manage keys safely, and document tradeoffs.
+
+## Mobile Cloud Computing (MCC)
+51. Mobile Cloud Notes with Offline Sync — (Available)
+  - MCC focus: Build a mobile app with local cache, conflict handling, managed auth, and cloud database synchronization.
+52. Push Notification Reminder Service — (Available)
+  - MCC focus: Register devices, store notification preferences, send scheduled push reminders, and show delivery history.
+53. Mobile Photo Backup to Cloud Storage — (Available)
+  - MCC focus: Pick images from a device, upload to object storage, generate thumbnails, and support offline retry.
+54. Location-based Campus Alerts App — (Available)
+  - MCC focus: Send device location updates, match nearby alerts in the cloud, and show push or in-app notifications.
+55. Mobile Expense Splitter with Serverless Sync — (Available)
+  - MCC focus: Build offline expense entry, sync with a serverless API, resolve participant balances, and expose shared trips.
+56. Edge AI Image Labeling Prototype — (Available)
+  - MCC focus: Run lightweight on-device or browser inference, upload labels to the cloud, and compare local versus cloud processing.
+57. Mobile Chat with Cloud Realtime Backend — (Available)
+  - MCC focus: Use managed auth, real-time message channels, media storage, and read receipts or typing indicators.
+58. Field Data Collection App for Surveys — (Available)
+  - MCC focus: Capture survey responses offline, sync when online, store photos/GPS data, and export submissions.
+59. Mobile Cloud Fitness Tracker — (Available)
+  - MCC focus: Record workouts locally, sync progress to a cloud backend, calculate weekly summaries, and send milestone notifications.
+60. Mobile Incident Reporter with Cloud Workflow — (Available)
+  - MCC focus: Capture reports with photo/location, upload evidence, trigger a serverless triage workflow, and show status updates.`;
+
+    const state = {
+      topics: [],
+      filtered: [],
+      activeCategory: 'All',
+      selectedTopic: null,
+      previewReservations: {},
+    };
+
+    const previewStorageKey = 'mcc-2026-reservation-previews';
+
+    const categoryOrder = [
+      'All',
+      'Cloud Foundations & Web Platforms',
+      'Serverless APIs & Automation',
+      'Data, Storage & Analytics',
+      'DevOps, Containers & Observability',
+      'Security, Identity & Governance',
+      'Mobile Cloud Computing (MCC)',
+    ];
+
+    const categoryThemes = {
+      All: { color: '#111827', soft: '#e6e9ee' },
+      'Cloud Foundations & Web Platforms': { color: '#00897b', soft: '#dff3ef' },
+      'Serverless APIs & Automation': { color: '#d97706', soft: '#fff0d4' },
+      'Data, Storage & Analytics': { color: '#2563eb', soft: '#dbeafe' },
+      'DevOps, Containers & Observability': { color: '#7c3aed', soft: '#ede9fe' },
+      'Security, Identity & Governance': { color: '#dc2626', soft: '#fee2e2' },
+      'Mobile Cloud Computing (MCC)': { color: '#0f766e', soft: '#ccfbf1' },
+    };
+
+    const githubEditUrl = 'https://github.com/arbenl/arbenl-mobile-assignments-2025/edit/main/CLOUD_TOPICS_2026.md';
+
+    const catalogueEl = document.getElementById('catalogue');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    const chipsEl = document.getElementById('categoryChips');
+    const dialog = document.getElementById('reserveDialog');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalFocus = document.getElementById('modalFocus');
+    const studentName = document.getElementById('studentName');
+    const studentEmail = document.getElementById('studentEmail');
+    const stackChoice = document.getElementById('stackChoice');
+    const cloudServices = document.getElementById('cloudServices');
+    const claimLine = document.getElementById('claimLine');
+    const toast = document.getElementById('toast');
+
+    async function loadMarkdown() {
+      try {
+        const response = await fetch('CLOUD_TOPICS_2026.md', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Catalogue fetch failed');
+        return await response.text();
+      } catch (error) {
+        return fallbackMarkdown;
+      }
+    }
+
+    function parseTopics(markdown) {
+      const lines = markdown.split(/\r?\n/);
+      const topics = [];
+      let category = 'Uncategorized';
+
+      lines.forEach((line, index) => {
+        const heading = line.match(/^##\s+(.+)$/);
+        if (heading) {
+          category = heading[1].trim();
+          return;
+        }
+
+        const topic = line.match(/^(\d{2})\.\s+(.+?)\s—\s\((Available|Taken by [^)]+)\)$/);
+        if (!topic) return;
+
+        const focusLine = lines[index + 1] || '';
+        const focusMatch = focusLine.match(/^\s+-\s+(.+)$/);
+        const scoreLine = lines[index + 2] || '';
+        const scoreMatch = scoreLine.match(/^\s+-\s+Score:\s+(.+)$/);
+        const score = parseScore(scoreMatch ? scoreMatch[1] : '');
+        const reservation = parseReservation(topic[3]);
+        const status = reservation ? 'Taken' : 'Available';
+
+        topics.push({
+          id: topic[1],
+          title: topic[2],
+          rawStatus: topic[3],
+          status,
+          reservedBy: reservation ? reservation.name : '',
+          reservedEmail: reservation ? reservation.email : '',
+          category,
+          focus: focusMatch ? focusMatch[1] : '',
+          scoreLabel: score.label,
+          scoreValue: score.value,
+        });
+      });
+
+      return topics;
+    }
+
+    function parseReservation(rawStatus) {
+      if (!rawStatus.startsWith('Taken by ')) return null;
+
+      const value = rawStatus.replace(/^Taken by\s+/, '').trim();
+      const emailMatch = value.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
+      const email = emailMatch ? (emailMatch[1] || emailMatch[2]).trim() : '';
+      const name = value
+        .replace(/<[^<>]+>/g, '')
+        .replace(/[^\s]+@[^\s]+/g, '')
+        .replace(/[(),]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      return {
+        name: name || value,
+        email,
+      };
+    }
+
+    function parseScore(rawScore) {
+      if (!rawScore || /^Not graded/i.test(rawScore.trim())) {
+        return { label: 'Not graded', value: null };
+      }
+
+      const valueMatch = rawScore.match(/\b([0-9]|[12][0-9]|30)\b/);
+      if (!valueMatch) {
+        return { label: 'Not graded', value: null };
+      }
+
+      const value = Number(valueMatch[1]);
+      return { label: `${value}/30`, value };
+    }
+
+    function loadPreviewReservations() {
+      try {
+        state.previewReservations = JSON.parse(sessionStorage.getItem(previewStorageKey)) || {};
+      } catch (error) {
+        state.previewReservations = {};
+      }
+
+      state.topics.forEach((topic) => {
+        const preview = normalizePreviewReservation(state.previewReservations[topic.id]);
+        if (!preview || topic.status !== 'Available') return;
+        topic.status = 'Taken';
+        topic.rawStatus = `Taken by ${preview.name} <${preview.email}>`;
+        topic.reservedBy = preview.name;
+        topic.reservedEmail = preview.email;
+        topic.previewOnly = true;
+      });
+    }
+
+    function normalizePreviewReservation(preview) {
+      if (!preview) return null;
+      if (typeof preview === 'string') return { name: preview, email: '' };
+      return preview.name ? preview : null;
+    }
+
+    function savePreviewReservation(topic, name, email) {
+      state.previewReservations[topic.id] = { name, email };
+      sessionStorage.setItem(previewStorageKey, JSON.stringify(state.previewReservations));
+      topic.status = 'Taken';
+      topic.rawStatus = `Taken by ${name} <${email}>`;
+      topic.reservedBy = name;
+      topic.reservedEmail = email;
+      topic.previewOnly = true;
+    }
+
+    function renderChips() {
+      chipsEl.innerHTML = '';
+      categoryOrder.forEach((category) => {
+        const theme = themeForCategory(category);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `chip${state.activeCategory === category ? ' active' : ''}`;
+        button.style.setProperty('--set', theme.color);
+        button.style.setProperty('--set-soft', theme.soft);
+        button.textContent = category === 'All' ? 'All' : category.replace(' & ', ' + ');
+        button.addEventListener('click', () => {
+          state.activeCategory = category;
+          renderChips();
+          applyFilters();
+        });
+        chipsEl.appendChild(button);
+      });
+    }
+
+    function themeForCategory(category) {
+      return categoryThemes[category] || categoryThemes.All;
+    }
+
+    function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      const status = statusFilter.value;
+
+      state.filtered = state.topics.filter((topic) => {
+        const matchesCategory = state.activeCategory === 'All' || topic.category === state.activeCategory;
+        const matchesStatus = status === 'all' || topic.status === status;
+        const haystack = `${topic.id} ${topic.title} ${topic.focus} ${topic.category}`.toLowerCase();
+        return matchesCategory && matchesStatus && haystack.includes(query);
+      });
+
+      renderTopics();
+      renderStats();
+    }
+
+    function renderStats() {
+      const available = state.topics.filter((topic) => topic.status === 'Available').length;
+      const reserved = state.topics.length - available;
+      document.getElementById('availableCount').textContent = available;
+      document.getElementById('reservedCount').textContent = reserved;
+      document.getElementById('visibleCount').textContent = state.filtered.length;
+    }
+
+    function renderTopics() {
+      catalogueEl.innerHTML = '';
+      emptyState.classList.toggle('visible', state.filtered.length === 0);
+
+      const fragment = document.createDocumentFragment();
+      state.filtered.forEach((topic) => {
+        const theme = themeForCategory(topic.category);
+        const card = document.createElement('article');
+        card.className = 'topic-card';
+        card.style.setProperty('--set', theme.color);
+        card.style.setProperty('--set-soft', theme.soft);
+        card.innerHTML = `
+          <div class="topic-head">
+            <span class="topic-id">${topic.id}</span>
+            <span class="status ${topic.status.toLowerCase()}">${topic.previewOnly ? 'Preview' : topic.rawStatus}</span>
+          </div>
+          <h2 class="topic-title">${escapeHtml(topic.title)}</h2>
+          <p class="topic-focus">${escapeHtml(topic.focus)}</p>
+          <div class="topic-meta">
+            <span class="category-pill">${escapeHtml(topic.category)}</span>
+            <span class="score-display ${topic.scoreValue === null ? '' : 'graded'}">Score: ${escapeHtml(topic.scoreLabel)}</span>
+          </div>
+          <div class="topic-foot">
+            <button class="reserve" type="button" ${topic.status === 'Available' ? '' : 'disabled'}>
+              ${topic.status === 'Available' ? 'Reserve' : `Reserved by ${escapeHtml(topic.reservedBy)}${topic.previewOnly ? ' (preview)' : ''}`}
+            </button>
+          </div>
+        `;
+
+        const button = card.querySelector('.reserve');
+        button.addEventListener('click', () => openReserve(topic));
+        fragment.appendChild(card);
+      });
+
+      catalogueEl.appendChild(fragment);
+    }
+
+    function openReserve(topic) {
+      state.selectedTopic = topic;
+      modalTitle.textContent = `${topic.id}. ${topic.title}`;
+      modalFocus.textContent = topic.focus;
+      studentName.value = '';
+      studentEmail.value = '';
+      cloudServices.value = '';
+      updateClaimLine();
+      dialog.showModal();
+      setTimeout(() => studentName.focus(), 50);
+    }
+
+    function updateClaimLine() {
+      if (!state.selectedTopic) return;
+      const name = studentName.value.trim() || 'YOUR FULL NAME';
+      const email = studentEmail.value.trim() || 'YOUR EMAIL';
+      claimLine.textContent = `${state.selectedTopic.id}. ${state.selectedTopic.title} — (Taken by ${name} <${email}>)`;
+    }
+
+    async function previewAndCopyClaim() {
+      if (!state.selectedTopic) return;
+
+      const name = studentName.value.trim();
+      if (name.length < 3) {
+        showToast('Enter your full name before reserving.');
+        studentName.focus();
+        return;
+      }
+
+      const email = studentEmail.value.trim();
+      if (!isValidEmail(email)) {
+        showToast('Enter a valid email before reserving.');
+        studentEmail.focus();
+        return;
+      }
+
+      const existingTopic = findExistingStudentReservation(name, email, state.selectedTopic.id);
+      if (existingTopic) {
+        showToast(`One assignment only. You already have topic ${existingTopic.id}.`);
+        return;
+      }
+
+      updateClaimLine();
+      savePreviewReservation(state.selectedTopic, name, email);
+      applyFilters();
+      const copied = await copyText(
+        claimLine.textContent,
+        'Preview shown. Claim line copied; submit the PR to reserve officially.',
+        claimLine,
+      );
+      if (copied) dialog.close();
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function normalizeName(name) {
+      return name.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+
+    function findExistingStudentReservation(name, email, exceptTopicId) {
+      const normalizedName = normalizeName(name);
+      const normalizedEmail = email.trim().toLowerCase();
+      return state.topics.find((topic) => (
+        topic.id !== exceptTopicId
+        && topic.status === 'Taken'
+        && (
+          normalizeName(topic.reservedBy || '') === normalizedName
+          || (normalizedEmail && (topic.reservedEmail || '').toLowerCase() === normalizedEmail)
+        )
+      ));
+    }
+
+    function prDetails() {
+      if (!state.selectedTopic) return '';
+      const name = studentName.value.trim() || 'YOUR FULL NAME';
+      const email = studentEmail.value.trim() || 'YOUR EMAIL';
+      const services = cloudServices.value.trim() || 'Auth, database, storage/functions as needed';
+      return [
+        'Course catalogue: CLOUD_TOPICS_2026.md',
+        `Full Name: ${name}`,
+        `Email: ${email}`,
+        `Topic ID: ${state.selectedTopic.id}`,
+        `Topic Title: ${state.selectedTopic.title}`,
+        `Chosen Stack: ${stackChoice.value}`,
+        `Cloud/mobile-cloud services: ${services}`,
+        'Validator result: node scripts/check-claim.js should print "✅ Claim format looks valid."',
+      ].join('\n');
+    }
+
+    async function copyText(text, message, fallbackElement = null) {
+      let copied = false;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (error) {
+          copied = false;
+        }
+      }
+
+      if (!copied) {
+        copied = copyTextLegacy(text);
+      }
+
+      if (copied) {
+        showToast(message);
+        return true;
+      }
+
+      if (fallbackElement) {
+        selectElementText(fallbackElement);
+        showToast('Clipboard blocked. The claim line is selected; copy it manually.');
+      } else {
+        showToast('Clipboard blocked. Select the text manually.');
+      }
+      return false;
+    }
+
+    function copyTextLegacy(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '0';
+      textarea.style.top = '0';
+      textarea.style.width = '1px';
+      textarea.style.height = '1px';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      textarea.setSelectionRange(0, textarea.value.length);
+
+      try {
+        return document.execCommand('copy');
+      } catch (error) {
+        return false;
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function selectElementText(element) {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('visible');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('visible'), 2200);
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;',
+      }[char]));
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
+    studentName.addEventListener('input', updateClaimLine);
+    studentEmail.addEventListener('input', updateClaimLine);
+
+    document.getElementById('copyClaim').addEventListener('click', () => {
+      previewAndCopyClaim();
+    });
+
+    document.getElementById('copyPr').addEventListener('click', () => {
+      if (studentName.value.trim().length < 3) {
+        showToast('Enter your full name before copying PR details.');
+        studentName.focus();
+        return;
+      }
+      if (!isValidEmail(studentEmail.value.trim())) {
+        showToast('Enter a valid email before copying PR details.');
+        studentEmail.focus();
+        return;
+      }
+      copyText(prDetails(), 'PR details copied.');
+    });
+
+    document.getElementById('openCatalogue').addEventListener('click', () => {
+      window.open(githubEditUrl, '_blank', 'noopener');
+    });
+
+    loadMarkdown().then((markdown) => {
+      state.topics = parseTopics(markdown);
+      loadPreviewReservations();
+      state.filtered = [...state.topics];
+      renderChips();
+      applyFilters();
+    });
+  </script>
+</body>
+</html>
