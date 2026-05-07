@@ -195,3 +195,11 @@
 60. Mobile Incident Reporter with Cloud Workflow — (Available)
   - MCC focus: Capture reports with photo/location, upload evidence, trigger a serverless triage workflow, and show status updates.
   - Score: Not graded (0-30)
+  - Course catalogue: CLOUD_TOPICS_2026.md
+Full Name: Aulona Kerqeli
+Email: aulona.kerqeli@universitetiaab.com
+Topic ID: 16
+Topic Title: URL Shortener with Analytics
+Chosen Stack: React Native + cloud backend
+Cloud/mobile-cloud services: URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulona.kerqeli@universitetiaab.com>)
+Validator result: node scripts/check-claim.js should print "✅ Claim format looks valid."
