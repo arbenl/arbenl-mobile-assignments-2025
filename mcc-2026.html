@@ -861,7 +861,7 @@
       </div>
 
       <div class="claim-actions">
-        <button class="primary-action" type="button" id="copyClaim">Copy line + preview</button>
+        <button class="primary-action" type="button" id="copyClaim">Copy claim line</button>
         <button class="secondary-action" type="button" id="copyPr">Copy PR details</button>
         <button class="secondary-action" type="button" id="openCatalogue">Edit on GitHub</button>
       </div>
@@ -1010,10 +1010,7 @@
       filtered: [],
       activeCategory: 'All',
       selectedTopic: null,
-      previewReservations: {},
     };
-
-    const previewStorageKey = 'mcc-2026-reservation-previews';
 
     const categoryOrder = [
       'All',
@@ -1136,40 +1133,6 @@
       return { label: `${value}/30`, value };
     }
 
-    function loadPreviewReservations() {
-      try {
-        state.previewReservations = JSON.parse(sessionStorage.getItem(previewStorageKey)) || {};
-      } catch (error) {
-        state.previewReservations = {};
-      }
-
-      state.topics.forEach((topic) => {
-        const preview = normalizePreviewReservation(state.previewReservations[topic.id]);
-        if (!preview || topic.status !== 'Available') return;
-        topic.status = 'Taken';
-        topic.rawStatus = `Taken by ${preview.name} <${preview.email}>`;
-        topic.reservedBy = preview.name;
-        topic.reservedEmail = preview.email;
-        topic.previewOnly = true;
-      });
-    }
-
-    function normalizePreviewReservation(preview) {
-      if (!preview) return null;
-      if (typeof preview === 'string') return { name: preview, email: '' };
-      return preview.name ? preview : null;
-    }
-
-    function savePreviewReservation(topic, name, email) {
-      state.previewReservations[topic.id] = { name, email };
-      sessionStorage.setItem(previewStorageKey, JSON.stringify(state.previewReservations));
-      topic.status = 'Taken';
-      topic.rawStatus = `Taken by ${name} <${email}>`;
-      topic.reservedBy = name;
-      topic.reservedEmail = email;
-      topic.previewOnly = true;
-    }
-
     function renderChips() {
       chipsEl.innerHTML = '';
       categoryOrder.forEach((category) => {
@@ -1219,7 +1182,7 @@
 
     function renderReservedList() {
       const reserved = state.topics
-        .filter((topic) => topic.status === 'Taken' && !topic.previewOnly)
+        .filter((topic) => topic.status === 'Taken')
         .sort((a, b) => a.id.localeCompare(b.id));
 
       if (!reserved.length) {
@@ -1259,7 +1222,7 @@
         card.innerHTML = `
           <div class="topic-head">
             <span class="topic-id">${topic.id}</span>
-            <span class="status ${topic.status.toLowerCase()}">${topic.previewOnly ? 'Preview' : topic.rawStatus}</span>
+            <span class="status ${topic.status.toLowerCase()}">${topic.rawStatus}</span>
           </div>
           <h2 class="topic-title">${escapeHtml(topic.title)}</h2>
           <p class="topic-focus">${escapeHtml(topic.focus)}</p>
@@ -1269,7 +1232,7 @@
           </div>
           <div class="topic-foot">
             <button class="reserve" type="button" ${topic.status === 'Available' ? '' : 'disabled'}>
-              ${topic.status === 'Available' ? 'Reserve' : `Reserved by ${escapeHtml(topic.reservedBy)}${topic.previewOnly ? ' (preview)' : ''}`}
+              ${topic.status === 'Available' ? 'Reserve' : `Reserved by ${escapeHtml(topic.reservedBy)}`}
             </button>
           </div>
         `;
@@ -1301,7 +1264,7 @@
       claimLine.textContent = `${state.selectedTopic.id}. ${state.selectedTopic.title} — (Taken by ${name} <${email}>)`;
     }
 
-    async function previewAndCopyClaim() {
+    async function copyClaimLine() {
       if (!state.selectedTopic) return;
 
       const name = studentName.value.trim();
@@ -1325,11 +1288,9 @@
       }
 
       updateClaimLine();
-      savePreviewReservation(state.selectedTopic, name, email);
-      applyFilters();
       const copied = await copyText(
         claimLine.textContent,
-        'Preview shown. Claim line copied; submit the PR to reserve officially.',
+        'Claim line copied. Submit and merge the PR to reserve officially.',
         claimLine,
       );
       if (copied) dialog.close();
@@ -1458,7 +1419,7 @@
     studentEmail.addEventListener('input', updateClaimLine);
 
     document.getElementById('copyClaim').addEventListener('click', () => {
-      previewAndCopyClaim();
+      copyClaimLine();
     });
 
     document.getElementById('copyPr').addEventListener('click', () => {
@@ -1489,7 +1450,6 @@
 
     loadMarkdown().then((markdown) => {
       state.topics = parseTopics(markdown);
-      loadPreviewReservations();
       state.filtered = [...state.topics];
       renderChips();
       applyFilters();
