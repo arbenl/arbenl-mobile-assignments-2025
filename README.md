@@ -37,6 +37,7 @@ Students may change only the status segment of one available topic line when res
 8) Wait for the **automated check** to pass. If approved, the instructor/maintainer will merge your PR.
 
 > 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
+> Open student PRs may appear on the MCC page as **pending** so the professor and other students can see claims that are waiting for review.
 
 Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
