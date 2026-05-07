@@ -195,3 +195,4 @@
 60. Mobile Incident Reporter with Cloud Workflow — (Available)
   - MCC focus: Capture reports with photo/location, upload evidence, trigger a serverless triage workflow, and show status updates.
   - Score: Not graded (0-30)
+16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)
