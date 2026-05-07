@@ -467,6 +467,11 @@
       color: #a8294e;
     }
 
+    .status.pending {
+      background: rgba(217, 119, 6, 0.14);
+      color: #92400e;
+    }
+
     .topic-title {
       margin: 0;
       font-size: 1.08rem;
@@ -842,6 +847,7 @@
             <option value="all">All topics</option>
             <option value="Available">Available only</option>
             <option value="Taken">Reserved only</option>
+            <option value="Pending">Pending PRs</option>
           </select>
         </div>
         <div class="chips" id="categoryChips" aria-label="Filter by category"></div>
@@ -854,7 +860,7 @@
         </div>
         <div class="metric">
           <strong id="reservedCount">0</strong>
-          <span>reserved</span>
+          <span>reserved or pending</span>
         </div>
         <div class="metric">
           <strong id="visibleCount">0</strong>
@@ -873,7 +879,7 @@
           <p class="eyebrow">Already reserved</p>
           <h2 id="reservedHeading">Published reservations</h2>
         </div>
-        <button class="secondary-action" type="button" id="showReserved">Show reserved only</button>
+        <button class="secondary-action" type="button" id="showReserved">Show reservations</button>
       </div>
       <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
         No merged reservations yet. A copied claim line is not official until the PR is merged.
@@ -1084,6 +1090,7 @@
     const state = {
       topics: [],
       filtered: [],
+      pendingClaims: [],
       activeCategory: 'All',
       selectedTopic: null,
       highlightedTopicId: '',
@@ -1110,6 +1117,7 @@
     };
 
     const githubEditUrl = 'https://github.com/arbenl/arbenl-mobile-assignments-2025/edit/main/CLOUD_TOPICS_2026.md';
+    const githubApiBase = 'https://api.github.com/repos/arbenl/arbenl-mobile-assignments-2025';
 
     const catalogueEl = document.getElementById('catalogue');
     const emptyState = document.getElementById('emptyState');
@@ -1140,6 +1148,61 @@
       } catch (error) {
         return fallbackMarkdown;
       }
+    }
+
+    async function loadPendingClaims() {
+      try {
+        const response = await fetch(`${githubApiBase}/pulls?state=open&per_page=100`, {
+          cache: 'no-store',
+          headers: { Accept: 'application/vnd.github+json' },
+        });
+        if (!response.ok) throw new Error('Pull request fetch failed');
+
+        const pulls = await response.json();
+        const claimBatches = await Promise.all(pulls.map(async (pull) => {
+          try {
+            const filesResponse = await fetch(`${githubApiBase}/pulls/${pull.number}/files`, {
+              cache: 'no-store',
+              headers: { Accept: 'application/vnd.github+json' },
+            });
+            if (!filesResponse.ok) return [];
+
+            const files = await filesResponse.json();
+            const topicFile = files.find((file) => file.filename === 'CLOUD_TOPICS_2026.md');
+            if (!topicFile || !topicFile.patch) return [];
+
+            return parsePendingClaimsFromPatch(topicFile.patch, pull);
+          } catch (error) {
+            return [];
+          }
+        }));
+
+        return claimBatches.flat();
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function parsePendingClaimsFromPatch(patch, pull) {
+      return patch
+        .split(/\r?\n/)
+        .filter((line) => line.startsWith('+') && !line.startsWith('+++'))
+        .map((line) => line.slice(1).trim().match(/^(\d{2})\.\s+(.+?)\s—\s\(Taken by ([^)]+)\)$/))
+        .filter(Boolean)
+        .map((match) => {
+          const identity = parseReservation(`Taken by ${match[3]}`) || { name: match[3], email: '' };
+          return {
+            id: match[1],
+            title: match[2],
+            name: identity.name,
+            email: identity.email,
+            prNumber: pull.number,
+            prTitle: pull.title,
+            prUrl: pull.html_url,
+            author: pull.user ? pull.user.login : '',
+            createdAt: pull.created_at,
+          };
+        });
     }
 
     function parseTopics(markdown) {
@@ -1180,6 +1243,30 @@
       });
 
       return topics;
+    }
+
+    function applyPendingClaims(topics, pendingClaims) {
+      const pendingByTopic = new Map();
+      pendingClaims.forEach((claim) => {
+        if (!pendingByTopic.has(claim.id)) pendingByTopic.set(claim.id, []);
+        pendingByTopic.get(claim.id).push(claim);
+      });
+
+      return topics.map((topic) => {
+        const pending = pendingByTopic.get(topic.id) || [];
+        if (!pending.length) return topic;
+
+        return {
+          ...topic,
+          pendingClaims: pending,
+          status: topic.status === 'Taken' ? 'Taken' : 'Pending',
+          reservedBy: topic.status === 'Taken' ? topic.reservedBy : pending[0].name,
+          reservedEmail: topic.status === 'Taken' ? topic.reservedEmail : pending[0].email,
+          rawStatus: topic.status === 'Taken'
+            ? topic.rawStatus
+            : `Pending PR #${pending.map((claim) => claim.prNumber).join(', #')}`,
+        };
+      });
     }
 
     function parseReservation(rawStatus) {
@@ -1256,25 +1343,56 @@
 
     function renderStats() {
       const available = state.topics.filter((topic) => topic.status === 'Available').length;
-      const reserved = state.topics.length - available;
+      const reserved = state.topics.filter((topic) => topic.status === 'Taken' || topic.status === 'Pending').length;
       document.getElementById('availableCount').textContent = available;
       document.getElementById('reservedCount').textContent = reserved;
       document.getElementById('visibleCount').textContent = state.filtered.length;
     }
 
     function renderReservedList() {
-      const reserved = state.topics
+      const official = state.topics
         .filter((topic) => topic.status === 'Taken')
-        .sort((a, b) => a.id.localeCompare(b.id));
+        .map((topic) => ({ type: 'official', topic }));
+      const pending = state.pendingClaims
+        .map((claim) => ({
+          type: 'pending',
+          claim,
+          topic: state.topics.find((topic) => topic.id === claim.id),
+        }));
+      const entries = [...official, ...pending]
+        .sort((a, b) => {
+          const leftId = a.topic ? a.topic.id : a.claim.id;
+          const rightId = b.topic ? b.topic.id : b.claim.id;
+          return leftId.localeCompare(rightId);
+        });
 
-      if (!reserved.length) {
+      if (!entries.length) {
         reservedList.className = 'reserved-list empty-reservations';
-        reservedList.textContent = 'No merged reservations yet. A topic appears here only after the instructor/maintainer merges the reservation PR.';
+        reservedList.textContent = 'No merged or pending reservations yet. A copied claim line appears here after the student opens a Pull Request.';
         return;
       }
 
       reservedList.className = 'reserved-list';
-      reservedList.innerHTML = reserved.map((topic) => {
+      reservedList.innerHTML = entries.map((entry) => {
+        if (entry.type === 'pending') {
+          const topic = entry.topic || { category: 'Pending review', scoreLabel: 'Not graded' };
+          const claim = entry.claim;
+          const theme = themeForCategory(topic.category);
+          const student = claim.email
+            ? `${escapeHtml(claim.name)} &lt;${escapeHtml(claim.email)}&gt;`
+            : escapeHtml(claim.name);
+
+          return `
+            <article class="reserved-item" style="--set: ${theme.color}">
+              <strong>${claim.id}. ${escapeHtml(claim.title)}</strong>
+              <span>Pending PR #${claim.prNumber} by ${student}</span>
+              <small>${escapeHtml(topic.category)} · Awaiting instructor/maintainer merge</small>
+              <button class="reserved-check pending-pr" type="button" data-pr-url="${escapeHtml(claim.prUrl)}">Open PR #${claim.prNumber}</button>
+            </article>
+          `;
+        }
+
+        const topic = entry.topic;
         const theme = themeForCategory(topic.category);
         const student = topic.reservedEmail
           ? `${escapeHtml(topic.reservedBy)} &lt;${escapeHtml(topic.reservedEmail)}&gt;`
@@ -1292,6 +1410,11 @@
 
       reservedList.querySelectorAll('.reserved-check').forEach((button) => {
         button.addEventListener('click', () => {
+          if (button.dataset.prUrl) {
+            window.open(button.dataset.prUrl, '_blank', 'noopener');
+            return;
+          }
+
           const topic = state.topics.find((item) => item.id === button.dataset.topicId);
           if (topic) openReserve(topic);
         });
@@ -1323,13 +1446,24 @@
           </div>
           <div class="topic-foot">
             <button class="reserve ${topic.status === 'Available' ? '' : 'check'}" type="button">
-              ${topic.status === 'Available' ? 'Reserve' : `Check: ${escapeHtml(topic.reservedBy)}`}
+              ${topic.status === 'Available'
+                ? 'Reserve'
+                : topic.status === 'Pending'
+                  ? `Pending PR #${topic.pendingClaims[0].prNumber}`
+                  : `Check: ${escapeHtml(topic.reservedBy)}`}
             </button>
           </div>
         `;
 
         const button = card.querySelector('.reserve');
-        button.addEventListener('click', () => openReserve(topic));
+        button.addEventListener('click', () => {
+          if (topic.status === 'Pending') {
+            openPendingTopic(topic);
+            return;
+          }
+
+          openReserve(topic);
+        });
         fragment.appendChild(card);
       });
 
@@ -1338,6 +1472,11 @@
 
     function openReserve(topic) {
       const isReserved = topic.status === 'Taken';
+      if (topic.status === 'Pending') {
+        openPendingTopic(topic);
+        return;
+      }
+
       state.selectedTopic = topic;
       modalTitle.textContent = `${topic.id}. ${topic.title}`;
       modalFocus.textContent = topic.focus;
@@ -1354,6 +1493,14 @@
       updateClaimLine();
       dialog.showModal();
       setTimeout(() => studentName.focus(), 50);
+    }
+
+    function openPendingTopic(topic) {
+      const claim = topic.pendingClaims && topic.pendingClaims[0];
+      if (!claim) return;
+
+      showToast(`Topic ${topic.id} is pending in PR #${claim.prNumber}. Opening the PR.`);
+      window.open(claim.prUrl, '_blank', 'noopener');
     }
 
     function updateClaimLine() {
@@ -1414,10 +1561,16 @@
     function matchesStudent(topic, name, email) {
       const normalizedName = normalizeName(name);
       const normalizedEmail = email.trim().toLowerCase();
-      return topic.status === 'Taken' && (
+      const officialMatch = topic.status === 'Taken' && (
         (normalizedName && normalizeName(topic.reservedBy || '') === normalizedName)
         || (normalizedEmail && (topic.reservedEmail || '').toLowerCase() === normalizedEmail)
       );
+      const pendingMatch = (topic.pendingClaims || []).some((claim) => (
+        (normalizedName && normalizeName(claim.name || '') === normalizedName)
+        || (normalizedEmail && (claim.email || '').toLowerCase() === normalizedEmail)
+      ));
+
+      return officialMatch || pendingMatch;
     }
 
     function findExistingStudentReservation(name, email, exceptTopicId) {
@@ -1462,7 +1615,14 @@
       }
 
       showToast(`Found topic ${match.id}. Opening reservation details.`);
-      setTimeout(() => openReserve(match), 350);
+      setTimeout(() => {
+        if (match.status === 'Pending') {
+          openPendingTopic(match);
+          return;
+        }
+
+        openReserve(match);
+      }, 350);
     }
 
     function prDetails() {
@@ -1597,15 +1757,16 @@
     });
 
     document.getElementById('showReserved').addEventListener('click', () => {
-      statusFilter.value = 'Taken';
+      statusFilter.value = 'all';
       state.activeCategory = 'All';
       renderChips();
       applyFilters();
-      catalogueEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      reservedList.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    loadMarkdown().then((markdown) => {
-      state.topics = parseTopics(markdown);
+    Promise.all([loadMarkdown(), loadPendingClaims()]).then(([markdown, pendingClaims]) => {
+      state.pendingClaims = pendingClaims;
+      state.topics = applyPendingClaims(parseTopics(markdown), pendingClaims);
       state.filtered = [...state.topics];
       renderChips();
       applyFilters();
