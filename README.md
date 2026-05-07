@@ -38,7 +38,7 @@ Students may change only the status segment of one available topic line when res
 
 > 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
 
-Need to correct your own reservation? Open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
+Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
 ## ✅ How to submit the final solution
 
