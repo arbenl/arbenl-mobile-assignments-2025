@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T19:27:38.581Z",
+  "generatedAt": "2026-05-07T19:28:56.736Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -19,10 +19,21 @@
       "name": "Aulona Kerqeli",
       "email": "aulonakerqeli1@gmail.com",
       "prNumber": 71,
-      "prTitle": "16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)",
+      "prTitle": "16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)-aulonakerqeli1-svg:patch-5",
       "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/71",
       "author": "aulonakerqeli1-svg",
       "createdAt": "2026-05-07T19:27:26Z"
+    },
+    {
+      "id": "31",
+      "title": "Containerized Microservice Deployment",
+      "name": "Dineta Avdyli",
+      "email": "dineta.avdyli@universitetiaab.com",
+      "prNumber": 72,
+      "prTitle": "Update status of Containerized Microservice Deployment",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/72",
+      "author": "dineetaa",
+      "createdAt": "2026-05-07T19:28:37Z"
     }
   ],
   "conflicts": [
