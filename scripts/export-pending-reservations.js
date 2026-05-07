@@ -93,6 +93,17 @@ async function githubJson(path) {
   return response.json();
 }
 
+async function getReservationCheck(pull) {
+  if (!pull.head || !pull.head.sha) return null;
+
+  const checks = await githubJson(`/commits/${pull.head.sha}/check-runs?check_name=merge-valid-claim`);
+  if (!Array.isArray(checks.check_runs) || !checks.check_runs.length) return null;
+
+  return checks.check_runs
+    .slice()
+    .sort((left, right) => new Date(right.started_at || right.created_at) - new Date(left.started_at || left.created_at))[0];
+}
+
 function classifyClaims(rawClaims, officialClaims) {
   const claims = [];
   const conflicts = [];
@@ -148,6 +159,11 @@ function classifyClaims(rawClaims, officialClaims) {
 async function main() {
   const pulls = await githubJson('/pulls?state=open&per_page=100');
   const claimBatches = await Promise.all(pulls.map(async (pull) => {
+    const reservationCheck = await getReservationCheck(pull);
+    if (reservationCheck && reservationCheck.status === 'completed' && reservationCheck.conclusion === 'failure') {
+      return [];
+    }
+
     const files = await githubJson(`/pulls/${pull.number}/files`);
     const changedTopicFile = files.find((file) => file.filename === topicFile);
     if (!changedTopicFile || !changedTopicFile.patch) return [];
