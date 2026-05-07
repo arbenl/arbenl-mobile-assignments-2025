@@ -338,6 +338,57 @@
       overflow-wrap: anywhere;
     }
 
+    .reserved-check {
+      justify-self: start;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      background: var(--set, var(--teal));
+      color: white;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .my-reservation {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) minmax(160px, 220px) minmax(170px, 240px) auto;
+      gap: 10px;
+      align-items: end;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .my-reservation strong,
+    .my-reservation span {
+      display: block;
+    }
+
+    .my-reservation strong {
+      color: var(--ink);
+      font-size: 0.94rem;
+    }
+
+    .my-reservation span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .my-reservation input {
+      width: 100%;
+      min-height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
     .empty-reservations {
       display: block;
       padding: 18px;
@@ -493,10 +544,22 @@
       background: var(--teal-dark);
     }
 
-    .reserve[disabled] {
-      background: #d8dee6;
-      color: #687386;
-      cursor: not-allowed;
+    .reserve.check {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+    }
+
+    .reserve.check:hover {
+      border-color: var(--set, var(--teal));
+      background: var(--set-soft, #eef7f6);
+      color: var(--set, var(--teal-dark));
+    }
+
+    .topic-card.highlighted {
+      outline: 3px solid var(--set, var(--teal));
+      outline-offset: 3px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
     }
 
     .secondary-action {
@@ -737,6 +800,10 @@
         flex-direction: column;
       }
 
+      .my-reservation {
+        grid-template-columns: 1fr;
+      }
+
       .catalogue {
         grid-template-columns: 1fr;
       }
@@ -811,6 +878,15 @@
       <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
         No merged reservations yet. A copied claim line is not official until the PR is merged.
       </div>
+      <div class="my-reservation" aria-label="Find your own reservation">
+        <div>
+          <strong>Check your reservation</strong>
+          <span>Use the same full name or email from your merged PR.</span>
+        </div>
+        <input id="checkName" autocomplete="name" placeholder="Full name">
+        <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com">
+        <button class="secondary-action" type="button" id="checkReservation">Find mine</button>
+      </div>
     </section>
 
     <section class="catalogue" id="catalogue" aria-live="polite"></section>
@@ -855,9 +931,9 @@
       </div>
 
       <div class="claim-box">
-        <span>Copy this line, then replace the same topic line on GitHub:</span>
+        <span id="claimInstruction">Copy this line, then replace the same topic line on GitHub:</span>
         <code id="claimLine"></code>
-        <span class="claim-note">GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.</span>
+        <span class="claim-note" id="claimNote">GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.</span>
       </div>
 
       <div class="claim-actions">
@@ -1010,6 +1086,7 @@
       filtered: [],
       activeCategory: 'All',
       selectedTopic: null,
+      highlightedTopicId: '',
     };
 
     const categoryOrder = [
@@ -1045,9 +1122,14 @@
     const modalFocus = document.getElementById('modalFocus');
     const studentName = document.getElementById('studentName');
     const studentEmail = document.getElementById('studentEmail');
+    const checkName = document.getElementById('checkName');
+    const checkEmail = document.getElementById('checkEmail');
     const stackChoice = document.getElementById('stackChoice');
     const cloudServices = document.getElementById('cloudServices');
+    const claimInstruction = document.getElementById('claimInstruction');
     const claimLine = document.getElementById('claimLine');
+    const claimNote = document.getElementById('claimNote');
+    const copyClaim = document.getElementById('copyClaim');
     const toast = document.getElementById('toast');
 
     async function loadMarkdown() {
@@ -1203,9 +1285,17 @@
             <strong>${topic.id}. ${escapeHtml(topic.title)}</strong>
             <span>Reserved by ${student}</span>
             <small>${escapeHtml(topic.category)} · Score: ${escapeHtml(topic.scoreLabel)}</small>
+            <button class="reserved-check" type="button" data-topic-id="${topic.id}">Check reservation</button>
           </article>
         `;
       }).join('');
+
+      reservedList.querySelectorAll('.reserved-check').forEach((button) => {
+        button.addEventListener('click', () => {
+          const topic = state.topics.find((item) => item.id === button.dataset.topicId);
+          if (topic) openReserve(topic);
+        });
+      });
     }
 
     function renderTopics() {
@@ -1216,7 +1306,8 @@
       state.filtered.forEach((topic) => {
         const theme = themeForCategory(topic.category);
         const card = document.createElement('article');
-        card.className = 'topic-card';
+        card.className = `topic-card${state.highlightedTopicId === topic.id ? ' highlighted' : ''}`;
+        card.dataset.topicId = topic.id;
         card.style.setProperty('--set', theme.color);
         card.style.setProperty('--set-soft', theme.soft);
         card.innerHTML = `
@@ -1231,8 +1322,8 @@
             <span class="score-display ${topic.scoreValue === null ? '' : 'graded'}">Score: ${escapeHtml(topic.scoreLabel)}</span>
           </div>
           <div class="topic-foot">
-            <button class="reserve" type="button" ${topic.status === 'Available' ? '' : 'disabled'}>
-              ${topic.status === 'Available' ? 'Reserve' : `Reserved by ${escapeHtml(topic.reservedBy)}`}
+            <button class="reserve ${topic.status === 'Available' ? '' : 'check'}" type="button">
+              ${topic.status === 'Available' ? 'Reserve' : `Check: ${escapeHtml(topic.reservedBy)}`}
             </button>
           </div>
         `;
@@ -1246,12 +1337,20 @@
     }
 
     function openReserve(topic) {
+      const isReserved = topic.status === 'Taken';
       state.selectedTopic = topic;
       modalTitle.textContent = `${topic.id}. ${topic.title}`;
       modalFocus.textContent = topic.focus;
-      studentName.value = '';
-      studentEmail.value = '';
+      studentName.value = isReserved ? topic.reservedBy : '';
+      studentEmail.value = isReserved ? topic.reservedEmail : '';
       cloudServices.value = '';
+      claimInstruction.textContent = isReserved
+        ? 'For your own correction PR, replace the same topic line on GitHub with:'
+        : 'Copy this line, then replace the same topic line on GitHub:';
+      claimNote.textContent = isReserved
+        ? 'This topic is already reserved. Only the same student should correct it, and the validator requires the same name or the same email to remain.'
+        : 'GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.';
+      copyClaim.textContent = isReserved ? 'Copy correction line' : 'Copy claim line';
       updateClaimLine();
       dialog.showModal();
       setTimeout(() => studentName.focus(), 50);
@@ -1287,10 +1386,18 @@
         return;
       }
 
+      if (state.selectedTopic.status === 'Taken' && !matchesStudent(state.selectedTopic, name, email)) {
+        showToast('For corrections, keep the same name or email from the merged reservation.');
+        studentName.focus();
+        return;
+      }
+
       updateClaimLine();
       const copied = await copyText(
         claimLine.textContent,
-        'Claim line copied. Open a PR and wait for instructor merge.',
+        state.selectedTopic.status === 'Taken'
+          ? 'Correction line copied. Open a PR and wait for instructor merge.'
+          : 'Claim line copied. Open a PR and wait for instructor merge.',
         claimLine,
       );
       if (copied) dialog.close();
@@ -1304,17 +1411,58 @@
       return name.trim().toLowerCase().replace(/\s+/g, ' ');
     }
 
-    function findExistingStudentReservation(name, email, exceptTopicId) {
+    function matchesStudent(topic, name, email) {
       const normalizedName = normalizeName(name);
       const normalizedEmail = email.trim().toLowerCase();
+      return topic.status === 'Taken' && (
+        (normalizedName && normalizeName(topic.reservedBy || '') === normalizedName)
+        || (normalizedEmail && (topic.reservedEmail || '').toLowerCase() === normalizedEmail)
+      );
+    }
+
+    function findExistingStudentReservation(name, email, exceptTopicId) {
       return state.topics.find((topic) => (
         topic.id !== exceptTopicId
-        && topic.status === 'Taken'
-        && (
-          normalizeName(topic.reservedBy || '') === normalizedName
-          || (normalizedEmail && (topic.reservedEmail || '').toLowerCase() === normalizedEmail)
-        )
+        && matchesStudent(topic, name, email)
       ));
+    }
+
+    function findOwnReservation() {
+      const name = checkName.value.trim();
+      const email = checkEmail.value.trim();
+
+      if (!name && !email) {
+        showToast('Enter your reservation name or email first.');
+        checkName.focus();
+        return;
+      }
+
+      if (email && !isValidEmail(email)) {
+        showToast('Enter a valid email, or leave email empty and search by full name.');
+        checkEmail.focus();
+        return;
+      }
+
+      const match = state.topics.find((topic) => matchesStudent(topic, name, email));
+      if (!match) {
+        showToast('No merged reservation found for that name or email.');
+        return;
+      }
+
+      state.highlightedTopicId = match.id;
+      state.activeCategory = 'All';
+      searchInput.value = match.id;
+      statusFilter.value = 'all';
+      renderChips();
+      applyFilters();
+
+      const card = catalogueEl.querySelector(`[data-topic-id="${match.id}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      showToast(`Found topic ${match.id}. Opening reservation details.`);
+      setTimeout(() => openReserve(match), 350);
     }
 
     function prDetails() {
@@ -1418,8 +1566,16 @@
     studentName.addEventListener('input', updateClaimLine);
     studentEmail.addEventListener('input', updateClaimLine);
 
-    document.getElementById('copyClaim').addEventListener('click', () => {
+    copyClaim.addEventListener('click', () => {
       copyClaimLine();
+    });
+
+    document.getElementById('checkReservation').addEventListener('click', findOwnReservation);
+    checkName.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') findOwnReservation();
+    });
+    checkEmail.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') findOwnReservation();
     });
 
     document.getElementById('copyPr').addEventListener('click', () => {
