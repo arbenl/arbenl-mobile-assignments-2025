@@ -148,7 +148,7 @@
 45. OAuth Login Integration Demo — (Available)
   - Cloud focus: Add third-party OAuth login, map user profiles, protect API routes, and handle callback errors.
   - Score: Not graded (0-30)
-46. API Rate Limiting and Abuse Protection — (Available)
+46. API Rate Limiting and Abuse Protection — (Taken by Besiana Dauti <besiana.dauti@universitetiaab.com>)
   - Cloud focus: Implement per-user limits, request logging, admin override, and clear client error responses.
   - Score: Not graded (0-30)
 47. Data Privacy Request Manager — (Available)
