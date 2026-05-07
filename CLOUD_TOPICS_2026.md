@@ -5,7 +5,7 @@
 > Suggested cloud and mobile-cloud building blocks are listed under each topic.
 
 ## Cloud Foundations & Web Platforms
-01. Cloud-hosted Task Collaboration Platform — (Available)
+01. Cloud-hosted Task Collaboration Platform — (Taken by Ejona Shala <ejona.shala@universitetiaab.com>)
   - Cloud focus: Deploy a CRUD web app with managed database, authentication, object storage for attachments, and environment-based configuration.
   - Score: Not graded (0-30)
 02. Multi-tenant Course Resource Portal — (Available)
@@ -104,7 +104,7 @@
 31. Containerized Microservice Deployment — (Available)
   - Cloud focus: Package a small API in Docker, deploy it to a cloud container platform, configure secrets, and expose health checks.
   - Score: Not graded (0-30)
-32. CI/CD Pipeline for a Cloud Web App — (Available)
+32. CI/CD Pipeline for a Cloud Web App — (Taken by Skifter Bytyqi <skifter.bytyci@universitetiaab.com>)
   - Cloud focus: Build automated tests, preview deployments, production deploy gates, and environment-specific variables.
   - Score: Not graded (0-30)
 33. Infrastructure as Code Starter Stack — (Available)
