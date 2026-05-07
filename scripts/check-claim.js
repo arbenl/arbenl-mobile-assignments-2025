@@ -18,6 +18,7 @@ const submissionDonePattern = /^(\d{2})\.\s+(.+?)\s—\s\(Submitted by ([^)]+)\)
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const existingClaims = [];
+let currentClaimContext = null;
 
 function fail(msg) {
   console.error(`❌ ${msg}`);
@@ -197,6 +198,101 @@ function getCurrentBranch() {
   return (process.env.GITHUB_HEAD_REF || tryDiff('git branch --show-current')).trim();
 }
 
+function getCurrentPullRequestNumber() {
+  if (!process.env.GITHUB_EVENT_PATH || !fs.existsSync(process.env.GITHUB_EVENT_PATH)) return null;
+
+  try {
+    const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+    return event.pull_request ? Number(event.pull_request.number) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function parseClaimsFromPatch(patch, pull) {
+  return patch
+    .split(/\r?\n/)
+    .filter((line) => line.startsWith('+') && !line.startsWith('+++'))
+    .map((line) => line.slice(1).trim().match(claimPattern))
+    .filter(Boolean)
+    .map((match) => {
+      const identity = parseClaimIdentity(match[3]);
+      return {
+        id: match[1],
+        title: match[2],
+        name: identity.name,
+        email: identity.email,
+        prNumber: pull.number,
+        prTitle: pull.title,
+        prUrl: pull.html_url,
+      };
+    });
+}
+
+async function githubJson(path) {
+  const repo = process.env.GITHUB_REPOSITORY;
+  const token = process.env.GITHUB_TOKEN;
+  if (!repo || !token || typeof fetch !== 'function') return null;
+
+  const response = await fetch(`https://api.github.com/repos/${repo}${path}`, {
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'User-Agent': 'mcc-claim-validator',
+    },
+  });
+
+  if (!response.ok) return null;
+  return response.json();
+}
+
+async function validateOpenPullRequestDuplicates(errors, claimContext) {
+  if (!claimContext || process.env.SKIP_OPEN_PR_DUPLICATE_CHECK === '1') return;
+
+  const pulls = await githubJson('/pulls?state=open&per_page=100');
+  if (!Array.isArray(pulls)) return;
+
+  const currentPrNumber = getCurrentPullRequestNumber();
+  const openClaims = [];
+
+  for (const pull of pulls) {
+    if (currentPrNumber && pull.number === currentPrNumber) continue;
+
+    const files = await githubJson(`/pulls/${pull.number}/files`);
+    if (!Array.isArray(files)) continue;
+
+    files
+      .filter((file) => topicFiles.includes(file.filename) && file.patch)
+      .forEach((file) => {
+        openClaims.push(...parseClaimsFromPatch(file.patch, pull).map((claim) => ({
+          ...claim,
+          filePath: file.filename,
+        })));
+      });
+  }
+
+  const duplicateStudent = openClaims.find((claim) => (
+    sameStudentIdentity(claim, claimContext.identity)
+  ));
+
+  if (duplicateStudent) {
+    errors.push(
+      `One student can reserve only one assignment. ${claimContext.identity.name} already has open reservation PR #${duplicateStudent.prNumber} for topic ${duplicateStudent.id}.`,
+    );
+  }
+
+  const duplicateTopic = openClaims.find((claim) => (
+    claim.filePath === claimContext.filePath
+    && claim.id === claimContext.claimedId
+  ));
+
+  if (duplicateTopic) {
+    errors.push(
+      `Topic ${claimContext.claimedId} already has open reservation PR #${duplicateTopic.prNumber}. Wait for instructor review before opening another claim for the same topic.`,
+    );
+  }
+}
+
 function isCourseMaintenancePr(changedFiles) {
   const actor = process.env.GITHUB_ACTOR || '';
   const branch = getCurrentBranch();
@@ -339,6 +435,11 @@ if (!courseMaintenancePr && diff.trim()) {
     } else {
       const claimedId = claimMatch[1];
       const identity = parseClaimIdentity(claimMatch[3]);
+      currentClaimContext = {
+        filePath: changedTopicFiles[0],
+        claimedId,
+        identity,
+      };
       if (identity.name.length < 3) {
         errors.push('Please provide your full name inside "(Taken by ...)".');
       }
@@ -370,13 +471,19 @@ if (!courseMaintenancePr && diff.trim()) {
   }
 }
 
-if (errors.length) {
-  console.error(errors.join('\n'));
-  process.exit(1);
-}
+(async () => {
+  if (!courseMaintenancePr) {
+    await validateOpenPullRequestDuplicates(errors, currentClaimContext);
+  }
 
-if (courseMaintenancePr) {
-  console.log('ℹ️ Course maintenance PR detected; validated catalogue and submission formats.');
-}
+  if (errors.length) {
+    console.error(errors.join('\n'));
+    process.exit(1);
+  }
 
-console.log('✅ Claim format looks valid.');
+  if (courseMaintenancePr) {
+    console.log('ℹ️ Course maintenance PR detected; validated catalogue and submission formats.');
+  }
+
+  console.log('✅ Claim format looks valid.');
+})();

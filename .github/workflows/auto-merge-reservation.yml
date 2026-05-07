@@ -1,0 +1,63 @@
+name: Auto-merge Reservation
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
+    paths:
+      - CLOUD_TOPICS_2026.md
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: reservation-claims-main
+  cancel-in-progress: false
+
+jobs:
+  merge-valid-claim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout trusted main scripts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+
+      - name: Checkout student PR content
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: pr
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Add main remote to PR checkout
+        run: |
+          set -euo pipefail
+          cd pr
+          git remote add upstream "https://github.com/${{ github.repository }}.git"
+          git fetch upstream main
+          git branch --track main upstream/main || true
+
+      - name: Validate claim against latest main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          cd pr
+          GITHUB_BASE_REF=main node ../main/scripts/check-claim.js
+
+      - name: Merge valid reservation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh pr merge "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --merge \
+            --delete-branch

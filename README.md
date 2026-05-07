@@ -23,7 +23,7 @@ Students may change only the status segment of one available topic line when res
 3. Kliko `Edit on GitHub`.
 4. Në GitHub zëvendëso vetëm rreshtin e temës tënde me rreshtin e kopjuar.
 5. Kliko `Propose changes` dhe hap Pull Request.
-6. Prit validimin automatik dhe rishikimin nga instruktori; tema rezervohet dhe bëhet e dukshme për të gjithë vetëm kur instruktori/maintainer e bashkon PR-në.
+6. Prit validimin automatik; PR-ja e parë e vlefshme bashkohet automatikisht dhe tema bëhet e dukshme për të gjithë si e rezervuar.
 
 ## ✅ How to claim a topic
 
@@ -34,7 +34,7 @@ Students may change only the status segment of one available topic line when res
 5) Do not change the score line or any description line. Scores are instructor-managed and shown as `0/30` or `Not graded`.
 6) Commit the change in your fork and **open a Pull Request** back to this repo.
 7) Fill the PR template completely (catalogue, name, email, topic ID, chosen stack, cloud/mobile services if relevant, 1-week plan, AI tools).
-8) Wait for the **automated check** to pass. If approved, the instructor/maintainer will merge your PR.
+8) Wait for the **automated check** to pass. Valid reservation PRs are processed one at a time and merged automatically, so first-in, first-served is atomic.
 
 > 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
 > Open student PRs may appear on the MCC page as **pending** so the professor and other students can see claims that are waiting for review.

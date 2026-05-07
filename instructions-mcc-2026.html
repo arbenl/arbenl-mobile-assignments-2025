@@ -362,11 +362,11 @@
         <li>Click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
         <li>Click `Edit on GitHub`; GitHub opens `CLOUD_TOPICS_2026.md` directly for editing.</li>
         <li>Replace only your topic line with the copied line, then click `Propose changes` and create a Pull Request.</li>
-        <li>Wait until validation passes and the instructor/maintainer merges the PR. The MCC page may show your open PR as pending, but only after merge is your topic officially reserved.</li>
+        <li>Wait for the automatic validation. The first valid PR is merged automatically; if another PR reserved the same topic first, your PR will stay unmerged and must be changed.</li>
       </ol>
       <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;)</code></pre>
       <div class="warning">One student can reserve only one assignment. Validation rejects repeated names or emails.</div>
-      <p class="lead">After your PR is merged, use `Check your reservation` on the MCC page with the same full name or email to reopen your topic details. If you need to correct your own reservation later, open a new PR that changes only your existing topic line and keep the same name or the same email so validation can recognize that it is your reservation.</p>
+      <p class="lead">After your PR is merged, use `Check your reservation` on the MCC page with the same full name or email to reopen your topic details. Reservation PRs are processed one at a time, so first-in, first-served is decided atomically by GitHub Actions.</p>
     </section>
 
     <section class="section" id="build">

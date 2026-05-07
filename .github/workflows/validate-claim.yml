@@ -20,5 +20,8 @@ jobs:
           node-version: 18
 
       - name: Run claim validator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           node scripts/check-claim.js
