@@ -326,6 +326,26 @@
       border: 1px solid #fed7aa;
       font-weight: 700;
     }
+    .demo-video {
+      display: grid;
+      gap: 12px;
+      margin: 14px 0 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--wash);
+    }
+    .demo-video video {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #111827;
+    }
+    .demo-video p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
 
     @media (max-width: 820px) {
       .topbar,
@@ -383,7 +403,7 @@
         </div>
         <div class="rule">
           <strong>Rezervimi bëhet zyrtar vetëm kur PR bashkohet.</strong>
-          <span>Faqja e kopjon rreshtin dhe hap editorin në GitHub; burimi zyrtar është PR i bashkuar.</span>
+          <span>Kopjimi i rreshtit nuk mjafton. Instruktori/maintainer duhet ta bashkojë PR-në që rezervimi të shihet nga të gjithë.</span>
         </div>
       </aside>
     </section>
@@ -398,16 +418,23 @@
 
     <section class="section" id="rezervimi">
       <h2>Si ta rezervoni temën</h2>
-      <p class="lead">Rezervimi është first in, first served. Tema merret nga studenti i parë që ka PR të vlefshëm dhe të bashkuar.</p>
+      <p class="lead">Rezervimi është first in, first served. Tema merret nga studenti i parë që ka PR të vlefshëm të bashkuar nga instruktori/maintainer; pas bashkimit faqja publike përditësohet.</p>
+      <div class="demo-video">
+        <video controls preload="metadata" poster="assets/demo-frames/frame-01.png">
+          <source src="assets/mcc-2026-reservation-demo.mp4" type="video/mp4">
+        </video>
+        <p>Shikoni demon në localhost: zgjidhni një temë të lirë, kopjoni rreshtin, hapni PR dhe prisni që instruktori/maintainer ta bashkojë.</p>
+      </div>
       <ol class="steps">
         <li>Hapni `mcc-2026.html`, kërkoni temën dhe kontrolloni që statusi të jetë `Available`.</li>
         <li>Klikoni `Reserve`, shkruani emrin e plotë dhe email-in. Të dyja janë të detyrueshme.</li>
-        <li>Klikoni `Copy line + preview`; rreshti i saktë kopjohet dhe tema shfaqet si preview në faqe.</li>
+        <li>Klikoni `Copy claim line`; rreshti i saktë kopjohet, por ky nuk është ende rezervim zyrtar.</li>
         <li>Klikoni `Edit on GitHub`; GitHub hap direkt fajllin `CLOUD_TOPICS_2026.md` për editim.</li>
         <li>Zëvendësoni vetëm rreshtin e temës tuaj me rreshtin e kopjuar, pastaj klikoni `Propose changes` dhe krijoni Pull Request.</li>
-        <li>Nëse validimi kalon dhe instruktori e bashkon PR-në, tema është rezervuar zyrtarisht.</li>
+        <li>Pritni që validimi të kalojë dhe instruktori/maintainer ta bashkojë PR-në. Vetëm pas bashkimit tema rezervohet zyrtarisht dhe bëhet e dukshme për të gjithë.</li>
       </ol>
       <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Emri Mbiemri &lt;email@example.com&gt;)</code></pre>
+      <p class="lead">Nëse duhet ta korrigjoni më vonë rezervimin tuaj, hapni PR të ri që ndryshon vetëm rreshtin e temës suaj ekzistuese. Mbani të njëjtin emër ose të njëjtin email që validimi ta njohë si rezervimin tuaj.</p>
       <div class="warning">Një student mund të rezervojë vetëm një detyrë. Validimi refuzon emër ose email të përsëritur në tema të tjera.</div>
     </section>
 

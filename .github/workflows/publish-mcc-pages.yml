@@ -9,6 +9,7 @@ on:
       - mcc-2026.html
       - instructions-mcc-2026.html
       - udhezime-mcc-2026.html
+      - assets/**
       - poc-solutions/topic-01-cloud-task-collaboration/**
   workflow_dispatch:
 
@@ -41,6 +42,9 @@ jobs:
           cp main/instructions-mcc-2026.html pages/instructions-mcc-2026.html
           cp main/udhezime-mcc-2026.html pages/udhezime-mcc-2026.html
 
+          mkdir -p pages/assets
+          rsync -a --delete main/assets/ pages/assets/
+
           mkdir -p pages/poc-solutions/topic-01-cloud-task-collaboration
           rsync -a --delete \
             main/poc-solutions/topic-01-cloud-task-collaboration/ \
@@ -65,6 +69,7 @@ jobs:
             mcc-2026.html \
             instructions-mcc-2026.html \
             udhezime-mcc-2026.html \
+            assets \
             poc-solutions/topic-01-cloud-task-collaboration
 
           git commit -m "Publish MCC reservation updates"

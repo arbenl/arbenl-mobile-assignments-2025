@@ -13,17 +13,17 @@ Each topic can be claimed by **exactly one** student.
 - [`udhezime-mcc-2026.html`](udhezime-mcc-2026.html) — Albanian static guide for reserving, solving, testing, and submitting assignments.
 - [`SUBMISSIONS_2026.md`](SUBMISSIONS_2026.md) — final solution submission links.
 
-Reservations are **first in, first served**: the first valid PR that is merged reserves the topic.
+Reservations are **first in, first served**: the first valid PR that is merged by the instructor/maintainer reserves the topic and makes it visible on the public site.
 Students may change only the status segment of one available topic line when reserving. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
 
 ## 🚀 Quick Claim Checklist
 
 1. Hap `mcc-2026.html`, zgjidh temën dhe shkruaj emrin/email-in.
-2. Kliko `Copy line + preview`.
+2. Kliko `Copy claim line`.
 3. Kliko `Edit on GitHub`.
 4. Në GitHub zëvendëso vetëm rreshtin e temës tënde me rreshtin e kopjuar.
 5. Kliko `Propose changes` dhe hap Pull Request.
-6. Prit validimin automatik dhe rishikimin nga instruktori; tema rezervohet vetëm kur PR bashkohet.
+6. Prit validimin automatik dhe rishikimin nga instruktori; tema rezervohet dhe bëhet e dukshme për të gjithë vetëm kur instruktori/maintainer e bashkon PR-në.
 
 ## ✅ How to claim a topic
 
@@ -34,9 +34,11 @@ Students may change only the status segment of one available topic line when res
 5) Do not change the score line or any description line. Scores are instructor-managed and shown as `0/30` or `Not graded`.
 6) Commit the change in your fork and **open a Pull Request** back to this repo.
 7) Fill the PR template completely (catalogue, name, email, topic ID, chosen stack, cloud/mobile services if relevant, 1-week plan, AI tools).
-8) Wait for the **automated check** to pass. If approved, the instructor will merge your PR.
+8) Wait for the **automated check** to pass. If approved, the instructor/maintainer will merge your PR.
 
-> 🔒 Once **your PR is merged**, your topic becomes **unavailable** to others.
+> 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
+
+Need to correct your own reservation? Open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
 ## ✅ How to submit the final solution
 

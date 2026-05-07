@@ -1,6 +1,7 @@
 // Node 18+
 // Validates that a student PR changes exactly one topic line in one supported
-// catalogue, switches (Available) -> (Taken by Name <email>), and preserves the topic.
+// catalogue, switches (Available) -> (Taken by Name <email>), allows a same-student
+// correction to an existing reservation, and preserves the topic.
 // All other catalogue metadata, score lines, pages, and scripts are read-only
 // for student claim PRs.
 
@@ -126,6 +127,15 @@ function normalizeName(name) {
   return name.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+function sameStudentIdentity(left, right) {
+  const leftEmail = left.email.trim().toLowerCase();
+  const rightEmail = right.email.trim().toLowerCase();
+  return (
+    (leftEmail && rightEmail && leftEmail === rightEmail)
+    || normalizeName(left.name) === normalizeName(right.name)
+  );
+}
+
 function getDiff() {
   const fileArgs = [...topicFiles, submissionFile].join(' ');
   const attempts = [
@@ -197,6 +207,7 @@ function isCourseMaintenancePr(changedFiles) {
     || file === '.github/pull_request_template.md'
     || file === 'README.md'
     || file === 'AGENTS.md'
+    || file.startsWith('assets/')
     || file.endsWith('.html')
     || file.startsWith('poc-solutions/')
   ));
@@ -314,11 +325,15 @@ if (!courseMaintenancePr && diff.trim()) {
       }
     }
 
-    if (!/\(Available\)$/.test(removedLine)) {
-      errors.push('The topic you are claiming was not marked as "(Available)".');
+    const claimMatch = addedLine.match(claimPattern);
+    const previousClaimMatch = removedLine.match(claimPattern);
+    const isNewReservation = /\(Available\)$/.test(removedLine);
+    const isReservationCorrection = Boolean(previousClaimMatch && claimMatch);
+
+    if (!isNewReservation && !isReservationCorrection) {
+      errors.push('The topic you are claiming was not marked as "(Available)" or as your existing reservation.');
     }
 
-    const claimMatch = addedLine.match(claimPattern);
     if (!claimMatch) {
       errors.push('The new line must end with "(Taken by YOUR FULL NAME <YOUR EMAIL>)".');
     } else {
@@ -329,6 +344,13 @@ if (!courseMaintenancePr && diff.trim()) {
       }
       if (!emailPattern.test(identity.email)) {
         errors.push('Please provide a valid email inside "(Taken by YOUR FULL NAME <email@example.com>)".');
+      }
+
+      if (isReservationCorrection) {
+        const previousIdentity = parseClaimIdentity(previousClaimMatch[3]);
+        if (!sameStudentIdentity(previousIdentity, identity)) {
+          errors.push('You may edit an existing reservation only when the same name or email remains on that topic.');
+        }
       }
 
       const duplicate = existingClaims.find((claim) => (
