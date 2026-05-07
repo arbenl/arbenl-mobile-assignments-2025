@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arben Lila - Profile, Lectures, and Student Assignments</title>
-  <meta name="description" content="Professional profile, lectures across the years, and student assignment catalogues by course and year.">
+  <title>Arben Lila - Lectures and Student Assignments</title>
+  <meta name="description" content="Lectures across the years and student assignment catalogues by course and year.">
   <meta name="application-name" content="Arben Lila Course Portal">
   <link rel="icon" href="data:,">
   <style>
@@ -618,8 +618,8 @@
 
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1 data-i18n="hero.title">Professional profile, lectures, and student assignments.</h1>
-            <p data-i18n="hero.copy">This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.</p>
+            <h1 data-i18n="hero.title">Lectures and student assignment catalogues.</h1>
+            <p data-i18n="hero.copy">This page presents my academic background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.</p>
           </div>
           <aside class="status-panel" aria-label="Reservation workflow status">
             <strong data-i18n="hero.policyTitle">Reservation policy</strong>
@@ -630,9 +630,9 @@
     </header>
 
     <main class="content">
-      <section class="profile-section" aria-label="Professional profile">
+      <section class="profile-section" aria-label="About Arben Lila">
         <div>
-          <p class="kicker" data-i18n="profile.kicker">Professional profile</p>
+          <p class="kicker" data-i18n="profile.kicker">About</p>
           <h2>Arben Lila</h2>
           <p class="profile-lead" data-i18n="profile.lead">Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.</p>
           <div class="contact-line" aria-label="Contact links">
@@ -839,14 +839,14 @@
   <script>
     const translations = {
       en: {
-        pageTitle: 'Arben Lila - Profile, Lectures, and Student Assignments',
+        pageTitle: 'Arben Lila - Lectures and Student Assignments',
         'identity.subtitle': 'Program Manager @ KADC · PhD candidate · Lecturer at AAB',
         'nav.instructions': 'Instructions',
-        'hero.title': 'Professional profile, lectures, and student assignments.',
-        'hero.copy': 'This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.',
+        'hero.title': 'Lectures and student assignment catalogues.',
+        'hero.copy': 'This page presents my academic background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.',
         'hero.policyTitle': 'Reservation policy',
         'hero.policyCopy': 'Students choose the lecture/year that applies to them, then reserve exactly one available assignment topic through the official workflow.',
-        'profile.kicker': 'Professional profile',
+        'profile.kicker': 'About',
         'profile.lead': 'Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.',
         'profile.teachingTitle': 'Teaching focus',
         'profile.teachingCopy': 'Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, Cybersecurity in Healthcare',
@@ -912,14 +912,14 @@
         'stats.file': 'file',
       },
       sq: {
-        pageTitle: 'Arben Lila - Profili, Ligjeratat dhe Detyrat e Studentëve',
+        pageTitle: 'Arben Lila - Ligjeratat dhe Detyrat e Studentëve',
         'identity.subtitle': 'Menaxher programi në KADC · Kandidat për PhD · Ligjërues në AAB',
         'nav.instructions': 'Udhëzime',
-        'hero.title': 'Profil profesional, ligjerata dhe detyra për studentë.',
-        'hero.copy': 'Kjo faqe paraqet profilin tim profesional, ligjeratat e mbajtura ndër vite dhe katalogët e detyrave ku studentët zgjedhin dhe rezervojnë temat e projekteve.',
+        'hero.title': 'Ligjerata dhe katalogë detyrash për studentë.',
+        'hero.copy': 'Kjo faqe paraqet sfondin tim akademik, ligjeratat e mbajtura ndër vite dhe katalogët e detyrave ku studentët zgjedhin dhe rezervojnë temat e projekteve.',
         'hero.policyTitle': 'Rregulli i rezervimit',
         'hero.policyCopy': 'Studentët zgjedhin ligjeratën/vitin që u përket dhe pastaj rezervojnë saktësisht një temë të lirë përmes workflow zyrtar.',
-        'profile.kicker': 'Profil profesional',
+        'profile.kicker': 'Rreth meje',
         'profile.lead': 'Menaxher programi në Kosovo Advocacy & Development Centre (KADC), kandidat për PhD dhe ligjërues në Kolegjin AAB.',
         'profile.teachingTitle': 'Fokusi në mësimdhënie',
         'profile.teachingCopy': 'Rrjeta kompjuterike, Arkitekturë e sistemeve informative, Android & zhvillim modern mobil, Siguri kibernetike në shëndetësi',
@@ -1000,8 +1000,8 @@
       document.querySelector('meta[name="description"]').setAttribute(
         'content',
         language === 'sq'
-          ? 'Profil profesional, ligjerata ndër vite dhe katalogë detyrash për studentë sipas lëndës dhe vitit.'
-          : 'Professional profile, lectures across the years, and student assignment catalogues by course and year.',
+          ? 'Ligjerata ndër vite dhe katalogë detyrash për studentë sipas lëndës dhe vitit.'
+          : 'Lectures across the years and student assignment catalogues by course and year.',
       );
       document.querySelectorAll('[data-i18n]').forEach((node) => {
         node.textContent = t(node.dataset.i18n);
