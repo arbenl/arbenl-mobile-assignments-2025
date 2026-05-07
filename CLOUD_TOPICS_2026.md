@@ -5,7 +5,7 @@
 > Suggested cloud and mobile-cloud building blocks are listed under each topic.
 
 ## Cloud Foundations & Web Platforms
-01. Cloud-hosted Task Collaboration Platform — (Available)
+01. Cloud-hosted Task Collaboration Platform — (Taken by Ejona Shala <ejona.shala@universitetiaab.com>)
   - Cloud focus: Deploy a CRUD web app with managed database, authentication, object storage for attachments, and environment-based configuration.
   - Score: Not graded (0-30)
 02. Multi-tenant Course Resource Portal — (Available)
