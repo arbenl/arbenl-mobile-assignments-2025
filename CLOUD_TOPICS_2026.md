@@ -32,7 +32,7 @@
 09. Team Kanban Board with Activity Stream — (Available)
   - Cloud focus: Persist board state in a managed database, sync updates in real time, and record audit/activity events.
   - Score: Not graded (0-30)
-10. Cloud-native Resume Builder — (Available)
+10. Cloud-native Resume Builder — 10. Cloud-native Resume Builder — taken by Vjosa Shala (vjosa.shala@universitetiaab.com)
   - Cloud focus: Save profile sections to managed storage, generate PDF exports through a backend function, and deploy with CI.
   - Score: Not graded (0-30)
 
