@@ -389,6 +389,23 @@
       font: inherit;
     }
 
+    .reservation-rules {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid rgba(217, 119, 6, 0.28);
+      border-radius: var(--radius);
+      background: #fffbeb;
+      color: #5f3b08;
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .reservation-rules p {
+      margin: 0;
+    }
+
     .empty-reservations {
       display: block;
       padding: 18px;
@@ -892,6 +909,10 @@
         <input id="checkName" autocomplete="name" placeholder="Full name" aria-label="Reservation full name">
         <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com" aria-label="Reservation email">
         <button class="secondary-action" type="button" id="checkReservation">Find mine</button>
+      </div>
+      <div class="reservation-rules">
+        <p>EN: Edit only `CLOUD_TOPICS_2026.md` and only one topic line. Keep Cloud focus and Score. Do not edit this page, rename files, duplicate the title, or put two students on one topic.</p>
+        <p>SQ: Ndryshoni vetëm `CLOUD_TOPICS_2026.md` dhe vetëm një rresht teme. Ruani Cloud focus dhe Score. Mos editoni këtë faqe, mos riemërtoni fajlla, mos përsëritni titullin dhe mos vendosni dy studentë në një temë.</p>
       </div>
     </section>
 
