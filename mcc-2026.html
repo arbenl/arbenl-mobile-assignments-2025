@@ -277,6 +277,77 @@
       font-weight: 700;
     }
 
+    .reserved-panel {
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
+    }
+
+    .reserved-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reserved-head h2 {
+      margin: 0;
+      font-size: 1.22rem;
+      letter-spacing: 0;
+    }
+
+    .reserved-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .reserved-item {
+      display: grid;
+      gap: 8px;
+      min-height: 112px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--set, var(--teal));
+      border-radius: var(--radius);
+      background: #fbfcfd;
+    }
+
+    .reserved-item strong {
+      font-size: 0.98rem;
+      line-height: 1.35;
+    }
+
+    .reserved-item span,
+    .reserved-item small {
+      color: var(--muted);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .empty-reservations {
+      display: block;
+      padding: 18px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: #fbfcfd;
+      font-weight: 800;
+    }
+
     .catalogue {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -426,6 +497,21 @@
       background: #d8dee6;
       color: #687386;
       cursor: not-allowed;
+    }
+
+    .secondary-action {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: white;
+      cursor: pointer;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .secondary-action:hover {
+      background: #0b1220;
     }
 
     .empty {
@@ -646,6 +732,11 @@
         min-height: 76px;
       }
 
+      .reserved-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
       .catalogue {
         grid-template-columns: 1fr;
       }
@@ -706,6 +797,19 @@
           <strong>2026</strong>
           <span>Cloud Computing + MCC</span>
         </div>
+      </div>
+    </section>
+
+    <section class="reserved-panel" aria-labelledby="reservedHeading">
+      <div class="reserved-head">
+        <div>
+          <p class="eyebrow">Already reserved</p>
+          <h2 id="reservedHeading">Published reservations</h2>
+        </div>
+        <button class="secondary-action" type="button" id="showReserved">Show reserved only</button>
+      </div>
+      <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
+        No merged reservations yet.
       </div>
     </section>
 
@@ -935,6 +1039,7 @@
 
     const catalogueEl = document.getElementById('catalogue');
     const emptyState = document.getElementById('emptyState');
+    const reservedList = document.getElementById('reservedList');
     const searchInput = document.getElementById('searchInput');
     const statusFilter = document.getElementById('statusFilter');
     const chipsEl = document.getElementById('categoryChips');
@@ -1101,6 +1206,7 @@
 
       renderTopics();
       renderStats();
+      renderReservedList();
     }
 
     function renderStats() {
@@ -1109,6 +1215,34 @@
       document.getElementById('availableCount').textContent = available;
       document.getElementById('reservedCount').textContent = reserved;
       document.getElementById('visibleCount').textContent = state.filtered.length;
+    }
+
+    function renderReservedList() {
+      const reserved = state.topics
+        .filter((topic) => topic.status === 'Taken' && !topic.previewOnly)
+        .sort((a, b) => a.id.localeCompare(b.id));
+
+      if (!reserved.length) {
+        reservedList.className = 'reserved-list empty-reservations';
+        reservedList.textContent = 'No merged reservations yet. A topic appears here after the reservation PR is merged.';
+        return;
+      }
+
+      reservedList.className = 'reserved-list';
+      reservedList.innerHTML = reserved.map((topic) => {
+        const theme = themeForCategory(topic.category);
+        const student = topic.reservedEmail
+          ? `${escapeHtml(topic.reservedBy)} &lt;${escapeHtml(topic.reservedEmail)}&gt;`
+          : escapeHtml(topic.reservedBy);
+
+        return `
+          <article class="reserved-item" style="--set: ${theme.color}">
+            <strong>${topic.id}. ${escapeHtml(topic.title)}</strong>
+            <span>Reserved by ${student}</span>
+            <small>${escapeHtml(topic.category)} · Score: ${escapeHtml(topic.scoreLabel)}</small>
+          </article>
+        `;
+      }).join('');
     }
 
     function renderTopics() {
@@ -1343,6 +1477,14 @@
 
     document.getElementById('openCatalogue').addEventListener('click', () => {
       window.open(githubEditUrl, '_blank', 'noopener');
+    });
+
+    document.getElementById('showReserved').addEventListener('click', () => {
+      statusFilter.value = 'Taken';
+      state.activeCategory = 'All';
+      renderChips();
+      applyFilters();
+      catalogueEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     loadMarkdown().then((markdown) => {
