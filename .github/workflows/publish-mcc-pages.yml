@@ -1,0 +1,71 @@
+name: Publish MCC Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - CLOUD_TOPICS_2026.md
+      - SUBMISSIONS_2026.md
+      - mcc-2026.html
+      - instructions-mcc-2026.html
+      - udhezime-mcc-2026.html
+      - poc-solutions/topic-01-cloud-task-collaboration/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Checkout GitHub Pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Copy MCC files
+        run: |
+          set -euo pipefail
+
+          cp main/CLOUD_TOPICS_2026.md pages/CLOUD_TOPICS_2026.md
+          cp main/SUBMISSIONS_2026.md pages/SUBMISSIONS_2026.md
+          cp main/mcc-2026.html pages/mcc-2026.html
+          cp main/instructions-mcc-2026.html pages/instructions-mcc-2026.html
+          cp main/udhezime-mcc-2026.html pages/udhezime-mcc-2026.html
+
+          mkdir -p pages/poc-solutions/topic-01-cloud-task-collaboration
+          rsync -a --delete \
+            main/poc-solutions/topic-01-cloud-task-collaboration/ \
+            pages/poc-solutions/topic-01-cloud-task-collaboration/
+
+      - name: Commit and push changes
+        run: |
+          set -euo pipefail
+          cd pages
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No MCC Pages changes to publish."
+            exit 0
+          fi
+
+          git add \
+            CLOUD_TOPICS_2026.md \
+            SUBMISSIONS_2026.md \
+            mcc-2026.html \
+            instructions-mcc-2026.html \
+            udhezime-mcc-2026.html \
+            poc-solutions/topic-01-cloud-task-collaboration
+
+          git commit -m "Publish MCC reservation updates"
+          git push

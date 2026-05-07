@@ -193,6 +193,7 @@ function isCourseMaintenancePr(changedFiles) {
   const isOwnerAutomation = actor === 'arbenl' || actor === '';
   const hasMaintenanceFiles = changedFiles.some((file) => (
     file === 'scripts/check-claim.js'
+    || file.startsWith('.github/workflows/')
     || file === '.github/pull_request_template.md'
     || file === 'README.md'
     || file === 'AGENTS.md'
