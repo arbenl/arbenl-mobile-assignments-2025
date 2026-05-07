@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T19:31:12.892Z",
+  "generatedAt": "2026-05-07T19:32:11.397Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -12,17 +12,6 @@
       "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/70",
       "author": "BesianaDauti",
       "createdAt": "2026-05-07T19:22:43Z"
-    },
-    {
-      "id": "31",
-      "title": "Containerized Microservice Deployment",
-      "name": "Dineta Avdyli",
-      "email": "dineta.avdyli@universitetiaab.com",
-      "prNumber": 72,
-      "prTitle": "Update status of Containerized Microservice Deployment",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/72",
-      "author": "dineetaa",
-      "createdAt": "2026-05-07T19:28:37Z"
     },
     {
       "id": "16",
