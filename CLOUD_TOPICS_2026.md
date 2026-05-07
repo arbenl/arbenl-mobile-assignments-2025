@@ -101,9 +101,7 @@
   - Score: Not graded (0-30)
 
 ## DevOps, Containers & Observability
-31. Containerized Microservice Deployment — (Available)
-  - Cloud focus: Package a small API in Docker, deploy it to a cloud container platform, configure secrets, and expose health checks.
-  - Score: Not graded (0-30)
+31. Containerized Microservice Deployment — (Taken by Dineta Avdyli <dineta.avdyli@universitetiaab.com>)
 32. CI/CD Pipeline for a Cloud Web App — (Available)
   - Cloud focus: Build automated tests, preview deployments, production deploy gates, and environment-specific variables.
   - Score: Not graded (0-30)
