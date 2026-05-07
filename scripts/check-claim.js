@@ -151,9 +151,9 @@ function getDiff() {
 
   const baseRef = process.env.GITHUB_BASE_REF;
   if (baseRef) {
-    let diff = tryDiff(`git diff --unified=0 origin/${baseRef}...HEAD -- ${fileArgs}`);
+    let diff = tryDiff(`git diff --unified=0 ${baseRef}...HEAD -- ${fileArgs}`);
     if (diff.trim()) return diff;
-    diff = tryDiff(`git diff --unified=0 ${baseRef}...HEAD -- ${fileArgs}`);
+    diff = tryDiff(`git diff --unified=0 origin/${baseRef}...HEAD -- ${fileArgs}`);
     if (diff.trim()) return diff;
   }
 
@@ -179,9 +179,9 @@ function getChangedFiles() {
 
   const baseRef = process.env.GITHUB_BASE_REF;
   if (baseRef) {
-    let diff = tryDiff(`git diff --name-only origin/${baseRef}...HEAD`);
+    let diff = tryDiff(`git diff --name-only ${baseRef}...HEAD`);
     if (diff.trim()) return diff.trim().split(/\r?\n/).filter(Boolean);
-    diff = tryDiff(`git diff --name-only ${baseRef}...HEAD`);
+    diff = tryDiff(`git diff --name-only origin/${baseRef}...HEAD`);
     if (diff.trim()) return diff.trim().split(/\r?\n/).filter(Boolean);
   }
 
@@ -361,7 +361,9 @@ if (!courseMaintenancePr && diff.trim()) {
   const removals = diffLines.filter((ln) => ln.startsWith('-'));
 
   if (additions.length !== 1 || removals.length !== 1) {
-    errors.push('You must change exactly one line in the chosen allowed file.');
+    errors.push(
+      `You must change exactly one line in the chosen allowed file. This PR currently removes ${removals.length} line(s) and adds ${additions.length} line(s).`,
+    );
   } else if (isSubmissionChange) {
     const addedLine = additions[0].slice(1).trim();
     const removedLine = removals[0].slice(1).trim();
