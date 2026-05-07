@@ -20,7 +20,7 @@
 05. Real-time Classroom Polling System — (Available)
   - Cloud focus: Use real-time channels or WebSockets, managed auth, live charts, and deployment logs for debugging.
   - Score: Not graded (0-30)
-06. Event Registration Platform with QR Check-in — (Available)
+06. Event Registration Platform with QR Check-in — (Taken by Xhevrije Xhelili <dzevrije.dzelili@universitetiaab.com>)
   - Cloud focus: Combine cloud database, serverless check-in endpoint, QR code generation, and admin dashboard metrics.
   - Score: Not graded (0-30)
 07. Cloud-hosted Knowledge Base with Search — (Available)
