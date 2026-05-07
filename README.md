@@ -10,6 +10,7 @@ Each topic can be claimed by **exactly one** student.
 - [`CLOUD_TOPICS_2026.md`](CLOUD_TOPICS_2026.md) — Cloud Computing and Mobile Cloud Computing (MCC) topics for 2026.
 - [`index.html`](index.html) — professional course profile where students choose catalogues by topic area and year.
 - [`mcc-2026.html`](mcc-2026.html) — main visual browsing/reservation page for the MCC 2026 catalogue, including read-only scores for students.
+- [`submissions-2026.html`](submissions-2026.html) — read-only visual dashboard for final submissions and instructor scores.
 - [`instructions-mcc-2026.html`](instructions-mcc-2026.html) — English static guide for reserving, solving, testing, and submitting assignments.
 - [`udhezime-mcc-2026.html`](udhezime-mcc-2026.html) — Albanian static guide for reserving, solving, testing, and submitting assignments.
 - [`SUBMISSIONS_2026.md`](SUBMISSIONS_2026.md) — final solution submission links.
@@ -50,7 +51,7 @@ Need to check or correct your own reservation? On `mcc-2026.html`, use **Check y
 
 1) Build the solution in your own GitHub repository.
 2) Include source code, README, setup/run/deploy instructions, screenshots or demo notes, and `AI-log.txt` if AI tools were used.
-3) Open `SUBMISSIONS_2026.md` and change only the line for your topic.
+3) Open `SUBMISSIONS_2026.md` and change only the line for your topic. The public status appears on `submissions-2026.html` after the PR is merged.
 4) Use this format:
 
 ```md
