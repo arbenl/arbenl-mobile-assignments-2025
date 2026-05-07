@@ -25,6 +25,8 @@ Students may change only the status segment of one available topic line when res
 5. Kliko `Propose changes` dhe hap Pull Request.
 6. Prit validimin automatik; PR-ja e parë e vlefshme bashkohet automatikisht dhe tema bëhet e dukshme për të gjithë si e rezervuar.
 
+Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_2026.md`, mos fshi rreshtat `Cloud focus` ose `Score`, mos e përsërit titullin në status dhe mos vendos dy studentë në një temë.
+
 ## ✅ How to claim a topic
 
 1) Fork this repository to your GitHub account.
@@ -38,6 +40,8 @@ Students may change only the status segment of one available topic line when res
 
 > 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
 > Open student PRs may appear on the MCC page as **pending** so the professor and other students can see claims that are waiting for review.
+
+Common mistakes that are rejected: editing `mcc-2026.html`, renaming `CLOUD_TOPICS_2026.md`, deleting `Cloud focus` or `Score` lines, duplicating the topic title inside the status, or putting two students on one topic.
 
 Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
