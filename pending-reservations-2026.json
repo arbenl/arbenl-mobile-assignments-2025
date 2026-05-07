@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T19:28:56.736Z",
+  "generatedAt": "2026-05-07T19:30:48.433Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -7,22 +7,11 @@
       "title": "API Rate Limiting and Abuse Protection",
       "name": "Besiana Dauti",
       "email": "besiana.dauti@universitetiaab.com",
-      "prNumber": 69,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/69",
+      "prNumber": 70,
+      "prTitle": "CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/70",
       "author": "BesianaDauti",
-      "createdAt": "2026-05-07T19:19:20Z"
-    },
-    {
-      "id": "16",
-      "title": "URL Shortener with Analytics",
-      "name": "Aulona Kerqeli",
-      "email": "aulonakerqeli1@gmail.com",
-      "prNumber": 71,
-      "prTitle": "16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)-aulonakerqeli1-svg:patch-5",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/71",
-      "author": "aulonakerqeli1-svg",
-      "createdAt": "2026-05-07T19:27:26Z"
+      "createdAt": "2026-05-07T19:22:43Z"
     },
     {
       "id": "31",
@@ -36,18 +25,5 @@
       "createdAt": "2026-05-07T19:28:37Z"
     }
   ],
-  "conflicts": [
-    {
-      "id": "46",
-      "title": "API Rate Limiting and Abuse Protection",
-      "name": "Besiana Dauti",
-      "email": "besiana.dauti@universitetiaab.com",
-      "prNumber": 70,
-      "prTitle": "CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/70",
-      "author": "BesianaDauti",
-      "createdAt": "2026-05-07T19:22:43Z",
-      "reason": "Topic 46 already has an earlier open reservation PR."
-    }
-  ]
+  "conflicts": []
 }
