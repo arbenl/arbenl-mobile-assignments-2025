@@ -98,6 +98,36 @@
       justify-content: flex-end;
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      border: 1px solid rgba(255,255,255,0.46);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .language-switch button {
+      min-height: 42px;
+      border: 0;
+      color: rgba(255,255,255,0.78);
+      background: transparent;
+      padding: 9px 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .language-switch button.active {
+      color: var(--ink);
+      background: #fff;
+    }
+
     .top-links a,
     .button {
       min-height: 42px;
@@ -425,6 +455,11 @@
       font-weight: 650;
     }
 
+    .link-list a > span:first-child {
+      color: var(--ink);
+      font-weight: 750;
+    }
+
     .notice {
       margin-top: 16px;
       padding: 16px 18px;
@@ -565,24 +600,30 @@
             <div class="mark" aria-hidden="true">AL</div>
             <div>
               <strong>Prof. Arben Lila</strong>
-              <span>Program Manager @ KADC · PhD candidate · Lecturer at AAB</span>
+              <span data-i18n="identity.subtitle">Program Manager @ KADC · PhD candidate · Lecturer at AAB</span>
             </div>
           </div>
-          <nav class="top-links" aria-label="Primary links">
-            <a href="mcc-2026.html">Cloud & MCC 2026</a>
-            <a href="instructions-mcc-2026.html">Instructions</a>
-            <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025">GitHub</a>
-          </nav>
+          <div class="nav-actions">
+            <nav class="top-links" aria-label="Primary links">
+              <a href="mcc-2026.html">Cloud & MCC 2026</a>
+              <a href="instructions-mcc-2026.html" data-i18n="nav.instructions">Instructions</a>
+              <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025">GitHub</a>
+            </nav>
+            <div class="language-switch" aria-label="Language switch">
+              <button type="button" class="active" data-lang="en">ENG</button>
+              <button type="button" data-lang="sq">ALB</button>
+            </div>
+          </div>
         </div>
 
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1>Professional profile, lectures, and student assignments.</h1>
-            <p>This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.</p>
+            <h1 data-i18n="hero.title">Professional profile, lectures, and student assignments.</h1>
+            <p data-i18n="hero.copy">This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.</p>
           </div>
           <aside class="status-panel" aria-label="Reservation workflow status">
-            <strong>Reservation policy</strong>
-            <p>Students choose the lecture/year that applies to them, then reserve exactly one available assignment topic through the official workflow.</p>
+            <strong data-i18n="hero.policyTitle">Reservation policy</strong>
+            <p data-i18n="hero.policyCopy">Students choose the lecture/year that applies to them, then reserve exactly one available assignment topic through the official workflow.</p>
           </aside>
         </div>
       </div>
@@ -591,9 +632,9 @@
     <main class="content">
       <section class="profile-section" aria-label="Professional profile">
         <div>
-          <p class="kicker">Professional profile</p>
+          <p class="kicker" data-i18n="profile.kicker">Professional profile</p>
           <h2>Arben Lila</h2>
-          <p class="profile-lead">Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.</p>
+          <p class="profile-lead" data-i18n="profile.lead">Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.</p>
           <div class="contact-line" aria-label="Contact links">
             <a href="mailto:arben.lila@aab-edu.net">arben.lila@aab-edu.net</a>
             <a href="https://github.com/arbenl">GitHub: arbenl</a>
@@ -602,24 +643,24 @@
         </div>
         <div class="profile-facts">
           <div>
-            <strong>Teaching focus</strong>
-            <span>Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, Cybersecurity in Healthcare</span>
+            <strong data-i18n="profile.teachingTitle">Teaching focus</strong>
+            <span data-i18n="profile.teachingCopy">Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, Cybersecurity in Healthcare</span>
           </div>
           <div>
-            <strong>Research background</strong>
-            <span>Telecommunications, SDH/SONET, ATM, IP, MPLS, Resilient Packet Rings, performance modelling</span>
+            <strong data-i18n="profile.researchTitle">Research background</strong>
+            <span data-i18n="profile.researchCopy">Telecommunications, SDH/SONET, ATM, IP, MPLS, Resilient Packet Rings, performance modelling</span>
           </div>
           <div>
-            <strong>Program work</strong>
-            <span>Public-health advocacy, environmental policy, circular economy, ICT reform and donor coordination</span>
+            <strong data-i18n="profile.programTitle">Program work</strong>
+            <span data-i18n="profile.programCopy">Public-health advocacy, environmental policy, circular economy, ICT reform and donor coordination</span>
           </div>
         </div>
       </section>
 
       <div class="toolbar">
-        <h2>Assignments by lecture and year</h2>
+        <h2 data-i18n="assignments.title">Assignments by lecture and year</h2>
         <div class="year-tabs" role="tablist" aria-label="Filter by year">
-          <button type="button" class="active" data-year-filter="all">All years</button>
+          <button type="button" class="active" data-year-filter="all" data-i18n="filters.all">All years</button>
           <button type="button" data-year-filter="2026">2026</button>
           <button type="button" data-year-filter="2025">2025</button>
         </div>
@@ -629,84 +670,84 @@
         <article class="course-card cloud" data-year="2026">
           <div class="course-strip" aria-hidden="true"></div>
           <div class="course-body">
-            <p class="kicker">2026 - Cloud Computing lecture</p>
+            <p class="kicker" data-i18n="cloud.kicker">2026 - Cloud Computing lecture</p>
             <h3>Cloud Computing & Mobile Cloud Computing</h3>
-            <p>Cloud platforms, serverless APIs, databases, DevOps, security, and mobile-cloud applications.</p>
+            <p data-i18n="cloud.copy">Cloud platforms, serverless APIs, databases, DevOps, security, and mobile-cloud applications.</p>
             <div class="metrics" data-catalogue="cloud-2026">
-              <div class="metric"><strong data-total>60</strong><span>topics</span></div>
-              <div class="metric"><strong data-reserved>--</strong><span>reserved</span></div>
-              <div class="metric"><strong data-available>--</strong><span>available</span></div>
+              <div class="metric"><strong data-total>60</strong><span data-i18n="metrics.topics">topics</span></div>
+              <div class="metric"><strong data-reserved>--</strong><span data-i18n="metrics.reserved">reserved</span></div>
+              <div class="metric"><strong data-available>--</strong><span data-i18n="metrics.available">available</span></div>
             </div>
           </div>
           <div class="course-actions">
-            <a class="action primary" href="mcc-2026.html">Open visual catalogue</a>
-            <a class="action" href="CLOUD_TOPICS_2026.md">Source file</a>
-            <a class="action" href="udhezime-mcc-2026.html">Udhëzime</a>
+            <a class="action primary" href="mcc-2026.html" data-i18n="actions.openVisual">Open visual catalogue</a>
+            <a class="action" href="CLOUD_TOPICS_2026.md" data-i18n="actions.source">Source file</a>
+            <a class="action" href="udhezime-mcc-2026.html" data-i18n="actions.instructionsSq">Udhëzime</a>
           </div>
         </article>
 
         <article class="course-card mobile" data-year="2025">
           <div class="course-strip" aria-hidden="true"></div>
           <div class="course-body">
-            <p class="kicker">2025 - Mobile Programming lecture</p>
+            <p class="kicker" data-i18n="mobile.kicker">2025 - Mobile Programming lecture</p>
             <h3>Mobile Programming</h3>
-            <p>Flutter, React Native, Kotlin, Supabase-backed apps, AI-assisted features, and mobile UX projects.</p>
+            <p data-i18n="mobile.copy">Flutter, React Native, Kotlin, Supabase-backed apps, AI-assisted features, and mobile UX projects.</p>
             <div class="metrics" data-catalogue="mobile-2025">
-              <div class="metric"><strong data-total>60</strong><span>topics</span></div>
-              <div class="metric"><strong data-reserved>--</strong><span>reserved</span></div>
-              <div class="metric"><strong data-available>--</strong><span>available</span></div>
+              <div class="metric"><strong data-total>60</strong><span data-i18n="metrics.topics">topics</span></div>
+              <div class="metric"><strong data-reserved>--</strong><span data-i18n="metrics.reserved">reserved</span></div>
+              <div class="metric"><strong data-available>--</strong><span data-i18n="metrics.available">available</span></div>
             </div>
           </div>
           <div class="course-actions">
-            <a class="action primary" href="TOPICS.md">Source topics</a>
-            <a class="action" href="README.md">Claim workflow</a>
+            <a class="action primary" href="TOPICS.md" data-i18n="actions.sourceTopics">Source topics</a>
+            <a class="action" href="README.md" data-i18n="actions.workflow">Claim workflow</a>
           </div>
         </article>
       </section>
 
       <div class="section-grid">
         <section class="section">
-          <h2>Student workflow</h2>
-          <p>Choose a catalogue, reserve exactly one available topic, build the solution in your own repository, test it clearly, and submit repository/demo links when complete.</p>
+          <h2 data-i18n="workflow.title">Student workflow</h2>
+          <p data-i18n="workflow.copy">Choose a catalogue, reserve exactly one available topic, build the solution in your own repository, test it clearly, and submit repository/demo links when complete.</p>
           <div class="link-list">
-            <a href="instructions-mcc-2026.html">Reserve, build, test, submit <span>English</span></a>
-            <a href="udhezime-mcc-2026.html">Rezervo, zhvillo, testo, dorezo <span>Shqip</span></a>
-            <a href="SUBMISSIONS_2026.md">Final solution submissions <span>2026</span></a>
+            <a href="instructions-mcc-2026.html"><span data-i18n="workflow.linkEn">Reserve, build, test, submit</span> <span data-i18n="workflow.english">English</span></a>
+            <a href="udhezime-mcc-2026.html"><span data-i18n="workflow.linkSq">Rezervo, zhvillo, testo, dorezo</span> <span data-i18n="workflow.albanian">Shqip</span></a>
+            <a href="SUBMISSIONS_2026.md"><span data-i18n="workflow.submissions">Final solution submissions</span> <span>2026</span></a>
           </div>
         </section>
 
         <section class="section">
-          <h2>Instructor view</h2>
-          <p>Reservations, pending PRs, scores, and final submissions stay in the repository so the public site and GitHub history remain aligned.</p>
+          <h2 data-i18n="instructor.title">Instructor view</h2>
+          <p data-i18n="instructor.copy">Reservations, pending PRs, scores, and final submissions stay in the repository so the public site and GitHub history remain aligned.</p>
           <div class="link-list">
-            <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls">Review open PRs <span>GitHub</span></a>
-            <a href="CLOUD_TOPICS_2026.md">Source file and scores <span>0-30</span></a>
-            <a href="README.md">Repository guide <span>Docs</span></a>
+            <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls"><span data-i18n="instructor.review">Review open PRs</span> <span>GitHub</span></a>
+            <a href="CLOUD_TOPICS_2026.md"><span data-i18n="instructor.sourceScores">Source file and scores</span> <span>0-30</span></a>
+            <a href="README.md"><span data-i18n="instructor.docs">Repository guide</span> <span>Docs</span></a>
           </div>
         </section>
       </div>
 
-      <p class="notice">Students should reserve only through the active course page for their semester. If a reservation fails, GitHub comments on the PR with the exact correction steps in English and Albanian.</p>
+      <p class="notice" data-i18n="notice.reserve">Students should reserve only through the active course page for their semester. If a reservation fails, GitHub comments on the PR with the exact correction steps in English and Albanian.</p>
 
       <div class="section-grid">
         <section class="section">
-          <h2>Education</h2>
+          <h2 data-i18n="education.title">Education</h2>
           <div class="timeline">
             <article>
               <span>1987-1991</span>
-              <strong>Mag in Electrical Engineering</strong>
-              <p>University of Zagreb, Faculty of Electrical Engineering & Computing. Concentration: Computer Technology & Micro-processor Architecture.</p>
+              <strong data-i18n="education.magTitle">Mag in Electrical Engineering</strong>
+              <p data-i18n="education.magCopy">University of Zagreb, Faculty of Electrical Engineering & Computing. Concentration: Computer Technology & Micro-processor Architecture.</p>
             </article>
             <article>
               <span>1998-2003</span>
-              <strong>PhD candidate</strong>
-              <p>Institute of Broadband Communications, Vienna University of Technology (TU Wien). Telecommunications & Performance Modelling.</p>
+              <strong data-i18n="education.phdTitle">PhD candidate</strong>
+              <p data-i18n="education.phdCopy">Institute of Broadband Communications, Vienna University of Technology (TU Wien). Telecommunications & Performance Modelling.</p>
             </article>
           </div>
         </section>
 
         <section class="section">
-          <h2>Lectures and modules</h2>
+          <h2 data-i18n="modules.title">Lectures and modules</h2>
           <div class="tag-list">
             <span>Computer Science - AAB College</span>
             <span>Information Systems - AAB College</span>
@@ -721,64 +762,64 @@
       </div>
 
       <section class="section">
-        <h2>Lectures across the years</h2>
+        <h2 data-i18n="lectures.title">Lectures across the years</h2>
         <div class="lecture-grid">
           <article>
             <span>AAB College</span>
             <strong>2019-present</strong>
-            <p>Computer Networks, Information Systems Architecture, Android & Modern Mobile Development with Jetpack Compose, Cybersecurity in Healthcare, practical labs and capstone supervision.</p>
+            <p data-i18n="lectures.aab">Computer Networks, Information Systems Architecture, Android & Modern Mobile Development with Jetpack Compose, Cybersecurity in Healthcare, practical labs and capstone supervision.</p>
           </article>
           <article>
             <span>UBT</span>
             <strong>2016-2019</strong>
-            <p>Network Engineering and Multimedia Communications, with focus on applied networking concepts and communication systems.</p>
+            <p data-i18n="lectures.ubt">Network Engineering and Multimedia Communications, with focus on applied networking concepts and communication systems.</p>
           </article>
           <article>
             <span>TU Wien</span>
             <strong>1999-2003</strong>
-            <p>Research and lectures in teletraffic theory, performance modelling, broadband communications and resilient packet networking.</p>
+            <p data-i18n="lectures.tuwien">Research and lectures in teletraffic theory, performance modelling, broadband communications and resilient packet networking.</p>
           </article>
         </div>
       </section>
 
       <section class="section">
-        <h2>Professional experience</h2>
+        <h2 data-i18n="experience.title">Professional experience</h2>
         <div class="timeline experience">
           <article>
             <span>2012-present</span>
-            <strong>Program Manager - Kosovo Advocacy & Development Centre (KADC)</strong>
-            <p>Lead program design and implementation for public-health advocacy, tobacco control, environmental policy and circular-economy initiatives; manage donor relations, consortium partners and high-visibility media campaigns.</p>
+            <strong data-i18n="experience.kadcTitle">Program Manager - Kosovo Advocacy & Development Centre (KADC)</strong>
+            <p data-i18n="experience.kadcCopy">Lead program design and implementation for public-health advocacy, tobacco control, environmental policy and circular-economy initiatives; manage donor relations, consortium partners and high-visibility media campaigns.</p>
           </article>
           <article>
             <span>2019-present</span>
-            <strong>Lecturer - AAB College</strong>
-            <p>Teach Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, and Cybersecurity in Healthcare. Course development, capstone supervision and CI/CD mentoring.</p>
+            <strong data-i18n="experience.aabTitle">Lecturer - AAB College</strong>
+            <p data-i18n="experience.aabCopy">Teach Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, and Cybersecurity in Healthcare. Course development, capstone supervision and CI/CD mentoring.</p>
           </article>
           <article>
             <span>2016-2019</span>
-            <strong>Lecturer - UBT</strong>
-            <p>Network Engineering and Multimedia Communications.</p>
+            <strong data-i18n="experience.ubtTitle">Lecturer - UBT</strong>
+            <p data-i18n="experience.ubtCopy">Network Engineering and Multimedia Communications.</p>
           </article>
           <article>
             <span>2011-2012</span>
-            <strong>Strategic Planning Advisor - Office of the Chief State Prosecutor, Kosovo</strong>
-            <p>Strategic planning for ICT reform, donor coordination and institutional capacity building.</p>
+            <strong data-i18n="experience.prosecutorTitle">Strategic Planning Advisor - Office of the Chief State Prosecutor, Kosovo</strong>
+            <p data-i18n="experience.prosecutorCopy">Strategic planning for ICT reform, donor coordination and institutional capacity building.</p>
           </article>
           <article>
             <span>2007-2011</span>
-            <strong>Senior IT Advisor - USAID / NCSC Kosovo Justice Support Program</strong>
-            <p>Design and deployment of CMIS, justice sector ICT planning, training and mentoring of counterpart ICT teams.</p>
+            <strong data-i18n="experience.usaidTitle">Senior IT Advisor - USAID / NCSC Kosovo Justice Support Program</strong>
+            <p data-i18n="experience.usaidCopy">Design and deployment of CMIS, justice sector ICT planning, training and mentoring of counterpart ICT teams.</p>
           </article>
           <article>
             <span>1999-2003</span>
-            <strong>Researcher & Lecturer - Institute of Broadband Communications, TU Wien</strong>
-            <p>Experimental research on SDH/SONET, ATM, IP, MPLS and Resilient Packet Rings. Lectures in teletraffic theory and performance modelling.</p>
+            <strong data-i18n="experience.tuwienTitle">Researcher & Lecturer - Institute of Broadband Communications, TU Wien</strong>
+            <p data-i18n="experience.tuwienCopy">Experimental research on SDH/SONET, ATM, IP, MPLS and Resilient Packet Rings. Lectures in teletraffic theory and performance modelling.</p>
           </article>
         </div>
       </section>
 
       <section class="section">
-        <h2>Selected publications and talks</h2>
+        <h2 data-i18n="publications.title">Selected publications and talks</h2>
         <div class="publication-list">
           <p>Lila, A. (2012). Towards a Zero Waste Society. Kosovo Foundation for Open Society.</p>
           <p>Lila, A.; Nikaj, B. (2011). Skills Gap Analysis for Information and Communication Technology. STIKK - Kosovo Association of ICT.</p>
@@ -788,12 +829,186 @@
           <p>Lila, A.; Lepaja, S.; Schuringa, J. (2003). Performance Analysis of RPR in case of a Link Failure. NOC'03 Proceedings, pp. 188-195.</p>
           <p>Lepaja, S.; Lila, A.; Kryvinska, N.; Nguyen, H. (2003). A Framework for End-to-End QoS Provisioning in Mobile Internet Environment. MWCN'03 Proceedings, pp. 86-89.</p>
         </div>
-        <div class="notice">Conferences and invited talks include NOC 2002, NOC 2003, the World Conference on Tobacco Control in Dublin 2025, and regional forums on digital governance, environmental policy and circular economy. For full PDFs, contact the email above.</div>
+        <div class="notice" data-i18n="publications.notice">Conferences and invited talks include NOC 2002, NOC 2003, the World Conference on Tobacco Control in Dublin 2025, and regional forums on digital governance, environmental policy and circular economy. For full PDFs, contact the email above.</div>
       </section>
     </main>
   </div>
 
   <script>
+    const translations = {
+      en: {
+        pageTitle: 'Arben Lila - Profile, Lectures, and Student Assignments',
+        'identity.subtitle': 'Program Manager @ KADC · PhD candidate · Lecturer at AAB',
+        'nav.instructions': 'Instructions',
+        'hero.title': 'Professional profile, lectures, and student assignments.',
+        'hero.copy': 'This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.',
+        'hero.policyTitle': 'Reservation policy',
+        'hero.policyCopy': 'Students choose the lecture/year that applies to them, then reserve exactly one available assignment topic through the official workflow.',
+        'profile.kicker': 'Professional profile',
+        'profile.lead': 'Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.',
+        'profile.teachingTitle': 'Teaching focus',
+        'profile.teachingCopy': 'Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, Cybersecurity in Healthcare',
+        'profile.researchTitle': 'Research background',
+        'profile.researchCopy': 'Telecommunications, SDH/SONET, ATM, IP, MPLS, Resilient Packet Rings, performance modelling',
+        'profile.programTitle': 'Program work',
+        'profile.programCopy': 'Public-health advocacy, environmental policy, circular economy, ICT reform and donor coordination',
+        'assignments.title': 'Assignments by lecture and year',
+        'filters.all': 'All years',
+        'cloud.kicker': '2026 - Cloud Computing lecture',
+        'cloud.copy': 'Cloud platforms, serverless APIs, databases, DevOps, security, and mobile-cloud applications.',
+        'mobile.kicker': '2025 - Mobile Programming lecture',
+        'mobile.copy': 'Flutter, React Native, Kotlin, Supabase-backed apps, AI-assisted features, and mobile UX projects.',
+        'metrics.topics': 'topics',
+        'metrics.reserved': 'reserved',
+        'metrics.available': 'available',
+        'actions.openVisual': 'Open visual catalogue',
+        'actions.source': 'Source file',
+        'actions.instructionsSq': 'Albanian guide',
+        'actions.sourceTopics': 'Source topics',
+        'actions.workflow': 'Claim workflow',
+        'workflow.title': 'Student workflow',
+        'workflow.copy': 'Choose a catalogue, reserve exactly one available topic, build the solution in your own repository, test it clearly, and submit repository/demo links when complete.',
+        'workflow.linkEn': 'Reserve, build, test, submit',
+        'workflow.english': 'English',
+        'workflow.linkSq': 'Reserve, build, test, submit',
+        'workflow.albanian': 'Albanian',
+        'workflow.submissions': 'Final solution submissions',
+        'instructor.title': 'Instructor view',
+        'instructor.copy': 'Reservations, pending PRs, scores, and final submissions stay in the repository so the public site and GitHub history remain aligned.',
+        'instructor.review': 'Review open PRs',
+        'instructor.sourceScores': 'Source file and scores',
+        'instructor.docs': 'Repository guide',
+        'notice.reserve': 'Students should reserve only through the active course page for their semester. If a reservation fails, GitHub comments on the PR with the exact correction steps in English and Albanian.',
+        'education.title': 'Education',
+        'education.magTitle': 'Mag in Electrical Engineering',
+        'education.magCopy': 'University of Zagreb, Faculty of Electrical Engineering & Computing. Concentration: Computer Technology & Micro-processor Architecture.',
+        'education.phdTitle': 'PhD candidate',
+        'education.phdCopy': 'Institute of Broadband Communications, Vienna University of Technology (TU Wien). Telecommunications & Performance Modelling.',
+        'modules.title': 'Lectures and modules',
+        'lectures.title': 'Lectures across the years',
+        'lectures.aab': 'Computer Networks, Information Systems Architecture, Android & Modern Mobile Development with Jetpack Compose, Cybersecurity in Healthcare, practical labs and capstone supervision.',
+        'lectures.ubt': 'Network Engineering and Multimedia Communications, with focus on applied networking concepts and communication systems.',
+        'lectures.tuwien': 'Research and lectures in teletraffic theory, performance modelling, broadband communications and resilient packet networking.',
+        'experience.title': 'Professional experience',
+        'experience.kadcTitle': 'Program Manager - Kosovo Advocacy & Development Centre (KADC)',
+        'experience.kadcCopy': 'Lead program design and implementation for public-health advocacy, tobacco control, environmental policy and circular-economy initiatives; manage donor relations, consortium partners and high-visibility media campaigns.',
+        'experience.aabTitle': 'Lecturer - AAB College',
+        'experience.aabCopy': 'Teach Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, and Cybersecurity in Healthcare. Course development, capstone supervision and CI/CD mentoring.',
+        'experience.ubtTitle': 'Lecturer - UBT',
+        'experience.ubtCopy': 'Network Engineering and Multimedia Communications.',
+        'experience.prosecutorTitle': 'Strategic Planning Advisor - Office of the Chief State Prosecutor, Kosovo',
+        'experience.prosecutorCopy': 'Strategic planning for ICT reform, donor coordination and institutional capacity building.',
+        'experience.usaidTitle': 'Senior IT Advisor - USAID / NCSC Kosovo Justice Support Program',
+        'experience.usaidCopy': 'Design and deployment of CMIS, justice sector ICT planning, training and mentoring of counterpart ICT teams.',
+        'experience.tuwienTitle': 'Researcher & Lecturer - Institute of Broadband Communications, TU Wien',
+        'experience.tuwienCopy': 'Experimental research on SDH/SONET, ATM, IP, MPLS and Resilient Packet Rings. Lectures in teletraffic theory and performance modelling.',
+        'publications.title': 'Selected publications and talks',
+        'publications.notice': 'Conferences and invited talks include NOC 2002, NOC 2003, the World Conference on Tobacco Control in Dublin 2025, and regional forums on digital governance, environmental policy and circular economy. For full PDFs, contact the email above.',
+        'stats.view': 'View',
+        'stats.file': 'file',
+      },
+      sq: {
+        pageTitle: 'Arben Lila - Profili, Ligjeratat dhe Detyrat e Studentëve',
+        'identity.subtitle': 'Menaxher programi në KADC · Kandidat për PhD · Ligjërues në AAB',
+        'nav.instructions': 'Udhëzime',
+        'hero.title': 'Profil profesional, ligjerata dhe detyra për studentë.',
+        'hero.copy': 'Kjo faqe paraqet profilin tim profesional, ligjeratat e mbajtura ndër vite dhe katalogët e detyrave ku studentët zgjedhin dhe rezervojnë temat e projekteve.',
+        'hero.policyTitle': 'Rregulli i rezervimit',
+        'hero.policyCopy': 'Studentët zgjedhin ligjeratën/vitin që u përket dhe pastaj rezervojnë saktësisht një temë të lirë përmes workflow zyrtar.',
+        'profile.kicker': 'Profil profesional',
+        'profile.lead': 'Menaxher programi në Kosovo Advocacy & Development Centre (KADC), kandidat për PhD dhe ligjërues në Kolegjin AAB.',
+        'profile.teachingTitle': 'Fokusi në mësimdhënie',
+        'profile.teachingCopy': 'Rrjeta kompjuterike, Arkitekturë e sistemeve informative, Android & zhvillim modern mobil, Siguri kibernetike në shëndetësi',
+        'profile.researchTitle': 'Sfondi hulumtues',
+        'profile.researchCopy': 'Telekomunikacion, SDH/SONET, ATM, IP, MPLS, Resilient Packet Rings dhe modelim i performancës',
+        'profile.programTitle': 'Puna programore',
+        'profile.programCopy': 'Avokim në shëndet publik, politika mjedisore, ekonomi qarkore, reformë në TIK dhe koordinim me donatorë',
+        'assignments.title': 'Detyrat sipas ligjeratës dhe vitit',
+        'filters.all': 'Të gjitha vitet',
+        'cloud.kicker': '2026 - Ligjerata Cloud Computing',
+        'cloud.copy': 'Platforma cloud, API serverless, baza të të dhënave, DevOps, siguri dhe aplikacione mobile-cloud.',
+        'mobile.kicker': '2025 - Ligjerata Mobile Programming',
+        'mobile.copy': 'Flutter, React Native, Kotlin, aplikacione me Supabase, veçori të ndihmuara nga AI dhe UX për pajisje mobile.',
+        'metrics.topics': 'tema',
+        'metrics.reserved': 'të rezervuara',
+        'metrics.available': 'të lira',
+        'actions.openVisual': 'Hap katalogun vizual',
+        'actions.source': 'Fajlli burimor',
+        'actions.instructionsSq': 'Udhëzime shqip',
+        'actions.sourceTopics': 'Temat burimore',
+        'actions.workflow': 'Procesi i rezervimit',
+        'workflow.title': 'Procesi për studentë',
+        'workflow.copy': 'Zgjidhni katalogun, rezervoni saktësisht një temë të lirë, ndërtoni zgjidhjen në repositorin tuaj, testojeni qartë dhe dorëzoni linkun e repos/demos kur të përfundoni.',
+        'workflow.linkEn': 'Rezervo, zhvillo, testo, dorëzo',
+        'workflow.english': 'Anglisht',
+        'workflow.linkSq': 'Rezervo, zhvillo, testo, dorëzo',
+        'workflow.albanian': 'Shqip',
+        'workflow.submissions': 'Dorëzimet finale të zgjidhjeve',
+        'instructor.title': 'Pamja për mësimdhënësin',
+        'instructor.copy': 'Rezervimet, PR-të në pritje, pikët dhe dorëzimet finale mbeten në repository që faqja publike dhe historia në GitHub të jenë të sinkronizuara.',
+        'instructor.review': 'Shiko PR-të e hapura',
+        'instructor.sourceScores': 'Fajlli burimor dhe pikët',
+        'instructor.docs': 'Udhëzuesi i repository',
+        'notice.reserve': 'Studentët duhet të rezervojnë vetëm përmes faqes aktive të ligjeratës për semestrin e tyre. Nëse rezervimi dështon, GitHub komenton në PR me hapat e saktë për korrigjim në anglisht dhe shqip.',
+        'education.title': 'Edukimi',
+        'education.magTitle': 'Magjistër në Inxhinieri Elektrike',
+        'education.magCopy': 'Universiteti i Zagrebit, Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike. Përqendrimi: Teknologji kompjuterike dhe arkitekturë e mikroprocesorëve.',
+        'education.phdTitle': 'Kandidat për PhD',
+        'education.phdCopy': 'Institute of Broadband Communications, Vienna University of Technology (TU Wien). Telekomunikacion dhe modelim i performancës.',
+        'modules.title': 'Ligjerata dhe module',
+        'lectures.title': 'Ligjeratat ndër vite',
+        'lectures.aab': 'Rrjeta kompjuterike, Arkitekturë e sistemeve informative, Android & zhvillim modern mobil me Jetpack Compose, Siguri kibernetike në shëndetësi, ushtrime praktike dhe mentorim i projekteve.',
+        'lectures.ubt': 'Network Engineering dhe Multimedia Communications, me fokus në koncepte praktike të rrjeteve dhe sistemeve të komunikimit.',
+        'lectures.tuwien': 'Hulumtim dhe ligjerata në teletraffic theory, modelim të performancës, broadband communications dhe rrjete reziliente të paketave.',
+        'experience.title': 'Përvoja profesionale',
+        'experience.kadcTitle': 'Menaxher programi - Kosovo Advocacy & Development Centre (KADC)',
+        'experience.kadcCopy': 'Udhëheq dizajnimin dhe zbatimin e programeve për avokim në shëndet publik, kontroll të duhanit, politika mjedisore dhe ekonomi qarkore; menaxhon marrëdhëniet me donatorë, partnerë konsorciumi dhe kampanja mediale.',
+        'experience.aabTitle': 'Ligjërues - Kolegji AAB',
+        'experience.aabCopy': 'Ligjëron Rrjeta Kompjuterike, Arkitekturë të Sistemeve Informative, Android & zhvillim modern mobil dhe Siguri Kibernetike në Shëndetësi. Zhvillim kursesh, mentorim capstone dhe CI/CD.',
+        'experience.ubtTitle': 'Ligjërues - UBT',
+        'experience.ubtCopy': 'Network Engineering dhe Multimedia Communications.',
+        'experience.prosecutorTitle': 'Këshilltar për planifikim strategjik - Zyra e Kryeprokurorit të Shtetit, Kosovë',
+        'experience.prosecutorCopy': 'Planifikim strategjik për reformë në TIK, koordinim me donatorë dhe ngritje të kapaciteteve institucionale.',
+        'experience.usaidTitle': 'Këshilltar i lartë për IT - USAID / NCSC Kosovo Justice Support Program',
+        'experience.usaidCopy': 'Dizajn dhe implementim i CMIS, planifikim TIK për sektorin e drejtësisë, trajnime dhe mentorim i ekipeve partnere të TIK.',
+        'experience.tuwienTitle': 'Hulumtues & Ligjërues - Institute of Broadband Communications, TU Wien',
+        'experience.tuwienCopy': 'Hulumtim eksperimental në SDH/SONET, ATM, IP, MPLS dhe Resilient Packet Rings. Ligjerata në teletraffic theory dhe modelim të performancës.',
+        'publications.title': 'Publikime dhe fjalime të zgjedhura',
+        'publications.notice': 'Konferencat dhe fjalimet e ftuara përfshijnë NOC 2002, NOC 2003, World Conference on Tobacco Control në Dublin 2025 dhe forume rajonale për qeverisje digjitale, politika mjedisore dhe ekonomi qarkore. Për PDF të plota, kontaktoni emailin më lart.',
+        'stats.view': 'Shiko',
+        'stats.file': 'fajllin',
+      },
+    };
+
+    let activeLanguage = localStorage.getItem('portal-language') || 'en';
+
+    function t(key) {
+      return translations[activeLanguage][key] || translations.en[key] || key;
+    }
+
+    function applyLanguage(language) {
+      activeLanguage = language;
+      localStorage.setItem('portal-language', language);
+      document.documentElement.lang = language === 'sq' ? 'sq' : 'en';
+      document.title = t('pageTitle');
+      document.querySelector('meta[name="description"]').setAttribute(
+        'content',
+        language === 'sq'
+          ? 'Profil profesional, ligjerata ndër vite dhe katalogë detyrash për studentë sipas lëndës dhe vitit.'
+          : 'Professional profile, lectures across the years, and student assignment catalogues by course and year.',
+      );
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        node.textContent = t(node.dataset.i18n);
+      });
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === language);
+      });
+    }
+
+    document.querySelectorAll('[data-lang]').forEach((button) => {
+      button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    });
+
     const catalogues = {
       'cloud-2026': 'CLOUD_TOPICS_2026.md',
       'mobile-2025': 'TOPICS.md',
@@ -819,11 +1034,12 @@
         host.querySelector('[data-reserved]').textContent = reserved;
         host.querySelector('[data-available]').textContent = Math.max(total - reserved, 0);
       } catch (error) {
-        host.querySelector('[data-reserved]').textContent = 'View';
-        host.querySelector('[data-available]').textContent = 'file';
+        host.querySelector('[data-reserved]').textContent = t('stats.view');
+        host.querySelector('[data-available]').textContent = t('stats.file');
       }
     }
 
+    applyLanguage(activeLanguage);
     Object.entries(catalogues).forEach(([key, path]) => loadCatalogueStats(key, path));
 
     document.querySelectorAll('[data-year-filter]').forEach((button) => {
