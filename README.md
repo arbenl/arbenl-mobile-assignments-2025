@@ -13,7 +13,7 @@ Each topic can be claimed by **exactly one** student.
 - [`udhezime-mcc-2026.html`](udhezime-mcc-2026.html) — Albanian static guide for reserving, solving, testing, and submitting assignments.
 - [`SUBMISSIONS_2026.md`](SUBMISSIONS_2026.md) — final solution submission links.
 
-Reservations are **first in, first served**: the first valid PR that is merged by the instructor/maintainer reserves the topic and makes it visible on the public site.
+Reservations are **first in, first served**: the first valid PR that passes automatic validation is merged automatically, reserves the topic, and makes it visible on the public site.
 Students may change only the status segment of one available topic line when reserving. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
 
 ## 🚀 Quick Claim Checklist
@@ -38,8 +38,8 @@ Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_20
 7) Fill the PR template completely (catalogue, name, email, topic ID, chosen stack, cloud/mobile services if relevant, 1-week plan, AI tools).
 8) Wait for the **automated check** to pass. Valid reservation PRs are processed one at a time and merged automatically, so first-in, first-served is atomic.
 
-> 🔒 Your copied line is not a reservation by itself. Once **your PR is merged**, your topic becomes **unavailable** to others and appears on the public site as reserved.
-> Open student PRs may appear on the MCC page as **pending** so the professor and other students can see claims that are waiting for review.
+> 🔒 Your copied line is not a reservation by itself. Once GitHub Actions **merges your valid PR automatically**, your topic becomes **unavailable** to others and appears on the public site as reserved.
+> Open student PRs may appear on the MCC page as **pending** while automatic validation is running.
 
 Common mistakes that are rejected: editing `mcc-2026.html`, renaming `CLOUD_TOPICS_2026.md`, deleting `Cloud focus` or `Score` lines, duplicating the topic title inside the status, or putting two students on one topic.
 
@@ -91,8 +91,8 @@ Use `Demo: N/A` only when the project cannot reasonably be deployed, and explain
    ```bash
    git push origin claim-topic-07
    ```
-10. **Hap Pull Request te repo origjinal:** Zgjidh bazën `main`, përshkruaj shkurtimisht projektin, plotëso komplet shabllonin (emri yt, email-i, ID e temës, stack-u i zgjedhur, plani 1-javor, mjetet AI). Kontrollo që kontrolli automatik (GitHub Action) të kalojë.
-11. **Monitoro PR-në:** Nëse mësimdhënësi kërkon ndryshime, përditëso degën tënde dhe shty listën e re të commit-ëve. Kur PR të miratohet dhe të bashkohet, statusi i temës bëhet automatikisht i zënë për studentët e tjerë.
+10. **Hap Pull Request te repo origjinal:** Zgjidh bazën `main`, përshkruaj shkurtimisht projektin, plotëso komplet shabllonin (emri yt, email-i, ID e temës, stack-u i zgjedhur, plani 1-javor, mjetet AI). GitHub Actions e kontrollon automatikisht.
+11. **Monitoro PR-në:** Nëse PR-ja është e vlefshme, bashkohet automatikisht. Nëse dështon, lexo komentin automatik në PR, rregullo gabimin dhe shty commit të ri ose hap PR të ri.
 
 ## 🧑‍💻 Contributor Guidelines
 

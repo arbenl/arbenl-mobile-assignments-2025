@@ -843,7 +843,7 @@
         <div class="brand-mark" aria-hidden="true">MCC</div>
         <div>
           <h1>Cloud & MCC 2026 Reservations</h1>
-          <p>Copy the claim line, open a PR, and wait for instructor merge.</p>
+          <p>Copy the claim line and open a PR. Valid reservations are checked and merged automatically.</p>
         </div>
       </div>
       <div class="top-actions" aria-label="Language and catalogue links">
@@ -877,7 +877,7 @@
         </div>
         <div class="metric">
           <strong id="reservedCount">0</strong>
-          <span>reserved or pending</span>
+          <span>reserved / pending</span>
         </div>
         <div class="metric">
           <strong id="visibleCount">0</strong>
@@ -899,7 +899,7 @@
         <button class="secondary-action" type="button" id="showReserved">Show reservations</button>
       </div>
       <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
-        No merged reservations yet. A copied claim line is not official until the PR is merged.
+        No reservations yet. A copied claim line becomes official only after the PR passes automatic validation and is merged.
       </div>
       <div class="my-reservation" aria-label="Find your own reservation">
         <div>
@@ -960,7 +960,7 @@
       <div class="claim-box">
         <span id="claimInstruction">Copy this line, then replace the same topic line on GitHub:</span>
         <code id="claimLine"></code>
-        <span class="claim-note" id="claimNote">GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.</span>
+        <span class="claim-note" id="claimNote">GitHub will guide you to propose the change as a Pull Request. Valid reservation PRs are checked and merged automatically.</span>
       </div>
 
       <div class="claim-actions">
@@ -1404,7 +1404,7 @@
 
       if (!entries.length) {
         reservedList.className = 'reserved-list empty-reservations';
-        reservedList.textContent = 'No merged or pending reservations yet. A copied claim line appears here after the student opens a Pull Request.';
+        reservedList.textContent = 'No official or pending reservations yet. A valid PR is checked and merged automatically after the student opens it.';
         return;
       }
 
@@ -1422,7 +1422,7 @@
             <article class="reserved-item" style="--set: ${theme.color}">
               <strong>${claim.id}. ${escapeHtml(claim.title)}</strong>
               <span>Pending PR #${claim.prNumber} by ${student}</span>
-              <small>${escapeHtml(topic.category)} · Awaiting instructor/maintainer merge</small>
+              <small>${escapeHtml(topic.category)} · Awaiting automatic validation</small>
               <button class="reserved-check pending-pr" type="button" data-pr-url="${escapeHtml(claim.prUrl)}">Open PR #${claim.prNumber}</button>
             </article>
           `;
@@ -1524,7 +1524,7 @@
         : 'Copy this line, then replace the same topic line on GitHub:';
       claimNote.textContent = isReserved
         ? 'This topic is already reserved. Only the same student should correct it, and the validator requires the same name or the same email to remain.'
-        : 'GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.';
+        : 'GitHub will guide you to propose the change as a Pull Request. Valid reservation PRs are checked and merged automatically.';
       copyClaim.textContent = isReserved ? 'Copy correction line' : 'Copy claim line';
       updateClaimLine();
       dialog.showModal();
@@ -1579,8 +1579,8 @@
       const copied = await copyText(
         claimLine.textContent,
         state.selectedTopic.status === 'Taken'
-          ? 'Correction line copied. Open a PR and wait for instructor merge.'
-          : 'Claim line copied. Open a PR and wait for instructor merge.',
+          ? 'Correction line copied. Open a PR; valid corrections are checked automatically.'
+          : 'Claim line copied. Open a PR; valid reservations merge automatically.',
         claimLine,
       );
       if (copied) dialog.close();
@@ -1634,7 +1634,7 @@
 
       const match = state.topics.find((topic) => matchesStudent(topic, name, email));
       if (!match) {
-        showToast('No merged reservation found for that name or email.');
+        showToast('No official or pending reservation found for that name or email.');
         return;
       }
 

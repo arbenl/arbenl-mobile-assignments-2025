@@ -402,8 +402,8 @@
           <span>Studentët nuk ndryshojnë përshkrime, pikë, skripta, workflow, faqe HTML apo tema të studentëve tjerë.</span>
         </div>
         <div class="rule">
-          <strong>Rezervimi bëhet zyrtar vetëm kur PR bashkohet.</strong>
-          <span>Kopjimi i rreshtit nuk mjafton. Instruktori/maintainer duhet ta bashkojë PR-në që rezervimi të shihet nga të gjithë.</span>
+          <strong>Rezervimi bëhet zyrtar pas bashkimit automatik.</strong>
+          <span>Kopjimi i rreshtit nuk mjafton. Hapni PR; GitHub Actions e kontrollon dhe bashkon automatikisht rezervimin e parë të vlefshëm.</span>
         </div>
       </aside>
     </section>
@@ -418,12 +418,12 @@
 
     <section class="section" id="rezervimi">
       <h2>Si ta rezervoni temën</h2>
-      <p class="lead">Rezervimi është first in, first served. Tema merret nga studenti i parë që ka PR të vlefshëm të bashkuar nga instruktori/maintainer; pas bashkimit faqja publike përditësohet.</p>
+      <p class="lead">Rezervimi është first in, first served. Tema merret nga PR-ja e parë e vlefshme që kalon validimin automatik; pas bashkimit automatik faqja publike përditësohet.</p>
       <div class="demo-video">
         <video controls preload="metadata" poster="assets/demo-frames/frame-01.png">
           <source src="assets/mcc-2026-reservation-demo.mp4" type="video/mp4">
         </video>
-        <p>Shikoni demon në localhost: zgjidhni një temë të lirë, kopjoni rreshtin, hapni PR dhe prisni që instruktori/maintainer ta bashkojë.</p>
+        <p>Shikoni demon në localhost: zgjidhni një temë të lirë, kopjoni rreshtin dhe hapni PR. Rezervimet e vlefshme kontrollohen dhe bashkohen automatikisht.</p>
       </div>
       <ol class="steps">
         <li>Hapni `mcc-2026.html`, kërkoni temën dhe kontrolloni që statusi të jetë `Available`.</li>
@@ -444,7 +444,7 @@
           <p>Mos editoni `mcc-2026.html`, mos riemërtoni fajlla, mos fshini `Cloud focus` ose `Score`, mos e përsëritni titullin dhe mos vendosni dy studentë në një temë.</p>
         </div>
       </div>
-      <p class="lead">Pasi PR-ja juaj bashkohet, përdorni `Check your reservation` në faqen MCC me të njëjtin emër të plotë ose email për ta hapur përsëri temën tuaj. PR-të e rezervimit procesohen një nga një, prandaj first-in, first-served vendoset në mënyrë atomike nga GitHub Actions.</p>
+      <p class="lead">Pasi GitHub Actions e bashkon automatikisht PR-në tuaj të vlefshme, përdorni `Check your reservation` në faqen MCC me të njëjtin emër të plotë ose email për ta hapur përsëri temën tuaj. PR-të e rezervimit procesohen një nga një, prandaj first-in, first-served vendoset në mënyrë atomike nga GitHub Actions.</p>
       <div class="warning">Një student mund të rezervojë vetëm një detyrë. Validimi refuzon emër ose email të përsëritur në tema të tjera.</div>
     </section>
 

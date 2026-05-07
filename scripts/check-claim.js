@@ -288,7 +288,7 @@ async function validateOpenPullRequestDuplicates(errors, claimContext) {
 
   if (duplicateTopic) {
     errors.push(
-      `Topic ${claimContext.claimedId} already has open reservation PR #${duplicateTopic.prNumber}. Wait for instructor review before opening another claim for the same topic.`,
+      `Topic ${claimContext.claimedId} already has open reservation PR #${duplicateTopic.prNumber}. Wait for automatic validation or choose another available topic.`,
     );
   }
 }
