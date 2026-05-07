@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud & MCC 2026 Submissions and Scores</title>
+  <meta name="description" content="Read-only Cloud and MCC 2026 submission and scoring dashboard for students and instructor.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5b6678;
+      --line: #d9e0ea;
+      --paper: #ffffff;
+      --soft: #f5f7fb;
+      --teal: #00796b;
+      --blue: #2457d6;
+      --amber: #b45309;
+      --green: #17803d;
+      --rose: #c7365f;
+      --shadow: 0 16px 38px rgba(16, 24, 40, 0.10);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(0, 121, 107, 0.08), rgba(36, 87, 214, 0.08)),
+        var(--soft);
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1360px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .topbar,
+    .toolbar,
+    .section-head,
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: var(--radius);
+      background: conic-gradient(from 120deg, var(--teal), var(--blue), var(--amber), var(--teal));
+      color: white;
+      font-weight: 900;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 4px;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .brand p,
+    .hero-copy,
+    .muted,
+    .submission-card p,
+    .empty {
+      color: var(--muted);
+    }
+
+    .top-actions,
+    .chips,
+    .card-links,
+    .language-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button,
+    .chip,
+    .language-switch button {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .button.primary,
+    .chip.active,
+    .language-switch button.active {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 18px;
+      margin: 22px 0 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      min-height: 230px;
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(16, 24, 40, 0.88), rgba(0, 121, 107, 0.78)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+      background-position: center;
+      background-size: cover;
+      color: white;
+    }
+
+    .hero-panel h2 {
+      max-width: 760px;
+      margin-top: 42px;
+      font-size: 2.55rem;
+      line-height: 1;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1.05rem;
+    }
+
+    .rules-panel {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .rules-panel ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 12px 28px rgba(16, 24, 40, 0.06);
+    }
+
+    .stat:nth-child(2) {
+      border-left-color: var(--blue);
+    }
+
+    .stat:nth-child(3) {
+      border-left-color: var(--amber);
+    }
+
+    .stat:nth-child(4) {
+      border-left-color: var(--green);
+    }
+
+    .stat strong,
+    .stat span {
+      display: block;
+    }
+
+    .stat strong {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .toolbar {
+      margin-bottom: 16px;
+      padding: 16px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+      min-width: min(100%, 560px);
+    }
+
+    .filters input,
+    .filters select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfe;
+      color: var(--ink);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .submission-card {
+      display: grid;
+      gap: 12px;
+      min-height: 278px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 26px rgba(16, 24, 40, 0.06);
+    }
+
+    .submission-card.available {
+      border-top-color: var(--line);
+    }
+
+    .submission-card.submitted {
+      border-top-color: var(--blue);
+    }
+
+    .submission-card.graded {
+      border-top-color: var(--green);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .topic-id,
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      border-radius: var(--radius);
+      padding: 0 10px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .topic-id {
+      background: #e6f4f1;
+      color: var(--teal);
+    }
+
+    .status {
+      background: #f1f5f9;
+      color: var(--muted);
+    }
+
+    .status.reserved {
+      background: rgba(0, 121, 107, 0.12);
+      color: var(--teal);
+    }
+
+    .status.submitted {
+      background: rgba(36, 87, 214, 0.12);
+      color: var(--blue);
+    }
+
+    .status.graded {
+      background: rgba(23, 128, 61, 0.13);
+      color: var(--green);
+    }
+
+    .identity {
+      display: grid;
+      gap: 5px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfe;
+      overflow-wrap: anywhere;
+    }
+
+    .identity strong,
+    .identity span {
+      display: block;
+    }
+
+    .identity span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .score {
+      display: inline-flex;
+      width: max-content;
+      min-height: 34px;
+      align-items: center;
+      border-radius: var(--radius);
+      padding: 0 11px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .score.graded {
+      background: rgba(23, 128, 61, 0.13);
+      color: var(--green);
+    }
+
+    .card-links a {
+      color: var(--blue);
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .empty {
+      display: none;
+      padding: 24px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .topbar,
+      .toolbar,
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel h2 {
+        font-size: 2rem;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 24px, 1360px);
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .hero-panel h2 {
+        font-size: 1.72rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">30</div>
+        <div>
+          <h1 data-i18n="page.heading">Cloud & MCC 2026 Submissions and Scores</h1>
+          <p data-i18n="page.subtitle">Read-only status for reservations, final submissions, and instructor scores.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="button primary" href="mcc-2026.html" data-i18n="nav.reserve">Reservations</a>
+        <a class="button" href="instructions-mcc-2026.html" data-i18n="nav.instructionsEn">Instructions EN</a>
+        <a class="button" href="udhezime-mcc-2026.html" data-i18n="nav.instructionsSq">Udhëzime Shqip</a>
+        <div class="language-switch" aria-label="Language switch">
+          <button type="button" class="active" data-lang="en">ENG</button>
+          <button type="button" data-lang="sq">ALB</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-panel panel">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Submission phase</p>
+        <h2 data-i18n="hero.title">Submit once, keep the same name and email, then follow your score here.</h2>
+        <p class="hero-copy" data-i18n="hero.copy">Students edit only their own line in SUBMISSIONS_2026.md. Scores from 0 to 30 are instructor-managed and displayed publicly after grading.</p>
+      </div>
+      <aside class="rules-panel panel" aria-label="Submission rules">
+        <p class="eyebrow" data-i18n="rules.eyebrow">Rules</p>
+        <ul>
+          <li data-i18n="rules.one">One student can reserve and submit only one assignment.</li>
+          <li data-i18n="rules.same">Use the same full name and email used in the reservation PR.</li>
+          <li data-i18n="rules.links">Submit a GitHub repository link and a demo link, or Demo: N/A with local run instructions in your README.</li>
+          <li data-i18n="rules.score">Students can see scores, but only the instructor changes score lines.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="Submission statistics">
+      <div class="stat"><strong id="reservedCount">0</strong><span data-i18n="stats.reserved">reserved</span></div>
+      <div class="stat"><strong id="submittedCount">0</strong><span data-i18n="stats.submitted">submitted</span></div>
+      <div class="stat"><strong id="gradedCount">0</strong><span data-i18n="stats.graded">graded</span></div>
+      <div class="stat"><strong id="averageScore">-</strong><span data-i18n="stats.average">average score</span></div>
+    </section>
+
+    <section class="toolbar panel" aria-label="Filters">
+      <div>
+        <p class="eyebrow" data-i18n="filters.eyebrow">Find</p>
+        <h2 data-i18n="filters.title">Student and topic status</h2>
+      </div>
+      <div class="filters">
+        <input id="searchInput" type="search" data-i18n-placeholder="filters.search" placeholder="Search topic, student, or email">
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="all" data-i18n="filter.all">All topics</option>
+          <option value="reserved" data-i18n="filter.reserved">Reserved</option>
+          <option value="submitted" data-i18n="filter.submitted">Submitted</option>
+          <option value="graded" data-i18n="filter.graded">Graded</option>
+          <option value="open" data-i18n="filter.open">Available / not reserved</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="grid" id="submissionGrid" aria-live="polite"></section>
+    <div class="empty" id="emptyState" data-i18n="empty">No matching submissions.</div>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        pageTitle: 'Cloud & MCC 2026 Submissions and Scores',
+        pageDescription: 'Read-only Cloud and MCC 2026 submission and scoring dashboard for students and instructor.',
+        'page.heading': 'Cloud & MCC 2026 Submissions and Scores',
+        'page.subtitle': 'Read-only status for reservations, final submissions, and instructor scores.',
+        'nav.reserve': 'Reservations',
+        'nav.instructionsEn': 'Instructions EN',
+        'nav.instructionsSq': 'Udhëzime Shqip',
+        'hero.eyebrow': 'Submission phase',
+        'hero.title': 'Submit once, keep the same name and email, then follow your score here.',
+        'hero.copy': 'Students edit only their own line in SUBMISSIONS_2026.md. Scores from 0 to 30 are instructor-managed and displayed publicly after grading.',
+        'rules.eyebrow': 'Rules',
+        'rules.one': 'One student can reserve and submit only one assignment.',
+        'rules.same': 'Use the same full name and email used in the reservation PR.',
+        'rules.links': 'Submit a GitHub repository link and a demo link, or Demo: N/A with local run instructions in your README.',
+        'rules.score': 'Students can see scores, but only the instructor changes score lines.',
+        'stats.reserved': 'reserved',
+        'stats.submitted': 'submitted',
+        'stats.graded': 'graded',
+        'stats.average': 'average score',
+        'filters.eyebrow': 'Find',
+        'filters.title': 'Student and topic status',
+        'filters.search': 'Search topic, student, or email',
+        'filter.all': 'All topics',
+        'filter.reserved': 'Reserved',
+        'filter.submitted': 'Submitted',
+        'filter.graded': 'Graded',
+        'filter.open': 'Available / not reserved',
+        'empty': 'No matching submissions.',
+        reserved: 'Reserved',
+        submitted: 'Submitted',
+        graded: 'Graded',
+        open: 'Available',
+        notReserved: 'Not reserved',
+        notSubmitted: 'Not submitted',
+        notGraded: 'Not graded',
+        score: 'Score',
+        repo: 'Repository',
+        demo: 'Demo',
+        source: 'Source files',
+        topicFile: 'topics/scores',
+        submissionFile: 'submissions',
+      },
+      sq: {
+        pageTitle: 'Dorëzimet dhe Pikët Cloud & MCC 2026',
+        pageDescription: 'Pamje vetëm për lexim për dorëzimet dhe pikët e Cloud dhe MCC 2026.',
+        'page.heading': 'Dorëzimet dhe pikët Cloud & MCC 2026',
+        'page.subtitle': 'Status vetëm për lexim për rezervime, dorëzime finale dhe pikë të vendosura nga mësimdhënësi.',
+        'nav.reserve': 'Rezervimet',
+        'nav.instructionsEn': 'Instructions EN',
+        'nav.instructionsSq': 'Udhëzime Shqip',
+        'hero.eyebrow': 'Faza e dorëzimit',
+        'hero.title': 'Dorëzo vetëm një herë, mbaj të njëjtin emër dhe email, pastaj ndiq pikët këtu.',
+        'hero.copy': 'Studentët ndryshojnë vetëm rreshtin e tyre në SUBMISSIONS_2026.md. Pikët nga 0 deri në 30 menaxhohen nga mësimdhënësi dhe shfaqen publikisht pas vlerësimit.',
+        'rules.eyebrow': 'Rregullat',
+        'rules.one': 'Një student mund të rezervojë dhe dorëzojë vetëm një detyrë.',
+        'rules.same': 'Përdor të njëjtin emër të plotë dhe email si në PR-në e rezervimit.',
+        'rules.links': 'Dorëzo linkun e repository në GitHub dhe linkun e demos, ose Demo: N/A me udhëzime lokale në README.',
+        'rules.score': 'Studentët mund t’i shohin pikët, por vetëm mësimdhënësi ndryshon rreshtat e pikëve.',
+        'stats.reserved': 'të rezervuara',
+        'stats.submitted': 'të dorëzuara',
+        'stats.graded': 'të vlerësuara',
+        'stats.average': 'mesatarja e pikëve',
+        'filters.eyebrow': 'Gjej',
+        'filters.title': 'Statusi i studentit dhe temës',
+        'filters.search': 'Kërko temën, studentin ose email-in',
+        'filter.all': 'Të gjitha temat',
+        'filter.reserved': 'Të rezervuara',
+        'filter.submitted': 'Të dorëzuara',
+        'filter.graded': 'Të vlerësuara',
+        'filter.open': 'Të lira / pa rezervim',
+        'empty': 'Nuk ka dorëzime që përputhen.',
+        reserved: 'E rezervuar',
+        submitted: 'E dorëzuar',
+        graded: 'E vlerësuar',
+        open: 'E lirë',
+        notReserved: 'Pa rezervim',
+        notSubmitted: 'Pa dorëzim',
+        notGraded: 'Pa pikë',
+        score: 'Pikët',
+        repo: 'Repository',
+        demo: 'Demo',
+        source: 'Fajllat burimorë',
+        topicFile: 'temat/pikët',
+        submissionFile: 'dorëzimet',
+      },
+    };
+
+    const grid = document.getElementById('submissionGrid');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    let activeLanguage = localStorage.getItem('portal-language') || 'en';
+    let rows = [];
+
+    function t(key) {
+      return translations[activeLanguage][key] || translations.en[key] || key;
+    }
+
+    function applyLanguage(language) {
+      activeLanguage = language;
+      localStorage.setItem('portal-language', language);
+      document.documentElement.lang = language === 'sq' ? 'sq' : 'en';
+      document.title = t('pageTitle');
+      document.querySelector('meta[name="description"]').setAttribute('content', t('pageDescription'));
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        node.textContent = t(node.dataset.i18n);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
+        node.setAttribute('placeholder', t(node.dataset.i18nPlaceholder));
+      });
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === language);
+      });
+      render();
+    }
+
+    document.querySelectorAll('[data-lang]').forEach((button) => {
+      button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    });
+
+    async function fetchText(path) {
+      const response = await fetch(`${path}?ts=${Date.now()}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Unable to fetch ${path}`);
+      return response.text();
+    }
+
+    function parseIdentity(value) {
+      const match = value.match(/^(.*?)\s*<([^>]+)>$/);
+      if (!match) return { name: value.trim(), email: '' };
+      return { name: match[1].trim(), email: match[2].trim() };
+    }
+
+    function parseTopics(markdown) {
+      const lines = markdown.split(/\r?\n/);
+      const topics = new Map();
+      let category = 'Uncategorized';
+
+      lines.forEach((line, index) => {
+        const heading = line.match(/^##\s+(.+)$/);
+        if (heading) {
+          category = heading[1].trim();
+          return;
+        }
+
+        const topic = line.match(/^(\d{2})\.\s+(.+?)\s—\s\((Available|Taken by [^)]+)\)$/);
+        if (!topic) return;
+
+        const identity = topic[3].startsWith('Taken by ')
+          ? parseIdentity(topic[3].replace(/^Taken by\s+/, ''))
+          : null;
+        const focus = (lines[index + 1] || '').match(/^\s+-\s+(.+)$/);
+        const score = (lines[index + 2] || '').match(/^\s+-\s+Score:\s+(.+)$/);
+
+        topics.set(topic[1], {
+          id: topic[1],
+          title: topic[2],
+          category,
+          focus: focus ? focus[1] : '',
+          reservedBy: identity ? identity.name : '',
+          reservedEmail: identity ? identity.email : '',
+          scoreLabel: score ? score[1].trim() : 'Not graded (0-30)',
+        });
+      });
+
+      return topics;
+    }
+
+    function parseSubmissions(markdown) {
+      const submissions = new Map();
+
+      markdown.split(/\r?\n/).forEach((line) => {
+        const submitted = line.match(/^(\d{2})\.\s+(.+?)\s—\s\(Submitted by ([^)]+)\)\s—\sRepo:\s+(\S+)\s—\sDemo:\s+(.+)$/);
+        if (!submitted) return;
+
+        const identity = parseIdentity(submitted[3]);
+        submissions.set(submitted[1], {
+          name: identity.name,
+          email: identity.email,
+          repo: submitted[4].trim(),
+          demo: submitted[5].trim(),
+        });
+      });
+
+      return submissions;
+    }
+
+    function scoreValue(label) {
+      const match = String(label).match(/^(\d{1,2})\/30$/);
+      if (!match) return null;
+      const value = Number(match[1]);
+      return Number.isFinite(value) ? value : null;
+    }
+
+    function statusFor(row) {
+      if (row.scoreValue !== null) return 'graded';
+      if (row.submission) return 'submitted';
+      if (row.reservedBy) return 'reserved';
+      return 'open';
+    }
+
+    function updateStats() {
+      const reserved = rows.filter((row) => row.reservedBy).length;
+      const submitted = rows.filter((row) => row.submission).length;
+      const gradedRows = rows.filter((row) => row.scoreValue !== null);
+      const totalScore = gradedRows.reduce((sum, row) => sum + row.scoreValue, 0);
+
+      document.getElementById('reservedCount').textContent = reserved;
+      document.getElementById('submittedCount').textContent = submitted;
+      document.getElementById('gradedCount').textContent = gradedRows.length;
+      document.getElementById('averageScore').textContent = gradedRows.length
+        ? `${(totalScore / gradedRows.length).toFixed(1)}/30`
+        : '-';
+    }
+
+    function render() {
+      if (!rows.length) return;
+
+      const query = searchInput.value.trim().toLowerCase();
+      const filter = statusFilter.value;
+      const visible = rows.filter((row) => {
+        const status = statusFor(row);
+        const matchesFilter = filter === 'all' || status === filter || (filter === 'reserved' && row.reservedBy);
+        const haystack = [
+          row.id,
+          row.title,
+          row.category,
+          row.focus,
+          row.reservedBy,
+          row.reservedEmail,
+          row.submission ? row.submission.name : '',
+          row.submission ? row.submission.email : '',
+        ].join(' ').toLowerCase();
+        return matchesFilter && (!query || haystack.includes(query));
+      });
+
+      grid.innerHTML = visible.map((row) => {
+        const status = statusFor(row);
+        const reservedName = row.reservedBy || t('notReserved');
+        const reservedEmail = row.reservedEmail || '';
+        const submission = row.submission;
+        const scoreClass = row.scoreValue === null ? 'score' : 'score graded';
+        const scoreText = row.scoreValue === null ? t('notGraded') : row.scoreLabel;
+        const submissionLabel = submission ? t('submitted') : t('notSubmitted');
+        const submittedBy = submission
+          ? `<div class="identity"><strong>${escapeHtml(submission.name)}</strong><span>${escapeHtml(submission.email)}</span></div>`
+          : `<div class="identity"><strong>${t('notSubmitted')}</strong><span>${escapeHtml(row.category)}</span></div>`;
+        const links = submission
+          ? `<div class="card-links"><a href="${escapeAttribute(submission.repo)}">${t('repo')}</a><a href="${escapeAttribute(submission.demo)}">${t('demo')}</a></div>`
+          : `<div class="card-links"><a href="SUBMISSIONS_2026.md">${t('submissionFile')}</a><a href="CLOUD_TOPICS_2026.md">${t('topicFile')}</a></div>`;
+
+        return `
+          <article class="submission-card ${status}">
+            <div class="card-head">
+              <span class="topic-id">${escapeHtml(row.id)}</span>
+              <span class="status ${status}">${t(status)}</span>
+            </div>
+            <div>
+              <h3>${escapeHtml(row.title)}</h3>
+              <p>${escapeHtml(row.focus)}</p>
+            </div>
+            <div class="identity">
+              <strong>${escapeHtml(reservedName)}</strong>
+              <span>${escapeHtml(reservedEmail || row.category)}</span>
+            </div>
+            ${submittedBy}
+            <div class="card-foot">
+              <span class="${scoreClass}">${t('score')}: ${escapeHtml(scoreText)}</span>
+              <span class="muted">${submissionLabel}</span>
+            </div>
+            ${links}
+          </article>
+        `;
+      }).join('');
+
+      emptyState.style.display = visible.length ? 'none' : 'block';
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function escapeAttribute(value) {
+      const raw = String(value);
+      if (!/^https?:\/\//i.test(raw) && raw.toUpperCase() !== 'N/A') return '#';
+      return escapeHtml(raw.toUpperCase() === 'N/A' ? 'SUBMISSIONS_2026.md' : raw);
+    }
+
+    async function init() {
+      try {
+        const [topicText, submissionText] = await Promise.all([
+          fetchText('CLOUD_TOPICS_2026.md'),
+          fetchText('SUBMISSIONS_2026.md'),
+        ]);
+        const topics = parseTopics(topicText);
+        const submissions = parseSubmissions(submissionText);
+
+        rows = Array.from(topics.values()).map((topic) => {
+          const submission = submissions.get(topic.id) || null;
+          return {
+            ...topic,
+            submission,
+            scoreValue: scoreValue(topic.scoreLabel),
+          };
+        });
+
+        updateStats();
+        applyLanguage(activeLanguage);
+      } catch (error) {
+        grid.innerHTML = `<div class="empty" style="display:block">${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    searchInput.addEventListener('input', render);
+    statusFilter.addEventListener('change', render);
+    init();
+  </script>
+</body>
+</html>
