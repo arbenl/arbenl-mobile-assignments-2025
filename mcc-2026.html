@@ -876,8 +876,8 @@
     <section class="reserved-panel" aria-labelledby="reservedHeading">
       <div class="reserved-head">
         <div>
-          <p class="eyebrow">Already reserved</p>
-          <h2 id="reservedHeading">Published reservations</h2>
+          <p class="eyebrow">Reservation status</p>
+          <h2 id="reservedHeading">Official and pending reservations</h2>
         </div>
         <button class="secondary-action" type="button" id="showReserved">Show reservations</button>
       </div>
@@ -889,8 +889,8 @@
           <strong>Check your reservation</strong>
           <span>Use the same full name or email from your merged PR.</span>
         </div>
-        <input id="checkName" autocomplete="name" placeholder="Full name">
-        <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com">
+        <input id="checkName" autocomplete="name" placeholder="Full name" aria-label="Reservation full name">
+        <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com" aria-label="Reservation email">
         <button class="secondary-action" type="button" id="checkReservation">Find mine</button>
       </div>
     </section>
@@ -1151,6 +1151,9 @@
     }
 
     async function loadPendingClaims() {
+      const staticClaims = await loadStaticPendingClaims();
+      if (staticClaims) return staticClaims;
+
       try {
         const response = await fetch(`${githubApiBase}/pulls?state=open&per_page=100`, {
           cache: 'no-store',
@@ -1180,6 +1183,18 @@
         return claimBatches.flat();
       } catch (error) {
         return [];
+      }
+    }
+
+    async function loadStaticPendingClaims() {
+      try {
+        const response = await fetch(`pending-reservations-2026.json?ts=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) return null;
+
+        const data = await response.json();
+        return Array.isArray(data.claims) ? data.claims : [];
+      } catch (error) {
+        return null;
       }
     }
 
