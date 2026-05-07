@@ -1,567 +1,842 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Programming 2025 - Student Tracker</title>
-    <meta name="description" content="Track and manage student assignments for Mobile Programming 2025 course">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: hsl(220, 90%, 56%);
-            --primary-dark: hsl(220, 90%, 46%);
-            --success: hsl(142, 71%, 45%);
-            --warning: hsl(38, 92%, 50%);
-            --danger: hsl(0, 72%, 51%);
-            --bg-primary: hsl(220, 20%, 98%);
-            --bg-secondary: hsl(220, 20%, 95%);
-            --bg-card: hsl(0, 0%, 100%);
-            --text-primary: hsl(220, 20%, 10%);
-            --text-secondary: hsl(220, 10%, 40%);
-            --border: hsl(220, 20%, 90%);
-            --shadow: 0 2px 8px hsla(220, 20%, 10%, 0.08);
-            --shadow-hover: 0 4px 16px hsla(220, 20%, 10%, 0.12);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arben Lila - Profile, Lectures, and Student Assignments</title>
+  <meta name="description" content="Professional profile, lectures across the years, and student assignment catalogues by course and year.">
+  <meta name="application-name" content="Arben Lila Course Portal">
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5b6678;
+      --line: #d9e0ea;
+      --surface: #ffffff;
+      --soft: #f5f7fb;
+      --teal: #00796b;
+      --blue: #2457d6;
+      --amber: #b45309;
+      --green: #17803d;
+      --shadow: 0 16px 38px rgba(16, 24, 40, 0.10);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      line-height: 1.5;
+    }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    a {
+      color: inherit;
+    }
 
-        header {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+    .shell {
+      min-height: 100vh;
+    }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--success));
-        }
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(0, 121, 107, 0.92), rgba(36, 87, 214, 0.88)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 18px);
+      color: #fff;
+      padding: 34px 20px 38px;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--success));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .hero-inner,
+    .content {
+      width: min(1160px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
 
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 54px;
+    }
 
-        .course-links {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1.25rem;
-        }
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-        .course-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-        }
+    .mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.14);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
 
-        .course-link.secondary {
-            background: var(--bg-card);
-            color: var(--primary);
-            border: 2px solid var(--border);
-        }
+    .identity strong,
+    .identity span {
+      display: block;
+    }
 
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+    .identity span {
+      color: rgba(255,255,255,0.76);
+      font-size: 0.92rem;
+    }
 
-        .stat-card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .top-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
+    .top-links a,
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.46);
+      padding: 10px 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.94rem;
+      background: rgba(255,255,255,0.12);
+    }
 
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-        }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+      gap: 30px;
+      align-items: end;
+    }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-        }
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(2.35rem, 5vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
 
-        .controls {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
+    .hero-copy p {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: rgba(255,255,255,0.86);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+    }
 
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
-        }
+    .status-panel {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.32);
+      padding: 18px;
+    }
 
-        .search-box input {
-            width: 100%;
-            padding: 0.875rem 1rem 0.875rem 2.75rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
+    .status-panel strong {
+      display: block;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 10px;
+    }
 
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
+    .status-panel p {
+      margin: 0;
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.92);
+    }
 
-        .search-box::before {
-            content: '🔍';
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-        }
+    .content {
+      padding: 30px 0 58px;
+    }
 
-        .filter-group {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
+    .profile-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 26px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
 
-        select, button {
-            padding: 0.875rem 1.25rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--bg-card);
-        }
+    .profile-section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
 
-        button {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            font-weight: 600;
-        }
+    .profile-lead {
+      max-width: 720px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
 
-        button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
 
-        select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
+    .contact-line a,
+    .contact-line span {
+      border: 1px solid var(--line);
+      padding: 9px 11px;
+      background: #fbfcfe;
+      text-decoration: none;
+      font-weight: 750;
+      color: var(--ink);
+    }
 
-        .table-container {
-            background: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
+    .profile-facts {
+      display: grid;
+      gap: 10px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    .profile-facts div {
+      border-left: 4px solid var(--teal);
+      background: #fbfcfe;
+      padding: 12px 14px;
+    }
 
-        thead {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
+    .profile-facts strong,
+    .profile-facts span {
+      display: block;
+    }
 
-        th {
-            padding: 1.25rem 1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .profile-facts span {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
 
-        tbody tr {
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s ease;
-        }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
 
-        tbody tr:hover {
-            background: var(--bg-secondary);
-        }
+    .toolbar h2,
+    .section h2 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0;
+    }
 
-        td {
-            padding: 1.25rem 1rem;
-            vertical-align: middle;
-        }
+    .year-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-        .student-name {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
+    .year-tabs button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      padding: 8px 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 750;
+    }
 
-        .topic-id {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
+    .year-tabs button.active {
+      color: #fff;
+      border-color: var(--teal);
+      background: var(--teal);
+    }
 
-        .theme-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
 
-        .score-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
+    .course-card,
+    .section,
+    .notice {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
 
-        .score-high {
-            background: hsla(142, 71%, 45%, 0.15);
-            color: var(--success);
-        }
+    .course-card {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 320px;
+      overflow: hidden;
+    }
 
-        .score-medium {
-            background: hsla(38, 92%, 50%, 0.15);
-            color: var(--warning);
-        }
+    .course-strip {
+      height: 7px;
+      background: var(--teal);
+    }
 
-        .score-low {
-            background: hsla(0, 72%, 51%, 0.15);
-            color: var(--danger);
-        }
+    .course-card.mobile .course-strip {
+      background: var(--amber);
+    }
 
-        .score-pending {
-            background: hsla(220, 10%, 40%, 0.1);
-            color: var(--text-secondary);
-        }
+    .course-card.cloud .course-strip {
+      background: var(--blue);
+    }
 
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-        }
+    .course-body {
+      padding: 20px;
+    }
 
-        .empty-state-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .course-card h3 {
+      margin: 0;
+      font-size: 1.38rem;
+      letter-spacing: 0;
+    }
 
-        tbody tr {
-            animation: fadeIn 0.3s ease forwards;
-        }
+    .course-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
 
-        @media (max-width: 1024px) {
-            table {
-                font-size: 0.9rem;
-            }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
 
-            th, td {
-                padding: 1rem 0.75rem;
-            }
+    .metric {
+      border: 1px solid var(--line);
+      padding: 11px;
+      background: #fbfcfe;
+    }
 
-            h1 {
-                font-size: 2rem;
-            }
-        }
+    .metric strong,
+    .metric span {
+      display: block;
+    }
 
-        @media (max-width: 768px) {
-            .controls {
-                flex-direction: column;
-            }
+    .metric strong {
+      font-size: 1.28rem;
+    }
 
-            .search-box, .filter-group {
-                width: 100%;
-            }
+    .metric span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
 
-            table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        }
-    </style>
+    .course-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 20px 20px;
+    }
+
+    .action {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      padding: 10px 13px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .action.primary {
+      color: #fff;
+      border-color: var(--teal);
+      background: var(--teal);
+    }
+
+    .course-card.cloud .action.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .course-card.mobile .action.primary {
+      border-color: var(--amber);
+      background: var(--amber);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .section {
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .section p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .link-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .link-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      border: 1px solid var(--line);
+      padding: 13px 14px;
+      text-decoration: none;
+      background: #fbfcfe;
+      font-weight: 750;
+    }
+
+    .link-list span {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--green);
+      box-shadow: none;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .timeline article {
+      border-left: 4px solid var(--blue);
+      padding: 0 0 0 14px;
+    }
+
+    .timeline.experience {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .timeline span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .timeline strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .timeline p {
+      margin-top: 5px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag-list span {
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 9px 11px;
+      font-weight: 750;
+    }
+
+    .publication-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .publication-list p {
+      margin: 0;
+      border-left: 4px solid var(--amber);
+      padding: 0 0 0 14px;
+    }
+
+    .lecture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .lecture-grid article {
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+      padding: 14px;
+    }
+
+    .lecture-grid span {
+      display: block;
+      color: var(--teal);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .lecture-grid strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 1.06rem;
+    }
+
+    .lecture-grid p {
+      margin-top: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .course-grid,
+      .section-grid,
+      .profile-section,
+      .timeline.experience,
+      .lecture-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar,
+      .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .top-links,
+      .year-tabs {
+        justify-content: flex-start;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📱 Mobile Programming 2025</h1>
-            <p class="subtitle">Student Assignment Tracker</p>
-            <div class="course-links" aria-label="Course pages">
-                <a class="course-link" href="mcc-2026.html">Cloud Computing & MCC 2026</a>
-                <a class="course-link secondary" href="udhezime-mcc-2026.html">Udhëzime Shqip</a>
+  <div class="shell">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="topbar">
+          <div class="identity">
+            <div class="mark" aria-hidden="true">AL</div>
+            <div>
+              <strong>Prof. Arben Lila</strong>
+              <span>Program Manager @ KADC · PhD candidate · Lecturer at AAB</span>
             </div>
-        </header>
-
-        <div class="stats-bar">
-            <div class="stat-card">
-                <span class="stat-value" id="totalStudents">0</span>
-                <span class="stat-label">Total Students</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value" id="scoredStudents">0</span>
-                <span class="stat-label">Scored</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value" id="pendingStudents">0</span>
-                <span class="stat-label">Pending</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value" id="avgScore">-</span>
-                <span class="stat-label">Average Score</span>
-            </div>
+          </div>
+          <nav class="top-links" aria-label="Primary links">
+            <a href="mcc-2026.html">Cloud & MCC 2026</a>
+            <a href="instructions-mcc-2026.html">Instructions</a>
+            <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025">GitHub</a>
+          </nav>
         </div>
 
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search by name or theme...">
-            </div>
-            <div class="filter-group">
-                <select id="filterStatus">
-                    <option value="all">All Students</option>
-                    <option value="scored">Scored</option>
-                    <option value="pending">Pending</option>
-                </select>
-                <select id="sortBy">
-                    <option value="name">Sort by Name</option>
-                    <option value="score">Sort by Score</option>
-                    <option value="date">Sort by Date</option>
-                    <option value="topic">Sort by Topic ID</option>
-                </select>
-            </div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Professional profile, lectures, and student assignments.</h1>
+            <p>This page presents my professional background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.</p>
+          </div>
+          <aside class="status-panel" aria-label="Reservation workflow status">
+            <strong>Reservation policy</strong>
+            <p>Students choose the lecture/year that applies to them, then reserve exactly one available assignment topic through the official workflow.</p>
+          </aside>
         </div>
-                
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Topic ID</th>
-                        <th>Student Name</th>
-                        <th>Theme</th>
-                        <th>Score</th>
-                        <th>Date Scored</th>
-                    </tr>
-                </thead>
-                <tbody id="studentTable">
-                    <!-- Student rows will be inserted here -->
-                </tbody>
-            </table>
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <div class="empty-state-icon">📋</div>
-                <p>No students found matching your criteria</p>
-            </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="profile-section" aria-label="Professional profile">
+        <div>
+          <p class="kicker">Professional profile</p>
+          <h2>Arben Lila</h2>
+          <p class="profile-lead">Program Manager at Kosovo Advocacy & Development Centre (KADC), PhD candidate, and lecturer at AAB College.</p>
+          <div class="contact-line" aria-label="Contact links">
+            <a href="mailto:arben.lila@aab-edu.net">arben.lila@aab-edu.net</a>
+            <a href="https://github.com/arbenl">GitHub: arbenl</a>
+            <span>LinkedIn: Arben Lila</span>
+          </div>
         </div>
-    </div>
-                
-    <script>
-        // Data is now read-only and embedded in the page.
-        const studentsData = [
-            { id: '01', name: 'Malsor Hyseni', theme: 'Task Manager with AI summaries', score: null, dateScored: null },
-            { id: '02', name: 'Roni Morina', theme: 'Habit Tracker + Streaks + Reminders', score: null, dateScored: null },
-            { id: '04', name: 'Gentrit Hyseni', theme: 'Personal Finance Tracker with budgets', score: null, dateScored: null },
-            { id: '05', name: 'Festim Bunjaku', theme: 'Pomodoro Timer + Focus Stats', score: null, dateScored: null },
-            { id: '12', name: 'Leotrim Haliti', theme: 'Step Counter + Goals + Badges', score: null, dateScored: null },
-            { id: '13', name: 'Fiona Sadiku', theme: 'Sleep Log + AI Sleep Hygiene tips', score: null, dateScored: null },
-            { id: '15', name: 'Erion Mustafa', theme: 'Simple Workout Planner + History', score: null, dateScored: null },
-            { id: '16', name: 'Donart Selmani', theme: 'Healthy Recipes + AI nutrition facts', score: null, dateScored: null },
-            { id: '24', name: 'Leona Berisha', theme: 'CV Builder + Skill Gap Advisor', score: null, dateScored: null },
-            { id: '28', name: 'Dzemilje Sulejmanovic', theme: 'Study Planner + AI weekly plan', score: null, dateScored: null },
-            { id: '36', name: 'Elona Halitaj', theme: 'Pet Adoption Browser + Faves', score: null, dateScored: null },
-            { id: '37', name: 'Qefser Karpuzi', theme: 'Sports Pickup Games (create/join)', score: null, dateScored: null },
-            { id: '45', name: 'Flokart Pajaziti', theme: 'Parking Finder + Favorites', score: null, dateScored: null },
-            { id: '55', name: 'Enes Jashari', theme: 'Movie Watchlist + Ratings', score: null, dateScored: null }
-        ];
+        <div class="profile-facts">
+          <div>
+            <strong>Teaching focus</strong>
+            <span>Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, Cybersecurity in Healthcare</span>
+          </div>
+          <div>
+            <strong>Research background</strong>
+            <span>Telecommunications, SDH/SONET, ATM, IP, MPLS, Resilient Packet Rings, performance modelling</span>
+          </div>
+          <div>
+            <strong>Program work</strong>
+            <span>Public-health advocacy, environmental policy, circular economy, ICT reform and donor coordination</span>
+          </div>
+        </div>
+      </section>
 
-        // The localStorage functionality has been removed to make this page read-only.
-        // The data is now static as defined above.
+      <div class="toolbar">
+        <h2>Assignments by lecture and year</h2>
+        <div class="year-tabs" role="tablist" aria-label="Filter by year">
+          <button type="button" class="active" data-year-filter="all">All years</button>
+          <button type="button" data-year-filter="2026">2026</button>
+          <button type="button" data-year-filter="2025">2025</button>
+        </div>
+      </div>
 
-        // Render table
-        function renderTable(data = studentsData) {
-            const tbody = document.getElementById('studentTable');
-            const emptyState = document.getElementById('emptyState');
-            
-            if (data.length === 0) {
-                tbody.innerHTML = '';
-                emptyState.style.display = 'block';
-                return;
-            }
-            
-            emptyState.style.display = 'none';
-            
-            tbody.innerHTML = data.map((student, index) => `
-                <tr style="animation-delay: ${index * 0.05}s">
-                    <td><span class="topic-id">#${student.id}</span></td>
-                    <td><span class="student-name">${student.name}</span></td>
-                    <td><span class="theme-text">${student.theme}</span></td>
-                    <td>
-                        ${student.score !== null ? `<span class="score-badge ${getScoreClass(student.score)}">${student.score}/100</span>` : '<span class="score-badge score-pending">Pending</span>'}
-                    </td>
-                    <td>${student.dateScored || ''}</td>
-                </tr>
-            `).join('');
-            
-            updateStats();
-        }
+      <section class="course-grid" aria-label="Available course catalogues">
+        <article class="course-card cloud" data-year="2026">
+          <div class="course-strip" aria-hidden="true"></div>
+          <div class="course-body">
+            <p class="kicker">2026 - Cloud Computing lecture</p>
+            <h3>Cloud Computing & Mobile Cloud Computing</h3>
+            <p>Cloud platforms, serverless APIs, databases, DevOps, security, and mobile-cloud applications.</p>
+            <div class="metrics" data-catalogue="cloud-2026">
+              <div class="metric"><strong data-total>60</strong><span>topics</span></div>
+              <div class="metric"><strong data-reserved>--</strong><span>reserved</span></div>
+              <div class="metric"><strong data-available>--</strong><span>available</span></div>
+            </div>
+          </div>
+          <div class="course-actions">
+            <a class="action primary" href="mcc-2026.html">Open visual catalogue</a>
+            <a class="action" href="CLOUD_TOPICS_2026.md">Source file</a>
+            <a class="action" href="udhezime-mcc-2026.html">Udhëzime</a>
+          </div>
+        </article>
 
-        // Get score class
-        function getScoreClass(score) {
-            if (score === null) return 'score-pending';
-            if (score >= 80) return 'score-high';
-            if (score >= 60) return 'score-medium';
-            return 'score-low';
-        }
+        <article class="course-card mobile" data-year="2025">
+          <div class="course-strip" aria-hidden="true"></div>
+          <div class="course-body">
+            <p class="kicker">2025 - Mobile Programming lecture</p>
+            <h3>Mobile Programming</h3>
+            <p>Flutter, React Native, Kotlin, Supabase-backed apps, AI-assisted features, and mobile UX projects.</p>
+            <div class="metrics" data-catalogue="mobile-2025">
+              <div class="metric"><strong data-total>60</strong><span>topics</span></div>
+              <div class="metric"><strong data-reserved>--</strong><span>reserved</span></div>
+              <div class="metric"><strong data-available>--</strong><span>available</span></div>
+            </div>
+          </div>
+          <div class="course-actions">
+            <a class="action primary" href="TOPICS.md">Source topics</a>
+            <a class="action" href="README.md">Claim workflow</a>
+          </div>
+        </article>
+      </section>
 
-        // Update statistics
-        function updateStats() {
-            const total = studentsData.length;
-            const scored = studentsData.filter(s => s.score !== null).length;
-            const pending = total - scored;
-            const scores = studentsData.filter(s => s.score !== null).map(s => s.score);
-            const avg = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : '-';
-            
-            document.getElementById('totalStudents').textContent = total;
-            document.getElementById('scoredStudents').textContent = scored;
-            document.getElementById('pendingStudents').textContent = pending;
-            document.getElementById('avgScore').textContent = avg !== '-' ? avg : '-';
-        }
+      <div class="section-grid">
+        <section class="section">
+          <h2>Student workflow</h2>
+          <p>Choose a catalogue, reserve exactly one available topic, build the solution in your own repository, test it clearly, and submit repository/demo links when complete.</p>
+          <div class="link-list">
+            <a href="instructions-mcc-2026.html">Reserve, build, test, submit <span>English</span></a>
+            <a href="udhezime-mcc-2026.html">Rezervo, zhvillo, testo, dorezo <span>Shqip</span></a>
+            <a href="SUBMISSIONS_2026.md">Final solution submissions <span>2026</span></a>
+          </div>
+        </section>
 
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            applyFilters();
+        <section class="section">
+          <h2>Instructor view</h2>
+          <p>Reservations, pending PRs, scores, and final submissions stay in the repository so the public site and GitHub history remain aligned.</p>
+          <div class="link-list">
+            <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls">Review open PRs <span>GitHub</span></a>
+            <a href="CLOUD_TOPICS_2026.md">Source file and scores <span>0-30</span></a>
+            <a href="README.md">Repository guide <span>Docs</span></a>
+          </div>
+        </section>
+      </div>
+
+      <p class="notice">Students should reserve only through the active course page for their semester. If a reservation fails, GitHub comments on the PR with the exact correction steps in English and Albanian.</p>
+
+      <div class="section-grid">
+        <section class="section">
+          <h2>Education</h2>
+          <div class="timeline">
+            <article>
+              <span>1987-1991</span>
+              <strong>Mag in Electrical Engineering</strong>
+              <p>University of Zagreb, Faculty of Electrical Engineering & Computing. Concentration: Computer Technology & Micro-processor Architecture.</p>
+            </article>
+            <article>
+              <span>1998-2003</span>
+              <strong>PhD candidate</strong>
+              <p>Institute of Broadband Communications, Vienna University of Technology (TU Wien). Telecommunications & Performance Modelling.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Lectures and modules</h2>
+          <div class="tag-list">
+            <span>Computer Science - AAB College</span>
+            <span>Information Systems - AAB College</span>
+            <span>Android Basics with Compose</span>
+            <span>Cybersecurity in Healthcare</span>
+            <span>Network Engineering - UBT</span>
+            <span>Multimedia Communications - UBT</span>
+            <span>Computer Networks - AAB College</span>
+            <span>Information Systems Architecture - AAB College</span>
+          </div>
+        </section>
+      </div>
+
+      <section class="section">
+        <h2>Lectures across the years</h2>
+        <div class="lecture-grid">
+          <article>
+            <span>AAB College</span>
+            <strong>2019-present</strong>
+            <p>Computer Networks, Information Systems Architecture, Android & Modern Mobile Development with Jetpack Compose, Cybersecurity in Healthcare, practical labs and capstone supervision.</p>
+          </article>
+          <article>
+            <span>UBT</span>
+            <strong>2016-2019</strong>
+            <p>Network Engineering and Multimedia Communications, with focus on applied networking concepts and communication systems.</p>
+          </article>
+          <article>
+            <span>TU Wien</span>
+            <strong>1999-2003</strong>
+            <p>Research and lectures in teletraffic theory, performance modelling, broadband communications and resilient packet networking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Professional experience</h2>
+        <div class="timeline experience">
+          <article>
+            <span>2012-present</span>
+            <strong>Program Manager - Kosovo Advocacy & Development Centre (KADC)</strong>
+            <p>Lead program design and implementation for public-health advocacy, tobacco control, environmental policy and circular-economy initiatives; manage donor relations, consortium partners and high-visibility media campaigns.</p>
+          </article>
+          <article>
+            <span>2019-present</span>
+            <strong>Lecturer - AAB College</strong>
+            <p>Teach Computer Networks, Information Systems Architecture, Android & Modern Mobile Development, and Cybersecurity in Healthcare. Course development, capstone supervision and CI/CD mentoring.</p>
+          </article>
+          <article>
+            <span>2016-2019</span>
+            <strong>Lecturer - UBT</strong>
+            <p>Network Engineering and Multimedia Communications.</p>
+          </article>
+          <article>
+            <span>2011-2012</span>
+            <strong>Strategic Planning Advisor - Office of the Chief State Prosecutor, Kosovo</strong>
+            <p>Strategic planning for ICT reform, donor coordination and institutional capacity building.</p>
+          </article>
+          <article>
+            <span>2007-2011</span>
+            <strong>Senior IT Advisor - USAID / NCSC Kosovo Justice Support Program</strong>
+            <p>Design and deployment of CMIS, justice sector ICT planning, training and mentoring of counterpart ICT teams.</p>
+          </article>
+          <article>
+            <span>1999-2003</span>
+            <strong>Researcher & Lecturer - Institute of Broadband Communications, TU Wien</strong>
+            <p>Experimental research on SDH/SONET, ATM, IP, MPLS and Resilient Packet Rings. Lectures in teletraffic theory and performance modelling.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Selected publications and talks</h2>
+        <div class="publication-list">
+          <p>Lila, A. (2012). Towards a Zero Waste Society. Kosovo Foundation for Open Society.</p>
+          <p>Lila, A.; Nikaj, B. (2011). Skills Gap Analysis for Information and Communication Technology. STIKK - Kosovo Association of ICT.</p>
+          <p>Lila, A. (2010). Information and Communications Technology Assessment Report. USAID / Kosovo Justice Support Program.</p>
+          <p>Lila, A.; Remsak, G.; Schuringa, J.; van As, H.R. (2002). Performance Comparison of RPR MAC Proposals. NOC 2002 Proceedings, pp. 301-308.</p>
+          <p>Schuringa, J.; Remsak, G.; van As, H.R.; Lila, A. (2002). Cyclic Queueing Multiple Access (CQMA) for RPR Networks. NOC 2002 Proceedings, pp. 285-292.</p>
+          <p>Lila, A.; Lepaja, S.; Schuringa, J. (2003). Performance Analysis of RPR in case of a Link Failure. NOC'03 Proceedings, pp. 188-195.</p>
+          <p>Lepaja, S.; Lila, A.; Kryvinska, N.; Nguyen, H. (2003). A Framework for End-to-End QoS Provisioning in Mobile Internet Environment. MWCN'03 Proceedings, pp. 86-89.</p>
+        </div>
+        <div class="notice">Conferences and invited talks include NOC 2002, NOC 2003, the World Conference on Tobacco Control in Dublin 2025, and regional forums on digital governance, environmental policy and circular economy. For full PDFs, contact the email above.</div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const catalogues = {
+      'cloud-2026': 'CLOUD_TOPICS_2026.md',
+      'mobile-2025': 'TOPICS.md',
+    };
+
+    const topicPattern = /^\s*\d{1,2}\.\s+.+?\s[—-]\s\((Available|Taken by .+)\)/;
+
+    async function loadCatalogueStats(key, path) {
+      const host = document.querySelector(`[data-catalogue="${key}"]`);
+      if (!host) return;
+
+      try {
+        const response = await fetch(`${path}?ts=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`Unable to fetch ${path}`);
+        const text = await response.text();
+        const topics = text
+          .split(/\r?\n/)
+          .map((line) => line.trim())
+          .filter((line) => topicPattern.test(line));
+        const reserved = topics.filter((line) => /\(Taken by .+\)/.test(line)).length;
+        const total = topics.length || Number(host.querySelector('[data-total]').textContent) || 0;
+        host.querySelector('[data-total]').textContent = total;
+        host.querySelector('[data-reserved]').textContent = reserved;
+        host.querySelector('[data-available]').textContent = Math.max(total - reserved, 0);
+      } catch (error) {
+        host.querySelector('[data-reserved]').textContent = 'View';
+        host.querySelector('[data-available]').textContent = 'file';
+      }
+    }
+
+    Object.entries(catalogues).forEach(([key, path]) => loadCatalogueStats(key, path));
+
+    document.querySelectorAll('[data-year-filter]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.yearFilter;
+        document.querySelectorAll('[data-year-filter]').forEach((item) => {
+          item.classList.toggle('active', item === button);
         });
-
-        // Filter functionality
-        document.getElementById('filterStatus').addEventListener('change', applyFilters);
-        document.getElementById('sortBy').addEventListener('change', applyFilters);
-
-        function getCurrentFilteredData() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filterStatus = document.getElementById('filterStatus').value;
-            const sortBy = document.getElementById('sortBy').value;
-            
-            let filtered = studentsData.filter(student => {
-                const matchesSearch = student.name.toLowerCase().includes(searchTerm) || 
-                                    student.theme.toLowerCase().includes(searchTerm);
-                
-                if (filterStatus === 'scored') {
-                    return matchesSearch && student.score !== null;
-                } else if (filterStatus === 'pending') {
-                    return matchesSearch && student.score === null;
-                }
-                
-                return matchesSearch;
-            });
-            
-            // Sort
-            filtered.sort((a, b) => {
-                switch(sortBy) {
-                    case 'name':
-                        return a.name.localeCompare(b.name);
-                    case 'score':
-                        return (b.score || 0) - (a.score || 0);
-                    case 'date':
-                        if (!a.dateScored) return 1;
-                        if (!b.dateScored) return -1;
-                        return new Date(b.dateScored) - new Date(a.dateScored);
-                    case 'topic':
-                        return a.id.localeCompare(b.id);
-                    default:
-                        return 0;
-                }
-            });
-            
-            return filtered;
-        }
-
-        function applyFilters() {
-            renderTable(getCurrentFilteredData());
-        }
-
-        // Initialize
-        renderTable();
-    </script>
+        document.querySelectorAll('[data-year]').forEach((card) => {
+          card.classList.toggle('hidden', filter !== 'all' && card.dataset.year !== filter);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
