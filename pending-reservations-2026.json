@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-05-07T19:17:46.147Z",
+  "generatedAt": "2026-05-07T19:19:33.102Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "46",
+      "title": "API Rate Limiting and Abuse Protection",
+      "name": "Besiana Dauti",
+      "email": "besiana.dauti@universitetiaab.com",
+      "prNumber": 69,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/69",
+      "author": "BesianaDauti",
+      "createdAt": "2026-05-07T19:19:20Z"
+    }
+  ],
   "conflicts": []
 }
