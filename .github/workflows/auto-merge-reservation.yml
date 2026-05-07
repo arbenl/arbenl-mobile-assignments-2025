@@ -6,6 +6,7 @@ on:
     branches: [ main ]
     paths:
       - CLOUD_TOPICS_2026.md
+      - mcc-2026.html
 
 permissions:
   contents: write
@@ -44,15 +45,80 @@ jobs:
           git branch --track main upstream/main || true
 
       - name: Validate claim against latest main
+        id: validate
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
           cd pr
-          GITHUB_BASE_REF=main node ../main/scripts/check-claim.js
+          GITHUB_BASE_REF=main node ../main/scripts/check-claim.js > ../validation-output.txt 2>&1
+
+      - name: Comment with correction instructions
+        if: steps.validate.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          cat > comment.md <<'EOF'
+          Your reservation was not accepted automatically.
+
+          Please fix the PR or open a new one using exactly this rule:
+
+          ```text
+          NN. Topic Title — (Taken by Full Name <email@example.com>)
+          ```
+
+          Requirements:
+          - Edit only `CLOUD_TOPICS_2026.md`.
+          - Change exactly one topic line.
+          - Keep the topic title exactly the same.
+          - Keep the `Cloud focus` and `Score` lines.
+          - Do not edit `mcc-2026.html`.
+          - Do not rename files.
+          - Do not put two students on one topic.
+          - One student can reserve only one assignment.
+
+          ---
+
+          Rezervimi juaj nuk u pranua automatikisht.
+
+          Ju lutem rregulloni PR-në ose hapni një PR të ri me këtë format:
+
+          ```text
+          NN. Titulli i temës — (Taken by Emri Mbiemri <email@example.com>)
+          ```
+
+          Rregullat:
+          - Ndryshoni vetëm `CLOUD_TOPICS_2026.md`.
+          - Ndryshoni saktësisht një rresht teme.
+          - Ruani titullin e temës pa ndryshime.
+          - Mos fshini rreshtat `Cloud focus` dhe `Score`.
+          - Mos editoni `mcc-2026.html`.
+          - Mos riemërtoni fajlla.
+          - Mos vendosni dy studentë në një temë.
+          - Një student mund të rezervojë vetëm një detyrë.
+
+          Validator output:
+          ```text
+          EOF
+          sed -n '1,80p' validation-output.txt >> comment.md
+          cat >> comment.md <<'EOF'
+          ```
+          EOF
+
+          gh pr comment "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --body-file comment.md
+
+      - name: Stop invalid reservation
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
 
       - name: Merge valid reservation
+        if: steps.validate.outcome == 'success'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
