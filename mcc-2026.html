@@ -754,7 +754,7 @@
         <div class="brand-mark" aria-hidden="true">MCC</div>
         <div>
           <h1>Cloud & MCC 2026 Reservations</h1>
-          <p>First valid merged PR reserves the topic.</p>
+          <p>Copy the claim line, open a PR, and wait for instructor merge.</p>
         </div>
       </div>
       <div class="top-actions" aria-label="Language and catalogue links">
@@ -809,7 +809,7 @@
         <button class="secondary-action" type="button" id="showReserved">Show reserved only</button>
       </div>
       <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
-        No merged reservations yet.
+        No merged reservations yet. A copied claim line is not official until the PR is merged.
       </div>
     </section>
 
@@ -857,7 +857,7 @@
       <div class="claim-box">
         <span>Copy this line, then replace the same topic line on GitHub:</span>
         <code id="claimLine"></code>
-        <span class="claim-note">GitHub will guide you to propose the change as a Pull Request. The topic is officially reserved only after that PR is merged.</span>
+        <span class="claim-note">GitHub will guide you to propose the change as a Pull Request. The topic becomes visible as reserved only after the instructor/maintainer merges that PR.</span>
       </div>
 
       <div class="claim-actions">
@@ -1187,7 +1187,7 @@
 
       if (!reserved.length) {
         reservedList.className = 'reserved-list empty-reservations';
-        reservedList.textContent = 'No merged reservations yet. A topic appears here after the reservation PR is merged.';
+        reservedList.textContent = 'No merged reservations yet. A topic appears here only after the instructor/maintainer merges the reservation PR.';
         return;
       }
 
@@ -1290,7 +1290,7 @@
       updateClaimLine();
       const copied = await copyText(
         claimLine.textContent,
-        'Claim line copied. Submit and merge the PR to reserve officially.',
+        'Claim line copied. Open a PR and wait for instructor merge.',
         claimLine,
       );
       if (copied) dialog.close();

@@ -267,6 +267,26 @@
       border: 1px solid #fed7aa;
       font-weight: 700;
     }
+    .demo-video {
+      display: grid;
+      gap: 12px;
+      margin: 14px 0 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--wash);
+    }
+    .demo-video video {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #111827;
+    }
+    .demo-video p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
     @media (max-width: 820px) {
       .topbar,
       .hero { grid-template-columns: 1fr; }
@@ -314,7 +334,7 @@
         </div>
         <div class="rule">
           <strong>The reservation is official only after merge.</strong>
-          <span>The page gives a local preview; the merged PR is the source of truth.</span>
+          <span>Copying the claim line is not enough. The instructor/maintainer must merge the PR before everyone can see the reservation.</span>
         </div>
       </aside>
     </section>
@@ -329,17 +349,24 @@
 
     <section class="section" id="reserve">
       <h2>How to reserve a topic</h2>
-      <p class="lead">Reservations are first in, first served. The first valid merged PR owns the topic.</p>
+      <p class="lead">Reservations are first in, first served. The first valid PR merged by the instructor/maintainer owns the topic and updates the public site.</p>
+      <div class="demo-video">
+        <video controls preload="metadata" poster="assets/demo-frames/frame-01.png">
+          <source src="assets/mcc-2026-reservation-demo.mp4" type="video/mp4">
+        </video>
+        <p>Watch the localhost demo: choose an available topic, copy the claim line, open a PR, and wait for instructor/maintainer merge.</p>
+      </div>
       <ol class="steps">
         <li>Open `mcc-2026.html`, find a topic, and check that it is `Available`.</li>
         <li>Click `Reserve`, enter your full name and email. Both are required.</li>
-        <li>Click `Copy line + preview`; the correct line is copied and the topic appears as a local preview.</li>
+        <li>Click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
         <li>Click `Edit on GitHub`; GitHub opens `CLOUD_TOPICS_2026.md` directly for editing.</li>
         <li>Replace only your topic line with the copied line, then click `Propose changes` and create a Pull Request.</li>
-        <li>If validation passes and the instructor merges the PR, your topic is officially reserved.</li>
+        <li>Wait until validation passes and the instructor/maintainer merges the PR. Only after merge is your topic officially reserved and visible to everyone.</li>
       </ol>
       <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;)</code></pre>
       <div class="warning">One student can reserve only one assignment. Validation rejects repeated names or emails.</div>
+      <p class="lead">If you need to correct your own reservation later, open a new PR that changes only your existing topic line. Keep the same name or the same email so validation can recognize that it is your reservation.</p>
     </section>
 
     <section class="section" id="build">
