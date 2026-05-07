@@ -125,6 +125,30 @@
       justify-content: flex-end;
     }
 
+    .language-switch {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .language-switch button {
+      min-height: 40px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 0 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .language-switch button.active {
+      background: var(--teal);
+      color: white;
+    }
+
     .github-link.primary {
       border-color: var(--teal);
       background: var(--teal);
@@ -805,8 +829,13 @@
       }
 
       .top-actions,
-      .github-link {
+      .github-link,
+      .language-switch {
         width: 100%;
+      }
+
+      .language-switch button {
+        flex: 1;
       }
 
       .visual {
@@ -842,48 +871,52 @@
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">MCC</div>
         <div>
-          <h1>Cloud & MCC 2026 Reservations</h1>
-          <p>Copy the claim line and open a PR. Valid reservations are checked and merged automatically.</p>
+          <h1 data-i18n="hero.title">Cloud & MCC 2026 Reservations</h1>
+          <p data-i18n="hero.subtitle">Copy the claim line and open a PR. Valid reservations are checked and merged automatically.</p>
         </div>
       </div>
       <div class="top-actions" aria-label="Language and catalogue links">
-        <a class="github-link" href="instructions-mcc-2026.html">Instructions EN</a>
-        <a class="github-link primary" href="udhezime-mcc-2026.html">Udhëzime Shqip</a>
-        <a class="github-link" href="submissions-2026.html">Submissions & scores</a>
-        <a class="github-link" href="index.html">Profile</a>
-        <a class="github-link" href="CLOUD_TOPICS_2026.md">Source file</a>
+        <div class="language-switch" aria-label="Language switch">
+          <button type="button" class="active" data-lang="en">ENG</button>
+          <button type="button" data-lang="sq">ALB</button>
+        </div>
+        <a class="github-link" href="instructions-mcc-2026.html" data-i18n="nav.instructionsEn">Instructions EN</a>
+        <a class="github-link primary" href="udhezime-mcc-2026.html" data-i18n="nav.instructionsSq">Udhëzime Shqip</a>
+        <a class="github-link" href="submissions-2026.html" data-i18n="nav.submissions">Submissions & scores</a>
+        <a class="github-link" href="index.html" data-i18n="nav.portal">Portal</a>
+        <a class="github-link" href="CLOUD_TOPICS_2026.md" data-i18n="nav.source">Source file</a>
       </div>
     </header>
 
-    <section class="control-panel" aria-label="Topic finder">
+    <section class="control-panel" aria-label="Topic finder" data-i18n-aria="aria.topicFinder">
       <div class="finder">
         <div class="finder-row">
-          <label class="field" aria-label="Search topics">
+          <label class="field" aria-label="Search topics" data-i18n-aria="aria.searchTopics">
             <span aria-hidden="true">/</span>
-            <input id="searchInput" type="search" placeholder="Search topic, cloud service, or keyword">
+            <input id="searchInput" type="search" placeholder="Search topic, cloud service, or keyword" data-i18n-placeholder="search.placeholder">
           </label>
-          <select id="statusFilter" aria-label="Filter by availability">
-            <option value="all">All topics</option>
-            <option value="Available">Available only</option>
-            <option value="Taken">Reserved only</option>
-            <option value="Pending">Pending PRs</option>
+          <select id="statusFilter" aria-label="Filter by availability" data-i18n-aria="aria.filterAvailability">
+            <option value="all" data-i18n="filter.all">All topics</option>
+            <option value="Available" data-i18n="filter.available">Available only</option>
+            <option value="Taken" data-i18n="filter.taken">Reserved only</option>
+            <option value="Pending" data-i18n="filter.pending">Pending PRs</option>
           </select>
         </div>
-        <div class="chips" id="categoryChips" aria-label="Filter by category"></div>
+        <div class="chips" id="categoryChips" aria-label="Filter by category" data-i18n-aria="aria.filterCategory"></div>
       </div>
 
-      <div class="visual" aria-label="Catalogue summary">
+      <div class="visual" aria-label="Catalogue summary" data-i18n-aria="aria.catalogueSummary">
         <div class="metric">
           <strong id="availableCount">0</strong>
-          <span>available</span>
+          <span data-i18n="metric.available">available</span>
         </div>
         <div class="metric">
           <strong id="reservedCount">0</strong>
-          <span>reserved / pending</span>
+          <span data-i18n="metric.reserved">reserved / pending</span>
         </div>
         <div class="metric">
           <strong id="visibleCount">0</strong>
-          <span>matching filter</span>
+          <span data-i18n="metric.matching">matching filter</span>
         </div>
         <div class="metric">
           <strong>2026</strong>
@@ -895,31 +928,31 @@
     <section class="reserved-panel" aria-labelledby="reservedHeading">
       <div class="reserved-head">
         <div>
-          <p class="eyebrow">Reservation status</p>
-          <h2 id="reservedHeading">Official and pending reservations</h2>
+          <p class="eyebrow" data-i18n="reserved.eyebrow">Reservation status</p>
+          <h2 id="reservedHeading" data-i18n="reserved.title">Official and pending reservations</h2>
         </div>
-        <button class="secondary-action" type="button" id="showReserved">Show reservations</button>
+        <button class="secondary-action" type="button" id="showReserved" data-i18n="reserved.show">Show reservations</button>
       </div>
       <div class="reserved-list empty-reservations" id="reservedList" aria-live="polite">
         No reservations yet. A copied claim line becomes official only after the PR passes automatic validation and is merged.
       </div>
-      <div class="my-reservation" aria-label="Find your own reservation">
+      <div class="my-reservation" aria-label="Find your own reservation" data-i18n-aria="aria.findReservation">
         <div>
-          <strong>Check your reservation</strong>
-          <span>Use the same full name or email from your merged PR.</span>
+          <strong data-i18n="mine.title">Check your reservation</strong>
+          <span data-i18n="mine.copy">Use the same full name or email from your merged PR.</span>
         </div>
-        <input id="checkName" autocomplete="name" placeholder="Full name" aria-label="Reservation full name">
-        <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com" aria-label="Reservation email">
-        <button class="secondary-action" type="button" id="checkReservation">Find mine</button>
+        <input id="checkName" autocomplete="name" placeholder="Full name" aria-label="Reservation full name" data-i18n-placeholder="form.fullName" data-i18n-aria="aria.reservationName">
+        <input id="checkEmail" type="email" autocomplete="email" placeholder="student@example.com" aria-label="Reservation email" data-i18n-aria="aria.reservationEmail">
+        <button class="secondary-action" type="button" id="checkReservation" data-i18n="mine.find">Find mine</button>
       </div>
       <div class="reservation-rules">
-        <p>EN: Edit only `CLOUD_TOPICS_2026.md` and only one topic line. Keep Cloud focus and Score. Do not edit this page, rename files, duplicate the title, or put two students on one topic.</p>
-        <p>SQ: Ndryshoni vetëm `CLOUD_TOPICS_2026.md` dhe vetëm një rresht teme. Ruani Cloud focus dhe Score. Mos editoni këtë faqe, mos riemërtoni fajlla, mos përsëritni titullin dhe mos vendosni dy studentë në një temë.</p>
+        <p data-i18n="rules.main">Edit only `CLOUD_TOPICS_2026.md` and only one topic line. Keep Cloud focus and Score. Do not edit this page, rename files, duplicate the title, or put two students on one topic.</p>
+        <p data-i18n="rules.auto">A copied claim line is not official until the Pull Request passes validation and is merged automatically.</p>
       </div>
     </section>
 
     <section class="catalogue" id="catalogue" aria-live="polite"></section>
-    <div class="empty" id="emptyState">No topics match the current filters.</div>
+    <div class="empty" id="emptyState" data-i18n="empty">No topics match the current filters.</div>
   </main>
 
   <dialog id="reserveDialog">
@@ -929,20 +962,20 @@
           <h2 id="modalTitle">Reserve topic</h2>
           <p id="modalFocus"></p>
         </div>
-        <button class="close" value="cancel" aria-label="Close reservation dialog">x</button>
+        <button class="close" value="cancel" aria-label="Close reservation dialog" data-i18n-aria="aria.closeDialog">x</button>
       </div>
 
       <div class="modal-grid">
         <div class="form-line">
-          <label for="studentName">Full name</label>
-          <input id="studentName" autocomplete="name" placeholder="Firstname Lastname">
+          <label for="studentName" data-i18n="form.fullName">Full name</label>
+          <input id="studentName" autocomplete="name" placeholder="Firstname Lastname" data-i18n-placeholder="form.fullNamePlaceholder">
         </div>
         <div class="form-line">
-          <label for="studentEmail">Student email</label>
+          <label for="studentEmail" data-i18n="form.email">Student email</label>
           <input id="studentEmail" type="email" autocomplete="email" placeholder="student@example.com">
         </div>
         <div class="form-line">
-          <label for="stackChoice">Chosen stack</label>
+          <label for="stackChoice" data-i18n="form.stack">Chosen stack</label>
           <select id="stackChoice">
             <option>Next.js + serverless functions</option>
             <option>React + Node.js API</option>
@@ -954,8 +987,8 @@
           </select>
         </div>
         <div class="form-line full">
-          <label for="cloudServices">Cloud/mobile-cloud services</label>
-          <textarea id="cloudServices" placeholder="Auth, database, object storage, functions, push notifications, monitoring..."></textarea>
+          <label for="cloudServices" data-i18n="form.services">Cloud/mobile-cloud services</label>
+          <textarea id="cloudServices" placeholder="Auth, database, object storage, functions, push notifications, monitoring..." data-i18n-placeholder="form.servicesPlaceholder"></textarea>
         </div>
       </div>
 
@@ -967,8 +1000,8 @@
 
       <div class="claim-actions">
         <button class="primary-action" type="button" id="copyClaim">Copy claim line</button>
-        <button class="secondary-action" type="button" id="copyPr">Copy PR details</button>
-        <button class="secondary-action" type="button" id="openCatalogue">Edit on GitHub</button>
+        <button class="secondary-action" type="button" id="copyPr" data-i18n="actions.copyPr">Copy PR details</button>
+        <button class="secondary-action" type="button" id="openCatalogue" data-i18n="actions.editGithub">Edit on GitHub</button>
       </div>
     </form>
   </dialog>
@@ -1139,6 +1172,194 @@
       'Mobile Cloud Computing (MCC)': { color: '#0f766e', soft: '#ccfbf1' },
     };
 
+    const translations = {
+      en: {
+        pageTitle: 'Cloud & MCC 2026 Topic Reservations',
+        pageDescription: 'Browse and reserve Cloud Computing and Mobile Cloud Computing 2026 assignments.',
+        'hero.title': 'Cloud & MCC 2026 Reservations',
+        'hero.subtitle': 'Copy the claim line and open a PR. Valid reservations are checked and merged automatically.',
+        'nav.instructionsEn': 'Instructions EN',
+        'nav.instructionsSq': 'Udhëzime Shqip',
+        'nav.submissions': 'Submissions & scores',
+        'nav.portal': 'Portal',
+        'nav.source': 'Source file',
+        'aria.topicFinder': 'Topic finder',
+        'aria.searchTopics': 'Search topics',
+        'aria.filterAvailability': 'Filter by availability',
+        'aria.filterCategory': 'Filter by category',
+        'aria.catalogueSummary': 'Catalogue summary',
+        'aria.findReservation': 'Find your own reservation',
+        'aria.reservationName': 'Reservation full name',
+        'aria.reservationEmail': 'Reservation email',
+        'aria.closeDialog': 'Close reservation dialog',
+        'search.placeholder': 'Search topic, cloud service, or keyword',
+        'filter.all': 'All topics',
+        'filter.available': 'Available only',
+        'filter.taken': 'Reserved only',
+        'filter.pending': 'Pending PRs',
+        'metric.available': 'available',
+        'metric.reserved': 'reserved / pending',
+        'metric.matching': 'matching filter',
+        'reserved.eyebrow': 'Reservation status',
+        'reserved.title': 'Official and pending reservations',
+        'reserved.show': 'Show reservations',
+        'reserved.none': 'No official or pending reservations yet. A valid PR is checked and merged automatically after the student opens it.',
+        'reserved.initial': 'No reservations yet. A copied claim line becomes official only after the PR passes automatic validation and is merged.',
+        'reserved.by': 'Reserved by',
+        'reserved.score': 'Score',
+        'pending.by': 'Pending PR',
+        'pending.waiting': 'Awaiting automatic validation',
+        'pending.open': 'Open PR',
+        'mine.title': 'Check your reservation',
+        'mine.copy': 'Use the same full name or email from your merged PR.',
+        'mine.find': 'Find mine',
+        'rules.main': 'Edit only `CLOUD_TOPICS_2026.md` and only one topic line. Keep Cloud focus and Score. Do not edit this page, rename files, duplicate the title, or put two students on one topic.',
+        'rules.auto': 'A copied claim line is not official until the Pull Request passes validation and is merged automatically.',
+        empty: 'No topics match the current filters.',
+        'form.fullName': 'Full name',
+        'form.fullNamePlaceholder': 'Firstname Lastname',
+        'form.email': 'Student email',
+        'form.stack': 'Chosen stack',
+        'form.services': 'Cloud/mobile-cloud services',
+        'form.servicesPlaceholder': 'Auth, database, object storage, functions, push notifications, monitoring...',
+        'claim.reserveInstruction': 'Copy this line, then replace the same topic line on GitHub:',
+        'claim.correctionInstruction': 'For your own correction PR, replace the same topic line on GitHub with:',
+        'claim.reserveNote': 'GitHub will guide you to propose the change as a Pull Request. Valid reservation PRs are checked and merged automatically.',
+        'claim.correctionNote': 'This topic is already reserved. Only the same student should correct it, and the validator requires the same name or the same email to remain.',
+        'actions.copyClaim': 'Copy claim line',
+        'actions.copyCorrection': 'Copy correction line',
+        'actions.copyPr': 'Copy PR details',
+        'actions.editGithub': 'Edit on GitHub',
+        reserve: 'Reserve',
+        check: 'Check',
+        available: 'Available',
+        takenBy: 'Taken by',
+        score: 'Score',
+        notGraded: 'Not graded',
+        categoryAll: 'All',
+        pendingTopic: 'Topic {id} is pending in PR #{pr}. Opening the PR.',
+        validEmail: 'Enter a valid email before reserving.',
+        validEmailPr: 'Enter a valid email before copying PR details.',
+        validName: 'Enter your full name before reserving.',
+        validNamePr: 'Enter your full name before copying PR details.',
+        oneAssignment: 'One assignment only. You already have topic {id}.',
+        correctionIdentity: 'For corrections, keep the same name or email from the merged reservation.',
+        copiedClaim: 'Claim line copied. Open a PR; valid reservations merge automatically.',
+        copiedCorrection: 'Correction line copied. Open a PR; valid corrections are checked automatically.',
+        enterSearch: 'Enter your reservation name or email first.',
+        invalidSearchEmail: 'Enter a valid email, or leave email empty and search by full name.',
+        notFound: 'No official or pending reservation found for that name or email.',
+        foundTopic: 'Found topic {id}. Opening reservation details.',
+        prCopied: 'PR details copied.',
+        clipboardBlockedClaim: 'Clipboard blocked. The claim line is selected; copy it manually.',
+        clipboardBlocked: 'Clipboard blocked. Select the text manually.',
+      },
+      sq: {
+        pageTitle: 'Rezervimet Cloud & MCC 2026',
+        pageDescription: 'Shfletoni dhe rezervoni detyrat e Cloud Computing dhe Mobile Cloud Computing 2026.',
+        'hero.title': 'Rezervimet Cloud & MCC 2026',
+        'hero.subtitle': 'Kopjoni rreshtin e rezervimit dhe hapni PR. Rezervimet e vlefshme kontrollohen dhe bashkohen automatikisht.',
+        'nav.instructionsEn': 'Udhëzime EN',
+        'nav.instructionsSq': 'Udhëzime Shqip',
+        'nav.submissions': 'Dorëzimet dhe pikët',
+        'nav.portal': 'Portali',
+        'nav.source': 'Fajlli burimor',
+        'aria.topicFinder': 'Kërkimi i temave',
+        'aria.searchTopics': 'Kërko tema',
+        'aria.filterAvailability': 'Filtro sipas disponueshmërisë',
+        'aria.filterCategory': 'Filtro sipas kategorisë',
+        'aria.catalogueSummary': 'Përmbledhje e katalogut',
+        'aria.findReservation': 'Gjej rezervimin tënd',
+        'aria.reservationName': 'Emri i plotë i rezervimit',
+        'aria.reservationEmail': 'Email-i i rezervimit',
+        'aria.closeDialog': 'Mbyll dritaren e rezervimit',
+        'search.placeholder': 'Kërko temë, shërbim cloud ose fjalë kyçe',
+        'filter.all': 'Të gjitha temat',
+        'filter.available': 'Vetëm të lira',
+        'filter.taken': 'Vetëm të rezervuara',
+        'filter.pending': 'PR në pritje',
+        'metric.available': 'të lira',
+        'metric.reserved': 'të rezervuara / në pritje',
+        'metric.matching': 'sipas filtrit',
+        'reserved.eyebrow': 'Statusi i rezervimeve',
+        'reserved.title': 'Rezervime zyrtare dhe në pritje',
+        'reserved.show': 'Shfaq rezervimet',
+        'reserved.none': 'Ende nuk ka rezervime zyrtare ose në pritje. PR-ja e vlefshme kontrollohet dhe bashkohet automatikisht pasi studenti e hap.',
+        'reserved.initial': 'Ende nuk ka rezervime. Rreshti i kopjuar bëhet zyrtar vetëm pasi PR-ja kalon validimin automatik dhe bashkohet.',
+        'reserved.by': 'Rezervuar nga',
+        'reserved.score': 'Pikët',
+        'pending.by': 'PR në pritje',
+        'pending.waiting': 'Në pritje të validimit automatik',
+        'pending.open': 'Hap PR',
+        'mine.title': 'Kontrollo rezervimin tënd',
+        'mine.copy': 'Përdor të njëjtin emër të plotë ose email nga PR-ja e bashkuar.',
+        'mine.find': 'Gjej timen',
+        'rules.main': 'Ndryshoni vetëm `CLOUD_TOPICS_2026.md` dhe vetëm një rresht teme. Ruani Cloud focus dhe Score. Mos editoni këtë faqe, mos riemërtoni fajlla, mos përsëritni titullin dhe mos vendosni dy studentë në një temë.',
+        'rules.auto': 'Rreshti i kopjuar nuk është rezervim zyrtar derisa Pull Request të kalojë validimin dhe të bashkohet automatikisht.',
+        empty: 'Asnjë temë nuk përputhet me filtrat aktualë.',
+        'form.fullName': 'Emri i plotë',
+        'form.fullNamePlaceholder': 'Emri Mbiemri',
+        'form.email': 'Email-i i studentit',
+        'form.stack': 'Stack-u i zgjedhur',
+        'form.services': 'Shërbime cloud/mobile-cloud',
+        'form.servicesPlaceholder': 'Auth, databazë, object storage, funksione, push notifications, monitorim...',
+        'claim.reserveInstruction': 'Kopjoni këtë rresht dhe zëvendësoni të njëjtin rresht teme në GitHub:',
+        'claim.correctionInstruction': 'Për korrigjimin tënd, zëvendëso të njëjtin rresht teme në GitHub me:',
+        'claim.reserveNote': 'GitHub do t’ju udhëzojë ta propozoni ndryshimin si Pull Request. PR-të e vlefshme kontrollohen dhe bashkohen automatikisht.',
+        'claim.correctionNote': 'Kjo temë është tashmë e rezervuar. Vetëm i njëjti student duhet ta korrigjojë, dhe validatori kërkon të mbetet i njëjti emër ose i njëjti email.',
+        'actions.copyClaim': 'Kopjo rreshtin',
+        'actions.copyCorrection': 'Kopjo korrigjimin',
+        'actions.copyPr': 'Kopjo detajet e PR',
+        'actions.editGithub': 'Edito në GitHub',
+        reserve: 'Rezervo',
+        check: 'Kontrollo',
+        available: 'E lirë',
+        takenBy: 'Rezervuar nga',
+        score: 'Pikët',
+        notGraded: 'Pa vlerësim',
+        categoryAll: 'Të gjitha',
+        pendingTopic: 'Tema {id} është në pritje në PR #{pr}. Po hapet PR-ja.',
+        validEmail: 'Shkruaj një email të vlefshëm para rezervimit.',
+        validEmailPr: 'Shkruaj një email të vlefshëm para kopjimit të detajeve të PR.',
+        validName: 'Shkruaj emrin e plotë para rezervimit.',
+        validNamePr: 'Shkruaj emrin e plotë para kopjimit të detajeve të PR.',
+        oneAssignment: 'Vetëm një detyrë lejohet. Ti tashmë e ke temën {id}.',
+        correctionIdentity: 'Për korrigjime, mbaje të njëjtin emër ose email nga rezervimi i bashkuar.',
+        copiedClaim: 'Rreshti u kopjua. Hap PR; rezervimet e vlefshme bashkohen automatikisht.',
+        copiedCorrection: 'Rreshti i korrigjimit u kopjua. Hap PR; korrigjimet e vlefshme kontrollohen automatikisht.',
+        enterSearch: 'Shkruaj emrin ose email-in e rezervimit së pari.',
+        invalidSearchEmail: 'Shkruaj email të vlefshëm, ose lëre email-in bosh dhe kërko me emër të plotë.',
+        notFound: 'Nuk u gjet rezervim zyrtar ose në pritje për atë emër/email.',
+        foundTopic: 'U gjet tema {id}. Po hapen detajet e rezervimit.',
+        prCopied: 'Detajet e PR u kopjuan.',
+        clipboardBlockedClaim: 'Clipboard-i është bllokuar. Rreshti është selektuar; kopjoje manualisht.',
+        clipboardBlocked: 'Clipboard-i është bllokuar. Selekto tekstin manualisht.',
+      },
+    };
+
+    const categoryLabels = {
+      en: {
+        All: 'All',
+        'Cloud Foundations & Web Platforms': 'Cloud Foundations + Web Platforms',
+        'Serverless APIs & Automation': 'Serverless APIs + Automation',
+        'Data, Storage & Analytics': 'Data, Storage + Analytics',
+        'DevOps, Containers & Observability': 'DevOps, Containers + Observability',
+        'Security, Identity & Governance': 'Security, Identity + Governance',
+        'Mobile Cloud Computing (MCC)': 'Mobile Cloud Computing (MCC)',
+      },
+      sq: {
+        All: 'Të gjitha',
+        'Cloud Foundations & Web Platforms': 'Bazat e Cloud + Web Platforma',
+        'Serverless APIs & Automation': 'API serverless + automatizim',
+        'Data, Storage & Analytics': 'Të dhëna, ruajtje + analitikë',
+        'DevOps, Containers & Observability': 'DevOps, kontejnerë + observability',
+        'Security, Identity & Governance': 'Siguri, identitet + qeverisje',
+        'Mobile Cloud Computing (MCC)': 'Mobile Cloud Computing (MCC)',
+      },
+    };
+
+    let activeLanguage = localStorage.getItem('portal-language') || 'en';
+
     const githubEditUrl = 'https://github.com/arbenl/arbenl-mobile-assignments-2025/edit/main/CLOUD_TOPICS_2026.md';
     const githubApiBase = 'https://api.github.com/repos/arbenl/arbenl-mobile-assignments-2025';
 
@@ -1162,6 +1383,57 @@
     const claimNote = document.getElementById('claimNote');
     const copyClaim = document.getElementById('copyClaim');
     const toast = document.getElementById('toast');
+
+    function t(key) {
+      return translations[activeLanguage][key] || translations.en[key] || key;
+    }
+
+    function formatText(key, values = {}) {
+      return t(key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? '');
+    }
+
+    function categoryLabel(category) {
+      return (categoryLabels[activeLanguage] && categoryLabels[activeLanguage][category])
+        || categoryLabels.en[category]
+        || category;
+    }
+
+    function statusLabel(topic) {
+      if (topic.status === 'Available') return t('available');
+      if (topic.status === 'Pending') return `PR #${topic.pendingClaims[0].prNumber}`;
+      return `${t('takenBy')} ${topic.reservedBy}`;
+    }
+
+    function scoreLabel(label) {
+      return label === 'Not graded' ? t('notGraded') : label;
+    }
+
+    function applyLanguage(language) {
+      activeLanguage = language;
+      localStorage.setItem('portal-language', language);
+      document.documentElement.lang = language === 'sq' ? 'sq' : 'en';
+      document.title = t('pageTitle');
+      document.querySelector('meta[name="description"]').setAttribute('content', t('pageDescription'));
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        node.textContent = t(node.dataset.i18n);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
+        node.setAttribute('placeholder', t(node.dataset.i18nPlaceholder));
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach((node) => {
+        node.setAttribute('aria-label', t(node.dataset.i18nAria));
+      });
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.lang === language);
+      });
+      renderChips();
+      applyFilters();
+      updateClaimLine();
+    }
+
+    document.querySelectorAll('[data-lang]').forEach((button) => {
+      button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    });
 
     async function loadMarkdown() {
       try {
@@ -1210,6 +1482,10 @@
     }
 
     async function loadStaticPendingClaims() {
+      if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') {
+        return null;
+      }
+
       try {
         const response = await fetch(`pending-reservations-2026.json?ts=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) return null;
@@ -1349,7 +1625,7 @@
         button.className = `chip${state.activeCategory === category ? ' active' : ''}`;
         button.style.setProperty('--set', theme.color);
         button.style.setProperty('--set-soft', theme.soft);
-        button.textContent = category === 'All' ? 'All' : category.replace(' & ', ' + ');
+        button.textContent = categoryLabel(category);
         button.addEventListener('click', () => {
           state.activeCategory = category;
           renderChips();
@@ -1406,7 +1682,7 @@
 
       if (!entries.length) {
         reservedList.className = 'reserved-list empty-reservations';
-        reservedList.textContent = 'No official or pending reservations yet. A valid PR is checked and merged automatically after the student opens it.';
+        reservedList.textContent = t('reserved.none');
         return;
       }
 
@@ -1423,9 +1699,9 @@
           return `
             <article class="reserved-item" style="--set: ${theme.color}">
               <strong>${claim.id}. ${escapeHtml(claim.title)}</strong>
-              <span>Pending PR #${claim.prNumber} by ${student}</span>
-              <small>${escapeHtml(topic.category)} · Awaiting automatic validation</small>
-              <button class="reserved-check pending-pr" type="button" data-pr-url="${escapeHtml(claim.prUrl)}">Open PR #${claim.prNumber}</button>
+              <span>${t('pending.by')} #${claim.prNumber} · ${student}</span>
+              <small>${escapeHtml(categoryLabel(topic.category))} · ${t('pending.waiting')}</small>
+              <button class="reserved-check pending-pr" type="button" data-pr-url="${escapeHtml(claim.prUrl)}">${t('pending.open')} #${claim.prNumber}</button>
             </article>
           `;
         }
@@ -1439,9 +1715,9 @@
         return `
           <article class="reserved-item" style="--set: ${theme.color}">
             <strong>${topic.id}. ${escapeHtml(topic.title)}</strong>
-            <span>Reserved by ${student}</span>
-            <small>${escapeHtml(topic.category)} · Score: ${escapeHtml(topic.scoreLabel)}</small>
-            <button class="reserved-check" type="button" data-topic-id="${topic.id}">Check reservation</button>
+            <span>${t('reserved.by')} ${student}</span>
+            <small>${escapeHtml(categoryLabel(topic.category))} · ${t('reserved.score')}: ${escapeHtml(scoreLabel(topic.scoreLabel))}</small>
+            <button class="reserved-check" type="button" data-topic-id="${topic.id}">${t('mine.title')}</button>
           </article>
         `;
       }).join('');
@@ -1474,21 +1750,21 @@
         card.innerHTML = `
           <div class="topic-head">
             <span class="topic-id">${topic.id}</span>
-            <span class="status ${topic.status.toLowerCase()}">${topic.rawStatus}</span>
+            <span class="status ${topic.status.toLowerCase()}">${escapeHtml(statusLabel(topic))}</span>
           </div>
           <h2 class="topic-title">${escapeHtml(topic.title)}</h2>
           <p class="topic-focus">${escapeHtml(topic.focus)}</p>
           <div class="topic-meta">
-            <span class="category-pill">${escapeHtml(topic.category)}</span>
-            <span class="score-display ${topic.scoreValue === null ? '' : 'graded'}">Score: ${escapeHtml(topic.scoreLabel)}</span>
+            <span class="category-pill">${escapeHtml(categoryLabel(topic.category))}</span>
+            <span class="score-display ${topic.scoreValue === null ? '' : 'graded'}">${t('score')}: ${escapeHtml(scoreLabel(topic.scoreLabel))}</span>
           </div>
           <div class="topic-foot">
             <button class="reserve ${topic.status === 'Available' ? '' : 'check'}" type="button">
               ${topic.status === 'Available'
-                ? 'Reserve'
+                ? t('reserve')
                 : topic.status === 'Pending'
-                  ? `Pending PR #${topic.pendingClaims[0].prNumber}`
-                  : `Check: ${escapeHtml(topic.reservedBy)}`}
+                  ? `PR #${topic.pendingClaims[0].prNumber}`
+                  : `${t('check')}: ${escapeHtml(topic.reservedBy)}`}
             </button>
           </div>
         `;
@@ -1522,12 +1798,12 @@
       studentEmail.value = isReserved ? topic.reservedEmail : '';
       cloudServices.value = '';
       claimInstruction.textContent = isReserved
-        ? 'For your own correction PR, replace the same topic line on GitHub with:'
-        : 'Copy this line, then replace the same topic line on GitHub:';
+        ? t('claim.correctionInstruction')
+        : t('claim.reserveInstruction');
       claimNote.textContent = isReserved
-        ? 'This topic is already reserved. Only the same student should correct it, and the validator requires the same name or the same email to remain.'
-        : 'GitHub will guide you to propose the change as a Pull Request. Valid reservation PRs are checked and merged automatically.';
-      copyClaim.textContent = isReserved ? 'Copy correction line' : 'Copy claim line';
+        ? t('claim.correctionNote')
+        : t('claim.reserveNote');
+      copyClaim.textContent = isReserved ? t('actions.copyCorrection') : t('actions.copyClaim');
       updateClaimLine();
       dialog.showModal();
       setTimeout(() => studentName.focus(), 50);
@@ -1537,7 +1813,7 @@
       const claim = topic.pendingClaims && topic.pendingClaims[0];
       if (!claim) return;
 
-      showToast(`Topic ${topic.id} is pending in PR #${claim.prNumber}. Opening the PR.`);
+      showToast(formatText('pendingTopic', { id: topic.id, pr: claim.prNumber }));
       window.open(claim.prUrl, '_blank', 'noopener');
     }
 
@@ -1553,26 +1829,26 @@
 
       const name = studentName.value.trim();
       if (name.length < 3) {
-        showToast('Enter your full name before reserving.');
+        showToast(t('validName'));
         studentName.focus();
         return;
       }
 
       const email = studentEmail.value.trim();
       if (!isValidEmail(email)) {
-        showToast('Enter a valid email before reserving.');
+        showToast(t('validEmail'));
         studentEmail.focus();
         return;
       }
 
       const existingTopic = findExistingStudentReservation(name, email, state.selectedTopic.id);
       if (existingTopic) {
-        showToast(`One assignment only. You already have topic ${existingTopic.id}.`);
+        showToast(formatText('oneAssignment', { id: existingTopic.id }));
         return;
       }
 
       if (state.selectedTopic.status === 'Taken' && !matchesStudent(state.selectedTopic, name, email)) {
-        showToast('For corrections, keep the same name or email from the merged reservation.');
+        showToast(t('correctionIdentity'));
         studentName.focus();
         return;
       }
@@ -1581,8 +1857,8 @@
       const copied = await copyText(
         claimLine.textContent,
         state.selectedTopic.status === 'Taken'
-          ? 'Correction line copied. Open a PR; valid corrections are checked automatically.'
-          : 'Claim line copied. Open a PR; valid reservations merge automatically.',
+          ? t('copiedCorrection')
+          : t('copiedClaim'),
         claimLine,
       );
       if (copied) dialog.close();
@@ -1623,20 +1899,20 @@
       const email = checkEmail.value.trim();
 
       if (!name && !email) {
-        showToast('Enter your reservation name or email first.');
+        showToast(t('enterSearch'));
         checkName.focus();
         return;
       }
 
       if (email && !isValidEmail(email)) {
-        showToast('Enter a valid email, or leave email empty and search by full name.');
+        showToast(t('invalidSearchEmail'));
         checkEmail.focus();
         return;
       }
 
       const match = state.topics.find((topic) => matchesStudent(topic, name, email));
       if (!match) {
-        showToast('No official or pending reservation found for that name or email.');
+        showToast(t('notFound'));
         return;
       }
 
@@ -1652,7 +1928,7 @@
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
-      showToast(`Found topic ${match.id}. Opening reservation details.`);
+      showToast(formatText('foundTopic', { id: match.id }));
       setTimeout(() => {
         if (match.status === 'Pending') {
           openPendingTopic(match);
@@ -1703,9 +1979,9 @@
 
       if (fallbackElement) {
         selectElementText(fallbackElement);
-        showToast('Clipboard blocked. The claim line is selected; copy it manually.');
+        showToast(t('clipboardBlockedClaim'));
       } else {
-        showToast('Clipboard blocked. Select the text manually.');
+        showToast(t('clipboardBlocked'));
       }
       return false;
     }
@@ -1778,16 +2054,16 @@
 
     document.getElementById('copyPr').addEventListener('click', () => {
       if (studentName.value.trim().length < 3) {
-        showToast('Enter your full name before copying PR details.');
+        showToast(t('validNamePr'));
         studentName.focus();
         return;
       }
       if (!isValidEmail(studentEmail.value.trim())) {
-        showToast('Enter a valid email before copying PR details.');
+        showToast(t('validEmailPr'));
         studentEmail.focus();
         return;
       }
-      copyText(prDetails(), 'PR details copied.');
+      copyText(prDetails(), t('prCopied'));
     });
 
     document.getElementById('openCatalogue').addEventListener('click', () => {
@@ -1806,8 +2082,7 @@
       state.pendingClaims = pendingClaims;
       state.topics = applyPendingClaims(parseTopics(markdown), pendingClaims);
       state.filtered = [...state.topics];
-      renderChips();
-      applyFilters();
+      applyLanguage(activeLanguage);
     });
   </script>
 </body>
