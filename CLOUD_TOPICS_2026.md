@@ -183,7 +183,7 @@
 56. Edge AI Image Labeling Prototype — (Available)
   - MCC focus: Run lightweight on-device or browser inference, upload labels to the cloud, and compare local versus cloud processing.
   - Score: Not graded (0-30)
-57. Mobile Chat with Cloud Realtime Backend — (Available)
+57. Mobile Chat with Cloud Realtime Backend — (Taken by Valdet <valdet2.demiri@universitetiaab.com>)
   - MCC focus: Use managed auth, real-time message channels, media storage, and read receipts or typing indicators.
   - Score: Not graded (0-30)
 58. Field Data Collection App for Surveys — (Available)

@@ -11,10 +11,21 @@ on:
       - udhezime-mcc-2026.html
       - assets/**
       - poc-solutions/topic-01-cloud-task-collaboration/**
+      - scripts/export-pending-reservations.js
+  pull_request_target:
+    types: [opened, synchronize, reopened, closed]
+    branches: [ main ]
+    paths:
+      - CLOUD_TOPICS_2026.md
   workflow_dispatch:
 
 permissions:
   contents: write
+  pull-requests: read
+
+concurrency:
+  group: publish-mcc-pages
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -33,8 +44,15 @@ jobs:
           path: pages
 
       - name: Copy MCC files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
+
+          cd main
+          node scripts/export-pending-reservations.js ../pages/pending-reservations-2026.json
+          cd ..
 
           cp main/CLOUD_TOPICS_2026.md pages/CLOUD_TOPICS_2026.md
           cp main/SUBMISSIONS_2026.md pages/SUBMISSIONS_2026.md
@@ -58,19 +76,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if git diff --quiet; then
-            echo "No MCC Pages changes to publish."
-            exit 0
-          fi
-
           git add \
             CLOUD_TOPICS_2026.md \
             SUBMISSIONS_2026.md \
             mcc-2026.html \
             instructions-mcc-2026.html \
             udhezime-mcc-2026.html \
+            pending-reservations-2026.json \
             assets \
             poc-solutions/topic-01-cloud-task-collaboration
 
+          if git diff --cached --quiet; then
+            echo "No MCC Pages changes to publish."
+            exit 0
+          fi
+
           git commit -m "Publish MCC reservation updates"
+          git pull --rebase origin gh-pages
           git push
