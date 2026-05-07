@@ -333,8 +333,8 @@
           <span>Students must not edit descriptions, scores, scripts, workflows, HTML pages, or another student's topic.</span>
         </div>
         <div class="rule">
-          <strong>The reservation is official only after merge.</strong>
-          <span>Copying the claim line is not enough. The instructor/maintainer must merge the PR before everyone can see the reservation.</span>
+          <strong>The reservation is official after automatic merge.</strong>
+          <span>Copying the claim line is not enough. Open a PR; GitHub Actions checks it and automatically merges the first valid reservation.</span>
         </div>
       </aside>
     </section>
@@ -349,12 +349,12 @@
 
     <section class="section" id="reserve">
       <h2>How to reserve a topic</h2>
-      <p class="lead">Reservations are first in, first served. The first valid PR merged by the instructor/maintainer owns the topic and updates the public site.</p>
+      <p class="lead">Reservations are first in, first served. The first valid PR that passes automatic validation owns the topic and updates the public site.</p>
       <div class="demo-video">
         <video controls preload="metadata" poster="assets/demo-frames/frame-01.png">
           <source src="assets/mcc-2026-reservation-demo.mp4" type="video/mp4">
         </video>
-        <p>Watch the localhost demo: choose an available topic, copy the claim line, open a PR, and wait for instructor/maintainer merge.</p>
+        <p>Watch the localhost demo: choose an available topic, copy the claim line, and open a PR. Valid reservations are checked and merged automatically.</p>
       </div>
       <ol class="steps">
         <li>Open `mcc-2026.html`, find a topic, and check that it is `Available`.</li>
@@ -376,7 +376,7 @@
           <p>Do not edit `mcc-2026.html`, do not rename files, do not remove `Cloud focus` or `Score`, do not duplicate the title, and do not put two students on one topic.</p>
         </div>
       </div>
-      <p class="lead">After your PR is merged, use `Check your reservation` on the MCC page with the same full name or email to reopen your topic details. Reservation PRs are processed one at a time, so first-in, first-served is decided atomically by GitHub Actions.</p>
+      <p class="lead">After GitHub Actions merges your valid PR automatically, use `Check your reservation` on the MCC page with the same full name or email to reopen your topic details. Reservation PRs are processed one at a time, so first-in, first-served is decided atomically by GitHub Actions.</p>
     </section>
 
     <section class="section" id="build">
