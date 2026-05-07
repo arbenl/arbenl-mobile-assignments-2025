@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T13:01:37.547Z",
+  "generatedAt": "2026-05-07T13:12:53.800Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -12,6 +12,17 @@
       "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/58",
       "author": "drinmusa",
       "createdAt": "2026-05-07T12:52:47Z"
+    },
+    {
+      "id": "06",
+      "title": "Event Registration Platform with QR Check-in",
+      "name": "Xhevrije Xhelili & Zuale Alili",
+      "email": "dzevrije.dzelili@universitetiaab.com",
+      "prNumber": 59,
+      "prTitle": "Claim Topic 06 - Xhevrije Xhelili & Zuale Alili",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/59",
+      "author": "xhevrije12",
+      "createdAt": "2026-05-07T13:12:34Z"
     }
   ],
   "conflicts": []
