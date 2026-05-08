@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-05-08T18:22:43.437Z",
+  "generatedAt": "2026-05-08T18:36:46.020Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "03",
-      "title": "Server-rendered Portfolio CMS on the Cloud",
-      "name": "Altina Berisha",
-      "email": "altina2.berisha@universitetiaab.com",
-      "prNumber": 89,
-      "prTitle": "Update availability status for Portfolio CMS project",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/89",
-      "author": "altina1911",
-      "createdAt": "2026-05-08T18:22:22Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
