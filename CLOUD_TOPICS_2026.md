@@ -29,7 +29,7 @@
 08. Subscription Newsletter Platform — (Available)
   - Cloud focus: Store subscribers, expose serverless signup APIs, integrate an email provider, and protect admin routes.
   - Score: Not graded (0-30)
-09. Team Kanban Board with Activity Stream — (Available)
+09. Team Kanban Board with Activity Stream — (Taken by Zuale Alili <zuale.alili@universitetiaab.com>)
   - Cloud focus: Persist board state in a managed database, sync updates in real time, and record audit/activity events.
   - Score: Not graded (0-30)
 10. Cloud-native Resume Builder — (Taken by Dion Gashi <dion.gashi@universitetiaab.com>)
@@ -52,7 +52,7 @@
 15. Webhook Receiver and Event Replay Tool — (Available)
   - Cloud focus: Receive external webhooks, validate signatures, persist raw events, and provide replay from an admin UI.
   - Score: Not graded (0-30)
-16. URL Shortener with Analytics — (Available)
+16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)
   - Cloud focus: Implement serverless redirects, track clicks, aggregate analytics, and protect custom alias creation.
   - Score: Not graded (0-30)
 17. Cloud Function Job Queue Dashboard — (Available)

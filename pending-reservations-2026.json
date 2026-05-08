@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-05-08T10:33:13.924Z",
+  "generatedAt": "2026-05-08T15:02:04.638Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "16",
-      "title": "URL Shortener with Analytics",
-      "name": "Aulona Kerqeli",
-      "email": "aulonakerqeli1@gmail.com",
-      "prNumber": 74,
-      "prTitle": "16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/74",
-      "author": "aulonakerqeli1-svg",
-      "createdAt": "2026-05-07T19:30:47Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
