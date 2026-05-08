@@ -29,7 +29,7 @@
 08. Subscription Newsletter Platform — (Available)
   - Cloud focus: Store subscribers, expose serverless signup APIs, integrate an email provider, and protect admin routes.
   - Score: Not graded (0-30)
-09. Team Kanban Board with Activity Stream — (Available)
+09. Team Kanban Board with Activity Stream — (Taken by Zuale Alili <zuale.alili@universitetiaab.com>)
   - Cloud focus: Persist board state in a managed database, sync updates in real time, and record audit/activity events.
   - Score: Not graded (0-30)
 10. Cloud-native Resume Builder — (Taken by Dion Gashi <dion.gashi@universitetiaab.com>)
