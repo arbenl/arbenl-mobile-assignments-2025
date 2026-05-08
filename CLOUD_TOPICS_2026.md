@@ -52,7 +52,8 @@
 15. Webhook Receiver and Event Replay Tool — (Available)
   - Cloud focus: Receive external webhooks, validate signatures, persist raw events, and provide replay from an admin UI.
   - Score: Not graded (0-30)
-16.  URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)
+16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)
+  - Cloud focus: Implement serverless redirects, track clicks, aggregate analytics, and protect custom alias creation.
   - Score: Not graded (0-30)
 17. Cloud Function Job Queue Dashboard — (Available)
   - Cloud focus: Model queued jobs, process them with background workers or scheduled functions, and show retry/error states.
