@@ -11,7 +11,7 @@
 02. Multi-tenant Course Resource Portal — (Available)
   - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
   - Score: Not graded (0-30)
-03. Server-rendered Portfolio CMS on the Cloud — (Available)
+03.Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
   - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
   - Score: Not graded (0-30)
 04. Cloud Expense Tracker with Budget Alerts — (Available)
