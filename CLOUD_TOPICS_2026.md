@@ -46,7 +46,7 @@
 13. Image Thumbnail Processing Pipeline — (Available)
   - Cloud focus: Upload images to object storage, trigger background resizing, and expose transformed image URLs.
   - Score: Not graded (0-30)
-14. PDF Invoice Generator API — (Available)
+14. PDF Invoice Generator API — (Taken by Anida Vitija <anida.vitija@universitetiaab.com>)
   - Cloud focus: Accept structured invoice data, generate PDFs in a serverless function, store outputs, and secure download links.
   - Score: Not graded (0-30)
 15. Webhook Receiver and Event Replay Tool — (Available)
