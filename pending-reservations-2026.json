@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-05-08T08:34:04.795Z",
+  "generatedAt": "2026-05-08T08:35:04.584Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "53",
+      "title": "Mobile Photo Backup to Cloud Storage",
+      "name": "Drin Musa",
+      "email": "drin9915@gmail.com",
+      "prNumber": 86,
+      "prTitle": "53. Mobile Photo Backup to Cloud Storage — (Taken by Drin Musa <drin9…",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/86",
+      "author": "drinmusa",
+      "createdAt": "2026-05-08T08:34:45Z"
+    }
+  ],
   "conflicts": []
 }
