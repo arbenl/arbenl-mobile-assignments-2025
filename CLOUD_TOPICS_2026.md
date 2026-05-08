@@ -14,7 +14,7 @@
 03. Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
   - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
   - Score: Not graded (0-30)
-04. Cloud Expense Tracker with Budget Alerts — (Available)
+04. Cloud Expense Tracker with Budget Alerts — (Taken by Erblina Kalludra <erblina.kalludra@universitetiaab.com>)
   - Cloud focus: Store transactions in a managed database, schedule monthly budget checks, and send email or push alerts.
   - Score: Not graded (0-30)
 05. Real-time Classroom Polling System — (Available)
