@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-05-09T00:00:59.999Z",
+  "generatedAt": "2026-05-09T13:39:18.324Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
-      "id": "08",
-      "title": "Subscription Newsletter Platform",
-      "name": "Drilon Pllana",
-      "email": "drilon.pllana@universitetiaab.com",
-      "prNumber": 92,
+      "id": "02",
+      "title": "Multi-tenant Course Resource Portal",
+      "name": "Jonila Dumani",
+      "email": "joniladumani2@gmail.com",
+      "prNumber": 93,
       "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/92",
-      "author": "Drilon111",
-      "createdAt": "2026-05-09T00:00:49Z"
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/93",
+      "author": "jonila12700",
+      "createdAt": "2026-05-09T13:39:06Z"
     }
   ],
   "conflicts": []

@@ -26,7 +26,7 @@
 07. Cloud-hosted Knowledge Base with Search — (Available)
   - Cloud focus: Index articles in managed search or Postgres full-text search, add file uploads, and deploy a searchable public UI.
   - Score: Not graded (0-30)
-08. Subscription Newsletter Platform — (Available)
+08. Subscription Newsletter Platform — (Taken by Drilon Pllana <drilon.pllana@universitetiaab.com>)
   - Cloud focus: Store subscribers, expose serverless signup APIs, integrate an email provider, and protect admin routes.
   - Score: Not graded (0-30)
 09. Team Kanban Board with Activity Stream — (Taken by Zuale Alili <zuale.alili@universitetiaab.com>)
