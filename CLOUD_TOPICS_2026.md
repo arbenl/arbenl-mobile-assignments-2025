@@ -8,7 +8,7 @@
 01. Cloud-hosted Task Collaboration Platform — (Taken by Ejona Shala <ejona.shala@universitetiaab.com>)
   - Cloud focus: Deploy a CRUD web app with managed database, authentication, object storage for attachments, and environment-based configuration.
   - Score: Not graded (0-30)
-02. Multi-tenant Course Resource Portal — (Available)
+02. Multi-tenant Course Resource Portal — (Taken by Jonila Dumani <joniladumani2@gmail.com>)
   - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
   - Score: Not graded (0-30)
 03. Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
