@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-05-09T13:39:18.324Z",
+  "generatedAt": "2026-05-09T19:53:42.921Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
-      "id": "02",
-      "title": "Multi-tenant Course Resource Portal",
-      "name": "Jonila Dumani",
-      "email": "joniladumani2@gmail.com",
-      "prNumber": 93,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/93",
-      "author": "jonila12700",
-      "createdAt": "2026-05-09T13:39:06Z"
+      "id": "19",
+      "title": "Serverless Form Builder",
+      "name": "Luela Krasniqi",
+      "email": "luela.krasniqi@universitetiaab.com",
+      "prNumber": 94,
+      "prTitle": "Update CLOUD_TOPICS_2026.md status to 'Taken'",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/94",
+      "author": "LuelaKrasniqi",
+      "createdAt": "2026-05-09T19:53:31Z"
     }
   ],
   "conflicts": []
