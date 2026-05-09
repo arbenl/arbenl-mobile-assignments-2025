@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-05-08T19:29:28.987Z",
+  "generatedAt": "2026-05-09T00:00:59.999Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "08",
+      "title": "Subscription Newsletter Platform",
+      "name": "Drilon Pllana",
+      "email": "drilon.pllana@universitetiaab.com",
+      "prNumber": 92,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/92",
+      "author": "Drilon111",
+      "createdAt": "2026-05-09T00:00:49Z"
+    }
+  ],
   "conflicts": []
 }
