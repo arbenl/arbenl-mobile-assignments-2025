@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-05-09T19:53:42.921Z",
+  "generatedAt": "2026-05-11T22:26:13.593Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "19",
-      "title": "Serverless Form Builder",
-      "name": "Luela Krasniqi",
-      "email": "luela.krasniqi@universitetiaab.com",
-      "prNumber": 94,
-      "prTitle": "Update CLOUD_TOPICS_2026.md status to 'Taken'",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/94",
-      "author": "LuelaKrasniqi",
-      "createdAt": "2026-05-09T19:53:31Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
