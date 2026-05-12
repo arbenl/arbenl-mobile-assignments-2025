@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-05-12T18:49:55.839Z",
+  "generatedAt": "2026-05-12T18:54:14.167Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "12",
+      "title": "Scheduled Weather Digest Service",
+      "name": "Edonita Ademaj",
+      "email": "edonita.ademaj@universitetiaab.com",
+      "prNumber": 101,
+      "prTitle": "Course catalogue: CLOUD_TOPICS_2026.md Full Name: Edonita Ademaj Emai…",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/101",
+      "author": "EdonitaAdemaj",
+      "createdAt": "2026-05-12T18:54:03Z"
+    }
+  ],
   "conflicts": []
 }
