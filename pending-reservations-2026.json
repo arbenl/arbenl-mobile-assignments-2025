@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-05-12T19:10:05.931Z",
+  "generatedAt": "2026-05-12T19:25:44.927Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "12",
-      "title": "Scheduled Weather Digest Service",
-      "name": "Edonita Ademaj",
-      "email": "edonita.ademaj@universitetiaab.com",
-      "prNumber": 103,
-      "prTitle": "Update assignment status for Scheduled Weather Digest Service",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/103",
-      "author": "EdonitaAdemaj",
-      "createdAt": "2026-05-12T19:09:54Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
