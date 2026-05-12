@@ -125,7 +125,7 @@
 38. Feature Flag Service for Cloud Releases — (Available)
   - Cloud focus: Store flag definitions, evaluate them in an app, add audit logging, and test rollout/rollback scenarios.
   - Score: Not graded (0-30)
-39. Cloud Cost Estimator Dashboard — (Available)
+39. Cloud Cost Estimator Dashboard — (Taken by sara ceka <saracekaa@gmail.com>))
   - Cloud focus: Model usage inputs, estimate monthly costs for compute/storage/database, and compare deployment options.
   - Score: Not graded (0-30)
 40. Resilient Cloud App with Retry Patterns — (Available)
