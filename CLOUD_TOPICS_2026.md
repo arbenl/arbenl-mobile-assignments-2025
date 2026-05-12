@@ -40,7 +40,7 @@
 11. Serverless Contact Form with Spam Scoring — (Taken by Alma Hoxha <hoxhaalma95@gmail.com>)
   - Cloud focus: Build an HTTP function, store submissions, add rate limiting or CAPTCHA verification, and notify admins.
   - Score: Not graded (0-30)
-12. Scheduled Weather Digest Service — (Available)
+12. Scheduled Weather Digest Service — (Taken by Edonita Ademaj <edonita.ademaj@gmail.com>)
   - Cloud focus: Run a cron-triggered function, call a public weather API, cache results, and deliver daily summaries.
   - Score: Not graded (0-30)
 13. Image Thumbnail Processing Pipeline — (Available)
