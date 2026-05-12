@@ -133,7 +133,7 @@
   - Score: Not graded (0-30)
 
 ## Security, Identity & Governance
-41. Authentication and Role Management Portal — (Available)
+41. Authentication and Role Management Portal — (Taken by Dea Prapashtica <dea.prapashtica@universitetiaab.com>)
   - Cloud focus: Use managed auth, implement roles/permissions, protect routes, and document least-privilege decisions.
   - Score: Not graded (0-30)
 42. Secrets Rotation Practice App — (Available)

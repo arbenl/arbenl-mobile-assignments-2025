@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-05-11T22:26:13.593Z",
+  "generatedAt": "2026-05-12T09:57:35.366Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "25",
+      "title": "Data Backup and Restore Portal",
+      "name": "Visar Maloku",
+      "email": "visar.maloku@universitetiaab.com",
+      "prNumber": 96,
+      "prTitle": "Reserve Topic 25 for Visar MalokuUpdate",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/96",
+      "author": "visarmaloku-lgtm",
+      "createdAt": "2026-05-12T09:57:20Z"
+    }
+  ],
   "conflicts": []
 }
