@@ -81,7 +81,7 @@
 24. Log Analytics Explorer — (Available)
   - Cloud focus: Collect app logs, structure them in cloud storage/database, filter by severity, and visualize error trends.
   - Score: Not graded (0-30)
-25. Data Backup and Restore Portal — (Available)
+25. Data Backup and Restore Portal — (Taken by Visar Maloku <visar.maloku@universitetiaab.com>)
   - Cloud focus: Export database snapshots to object storage, list backup versions, and implement a safe restore simulation.
   - Score: Not graded (0-30)
 26. Cloud File Sharing with Expiring Links — (Available)

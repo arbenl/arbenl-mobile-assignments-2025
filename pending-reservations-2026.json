@@ -1,18 +1,19 @@
 {
-  "generatedAt": "2026-05-12T09:57:35.366Z",
+  "generatedAt": "2026-05-12T18:35:54.794Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
+  "claims": [],
+  "conflicts": [
     {
-      "id": "25",
-      "title": "Data Backup and Restore Portal",
-      "name": "Visar Maloku",
-      "email": "visar.maloku@universitetiaab.com",
-      "prNumber": 96,
-      "prTitle": "Reserve Topic 25 for Visar MalokuUpdate",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/96",
-      "author": "visarmaloku-lgtm",
-      "createdAt": "2026-05-12T09:57:20Z"
+      "id": "11",
+      "title": "Serverless Contact Form with Spam Scoring",
+      "name": "Edonita Ademaj",
+      "email": "edonita.ademaj@universitetiaab.com",
+      "prNumber": 97,
+      "prTitle": "Course catalogue: CLOUD_TOPICS_2026.md Full Name: Edonita Ademaj Emai…",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/97",
+      "author": "EdonitaAdemaj",
+      "createdAt": "2026-05-12T18:35:32Z",
+      "reason": "Topic 11 is already officially reserved by Alma Hoxha."
     }
-  ],
-  "conflicts": []
+  ]
 }
