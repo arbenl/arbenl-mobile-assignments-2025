@@ -23,7 +23,7 @@
 06. Event Registration Platform with QR Check-in — (Taken by Xhevrije Xhelili <dzevrije.dzelili@universitetiaab.com>)
   - Cloud focus: Combine cloud database, serverless check-in endpoint, QR code generation, and admin dashboard metrics.
   - Score: Not graded (0-30)
-07. Cloud-hosted Knowledge Base with Search — (Available)
+07. Cloud-hosted Knowledge Base with Search — (Taken by Florentin Lajqi <florentin.lajqi@universitetiaab.com>)
   - Cloud focus: Index articles in managed search or Postgres full-text search, add file uploads, and deploy a searchable public UI.
   - Score: Not graded (0-30)
 08. Subscription Newsletter Platform — (Taken by Drilon Pllana <drilon.pllana@universitetiaab.com>)
