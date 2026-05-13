@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syllabusi Cloud & MCC 2026</title>
-  <meta name="description" content="Syllabusi Cloud Computing dhe Mobile Cloud Computing 2026 me modulin falas AWS SimuLearn per javen 8.">
+  <meta name="description" content="Syllabusi zyrtar 2025/2026 per Cloud Computing dhe Mobile Cloud Computing.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300897b'/%3E%3Cpath d='M18 40h28a10 10 0 0 0-1.7-19.9A14 14 0 0 0 18.8 24 8 8 0 0 0 18 40Z' fill='white'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,16 @@
     :root {
       --ink: #111827;
       --muted: #5b6472;
-      --line: #d9e0e8;
+      --line: #cfd7e3;
       --paper: #ffffff;
-      --wash: #f7f9fb;
+      --wash: #f6f8fb;
       --teal: #00897b;
       --red: #c40000;
-      --dark-red: #9f0000;
       --shadow: 0 14px 34px rgba(17, 24, 39, 0.08);
       --radius: 8px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -37,7 +34,7 @@
     }
 
     .shell {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1220px, calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 48px;
     }
@@ -52,7 +49,7 @@
 
     .topbar {
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .brand-mark {
@@ -65,6 +62,7 @@
       color: white;
       font-weight: 800;
       box-shadow: var(--shadow);
+      flex: 0 0 auto;
     }
 
     h1 {
@@ -79,9 +77,12 @@
       font-size: 0.94rem;
     }
 
-    .button,
-    .language-switch button {
+    .button {
+      display: inline-flex;
       min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--paper);
@@ -89,158 +90,117 @@
       font: inherit;
       font-weight: 800;
       text-decoration: none;
-      cursor: pointer;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 14px;
       white-space: nowrap;
     }
 
     .button.active,
-    .button[aria-current="page"],
-    .language-switch button.active {
+    .button[aria-current="page"] {
       border-color: var(--teal);
       background: var(--teal);
       color: white;
     }
 
-    .language-switch {
-      display: inline-flex;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+    .document-card {
       overflow: hidden;
-      background: var(--paper);
-    }
-
-    .language-switch button {
-      border: 0;
-      border-radius: 0;
-      padding: 0 12px;
-      color: var(--muted);
-      background: transparent;
-    }
-
-    .intro {
-      margin-bottom: 18px;
-      padding: 18px;
       border: 1px solid var(--line);
-      border-left: 5px solid var(--teal);
       border-radius: var(--radius);
       background: var(--paper);
       box-shadow: var(--shadow);
     }
 
-    .intro strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--teal);
-      text-transform: uppercase;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
+    .syllabus-content {
+      padding: 18px;
     }
 
-    .intro p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
+    .syllabus-content > p:first-child {
+      margin: 0 0 14px;
     }
 
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid #111;
-      border-radius: var(--radius);
-      background: var(--paper);
-      box-shadow: var(--shadow);
+    .syllabus-content img {
+      max-width: min(320px, 100%);
+      height: auto !important;
     }
 
-    table {
+    .syllabus-content table {
       width: 100%;
-      min-width: 980px;
+      margin: 0 0 18px;
       border-collapse: collapse;
       table-layout: fixed;
+      background: white;
     }
 
-    th,
-    td {
-      border: 1px solid #111;
-      padding: 8px 9px;
-      vertical-align: top;
-      text-align: left;
-      line-height: 1.32;
-      font-size: 0.88rem;
+    .syllabus-content .program-table,
+    .syllabus-content .assessment-table {
+      min-width: 1120px;
     }
 
-    th {
+    .syllabus-content .program-table {
+      table-layout: auto;
+    }
+
+    .syllabus-content .program-table tr:first-child th {
       background: var(--red);
       color: white;
       text-align: center;
-      font-weight: 800;
       text-transform: uppercase;
       font-size: 0.78rem;
     }
 
-    th:nth-child(1) { width: 72px; }
-    th:nth-child(2) { width: 190px; }
-    th:nth-child(3) { width: 185px; }
-    th:nth-child(4) { width: 330px; }
-    th:nth-child(5) { width: 245px; }
+    .syllabus-content .program-table tr:first-child th:first-child {
+      background: #111827;
+    }
 
-    td.week {
-      text-align: center;
+    .syllabus-content th,
+    .syllabus-content td {
+      border: 1px solid #111;
+      padding: 8px 9px;
+      vertical-align: top;
+      line-height: 1.35;
+      font-size: 0.88rem;
+    }
+
+    .syllabus-content th {
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .syllabus-content table:first-of-type tr:first-child td,
+    .syllabus-content table:nth-of-type(2) tr:first-child td,
+    .syllabus-content table:nth-of-type(4) tr:first-child td,
+    .syllabus-content table:nth-of-type(5) tr:first-child td {
+      background: #f3f6f8;
       font-weight: 800;
     }
 
-    td.materials a {
+    .syllabus-content p {
+      margin: 0 0 0.55rem;
+    }
+
+    .syllabus-content p:last-child,
+    .syllabus-content li:last-child p {
+      margin-bottom: 0;
+    }
+
+    .syllabus-content ul,
+    .syllabus-content ol {
+      margin: 0.35rem 0 0.35rem 1.2rem;
+      padding: 0;
+    }
+
+    .syllabus-content a {
       color: #0645ad;
       font-weight: 700;
       text-decoration: underline;
       text-underline-offset: 2px;
+      overflow-wrap: anywhere;
     }
 
-    .material-item {
-      display: block;
-      margin-bottom: 5px;
+    .table-scroll {
+      overflow-x: auto;
+      padding-bottom: 4px;
     }
 
-    .replacement {
-      display: inline-block;
-      margin-top: 4px;
-      padding: 3px 6px;
-      border-radius: 999px;
-      background: #e8f7f4;
-      color: #00695f;
-      font-size: 0.74rem;
-      font-weight: 800;
-    }
-
-    .note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-
-    [data-lang="en"] {
-      display: none;
-    }
-
-    body.lang-en [data-lang="sq"] {
-      display: none;
-    }
-
-    body.lang-en [data-lang="en"] {
-      display: revert;
-    }
-
-    body.lang-en .button[data-lang="en"] {
-      display: inline-flex;
-    }
-
-    @media (max-width: 760px) {
+    @media (max-width: 840px) {
       .topbar {
         align-items: stretch;
         flex-direction: column;
@@ -250,9 +210,12 @@
         flex-wrap: wrap;
       }
 
-      .button,
-      .language-switch button {
+      .button {
         flex: 1;
+      }
+
+      .syllabus-content {
+        padding: 12px;
       }
     }
   </style>
@@ -263,173 +226,422 @@
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">AL</div>
         <div>
-          <h1 data-lang="sq">Syllabusi Cloud & MCC 2026</h1>
-          <h1 data-lang="en">Cloud & MCC 2026 Syllabus</h1>
-          <p data-lang="sq">Tabela ruan strukturën e syllabusit; Java 8 është zëvendësuar me modul falas.</p>
-          <p data-lang="en">The table keeps the syllabus structure; Week 8 is replaced with a free module.</p>
+          <h1>Syllabusi Cloud & MCC 2026</h1>
+          <p>Cloud dhe llogaritja mobile në Cloud · Viti akademik 2025/2026</p>
         </div>
       </div>
-
-      <div class="top-actions">
-        <a class="button" href="index.html" data-lang="sq">Kthehu në ballinë</a>
-        <a class="button" href="index.html" data-lang="en">Back to Home</a>
-        <a class="button" href="mcc-2026.html" data-lang="sq">Detyrat 2026</a>
-        <a class="button" href="mcc-2026.html" data-lang="en">Assignments 2026</a>
-        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page" data-lang="sq">Syllabusi</a>
-        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page" data-lang="en">Syllabus</a>
-        <div class="language-switch" aria-label="Language">
-          <button type="button" class="active" data-set-lang="sq">ALB</button>
-          <button type="button" data-set-lang="en">ENG</button>
-        </div>
-      </div>
+      <nav class="top-actions" aria-label="Navigimi kryesor">
+        <a class="button" href="index.html">Kthehu në ballinë</a>
+        <a class="button" href="mcc-2026.html">Detyrat 2026</a>
+        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page">Syllabusi</a>
+      </nav>
     </header>
 
-    <section class="intro">
-      <strong data-lang="sq">Ndryshimi i vetëm</strong>
-      <strong data-lang="en">Only change</strong>
-      <p data-lang="sq">Moduli i javës 8 që nuk ishte falas është zëvendësuar me <strong>AWS SimuLearn: Auto-Healing and Scaling Applications</strong>. Linku dërgon direkt në AWS Skill Builder.</p>
-      <p data-lang="en">The Week 8 module that was not free has been replaced with <strong>AWS SimuLearn: Auto-Healing and Scaling Applications</strong>. The link opens AWS Skill Builder directly.</p>
-    </section>
+    <section class="document-card" aria-label="Syllabusi zyrtar">
+      <div class="table-scroll">
+        <article class="syllabus-content">
+<p><img src="assets/syllabus-mcc-2026-media/media/image1.jpg" style="width:2.74167in;height:0.54792in" /></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 81%" />
+</colgroup>
+<tbody>
+<tr>
+<td colspan="2" style="text-align: center;">MODELI I PROGRAMIT MËSIMOR TË LËNDËS (SYLLABUSI)</td>
+</tr>
+<tr>
+<td style="text-align: center;">Lënda:</td>
+<td style="text-align: center;"><strong>Cloud dhe llogaritja mobile në Cloud</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">Fakulteti:</td>
+<td style="text-align: center;">Shkencave Kompjuterike</td>
+</tr>
+<tr>
+<td style="text-align: center;">Drejtimi:</td>
+<td style="text-align: center;">Programim</td>
+</tr>
+<tr>
+<td style="text-align: center;">Niveli:</td>
+<td style="text-align: center;">Bachekor</td>
+</tr>
+<tr>
+<td style="text-align: center;">Forma e ofrimit të lëndës :</td>
+<td style="text-align: center;"><p>Lënda mbahet:</p>
+<ul>
+<li><p>më prezencë në klasë për mësimin teorik dhe me prezencë në laboratorët e informatikës për pjesën praktike të mësimit, përdorimi cloud platformave.</p></li>
+<li><p>Shtjellim të temave dhe diskutime edhe gjatë konsultimeve dhe komunikimit online.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="text-align: center;">Statusi:</td>
+<td style="text-align: center;">Obligative</td>
+</tr>
+<tr>
+<td style="text-align: center;">Semestri:</td>
+<td style="text-align: center;">VI</td>
+</tr>
+<tr>
+<td style="text-align: center;">Fondi i orëve:</td>
+<td style="text-align: center;">2 (ligjërata) +2 (ushtrime)</td>
+</tr>
+<tr>
+<td style="text-align: center;">ECTS:</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;">Viti akademik:</td>
+<td style="text-align: center;">2025/2026</td>
+</tr>
+<tr>
+<td style="text-align: center;">Mësimdhënësi:</td>
+<td style="text-align: center;">Mag. Ing. Arben Lila</td>
+</tr>
+<tr>
+<td style="text-align: center;">Asistenti:</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Orët e studentëve: Konsultat</td>
+<td style="text-align: left;"><p>Online: Terminet përcaktohen gjatë orëve mësimore</p>
+<p><em>Në varshmëri nga kompleksiteti i temave përcaktohen detyra shtesë nga lëmia e cloud computing dhe dërgohen në sistem ku studentët i zgjedhin dhe i dërgojnë për kontrollim te profesori. Në konsultat fizike dhe ato online rishikohen puna me cloud platforma.</em></p></td>
+</tr>
+<tr>
+<td style="text-align: center;">Kontakte:</td>
+<td style="text-align: center;"><strong>arben.lila@universitetiaab.com</strong></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;"><p><strong>Motoja e lëndës:</strong></p>
+<p><em>Llogaritja Cloud është një teknologji që kursen resurse dhe investime, derisa ofron siguri, përditësime dhe mobilitet.</em></p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>QËLLIMI I LËNDËS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Qëllimi i lëndës është të prezantojë studentët me konceptet, modelet dhe komponentët themelorë të cloud computing dhe mobile cloud computing (MCC), si dhe t’i aftësojë ata të analizojnë, krahasojnë dhe dizajnojnë zgjidhje bazike cloud për skenarë realë. Lënda kombinon shpjegimin teorik me ushtrime të strukturuara mbi rastet praktike të AWS SimuLearn, me fokus te arkitektura pajisje–rrjet–cloud, virtualizimi, kontejnerizimi, siguria, databazat, ruajtja, disponueshmëria e lartë, edge computing, performanca dhe kostoja. Në fund të semestrit, studenti duhet të jetë në gjendje të arsyetojë zgjedhje arkitekturore dhe të propozojë zgjidhje të sigurta, të shkallëzueshme dhe të përshtatshme për nevoja konkrete të përdoruesve dhe organizatave.</p>
+<p><strong>Temat bosht të semestrit</strong></p>
+<p>• Arkitektura cloud/MCC, modelet e shërbimit dhe roli i rrjetit në ofrimin e shërbimeve digjitale.</p>
+<p>• Virtualizimi, kontejnerizimi, databazat, ruajtja e skedarëve, disponueshmëria e lartë dhe shkallëzimi.</p>
+<p>• Siguria, privatësia, edge computing, API-të/mikroserviset, kostoja dhe tendencat e reja në cloud.</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><div class="program-table-wrap"><table class="program-table">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 5%" />
+<col style="width: 26%" />
+<col style="width: 8%" />
+<col style="width: 25%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="16" style="text-align: center;"><strong>PROGRAMI</strong></th>
+<th style="text-align: center;"><strong>JAVËT</strong></th>
+<th style="text-align: center;"><strong>TEMA</strong></th>
+<th style="text-align: center;"><strong>Rezultatet e të nxënit</strong></th>
+<th style="text-align: center;"><strong>Materialet</strong></th>
+<th style="text-align: center;"><strong>METODAT E MESIMDHENIES DHE VLERËSIMIT</strong></th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>I</strong></th>
+<th>Hyrje në lëndë: bazat e cloud computing dhe MCC; modelet e shërbimit dhe të vendosjes</th>
+<th style="text-align: left;">1, 4</th>
+<th><p>01: Hyrje në Cloud &amp; MCC</p>
+<p>• <a href="https://skillbuilder.aws/learn/W94AYNMYDS/aws-simulearn-cloud-first-steps/B8K46VES8S"><u>AWS SimuLearn: Cloud First Steps</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/pdfs/whitepapers/latest/aws-overview/aws-overview.pdf"><u>Overview of Amazon Web Services (AWS Whitepaper)</u></a></p></th>
+<th>Ligjëratë interaktive, diskutim orientues, pyetje diagnostikuese; vlerësim formativ: reflektim i shkurtër në fund të orës.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>II</strong></th>
+<th>Arkitektura pajisje–rrjet–cloud dhe parimet themelore të cloud computing</th>
+<th style="text-align: left;">1, 2, 5</th>
+<th><p>02: Arkitektura e MCC</p>
+<p>• <a href="https://skillbuilder.aws/learn/JUV48NHGQY/aws-simulearn-cloud-computing-essentials/QB768XECES"><u>AWS SimuLearn: Cloud Computing Essentials</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials"><u>AWS Cloud Practitioner Essentials</u></a></p></th>
+<th>Shpjegim me diagramë, mini-case study, ushtrim në grupe; vlerësim formativ: diagram individual.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>III</strong></th>
+<th>Ekonomia e cloud-it: elasticiteti, CAPEX/OPEX, optimizimi i kostos dhe vendosja e workload-it</th>
+<th style="text-align: left;">2, 4, 6</th>
+<th><p>03: Cloud Economics</p>
+<p>• <a href="https://skillbuilder.aws/learn/34JD3AJ1GA/aws-simulearn-cloud-economics/ETYKA5GAU4"><u>AWS SimuLearn: Cloud Economics</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"><u>AWS Well-Architected Framework – Cost Optimization</u></a></p></th>
+<th>Ligjëratë e orientuar nga vendimmarrja, analizë skenarësh, debat i udhëhequr; vlerësim formativ: mini-quiz.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>IV</strong></th>
+<th>Rrjetet në cloud: IP, DNS, subnet, routing dhe komunikimi i sigurt ndërmjet komponentëve</th>
+<th style="text-align: left;">2, 5, 6</th>
+<th><p>04: Networking Fundamentals</p>
+<p>• <a href="https://skillbuilder.aws/learn/XCEMH2NXKJ/aws-simulearn-networking-concepts/QN5P4AJMUV"><u>AWS SimuLearn: Networking Concepts</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/12439/aws-networking-basics"><u>AWS Networking Basics</u></a></p></th>
+<th>Ligjëratë me shembuj, zgjidhje e ushtrimeve në tabelë, punë në çifte; vlerësim formativ: detyrë e shkurtër në klasë.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>V</strong></th>
+<th>Virtual Private Cloud, segmentimi dhe lidhja e rrjeteve: baza e arkitekturave hibride dhe edge</th>
+<th style="text-align: left;">2, 4, 5, 6</th>
+<th><p>05: VPC dhe hibridizimi</p>
+<p>• <a href="https://skillbuilder.aws/learn/46NC4HQFUY/aws-simulearn-connecting-vpcs/J7QJJRTCTG"><u>AWS SimuLearn: Connecting VPCs</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"><u>Introduction to Amazon VPC</u></a></p></th>
+<th>Demonstrim konceptual, analizë diagramash, ushtrim praktik me rast; vlerësim formativ: sqarim me gojë i zgjidhjes.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>VI</strong></th>
+<th>Virtualizimi, kontejnerizimi dhe zgjedhja e zgjidhjeve llogaritëse në cloud</th>
+<th style="text-align: left;">2, 4, 5, 6, 8</th>
+<th><p>06: Compute, VM dhe konteinerë</p>
+<p>• <a href="https://skillbuilder.aws/learn/NZ6D7QYABD/aws-simulearn-computing-solutions/YQA9623D5T"><u>AWS SimuLearn: Computing Solutions</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/199/aws-compute-services-overview"><u>AWS Compute Services Overview</u></a></p></th>
+<th>Ligjëratë e shkurtër, krahasim alternativash, punë grupore; vlerësim formativ: tabelë krahasuese.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>VII</strong></th>
+<th>Siguria dhe përgjegjësia e përbashkët: IAM, enkriptimi, privatësia dhe praktikat bazë të mbrojtjes</th>
+<th style="text-align: left;">3, 5, 6, 8, 10</th>
+<th><p>07: Security &amp; Privacy in MCC</p>
+<p>• <a href="https://skillbuilder.aws/learn/3KYWQBTSTV/aws-simulearn-core-security-concepts/Q29T2DWZPK"><u>AWS SimuLearn: Core Security Concepts</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/155/aws-shared-responsibility-model"><u>AWS Shared Responsibility Model</u></a></p></th>
+<th>Ligjëratë interaktive, analizë kërcënimesh, mini-skenar i sigurisë; vlerësim përmbledhës I: kollokvium / quiz i strukturuar.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>VIII</strong></th>
+<th>Monitorimi i trafikut dhe diagnostikimi i problemeve në rrjet</th>
+<th style="text-align: left;">2, 3, 6, 7</th>
+<th><p>08: Network Monitoring &amp; Troubleshooting</p>
+<p>• <a href="https://skillbuilder.aws/learn/ND78HW21FD/aws-simulearn-autohealing-and-scaling-applications/1C6SZU2GKX"><u>AWS SimuLearn: Auto-Healing and Scaling Applications</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html"><u>AWS VPC Flow Logs documentation</u></a></p></th>
+<th>Demonstrim, analizë log-esh dhe diskutim i rasteve; vlerësim formativ: raport i shkurtër teknik.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>IX</strong></th>
+<th>Databazat relacionale në cloud dhe përdorimi i tyre në aplikacione moderne</th>
+<th style="text-align: left;">2, 5, 6, 7</th>
+<th><p>09: Relational Databases in Cloud</p>
+<p>• <a href="https://skillbuilder.aws/learn/6VTV7UQ6CY/aws-simulearn-databases-in-practice/3M6ZTC32MX"><u>AWS SimuLearn: Databases in Practice</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/61/aws-database-offerings"><u>AWS Database Offerings</u></a></p></th>
+<th>Ligjëratë me shembuj, analizë e modelit të të dhënave, ushtrim i drejtuar; vlerësim formativ: pyetje aplikative.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>X</strong></th>
+<th>NoSQL dhe modelet e ruajtjes së të dhënave për shkallëzim dhe fleksibilitet</th>
+<th style="text-align: left;">2, 4, 5, 6, 7</th>
+<th><p>10: NoSQL dhe workload-et moderne</p>
+<p>• <a href="https://skillbuilder.aws/learn/BF6P6UBMK7/aws-simulearn-first-nosql-database/2BYZJD6PTB"><u>AWS SimuLearn: First NoSQL Database</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"><u>Amazon DynamoDB – Developer Guide</u></a></p></th>
+<th>Ligjëratë e shkurtër, ushtrim krahasues SQL vs NoSQL, diskutim i rasteve; vlerësim formativ: detyrë individuale.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>XI</strong></th>
+<th>File systems, ruajtja e skedarëve dhe sinkronizimi i përmbajtjes në cloud/MCC</th>
+<th style="text-align: left;">2, 5, 6, 8</th>
+<th><p>11: Storage, File Systems &amp; Sync</p>
+<p>• <a href="https://skillbuilder.aws/learn/A5M8X2CHM3/aws-simulearn-file-systems-in-the-cloud/RAJVAUNMHR"><u>AWS SimuLearn: File Systems in the Cloud</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"><u>Amazon EFS Primer / AWS S3 overview</u></a></p></th>
+<th>Shpjegim me arkitektura shembull, ushtrim në grup, prezantim i zgjidhjes; vlerësim formativ: feedback i strukturuar.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>XII</strong></th>
+<th>Disponueshmëria e lartë, load balancing dhe toleranca ndaj dështimeve</th>
+<th style="text-align: left;">2, 5, 6, 8, 9</th>
+<th><p>12: High Availability</p>
+<p>• <a href="https://skillbuilder.aws/learn/MSNJKZ17FF/aws-simulearn-highly-available-web-applications/7MVYAZPHY4"><u>AWS SimuLearn: Highly Available Web Applications</u></a></p>
+<p>• <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"><u>AWS Well-Architected Framework – Reliability</u></a></p></th>
+<th>Case study, analizë e komponentëve, ushtrim me diagram; vlerësim formativ: mini-prezantim në grup.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>XIII</strong></th>
+<th>Auto-healing, auto scaling dhe performanca nën ngarkesë</th>
+<th style="text-align: left;">2, 4, 5, 6, 8</th>
+<th><p>13: Scaling &amp; Resilience</p>
+<p>• <a href="https://skillbuilder.aws/learn/ND78HW21FD/aws-simulearn-autohealing-and-scaling-applications/1C6SZU2GKX"><u>AWS SimuLearn: Auto-Healing and Scaling Applications</u></a></p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/internal/view/elearning/124/introduction-to-aws-auto-scaling"><u>Introduction to AWS Auto Scaling</u></a></p></th>
+<th>Ligjëratë e orientuar nga problemet, punë në grupe, reflektim teknik; vlerësim formativ: quiz i shkurtër.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>XIV</strong></th>
+<th>Edge computing, APIs dhe mikroserviset: reduktimi i latencës dhe ndarja e funksionaliteteve</th>
+<th style="text-align: left;">4, 5, 6, 8, 9</th>
+<th><p>14: Edge, APIs &amp; Microservices</p>
+<p>• <a href="https://skillbuilder.aws/learning-plan/EKHCUEWUUC/aws-simulearn-cloud-practitioner/1UQVR262ZB"><u>AWS SimuLearn: Cloud Practitioner (selected modules)</u></a></p>
+<p>• <a href="https://aws.amazon.com/outposts/rack/resources/"><u>AWS at the Edge / AWS Outposts resources</u></a></p></th>
+<th style="text-align: left;">Ligjëratë interaktive, diskutim i arkitekturave moderne, ushtrim me skenar MCC; vlerësim formativ: skicë arkitekture.</th>
+</tr>
+<tr>
+<th style="text-align: center;"><strong>XV</strong></th>
+<th>Tendencat e reja në cloud/MCC: serverless, AI services, green cloud dhe integrimi i zgjidhjeve në një rast përmbledhës</th>
+<th style="text-align: left;">3, 4, 6, 7, 8, 9, 10</th>
+<th style="text-align: left;"><p>15: Future Trends &amp; Integrative Case</p>
+<p>• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/15009/getting-started-with-aws-cloud-essentials">Getting Started with AWS Cloud Essentials</a></p>
+<p>• <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">AWS Well-Architected Framework – Sustainability</a></p></th>
+<th style="text-align: left;">Diskutim përmbledhës, analizë rasti, prezantim i draft-projektit seminarik; vlerësim formativ: konsultim dhe feedback për projektin.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table></div></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>REZULTATET E TË NXËNIT – NJOHURITË, SHKATHTËSIT DHE KOMPETENCAT</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p>Pas përfundimit të kësaj lënde, studentët do të jenë në gjendje të demonstrojnë këto rezultate të të nxënit:</p>
+<p><strong>Njohuri</strong></p>
+<ol type="1">
+<li><p>Të shpjegojnë konceptet bazë të cloud computing dhe MCC, përfshirë modelet e ofrimit, modelet e vendosjes dhe arkitekturën pajisje–rrjet–cloud.</p></li>
+<li><p>Të përshkruajnë rolin e rrjetit, virtualizimit, ruajtjes, databazave, disponueshmërisë së lartë dhe shkallëzimit në ndërtimin e zgjidhjeve cloud.</p></li>
+<li><p>Të shpjegojnë parimet bazë të sigurisë, privatësisë, menaxhimit të identitetit dhe mbrojtjes së të dhënave në cloud/MCC.</p></li>
+<li><p>Të dallojnë përdorimet, kufizimet dhe kompromiset ndërmjet cloud, edge computing, APIs/mikroserviseve dhe qasjeve tradicionale.</p></li>
+</ol>
+<p><strong>Shkathtësitë</strong></p>
+<ol start="5" type="1">
+<li><p>Të vizatojnë dhe shpjegojnë diagrame bazike të arkitekturës cloud/MCC për skenarë konkretë.</p></li>
+<li><p>Të analizojnë alternativa teknike duke krahasuar sigurinë, latencën, performancën, koston dhe shkallëzimin.</p></li>
+<li><p>Të interpretojnë ushtrimet praktike/simulimet e AWS dhe të dokumentojnë vendimet e tyre teknike në mënyrë të qartë.</p></li>
+</ol>
+<p><strong>Kompetencat</strong></p>
+<ol start="8" type="1">
+<li><p>Të propozojnë zgjidhje bazike cloud/MCC të përshtatshme për raste reale në arsim, biznes ose shërbime digjitale.</p></li>
+<li><p>Të punojnë individualisht dhe në grup për zgjidhjen e rasteve praktike dhe prezantimin e rezultateve.</p></li>
+<li><p>Të zbatojnë parimet e integritetit akademik, përdorimit të përgjegjshëm të AI dhe trajtimit etik të të dhënave në detyrat e lëndës.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>LITERATURA</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><p><strong>Literatura themelore</strong></p>
+<p>Bhowmik, S. (2018). Cloud Computing. Cambridge University Press.</p>
+<p>De, D. et al. (eds.) (2022). Green Mobile Cloud Computing. Springer.</p>
+<p>Amazon Web Services. (2024). Overview of Amazon Web Services. AWS Whitepaper.</p>
+<p><strong>Literatura plotësuese / artikuj</strong></p>
+<p>Mora, H. et al. (2024). Mobile Cloud Computing Paradigm: A Survey of Architecture, Applications, and Challenges. International Journal of Communication Systems.</p>
+<p>Bashir, S. R. et al. (2024). A Narrative Review of Identity, Data and Location Privacy in Mobile Crowdsourcing and Edge Computing. Electronics, 13(21), 4228.</p>
+<p>Liu, J. et al. (2022). Energy-efficient allocation for multiple tasks in mobile edge computing. Journal of Cloud Computing, 11, Article 68.</p>
+<p>Amazon Web Services. (2024). AWS Well-Architected Framework.</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>METODOLOGJIA E MËSIMDHËNIES</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Ligjëratat do të zhvillohen si një kombinim i shpjegimit konceptual, diagramave arkitekturore dhe pyetjeve të drejtuara. Çdo njësi fillon me konceptet kyçe teorike dhe pastaj kalon në analizën e një skenari praktik të ngjashëm me mjediset reale të cloud-it.</p>
+<p>Ushtrimet do të mbështeten në AWS SimuLearn, studime rasti, mini-quiz-e, diskutime në çifte/grupe të vogla, si dhe skicim diagramash arkitekture. Studentët do të argumentoijnë vendimet e tyre teknike duke krahasuar koston, sigurinë, performancën, latencën dhe shkallëzimin.</p>
+<p>Në detyrat dhe seminarin e lëndës, studentët do të punojnë mbi një rast praktik (p.sh. aplikacion mobil, shërbim web, sistem sinkronizimi skedarësh ose zgjidhje edge/cloud) dhe do të paraqesin një propozim teknik me diagram, arsyetim dhe rekomandime.</p>
+<p>Përdorimi i mjeteve të AI lejohet vetëm si mbështetje për hulumtim, ideim dhe rishikim gjuhësor</p></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>FORMAT E VLERËSIMIT</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Të gjitha format e vlerësimit janë të përshtatura për të vlerësuar arritshmëritë e studentëve dhe rezultateve të të nxënit të specifikuara më lartë të cilat bazohen në Rregulloren për Studimet në Nivelin BA e cila gjendet ne linkun <a href="https://aab-edu.net/wp-content/uploads/2020/01/Rregullorja-per-studime.pdf"><u>https://aab-edu.net/ëp-content/uploads/2020/01/Rregullorja-per-studime.pdf</u></a></p>
+<p><strong>Pjesëmarrja dhe aktiviteti 10%:</strong></p>
+<p>Pjesëmarja dhe aktiviteti në orë është i preferueshëm dhe i nevojshëm. Pjesëmarrja duhet të regjistrohet në formë elektronike duke u vlerësuar me 10% në notën finale e cila gjenerojë raportin për gjendjen në kohë reale si dhe aktiviteti në klasë është i nevojshëm e cila duhet të vlerësohet me 10% në notën finale nga profesori i lëndës.</p>
+<p><strong>Projekt/detyra laboratorike 30%:</strong></p>
+<p>Nga një projekt ose detyra laboratorike (sipas zgjedhjes individuale) do t’ju ndahet studentëve para përfundimit të semestrit. Projekti do të vlerësohet me 20% e notës finale.</p>
+<p><strong>Kolokuiumi I dhe II (30% + 30% = 60% totali):</strong></p>
+<p>Do të organizohen dy kolokuiume si formë e vlerësimit përmbledhës. Kolokuiumet do të mbahen në javën e 7 dhe në javën e 15. Testi do të përbëhet nga lloje të ndryshëm të pyetjeve të cilat mbulojnë temat dhe problematikat e zhvilluar gjatë javëve paraprake. Arritjet në kolokuiume do të vlerësohen me nga 20%. https://profesor.aab-edu.net/MidTermExam</p>
+<p><strong>Nota finale:</strong></p>
+<p>Nota finale do të pasqyrojë përmbledhjen e të gjitha rezultateve të grumbulluara nga vlerësimet e lartcekura.</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 16%" />
+<col style="width: 7%" />
+<col style="width: 19%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Format e vlerësimit</strong></td>
+<td style="text-align: center;"><strong>Përqindja</strong></td>
+<td rowspan="8" style="text-align: left;"></td>
+<td style="text-align: center;"><strong>Përqindja totale</strong></td>
+<td style="text-align: center;"><strong>Nota përfundimtare</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Kollekvium I</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: left;">&lt;50%</td>
+<td style="text-align: center;">Nuk kalon</td>
+</tr>
+<tr>
+<td style="text-align: left;">Kollekvium II</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">&gt;50%</td>
+<td style="text-align: center;">Kalon</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pjesëmarrja dhe angazhimi</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">51-60%</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: left;">Projekt</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: center;">61-70%</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">71-80%</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">81-90%</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">91-100%</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>POLITIKAT AKADEMIKE</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Rregullat e mirësjelljes dhe politikat akademike:</p>
+<p>Para së gjithash, studenti duhet të jetë i ndërgjegjshëm dhe të respektojë institucionin dhe rregullat e kolegjit AAB.</p>
+<p>• pjesëmarrje obligative dhe aktive e studentëve në ligjërata dhe ushtrime,</p>
+<p>• pjesëmarrje në diskutim, komente dhe shprehje e lirë e opinionit, mendimit dhe qëndrimit akademik (me argumente),</p>
+<p>• e obligueshme puna e pavarur ose grupore dhe shfrytëzimi i burimeve shtesë të informacionit (web faqet e ndryshme shkencore, revista shkencore, përmbledhje punimesh të konferencave etj.),</p>
+<p>• respektimi i orareve të ligjëratave pa cenuar lirinë akademike (telefonat celularë pa zë),</p>
+<p>• respektimi i fjalës, mendimeve dhe ideve të kolegëve,</p>
+<p>• respektimi i afateve kohore për dorëzimin e detyrave.</p>
+<p>• nuk lejohet ardhja me vonesë dhe dalja pa ndonjë arsye të qëndrueshme nga ligjërata, testi apo provimi,</p>
+<p>• studenti nuk mund t’i nënshtrohet provimit pa dokument zyrtar,</p>
+<p>• nëse studenti nuk i përfill rregullat në provim, përdorë mjete që nuk lejohen, vlerësohet me notë negative.</p>
+<p>• kodi i mirësjelljes vlen si për studentët ashtu edhe për mësimdhënësit.</p>
+<p>Në realizmin e punëve semiarike dhe projekteve hulumtuese duhet të respektohet kodi i etikës për kërkim shkencorë https://aab-edu.net/ëp-content/uploads/2021/03/KODI-I-ETIKES-ne-kerkimin-shkencor.pdf</p>
+<p>Citimi i burimeve duhet të bëhet sipas Udhëzues për Referenca Akademike dhe për Shkrimin e Bibliografisë</p>
+<p>https://eservice.aab-edu.net/Manuals/Citimi%20i%20Referencave%20dhe%20Burimeve%20te%20ndryshme.pdf</p>
+<p>Gjatë organizimit të vlerësimeve të ndryshme duhet të respektohen rregullat e mbajtjes së provimeve sipas rregullores së studimeve https://eservice.aab-edu.net/Manuals/Rregullorja%20per%20studime.pdf</p>
+<p>Çdo shkelje e cila vlerësohet si e tillë nga ana e profesorit apo me raportim nga ndonjëri studentë do të trajtohet sipas rregullores disiplinore të Kolegjit AAB.</p>
+<p>https://eservice.aab-edu.net/Manuals/Sjellja%20jo%20e%20mir%C3%AB%20akademike.pdf</p></td>
+</tr>
+</tbody>
+</table>
 
-    <section class="table-wrap" aria-label="Syllabusi 2026">
-      <table>
-        <thead>
-          <tr>
-            <th data-lang="sq">Javët</th>
-            <th data-lang="en">Weeks</th>
-            <th data-lang="sq">Tema</th>
-            <th data-lang="en">Topic</th>
-            <th data-lang="sq">Rezultatet e të nxënit</th>
-            <th data-lang="en">Learning outcomes</th>
-            <th data-lang="sq">Materialet</th>
-            <th data-lang="en">Materials</th>
-            <th data-lang="sq">Metodat e mësimdhënies dhe vlerësimit</th>
-            <th data-lang="en">Teaching and assessment methods</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="week">01</td>
-            <td>
-              <span data-lang="sq">Hyrje në Cloud & MCC</span>
-              <span data-lang="en">Introduction to Cloud & MCC</span>
-            </td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-first-steps-298927">AWS SimuLearn: Cloud First Steps</a></span>
-              <span class="material-item">• <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html">Overview of Amazon Web Services (AWS Whitepaper)</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">02</td>
-            <td>
-              <span data-lang="sq">Arkitektura e MCC</span>
-              <span data-lang="en">MCC Architecture</span>
-            </td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-computing-essentials-298982">AWS SimuLearn: Cloud Computing Essentials</a></span>
-              <span class="material-item">• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials">AWS Cloud Practitioner Essentials</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">03</td>
-            <td>Cloud Economics</td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-economics-299094">AWS SimuLearn: Cloud Economics</a></span>
-              <span class="material-item">• <a href="https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html">AWS Well-Architected Framework - Cost Optimization</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">04</td>
-            <td>Networking Fundamentals</td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-networking-concepts-299085">AWS SimuLearn: Networking Concepts</a></span>
-              <span class="material-item">• <a href="https://aws.amazon.com/what-is/computer-networking/">AWS Networking Basics</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">05</td>
-            <td>
-              <span data-lang="sq">VPC dhe hibridizimi</span>
-              <span data-lang="en">VPC and hybridization</span>
-            </td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-connecting-vpcs-299091">AWS SimuLearn: Connecting VPCs</a></span>
-              <span class="material-item">• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Introduction to Amazon VPC</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">06</td>
-            <td>
-              <span data-lang="sq">Compute, VM dhe kontenierë</span>
-              <span data-lang="en">Compute, VM and containers</span>
-            </td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-computing-solutions-298946">AWS SimuLearn: Computing Solutions</a></span>
-              <span class="material-item">• <a href="https://aws.amazon.com/products/compute/">AWS Compute Services Overview</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">07</td>
-            <td>Security & Privacy in MCC</td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-core-security-concepts-299024">AWS SimuLearn: Core Security Concepts</a></span>
-              <span class="material-item">• <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">AWS Shared Responsibility Model</a></span>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="week">08</td>
-            <td>
-              <span data-lang="sq">Resilience, Auto-healing & Scaling</span>
-              <span data-lang="en">Resilience, Auto-healing & Scaling</span>
-            </td>
-            <td></td>
-            <td class="materials">
-              <span class="material-item">• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/20171/aws-simulearn-auto-healing-and-scaling-applications">AWS SimuLearn: Auto-Healing and Scaling Applications</a></span>
-              <span class="replacement" data-lang="sq">Zëvendësim falas për modulin e mëparshëm</span>
-              <span class="replacement" data-lang="en">Free replacement for the previous module</span>
-              <span class="material-item">• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html">AWS VPC Flow Logs documentation</a></span>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+        </article>
+      </div>
     </section>
-
-    <p class="note" data-lang="sq">Shënim: fushat e tjera janë lënë si në strukturën e syllabusit që dërgove. Për javët e tjera ose tekstin e plotë të rezultateve/metodave, dërgo tabelën origjinale dhe do ta fus pa ndryshuar formulimin.</p>
-    <p class="note" data-lang="en">Note: the other fields are kept in the structure you sent. For additional weeks or the full learning-outcome/assessment text, send the original table and I will add it without changing the wording.</p>
   </main>
-
-  <script>
-    const buttons = document.querySelectorAll('[data-set-lang]');
-
-    function applyLanguage(lang) {
-      document.body.classList.toggle('lang-en', lang === 'en');
-      document.documentElement.lang = lang === 'en' ? 'en' : 'sq';
-      buttons.forEach((button) => {
-        button.classList.toggle('active', button.dataset.setLang === lang);
-      });
-      localStorage.setItem('mcc-syllabus-lang', lang);
-    }
-
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => applyLanguage(button.dataset.setLang));
-    });
-
-    applyLanguage(localStorage.getItem('mcc-syllabus-lang') || 'sq');
-  </script>
 </body>
 </html>
