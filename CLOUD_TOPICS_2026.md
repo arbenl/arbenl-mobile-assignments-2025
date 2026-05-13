@@ -62,6 +62,7 @@
   - Cloud focus: Schedule domain checks, persist certificate metadata, trigger alerts before expiry, and display history.
   - Score: Not graded (0-30)
 19. Serverless Form Builder — (Taken by Luela Krasniqi <luela.krasniqi@universitetiaab.com>)
+  - Cloud focus: Let users define forms, publish hosted endpoints, store submissions, and export CSV from cloud storage.
   - Score: Not graded (0-30)
 20. API Gateway for Public Dataset Access — (Available)
   - Cloud focus: Wrap a dataset behind authenticated endpoints, add caching, pagination, request logging, and usage quotas.
