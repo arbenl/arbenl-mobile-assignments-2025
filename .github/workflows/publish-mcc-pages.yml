@@ -19,6 +19,15 @@ on:
     branches: [ main ]
     paths:
       - CLOUD_TOPICS_2026.md
+      - SUBMISSIONS_2026.md
+      - index.html
+      - mcc-2026.html
+      - submissions-2026.html
+      - instructions-mcc-2026.html
+      - udhezime-mcc-2026.html
+      - assets/**
+      - poc-solutions/topic-01-cloud-task-collaboration/**
+      - scripts/export-pending-reservations.js
   workflow_dispatch:
 
 permissions:
