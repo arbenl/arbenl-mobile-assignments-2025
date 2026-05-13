@@ -144,6 +144,8 @@
     }
 
     .button.primary,
+    .button.active,
+    .button[aria-current="page"],
     .chip.active,
     .language-switch button.active {
       border-color: var(--teal);
@@ -465,7 +467,9 @@
         </div>
       </div>
       <div class="top-actions">
-        <a class="button primary" href="mcc-2026.html" data-i18n="nav.reserve">Reservations</a>
+        <a class="button" href="index.html" data-i18n="nav.backHome">Back to Home</a>
+        <a class="button" href="mcc-2026.html" data-i18n="nav.reserve">Reservations</a>
+        <a class="button active" href="submissions-2026.html" aria-current="page" data-i18n="nav.submissions">Submissions</a>
         <a class="button" href="instructions-mcc-2026.html" data-i18n="nav.instructionsEn">Instructions EN</a>
         <a class="button" href="udhezime-mcc-2026.html" data-i18n="nav.instructionsSq">Udhëzime Shqip</a>
         <div class="language-switch" aria-label="Language switch">
@@ -528,6 +532,8 @@
         'page.heading': 'Cloud & MCC 2026 Submissions and Scores',
         'page.subtitle': 'Read-only status for reservations, final submissions, and instructor scores.',
         'nav.reserve': 'Reservations',
+        'nav.backHome': 'Back to Home',
+        'nav.submissions': 'Submissions',
         'nav.instructionsEn': 'Instructions EN',
         'nav.instructionsSq': 'Udhëzime Shqip',
         'hero.eyebrow': 'Submission phase',
@@ -571,6 +577,8 @@
         'page.heading': 'Dorëzimet dhe pikët Cloud & MCC 2026',
         'page.subtitle': 'Status vetëm për lexim për rezervime, dorëzime finale dhe pikë të vendosura nga mësimdhënësi.',
         'nav.reserve': 'Rezervimet',
+        'nav.backHome': 'Kthehu në ballinë',
+        'nav.submissions': 'Dorëzimet',
         'nav.instructionsEn': 'Instructions EN',
         'nav.instructionsSq': 'Udhëzime Shqip',
         'hero.eyebrow': 'Faza e dorëzimit',

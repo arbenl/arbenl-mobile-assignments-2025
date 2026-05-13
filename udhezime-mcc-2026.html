@@ -118,6 +118,13 @@
       color: white;
     }
 
+    .button.active,
+    .button[aria-current="page"] {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: white;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -380,10 +387,11 @@
         </div>
       </div>
       <div class="actions" aria-label="Linqe kryesore">
-        <a class="button primary" href="mcc-2026.html">Katalogu i temave</a>
+        <a class="button" href="index.html">Kthehu në ballinë</a>
+        <a class="button" href="mcc-2026.html">Katalogu i temave</a>
         <a class="button" href="instructions-mcc-2026.html">English</a>
-        <a class="button" href="mcc-2026.html">Katalogu vizual</a>
-        <a class="button" href="SUBMISSIONS_2026.md">Dorëzimet</a>
+        <a class="button active" href="udhezime-mcc-2026.html" aria-current="page">Udhëzime Shqip</a>
+        <a class="button" href="submissions-2026.html">Dorëzimet</a>
       </div>
     </header>
 

@@ -99,6 +99,13 @@
       background: var(--teal);
       color: white;
     }
+
+    .button.active,
+    .button[aria-current="page"] {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: white;
+    }
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -311,10 +318,11 @@
         </div>
       </div>
       <div class="actions" aria-label="Main links">
-        <a class="button primary" href="mcc-2026.html">Topic catalogue</a>
+        <a class="button" href="index.html">Back to Home</a>
+        <a class="button" href="mcc-2026.html">Topic catalogue</a>
+        <a class="button active" href="instructions-mcc-2026.html" aria-current="page">Instructions EN</a>
         <a class="button" href="udhezime-mcc-2026.html">Shqip</a>
-        <a class="button" href="mcc-2026.html">Visual catalogue</a>
-        <a class="button" href="SUBMISSIONS_2026.md">Submissions</a>
+        <a class="button" href="submissions-2026.html">Submissions</a>
       </div>
     </header>
 
