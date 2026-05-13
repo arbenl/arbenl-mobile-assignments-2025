@@ -1,18 +1,6 @@
 {
-  "generatedAt": "2026-05-12T19:37:10.924Z",
+  "generatedAt": "2026-05-13T11:55:08.612Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "39",
-      "title": "Cloud Cost Estimator Dashboard",
-      "name": "sara ceka",
-      "email": "saracekaa@gmail.com",
-      "prNumber": 106,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/106",
-      "author": "saracekaa",
-      "createdAt": "2026-05-12T19:36:50Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
