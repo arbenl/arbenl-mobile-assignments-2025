@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syllabusi Cloud & MCC 2026</title>
-  <meta name="description" content="Syllabus bilingual for Cloud Computing and Mobile Cloud Computing 2026 with free AWS SimuLearn modules.">
+  <meta name="description" content="Syllabusi Cloud Computing dhe Mobile Cloud Computing 2026 me modulin falas AWS SimuLearn per javen 8.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300897b'/%3E%3Cpath d='M18 40h28a10 10 0 0 0-1.7-19.9A14 14 0 0 0 18.8 24 8 8 0 0 0 18 40Z' fill='white'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #111827;
@@ -17,10 +17,9 @@
       --paper: #ffffff;
       --wash: #f7f9fb;
       --teal: #00897b;
-      --violet: #6d5dfc;
-      --amber: #f59e0b;
-      --rose: #d9466f;
-      --shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+      --red: #c40000;
+      --dark-red: #9f0000;
+      --shadow: 0 14px 34px rgba(17, 24, 39, 0.08);
       --radius: 8px;
     }
 
@@ -28,16 +27,10 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, rgba(0, 137, 123, 0.12), transparent 30rem),
-        linear-gradient(180deg, #fbfcfd 0%, #eef2f6 100%);
+      background: linear-gradient(180deg, #fbfcfd 0%, #eef2f6 100%);
       color: var(--ink);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       letter-spacing: 0;
@@ -50,8 +43,8 @@
     }
 
     .topbar,
-    .top-actions,
-    .brand {
+    .brand,
+    .top-actions {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -59,7 +52,7 @@
 
     .topbar {
       justify-content: space-between;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .brand-mark {
@@ -68,15 +61,15 @@
       height: 42px;
       place-items: center;
       border-radius: var(--radius);
-      background: conic-gradient(from 120deg, var(--teal), var(--violet), var(--amber), var(--teal));
+      background: var(--teal);
       color: white;
       font-weight: 800;
       box-shadow: var(--shadow);
     }
 
-    .brand h1 {
+    h1 {
       margin: 0;
-      font-size: clamp(1.3rem, 2.4vw, 2rem);
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
       line-height: 1.1;
     }
 
@@ -131,49 +124,17 @@
       background: transparent;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
-      gap: 18px;
-      align-items: stretch;
+    .intro {
       margin-bottom: 18px;
-    }
-
-    .panel,
-    .notice,
-    .week-card {
-      border: 1px solid rgba(217, 224, 232, 0.9);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
-
-    .panel {
-      padding: 22px;
-    }
-
-    .panel h2 {
-      margin: 0;
-      font-size: clamp(1.8rem, 4vw, 3.6rem);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-
-    .panel p {
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.65;
-      margin: 14px 0 0;
-      max-width: 68ch;
-    }
-
-    .notice {
       padding: 18px;
+      border: 1px solid var(--line);
       border-left: 5px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
     }
 
-    .notice strong {
+    .intro strong {
       display: block;
       margin-bottom: 8px;
       color: var(--teal);
@@ -182,629 +143,290 @@
       letter-spacing: 0.08em;
     }
 
-    .notice p {
+    .intro p {
       margin: 0;
       color: var(--muted);
       line-height: 1.55;
     }
 
-    .week-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .week-card {
-      position: relative;
-      overflow: hidden;
-      padding: 16px;
-    }
-
-    .week-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 5px;
-      background: var(--accent, var(--teal));
-    }
-
-    .week-card:nth-child(2n) { --accent: var(--violet); }
-    .week-card:nth-child(3n) { --accent: var(--amber); }
-    .week-card:nth-child(4n) { --accent: var(--rose); }
-
-    .week-meta {
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .week-card h3 {
-      min-height: 3.2em;
-      margin: 8px 0 10px;
-      font-size: 1rem;
-      line-height: 1.28;
-    }
-
-    .week-card p {
-      margin: 0 0 12px;
-      min-height: 4.7em;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.45;
-    }
-
-    .course-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 12px;
-      border-radius: var(--radius);
-      background: var(--teal);
-      color: white;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
     .table-wrap {
-      margin-top: 18px;
       overflow-x: auto;
-      border: 1px solid var(--line);
+      border: 1px solid #111;
       border-radius: var(--radius);
       background: var(--paper);
+      box-shadow: var(--shadow);
     }
 
     table {
       width: 100%;
+      min-width: 980px;
       border-collapse: collapse;
-      min-width: 900px;
+      table-layout: fixed;
     }
 
     th,
     td {
-      padding: 14px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
+      border: 1px solid #111;
+      padding: 8px 9px;
       vertical-align: top;
-      line-height: 1.45;
+      text-align: left;
+      line-height: 1.32;
+      font-size: 0.88rem;
     }
 
     th {
-      background: #111827;
+      background: var(--red);
       color: white;
-      font-size: 0.8rem;
+      text-align: center;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    td a {
-      color: var(--teal);
-      font-weight: 800;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 26px;
-      padding: 0 8px;
-      border-radius: var(--radius);
-      background: #ecfdf5;
-      color: #047857;
       font-size: 0.78rem;
+    }
+
+    th:nth-child(1) { width: 72px; }
+    th:nth-child(2) { width: 190px; }
+    th:nth-child(3) { width: 185px; }
+    th:nth-child(4) { width: 330px; }
+    th:nth-child(5) { width: 245px; }
+
+    td.week {
+      text-align: center;
       font-weight: 800;
-      white-space: nowrap;
     }
 
-    [hidden] {
-      display: none !important;
+    td.materials a {
+      color: #0645ad;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
 
-    @media (max-width: 980px) {
-      .topbar,
-      .hero {
-        grid-template-columns: 1fr;
-      }
+    .material-item {
+      display: block;
+      margin-bottom: 5px;
+    }
 
-      .topbar,
-      .top-actions {
-        align-items: flex-start;
+    .replacement {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: #e8f7f4;
+      color: #00695f;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    [data-lang="en"] {
+      display: none;
+    }
+
+    body.lang-en [data-lang="sq"] {
+      display: none;
+    }
+
+    body.lang-en [data-lang="en"] {
+      display: revert;
+    }
+
+    body.lang-en .button[data-lang="en"] {
+      display: inline-flex;
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        align-items: stretch;
         flex-direction: column;
       }
 
-      .week-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 620px) {
-      .week-grid {
-        grid-template-columns: 1fr;
+      .top-actions {
+        flex-wrap: wrap;
       }
 
       .button,
-      .course-link {
-        width: 100%;
+      .language-switch button {
+        flex: 1;
       }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
+  <main class="shell">
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">AL</div>
         <div>
-          <h1 data-i18n="title">Syllabusi Cloud & MCC 2026</h1>
-          <p data-i18n="subtitle">Çdo javë përdor një modul AWS SimuLearn falas.</p>
+          <h1 data-lang="sq">Syllabusi Cloud & MCC 2026</h1>
+          <h1 data-lang="en">Cloud & MCC 2026 Syllabus</h1>
+          <p data-lang="sq">Tabela ruan strukturën e syllabusit; Java 8 është zëvendësuar me modul falas.</p>
+          <p data-lang="en">The table keeps the syllabus structure; Week 8 is replaced with a free module.</p>
         </div>
       </div>
-      <nav class="top-actions" aria-label="Course navigation">
-        <div class="language-switch" aria-label="Language switch">
-          <button type="button" data-lang="sq" class="active">ALB</button>
-          <button type="button" data-lang="en">ENG</button>
+
+      <div class="top-actions">
+        <a class="button" href="index.html" data-lang="sq">Kthehu në ballinë</a>
+        <a class="button" href="index.html" data-lang="en">Back to Home</a>
+        <a class="button" href="mcc-2026.html" data-lang="sq">Detyrat 2026</a>
+        <a class="button" href="mcc-2026.html" data-lang="en">Assignments 2026</a>
+        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page" data-lang="sq">Syllabusi</a>
+        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page" data-lang="en">Syllabus</a>
+        <div class="language-switch" aria-label="Language">
+          <button type="button" class="active" data-set-lang="sq">ALB</button>
+          <button type="button" data-set-lang="en">ENG</button>
         </div>
-        <a class="button" href="index.html" data-i18n="nav.home">Ballina</a>
-        <a class="button" href="mcc-2026.html" data-i18n="nav.catalogue">Detyrat 2026</a>
-        <a class="button active" href="syllabus-mcc-2026.html" aria-current="page" data-i18n="nav.syllabus">Syllabusi</a>
-        <a class="button" href="udhezime-mcc-2026.html" data-i18n="nav.instructions">Udhëzime</a>
-      </nav>
+      </div>
     </header>
 
-    <main>
-      <section class="hero" aria-label="Syllabus overview">
-        <div class="panel">
-          <h2 data-i18n="hero.title">Cloud Computing dhe Mobile Cloud Computing</h2>
-          <p data-i18n="hero.copy">Ky syllabus është përgatitur për vitin 2026. Modulet me pagesë janë hequr dhe janë zëvendësuar me module AWS SimuLearn që shfaqen si falas ose free certificate në katalogët publikë të trajnimit.</p>
-        </div>
-        <aside class="notice">
-          <strong data-i18n="notice.label">Rregull për studentët</strong>
-          <p data-i18n="notice.copy">Nëse një link i AWS Skill Builder kërkon hyrje, studenti duhet të krijojë llogari falas. Nuk kërkohet modul me pagesë për këtë syllabus.</p>
-        </aside>
-      </section>
+    <section class="intro">
+      <strong data-lang="sq">Ndryshimi i vetëm</strong>
+      <strong data-lang="en">Only change</strong>
+      <p data-lang="sq">Moduli i javës 8 që nuk ishte falas është zëvendësuar me <strong>AWS SimuLearn: Auto-Healing and Scaling Applications</strong>. Linku dërgon direkt në AWS Skill Builder.</p>
+      <p data-lang="en">The Week 8 module that was not free has been replaced with <strong>AWS SimuLearn: Auto-Healing and Scaling Applications</strong>. The link opens AWS Skill Builder directly.</p>
+    </section>
 
-      <section class="week-grid" aria-label="Weekly SimuLearn modules">
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week1.meta">Java 01</span>
-          <h3 data-i18n="week1.topic">Hyrje në Cloud & MCC</h3>
-          <p data-i18n="week1.copy">Bazat e cloud adoption, rolet e cloud-it dhe hapat e parë në AWS.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-cloud-first-steps-298927" data-i18n="open.module">Hap modulin</a>
-        </article>
+    <section class="table-wrap" aria-label="Syllabusi 2026">
+      <table>
+        <thead>
+          <tr>
+            <th data-lang="sq">Javët</th>
+            <th data-lang="en">Weeks</th>
+            <th data-lang="sq">Tema</th>
+            <th data-lang="en">Topic</th>
+            <th data-lang="sq">Rezultatet e të nxënit</th>
+            <th data-lang="en">Learning outcomes</th>
+            <th data-lang="sq">Materialet</th>
+            <th data-lang="en">Materials</th>
+            <th data-lang="sq">Metodat e mësimdhënies dhe vlerësimit</th>
+            <th data-lang="en">Teaching and assessment methods</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="week">01</td>
+            <td>
+              <span data-lang="sq">Hyrje në Cloud & MCC</span>
+              <span data-lang="en">Introduction to Cloud & MCC</span>
+            </td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-first-steps-298927">AWS SimuLearn: Cloud First Steps</a></span>
+              <span class="material-item">• <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html">Overview of Amazon Web Services (AWS Whitepaper)</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">02</td>
+            <td>
+              <span data-lang="sq">Arkitektura e MCC</span>
+              <span data-lang="en">MCC Architecture</span>
+            </td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-computing-essentials-298982">AWS SimuLearn: Cloud Computing Essentials</a></span>
+              <span class="material-item">• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials">AWS Cloud Practitioner Essentials</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">03</td>
+            <td>Cloud Economics</td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-cloud-economics-299094">AWS SimuLearn: Cloud Economics</a></span>
+              <span class="material-item">• <a href="https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html">AWS Well-Architected Framework - Cost Optimization</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">04</td>
+            <td>Networking Fundamentals</td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-networking-concepts-299085">AWS SimuLearn: Networking Concepts</a></span>
+              <span class="material-item">• <a href="https://aws.amazon.com/what-is/computer-networking/">AWS Networking Basics</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">05</td>
+            <td>
+              <span data-lang="sq">VPC dhe hibridizimi</span>
+              <span data-lang="en">VPC and hybridization</span>
+            </td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-connecting-vpcs-299091">AWS SimuLearn: Connecting VPCs</a></span>
+              <span class="material-item">• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Introduction to Amazon VPC</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">06</td>
+            <td>
+              <span data-lang="sq">Compute, VM dhe kontenierë</span>
+              <span data-lang="en">Compute, VM and containers</span>
+            </td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-computing-solutions-298946">AWS SimuLearn: Computing Solutions</a></span>
+              <span class="material-item">• <a href="https://aws.amazon.com/products/compute/">AWS Compute Services Overview</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">07</td>
+            <td>Security & Privacy in MCC</td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://www.classcentral.com/course/aws-simulearn-core-security-concepts-299024">AWS SimuLearn: Core Security Concepts</a></span>
+              <span class="material-item">• <a href="https://aws.amazon.com/compliance/shared-responsibility-model/">AWS Shared Responsibility Model</a></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="week">08</td>
+            <td>
+              <span data-lang="sq">Resilience, Auto-healing & Scaling</span>
+              <span data-lang="en">Resilience, Auto-healing & Scaling</span>
+            </td>
+            <td></td>
+            <td class="materials">
+              <span class="material-item">• <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/20171/aws-simulearn-auto-healing-and-scaling-applications">AWS SimuLearn: Auto-Healing and Scaling Applications</a></span>
+              <span class="replacement" data-lang="sq">Zëvendësim falas për modulin e mëparshëm</span>
+              <span class="replacement" data-lang="en">Free replacement for the previous module</span>
+              <span class="material-item">• <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html">AWS VPC Flow Logs documentation</a></span>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week2.meta">Java 02</span>
-          <h3 data-i18n="week2.topic">Arkitektura e MCC</h3>
-          <p data-i18n="week2.copy">Shërbimet bazë cloud dhe mënyra si lidhen me aplikacionet mobile-cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-cloud-computing-essentials-298982" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week3.meta">Java 03</span>
-          <h3 data-i18n="week3.topic">Cloud Economics</h3>
-          <p data-i18n="week3.copy">Kosto, optimizim, vendimmarrje teknike dhe ekonomike në cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-cloud-economics-299094" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week4.meta">Java 04</span>
-          <h3 data-i18n="week4.topic">Networking Fundamentals</h3>
-          <p data-i18n="week4.copy">Konceptet bazë të rrjeteve cloud, EC2, VPC dhe komunikimi ndërmjet resurseve.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-networking-concepts-299085" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week5.meta">Java 05</span>
-          <h3 data-i18n="week5.topic">Të dhënat në cloud</h3>
-          <p data-i18n="week5.copy">Modelimi i të dhënave, DynamoDB dhe dallimi praktik mes qasjeve relacionale dhe NoSQL.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-first-nosql-database-299086" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week6.meta">Java 06</span>
-          <h3 data-i18n="week6.topic">Compute, VM dhe kontenierë</h3>
-          <p data-i18n="week6.copy">EC2, compute choices dhe mënyra si ndërtohen zgjidhje të thjeshta cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-computing-solutions-298946" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week7.meta">Java 07</span>
-          <h3 data-i18n="week7.topic">Security & Privacy në MCC</h3>
-          <p data-i18n="week7.copy">IAM, përgjegjësia e përbashkët, kontrolli i qasjes dhe siguria e aplikacioneve cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-core-security-concepts-299024" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week8.meta">Java 08</span>
-          <h3 data-i18n="week8.topic">Resilience, auto-healing & scaling</h3>
-          <p data-i18n="week8.copy">Zëvendëson modulin me pagesë për network traffic; fokusohet në disponueshmëri, rikuperim dhe shkallëzim.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-auto-healing-and-scaling-applications-298988" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week9.meta">Java 09</span>
-          <h3 data-i18n="week9.topic">High availability për aplikacione web</h3>
-          <p data-i18n="week9.copy">Elastic Load Balancing, Auto Scaling dhe arkitekturë më rezistente për aplikacione cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-highly-available-web-applications-299087" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week10.meta">Java 10</span>
-          <h3 data-i18n="week10.topic">Hyrje në Generative AI në cloud</h3>
-          <p data-i18n="week10.copy">Konceptet bazë të GenAI dhe si përdoren shërbimet AI në një mjedis cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-get-started-with-generative-ai-451797" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week11.meta">Java 11</span>
-          <h3 data-i18n="week11.topic">Amazon Bedrock playgrounds</h3>
-          <p data-i18n="week11.copy">Krahasimi i foundation models, parametrat e modelit dhe vlerësimi i rezultateve.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-explore-the-amazon-bedrock-playgrounds-451795" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week12.meta">Java 12</span>
-          <h3 data-i18n="week12.topic">AI-assisted web development</h3>
-          <p data-i18n="week12.copy">Përdorimi i GenAI për të gjeneruar dhe përmirësuar kod të hostuar në cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-generate-code-for-a-webpage-451794" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week13.meta">Java 13</span>
-          <h3 data-i18n="week13.topic">AI services me SageMaker</h3>
-          <p data-i18n="week13.copy">Integrim i Textract, Comprehend, Translate, Transcribe dhe Polly për workflow cloud.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-use-ai-services-with-amazon-sagemaker-451806" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week14.meta">Java 14</span>
-          <h3 data-i18n="week14.topic">AI smart assistants</h3>
-          <p data-i18n="week14.copy">Ndërtimi i asistentëve me Bedrock, Lambda, DynamoDB, OpenSearch dhe S3.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-create-an-ai-smart-assistant-451803" data-i18n="open.module">Hap modulin</a>
-        </article>
-
-        <article class="week-card">
-          <span class="week-meta" data-i18n="week15.meta">Java 15</span>
-          <h3 data-i18n="week15.topic">Enterprise knowledge assistants</h3>
-          <p data-i18n="week15.copy">RAG, knowledge bases dhe përgatitja për prezantimin final të zgjidhjeve studentore.</p>
-          <a class="course-link" href="https://www.classcentral.com/course/aws-simulearn-create-an-enterprise-knowledge-assistant-451801" data-i18n="open.module">Hap modulin</a>
-        </article>
-      </section>
-
-      <section class="table-wrap" aria-label="Detailed syllabus">
-        <table>
-          <thead>
-            <tr>
-              <th data-i18n="table.week">Java</th>
-              <th data-i18n="table.topic">Tema</th>
-              <th data-i18n="table.outcomes">Rezultatet e nxënit</th>
-              <th data-i18n="table.materials">Materialet falas</th>
-              <th data-i18n="table.assessment">Metodat e mësimdhënies dhe vlerësimit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>01</td>
-              <td data-i18n="week1.topic">Hyrje në Cloud & MCC</td>
-              <td data-i18n="week1.outcomes">Studenti shpjegon cloud computing, MCC dhe shembuj të përdorimit në aplikacione mobile.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-cloud-first-steps-298927">AWS SimuLearn: Cloud First Steps</a> <span class="tag">Free</span></td>
-              <td data-i18n="week1.assessment">Ligjëratë, diskutim, reflektim i shkurtër individual.</td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td data-i18n="week2.topic">Arkitektura e MCC</td>
-              <td data-i18n="week2.outcomes">Studenti lidh shërbimet cloud me arkitekturën e një aplikacioni mobile-cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-cloud-computing-essentials-298982">AWS SimuLearn: Cloud Computing Essentials</a> <span class="tag">Free</span></td>
-              <td data-i18n="week2.assessment">Analizë arkitekture, ushtrim në grup, quiz i shkurtër.</td>
-            </tr>
-            <tr>
-              <td>03</td>
-              <td data-i18n="week3.topic">Cloud Economics</td>
-              <td data-i18n="week3.outcomes">Studenti vlerëson koston, zgjedh kompromiset teknike dhe propozon optimizime bazë.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-cloud-economics-299094">AWS SimuLearn: Cloud Economics</a> <span class="tag">Free</span></td>
-              <td data-i18n="week3.assessment">Punë praktike me skenar kostoje dhe diskutim.</td>
-            </tr>
-            <tr>
-              <td>04</td>
-              <td data-i18n="week4.topic">Networking Fundamentals</td>
-              <td data-i18n="week4.outcomes">Studenti përshkruan VPC, subnet, lidhje dhe rrjedhën bazë të trafikut në cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-networking-concepts-299085">AWS SimuLearn: Networking Concepts</a> <span class="tag">Free</span></td>
-              <td data-i18n="week4.assessment">Skicim topologjie, diskutim teknik dhe pyetje kontrolluese.</td>
-            </tr>
-            <tr>
-              <td>05</td>
-              <td data-i18n="week5.topic">Të dhënat në cloud</td>
-              <td data-i18n="week5.outcomes">Studenti dallon kur përdoret NoSQL dhe modelon një skemë të thjeshtë për aplikacion cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-first-nosql-database-299086">AWS SimuLearn: First NoSQL Database</a> <span class="tag">Free</span></td>
-              <td data-i18n="week5.assessment">Ushtrim me access patterns dhe modelim të të dhënave.</td>
-            </tr>
-            <tr>
-              <td>06</td>
-              <td data-i18n="week6.topic">Compute, VM dhe kontenierë</td>
-              <td data-i18n="week6.outcomes">Studenti shpjegon compute choices dhe ndërton një propozim të thjeshtë për hostim cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-computing-solutions-298946">AWS SimuLearn: Computing Solutions</a> <span class="tag">Free</span></td>
-              <td data-i18n="week6.assessment">Demo teknike, punë në çift dhe kontroll i rezultateve.</td>
-            </tr>
-            <tr>
-              <td>07</td>
-              <td data-i18n="week7.topic">Security & Privacy në MCC</td>
-              <td data-i18n="week7.outcomes">Studenti aplikon koncepte bazë të IAM, qasjes dhe sigurisë për aplikacione cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-core-security-concepts-299024">AWS SimuLearn: Core Security Concepts</a> <span class="tag">Free</span></td>
-              <td data-i18n="week7.assessment">Analizë risku, diskutim mbi shared responsibility dhe quiz.</td>
-            </tr>
-            <tr>
-              <td>08</td>
-              <td data-i18n="week8.topic">Resilience, auto-healing & scaling</td>
-              <td data-i18n="week8.outcomes">Studenti shpjegon scaling, auto-healing dhe disponueshmëri të lartë për workload cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-auto-healing-and-scaling-applications-298988">AWS SimuLearn: Auto-Healing and Scaling Applications</a> <span class="tag">Free</span></td>
-              <td data-i18n="week8.assessment">Skenar troubleshooting, analizë konfigurimi dhe diskutim i zgjidhjes.</td>
-            </tr>
-            <tr>
-              <td>09</td>
-              <td data-i18n="week9.topic">High availability për aplikacione web</td>
-              <td data-i18n="week9.outcomes">Studenti projekton një aplikacion web më rezistent me load balancing dhe auto scaling.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-highly-available-web-applications-299087">AWS SimuLearn: Highly Available Web Applications</a> <span class="tag">Free</span></td>
-              <td data-i18n="week9.assessment">Analizë arkitekture, diagram dhe pyetje kontrolluese.</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td data-i18n="week10.topic">Hyrje në Generative AI në cloud</td>
-              <td data-i18n="week10.outcomes">Studenti shpjegon konceptet kryesore të GenAI dhe përdorimet e tyre në aplikacione cloud/MCC.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-get-started-with-generative-ai-451797">AWS SimuLearn: Get Started with Generative AI</a> <span class="tag">Free</span></td>
-              <td data-i18n="week10.assessment">Diskutim, demonstrim dhe reflektim i shkurtër mbi rast përdorimi.</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td data-i18n="week11.topic">Amazon Bedrock playgrounds</td>
-              <td data-i18n="week11.outcomes">Studenti krahason foundation models dhe vlerëson rezultatet për një skenar biznesi.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-explore-the-amazon-bedrock-playgrounds-451795">AWS SimuLearn: Explore the Amazon Bedrock Playgrounds</a> <span class="tag">Free</span></td>
-              <td data-i18n="week11.assessment">Eksperiment me modele, krahasim i rezultateve dhe diskutim.</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td data-i18n="week12.topic">AI-assisted web development</td>
-              <td data-i18n="week12.outcomes">Studenti përdor GenAI për të përmirësuar kod dhe e lidh me hostim në cloud.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-generate-code-for-a-webpage-451794">AWS SimuLearn: Generate Code for a Webpage</a> <span class="tag">Free</span></td>
-              <td data-i18n="week12.assessment">Ushtrim praktik, review kodi dhe kontroll funksional.</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td data-i18n="week13.topic">AI services me SageMaker</td>
-              <td data-i18n="week13.outcomes">Studenti integron shërbime AI për përpunim dokumentesh, teksti, zëri dhe përkthimi.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-use-ai-services-with-amazon-sagemaker-451806">AWS SimuLearn: Use AI Services with Amazon SageMaker</a> <span class="tag">Free</span></td>
-              <td data-i18n="week13.assessment">Workflow teknik, analizë rezultatesh dhe shënime laboratorike.</td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td data-i18n="week14.topic">AI smart assistants</td>
-              <td data-i18n="week14.outcomes">Studenti shpjegon si ndërtohet një asistent AI me backend cloud dhe data services.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-create-an-ai-smart-assistant-451803">AWS SimuLearn: Create an AI Smart Assistant</a> <span class="tag">Free</span></td>
-              <td data-i18n="week14.assessment">Projektim zgjidhjeje, diagram shërbimesh dhe diskutim sigurie.</td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td data-i18n="week15.topic">Enterprise knowledge assistants</td>
-              <td data-i18n="week15.outcomes">Studenti shpjegon RAG, knowledge bases dhe përgatit prezantimin final të projektit.</td>
-              <td><a href="https://www.classcentral.com/course/aws-simulearn-create-an-enterprise-knowledge-assistant-451801">AWS SimuLearn: Create an Enterprise Knowledge Assistant</a> <span class="tag">Free</span></td>
-              <td data-i18n="week15.assessment">Prezantim final, demo ose walkthrough teknik dhe reflektim mbi zgjidhjen.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
-  </div>
+    <p class="note" data-lang="sq">Shënim: fushat e tjera janë lënë si në strukturën e syllabusit që dërgove. Për javët e tjera ose tekstin e plotë të rezultateve/metodave, dërgo tabelën origjinale dhe do ta fus pa ndryshuar formulimin.</p>
+    <p class="note" data-lang="en">Note: the other fields are kept in the structure you sent. For additional weeks or the full learning-outcome/assessment text, send the original table and I will add it without changing the wording.</p>
+  </main>
 
   <script>
-    const translations = {
-      sq: {
-        title: 'Syllabusi Cloud & MCC 2026',
-        subtitle: 'Çdo javë përdor një modul AWS SimuLearn falas.',
-        'nav.home': 'Ballina',
-        'nav.catalogue': 'Detyrat 2026',
-        'nav.syllabus': 'Syllabusi',
-        'nav.instructions': 'Udhëzime',
-        'hero.title': 'Cloud Computing dhe Mobile Cloud Computing',
-        'hero.copy': 'Ky syllabus është përgatitur për vitin 2026. Modulet me pagesë janë hequr dhe janë zëvendësuar me module AWS SimuLearn që shfaqen si falas ose free certificate në katalogët publikë të trajnimit.',
-        'notice.label': 'Rregull për studentët',
-        'notice.copy': 'Nëse një link i AWS Skill Builder kërkon hyrje, studenti duhet të krijojë llogari falas. Nuk kërkohet modul me pagesë për këtë syllabus.',
-        'open.module': 'Hap modulin',
-        'table.week': 'Java',
-        'table.topic': 'Tema',
-        'table.outcomes': 'Rezultatet e nxënit',
-        'table.materials': 'Materialet falas',
-        'table.assessment': 'Metodat e mësimdhënies dhe vlerësimit',
-        'week1.meta': 'Java 01',
-        'week1.topic': 'Hyrje në Cloud & MCC',
-        'week1.copy': 'Bazat e cloud adoption, rolet e cloud-it dhe hapat e parë në AWS.',
-        'week1.outcomes': 'Studenti shpjegon cloud computing, MCC dhe shembuj të përdorimit në aplikacione mobile.',
-        'week1.assessment': 'Ligjëratë, diskutim, reflektim i shkurtër individual.',
-        'week2.meta': 'Java 02',
-        'week2.topic': 'Arkitektura e MCC',
-        'week2.copy': 'Shërbimet bazë cloud dhe mënyra si lidhen me aplikacionet mobile-cloud.',
-        'week2.outcomes': 'Studenti lidh shërbimet cloud me arkitekturën e një aplikacioni mobile-cloud.',
-        'week2.assessment': 'Analizë arkitekture, ushtrim në grup, quiz i shkurtër.',
-        'week3.meta': 'Java 03',
-        'week3.topic': 'Cloud Economics',
-        'week3.copy': 'Kosto, optimizim, vendimmarrje teknike dhe ekonomike në cloud.',
-        'week3.outcomes': 'Studenti vlerëson koston, zgjedh kompromiset teknike dhe propozon optimizime bazë.',
-        'week3.assessment': 'Punë praktike me skenar kostoje dhe diskutim.',
-        'week4.meta': 'Java 04',
-        'week4.topic': 'Networking Fundamentals',
-        'week4.copy': 'Konceptet bazë të rrjeteve cloud, EC2, VPC dhe komunikimi ndërmjet resurseve.',
-        'week4.outcomes': 'Studenti përshkruan VPC, subnet, lidhje dhe rrjedhën bazë të trafikut në cloud.',
-        'week4.assessment': 'Skicim topologjie, diskutim teknik dhe pyetje kontrolluese.',
-        'week5.meta': 'Java 05',
-        'week5.topic': 'Të dhënat në cloud',
-        'week5.copy': 'Modelimi i të dhënave, DynamoDB dhe dallimi praktik mes qasjeve relacionale dhe NoSQL.',
-        'week5.outcomes': 'Studenti dallon kur përdoret NoSQL dhe modelon një skemë të thjeshtë për aplikacion cloud.',
-        'week5.assessment': 'Ushtrim me access patterns dhe modelim të të dhënave.',
-        'week6.meta': 'Java 06',
-        'week6.topic': 'Compute, VM dhe kontenierë',
-        'week6.copy': 'EC2, compute choices dhe mënyra si ndërtohen zgjidhje të thjeshta cloud.',
-        'week6.outcomes': 'Studenti shpjegon compute choices dhe ndërton një propozim të thjeshtë për hostim cloud.',
-        'week6.assessment': 'Demo teknike, punë në çift dhe kontroll i rezultateve.',
-        'week7.meta': 'Java 07',
-        'week7.topic': 'Security & Privacy në MCC',
-        'week7.copy': 'IAM, përgjegjësia e përbashkët, kontrolli i qasjes dhe siguria e aplikacioneve cloud.',
-        'week7.outcomes': 'Studenti aplikon koncepte bazë të IAM, qasjes dhe sigurisë për aplikacione cloud.',
-        'week7.assessment': 'Analizë risku, diskutim mbi shared responsibility dhe quiz.',
-        'week8.meta': 'Java 08',
-        'week8.topic': 'Resilience, auto-healing & scaling',
-        'week8.copy': 'Zëvendëson modulin me pagesë për network traffic; fokusohet në disponueshmëri, rikuperim dhe shkallëzim.',
-        'week8.outcomes': 'Studenti shpjegon scaling, auto-healing dhe disponueshmëri të lartë për workload cloud.',
-        'week8.assessment': 'Skenar troubleshooting, analizë konfigurimi dhe diskutim i zgjidhjes.',
-        'week9.meta': 'Java 09',
-        'week9.topic': 'High availability për aplikacione web',
-        'week9.copy': 'Elastic Load Balancing, Auto Scaling dhe arkitekturë më rezistente për aplikacione cloud.',
-        'week9.outcomes': 'Studenti projekton një aplikacion web më rezistent me load balancing dhe auto scaling.',
-        'week9.assessment': 'Analizë arkitekture, diagram dhe pyetje kontrolluese.',
-        'week10.meta': 'Java 10',
-        'week10.topic': 'Hyrje në Generative AI në cloud',
-        'week10.copy': 'Konceptet bazë të GenAI dhe si përdoren shërbimet AI në një mjedis cloud.',
-        'week10.outcomes': 'Studenti shpjegon konceptet kryesore të GenAI dhe përdorimet e tyre në aplikacione cloud/MCC.',
-        'week10.assessment': 'Diskutim, demonstrim dhe reflektim i shkurtër mbi rast përdorimi.',
-        'week11.meta': 'Java 11',
-        'week11.topic': 'Amazon Bedrock playgrounds',
-        'week11.copy': 'Krahasimi i foundation models, parametrat e modelit dhe vlerësimi i rezultateve.',
-        'week11.outcomes': 'Studenti krahason foundation models dhe vlerëson rezultatet për një skenar biznesi.',
-        'week11.assessment': 'Eksperiment me modele, krahasim i rezultateve dhe diskutim.',
-        'week12.meta': 'Java 12',
-        'week12.topic': 'AI-assisted web development',
-        'week12.copy': 'Përdorimi i GenAI për të gjeneruar dhe përmirësuar kod të hostuar në cloud.',
-        'week12.outcomes': 'Studenti përdor GenAI për të përmirësuar kod dhe e lidh me hostim në cloud.',
-        'week12.assessment': 'Ushtrim praktik, review kodi dhe kontroll funksional.',
-        'week13.meta': 'Java 13',
-        'week13.topic': 'AI services me SageMaker',
-        'week13.copy': 'Integrim i Textract, Comprehend, Translate, Transcribe dhe Polly për workflow cloud.',
-        'week13.outcomes': 'Studenti integron shërbime AI për përpunim dokumentesh, teksti, zëri dhe përkthimi.',
-        'week13.assessment': 'Workflow teknik, analizë rezultatesh dhe shënime laboratorike.',
-        'week14.meta': 'Java 14',
-        'week14.topic': 'AI smart assistants',
-        'week14.copy': 'Ndërtimi i asistentëve me Bedrock, Lambda, DynamoDB, OpenSearch dhe S3.',
-        'week14.outcomes': 'Studenti shpjegon si ndërtohet një asistent AI me backend cloud dhe data services.',
-        'week14.assessment': 'Projektim zgjidhjeje, diagram shërbimesh dhe diskutim sigurie.',
-        'week15.meta': 'Java 15',
-        'week15.topic': 'Enterprise knowledge assistants',
-        'week15.copy': 'RAG, knowledge bases dhe përgatitja për prezantimin final të zgjidhjeve studentore.',
-        'week15.outcomes': 'Studenti shpjegon RAG, knowledge bases dhe përgatit prezantimin final të projektit.',
-        'week15.assessment': 'Prezantim final, demo ose walkthrough teknik dhe reflektim mbi zgjidhjen.'
-      },
-      en: {
-        title: 'Cloud & MCC 2026 Syllabus',
-        subtitle: 'Each week uses a free AWS SimuLearn module.',
-        'nav.home': 'Home',
-        'nav.catalogue': 'Assignments 2026',
-        'nav.syllabus': 'Syllabus',
-        'nav.instructions': 'Instructions',
-        'hero.title': 'Cloud Computing and Mobile Cloud Computing',
-        'hero.copy': 'This syllabus is prepared for 2026. Paid modules have been removed and replaced with AWS SimuLearn modules that appear as free or free certificate in public training catalogues.',
-        'notice.label': 'Student rule',
-        'notice.copy': 'If an AWS Skill Builder link asks for sign-in, students should create a free account. No paid module is required for this syllabus.',
-        'open.module': 'Open module',
-        'table.week': 'Week',
-        'table.topic': 'Topic',
-        'table.outcomes': 'Learning outcomes',
-        'table.materials': 'Free materials',
-        'table.assessment': 'Teaching and assessment methods',
-        'week1.meta': 'Week 01',
-        'week1.topic': 'Introduction to Cloud & MCC',
-        'week1.copy': 'Cloud adoption basics, cloud roles, and first steps with AWS.',
-        'week1.outcomes': 'The student explains cloud computing, MCC, and usage examples in mobile applications.',
-        'week1.assessment': 'Lecture, discussion, short individual reflection.',
-        'week2.meta': 'Week 02',
-        'week2.topic': 'MCC Architecture',
-        'week2.copy': 'Core cloud services and how they connect to mobile-cloud applications.',
-        'week2.outcomes': 'The student connects cloud services with the architecture of a mobile-cloud application.',
-        'week2.assessment': 'Architecture analysis, group exercise, short quiz.',
-        'week3.meta': 'Week 03',
-        'week3.topic': 'Cloud Economics',
-        'week3.copy': 'Cost, optimization, and technical/economic decision-making in cloud.',
-        'week3.outcomes': 'The student evaluates cost, chooses technical tradeoffs, and proposes basic optimizations.',
-        'week3.assessment': 'Practical cost scenario and discussion.',
-        'week4.meta': 'Week 04',
-        'week4.topic': 'Networking Fundamentals',
-        'week4.copy': 'Core cloud networking, EC2, VPC, and communication between resources.',
-        'week4.outcomes': 'The student describes VPC, subnets, connectivity, and basic traffic flow in cloud.',
-        'week4.assessment': 'Topology sketching, technical discussion, and check questions.',
-        'week5.meta': 'Week 05',
-        'week5.topic': 'Cloud Data',
-        'week5.copy': 'Data modeling, DynamoDB, and the practical difference between relational and NoSQL approaches.',
-        'week5.outcomes': 'The student distinguishes when NoSQL is useful and models a simple cloud application schema.',
-        'week5.assessment': 'Exercise with access patterns and data modeling.',
-        'week6.meta': 'Week 06',
-        'week6.topic': 'Compute, VM and Containers',
-        'week6.copy': 'EC2, compute choices, and how simple cloud solutions are built.',
-        'week6.outcomes': 'The student explains compute choices and builds a simple proposal for cloud hosting.',
-        'week6.assessment': 'Technical demo, pair work, and outcome check.',
-        'week7.meta': 'Week 07',
-        'week7.topic': 'Security & Privacy in MCC',
-        'week7.copy': 'IAM, shared responsibility, access control, and cloud application security.',
-        'week7.outcomes': 'The student applies basic IAM, access, and security concepts to cloud applications.',
-        'week7.assessment': 'Risk analysis, shared responsibility discussion, and quiz.',
-        'week8.meta': 'Week 08',
-        'week8.topic': 'Resilience, auto-healing & scaling',
-        'week8.copy': 'Replaces the paid network traffic module; focuses on availability, recovery, and scaling.',
-        'week8.outcomes': 'The student explains scaling, auto-healing, and high availability for cloud workloads.',
-        'week8.assessment': 'Troubleshooting scenario, configuration analysis, and solution discussion.',
-        'week9.meta': 'Week 09',
-        'week9.topic': 'High availability for web applications',
-        'week9.copy': 'Elastic Load Balancing, Auto Scaling, and more resilient architecture for cloud applications.',
-        'week9.outcomes': 'The student designs a more resilient web application with load balancing and auto scaling.',
-        'week9.assessment': 'Architecture analysis, diagram, and check questions.',
-        'week10.meta': 'Week 10',
-        'week10.topic': 'Introduction to Generative AI in cloud',
-        'week10.copy': 'Core GenAI concepts and how AI services are used in a cloud environment.',
-        'week10.outcomes': 'The student explains key GenAI concepts and their use in cloud/MCC applications.',
-        'week10.assessment': 'Discussion, demonstration, and short use-case reflection.',
-        'week11.meta': 'Week 11',
-        'week11.topic': 'Amazon Bedrock playgrounds',
-        'week11.copy': 'Comparing foundation models, model parameters, and result evaluation.',
-        'week11.outcomes': 'The student compares foundation models and evaluates outputs for a business scenario.',
-        'week11.assessment': 'Model experiment, output comparison, and discussion.',
-        'week12.meta': 'Week 12',
-        'week12.topic': 'AI-assisted web development',
-        'week12.copy': 'Using GenAI to generate and improve code hosted in cloud.',
-        'week12.outcomes': 'The student uses GenAI to improve code and connect it with cloud hosting.',
-        'week12.assessment': 'Practical exercise, code review, and functional check.',
-        'week13.meta': 'Week 13',
-        'week13.topic': 'AI services with SageMaker',
-        'week13.copy': 'Integrating Textract, Comprehend, Translate, Transcribe, and Polly for cloud workflows.',
-        'week13.outcomes': 'The student integrates AI services for document, text, voice, and translation processing.',
-        'week13.assessment': 'Technical workflow, result analysis, and lab notes.',
-        'week14.meta': 'Week 14',
-        'week14.topic': 'AI smart assistants',
-        'week14.copy': 'Building assistants with Bedrock, Lambda, DynamoDB, OpenSearch, and S3.',
-        'week14.outcomes': 'The student explains how to build an AI assistant with cloud backend and data services.',
-        'week14.assessment': 'Solution design, service diagram, and security discussion.',
-        'week15.meta': 'Week 15',
-        'week15.topic': 'Enterprise knowledge assistants',
-        'week15.copy': 'RAG, knowledge bases, and preparation for final student solution presentations.',
-        'week15.outcomes': 'The student explains RAG, knowledge bases, and prepares the final project presentation.',
-        'week15.assessment': 'Final presentation, demo or technical walkthrough, and solution reflection.'
-      }
-    };
+    const buttons = document.querySelectorAll('[data-set-lang]');
 
-    const applyLanguage = (lang) => {
-      const dictionary = translations[lang] || translations.sq;
-      document.documentElement.lang = lang === 'sq' ? 'sq' : 'en';
-      document.title = dictionary.title;
-      document.querySelectorAll('[data-i18n]').forEach((node) => {
-        const key = node.dataset.i18n;
-        if (dictionary[key]) node.textContent = dictionary[key];
-      });
-      document.querySelectorAll('[data-lang]').forEach((button) => {
-        button.classList.toggle('active', button.dataset.lang === lang);
+    function applyLanguage(lang) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.documentElement.lang = lang === 'en' ? 'en' : 'sq';
+      buttons.forEach((button) => {
+        button.classList.toggle('active', button.dataset.setLang === lang);
       });
       localStorage.setItem('mcc-syllabus-lang', lang);
-    };
+    }
 
-    document.querySelectorAll('[data-lang]').forEach((button) => {
-      button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => applyLanguage(button.dataset.setLang));
     });
 
     applyLanguage(localStorage.getItem('mcc-syllabus-lang') || 'sq');
