@@ -8,6 +8,7 @@ on:
       - SUBMISSIONS_2026.md
       - index.html
       - mcc-2026.html
+      - syllabus-mcc-2026.html
       - submissions-2026.html
       - instructions-mcc-2026.html
       - udhezime-mcc-2026.html
@@ -22,6 +23,7 @@ on:
       - SUBMISSIONS_2026.md
       - index.html
       - mcc-2026.html
+      - syllabus-mcc-2026.html
       - submissions-2026.html
       - instructions-mcc-2026.html
       - udhezime-mcc-2026.html
@@ -69,6 +71,7 @@ jobs:
           cp main/SUBMISSIONS_2026.md pages/SUBMISSIONS_2026.md
           cp main/index.html pages/index.html
           cp main/mcc-2026.html pages/mcc-2026.html
+          cp main/syllabus-mcc-2026.html pages/syllabus-mcc-2026.html
           cp main/submissions-2026.html pages/submissions-2026.html
           cp main/instructions-mcc-2026.html pages/instructions-mcc-2026.html
           cp main/udhezime-mcc-2026.html pages/udhezime-mcc-2026.html
@@ -94,6 +97,7 @@ jobs:
             SUBMISSIONS_2026.md \
             index.html \
             mcc-2026.html \
+            syllabus-mcc-2026.html \
             submissions-2026.html \
             instructions-mcc-2026.html \
             udhezime-mcc-2026.html \

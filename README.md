@@ -10,6 +10,7 @@ Each topic can be claimed by **exactly one** student.
 - [`CLOUD_TOPICS_2026.md`](CLOUD_TOPICS_2026.md) — Cloud Computing and Mobile Cloud Computing (MCC) topics for 2026.
 - [`index.html`](index.html) — professional course profile where students choose catalogues by topic area and year.
 - [`mcc-2026.html`](mcc-2026.html) — main visual browsing/reservation page for the MCC 2026 catalogue, including read-only scores for students.
+- [`syllabus-mcc-2026.html`](syllabus-mcc-2026.html) — bilingual Cloud/MCC 2026 syllabus with free AWS SimuLearn modules for each week.
 - [`submissions-2026.html`](submissions-2026.html) — read-only visual dashboard for final submissions and instructor scores.
 - [`instructions-mcc-2026.html`](instructions-mcc-2026.html) — English static guide for reserving, solving, testing, and submitting assignments.
 - [`udhezime-mcc-2026.html`](udhezime-mcc-2026.html) — Albanian static guide for reserving, solving, testing, and submitting assignments.
