@@ -115,6 +115,27 @@ jobs:
             --repo "${{ github.repository }}" \
             --body-file comment.md
 
+      - name: Email correction instructions
+        if: steps.validate.outcome == 'failure'
+        continue-on-error: true
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_REPLY_TO: ${{ secrets.SMTP_REPLY_TO }}
+          SMTP_SSL: ${{ secrets.SMTP_SSL }}
+          PR_DIR: pr
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          VALIDATION_OUTPUT: validation-output.txt
+          GITHUB_BASE_REF: main
+        run: |
+          set -euo pipefail
+          python3 main/scripts/send-failed-reservation-email.py
+
       - name: Stop invalid reservation
         if: steps.validate.outcome == 'failure'
         run: exit 1

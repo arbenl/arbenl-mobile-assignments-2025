@@ -47,6 +47,20 @@ Common mistakes that are rejected: editing `mcc-2026.html`, renaming `CLOUD_TOPI
 
 Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
+## ✉️ Failed PR email notifications
+
+When a reservation PR fails, GitHub Actions always posts correction instructions as a PR comment. The workflow can also email the student automatically if these repository secrets are configured:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USERNAME`
+- `SMTP_PASSWORD`
+- `SMTP_FROM`
+- `SMTP_REPLY_TO` optional
+- `SMTP_SSL` optional, use `true` for port `465`
+
+If these secrets are not configured, the workflow skips email delivery and still leaves the PR comment. The recipient email is extracted from the changed reservation line or, if needed, from the PR title/body.
+
 ## ✅ How to submit the final solution
 
 1) Build the solution in your own GitHub repository.
