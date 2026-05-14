@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-05-14T14:31:12.476Z",
+  "generatedAt": "2026-05-14T15:15:43.817Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
-      "id": "13",
-      "title": "Image Thumbnail Processing Pipeline",
-      "name": "amar ibishi",
-      "email": "amar.ibisi@universitetiaab.com",
-      "stack": "React + Node.js API",
-      "prNumber": 118,
-      "prTitle": "Update assignment details for Image Thumbnail Processing",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/118",
-      "author": "ibishiamar",
-      "createdAt": "2026-05-14T14:30:47Z"
+      "id": "15",
+      "title": "Webhook Receiver and Event Replay Tool",
+      "name": "Rigon Vebiji",
+      "email": "rigon.vebiji@universitetiaab.com",
+      "stack": "Next.js + serverless functions",
+      "prNumber": 119,
+      "prTitle": "Update Webhook Receiver project details",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/119",
+      "author": "rigonvebiji",
+      "createdAt": "2026-05-14T15:15:27Z"
     }
   ],
   "conflicts": []
