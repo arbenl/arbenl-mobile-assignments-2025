@@ -165,7 +165,7 @@
   - Score: Not graded (0-30)
 
 ## Mobile Cloud Computing (MCC)
-51. Mobile Cloud Notes with Offline Sync — (Taken by Endrit Demiri <endrit.demiri@universitetiaab.com>)
+51. Mobile Cloud Notes with Offline Sync — (Taken by Endrit Demiri <endrit.demiri@universitetiaab.com>; Stack: React Native + cloud backend)
   - MCC focus: Build a mobile app with local cache, conflict handling, managed auth, and cloud database synchronization.
   - Score: Not graded (0-30)
 52. Push Notification Reminder Service — (Taken by Meriton Cakiqi <meritoncakiqi173@gmail.com>)
