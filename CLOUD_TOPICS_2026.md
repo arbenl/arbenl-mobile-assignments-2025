@@ -43,7 +43,7 @@
 12. Scheduled Weather Digest Service — (Taken by Edonita Ademaj <edonita.ademaj@universitetiaab.com>)
   - Cloud focus: Run a cron-triggered function, call a public weather API, cache results, and deliver daily summaries.
   - Score: Not graded (0-30)
-13. Image Thumbnail Processing Pipeline — (Available)
+13. 13. Image Thumbnail Processing Pipeline — (Taken by amar ibishi <amar.ibisi@universitetiaab.com>; Stack: React + Node.js API)
   - Cloud focus: Upload images to object storage, trigger background resizing, and expose transformed image URLs.
   - Score: Not graded (0-30)
 14. PDF Invoice Generator API — (Taken by Anida Vitija <anida.vitija@universitetiaab.com>)
