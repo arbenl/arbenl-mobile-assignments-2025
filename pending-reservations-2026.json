@@ -1,6 +1,20 @@
 {
-  "generatedAt": "2026-05-14T07:55:25.655Z",
+  "generatedAt": "2026-05-14T08:08:58.803Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [],
-  "conflicts": []
+  "conflicts": [
+    {
+      "id": "51",
+      "title": "Mobile Cloud Notes with Offline Sync",
+      "name": "Endrit Demiri",
+      "email": "endrit.demiri@universitetiaab.com",
+      "stack": "React Native + cloud backend",
+      "prNumber": 116,
+      "prTitle": "Add technology stack to Mobile Cloud Notes project",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/116",
+      "author": "Endritfx",
+      "createdAt": "2026-05-14T08:08:46Z",
+      "reason": "Topic 51 is already officially reserved by Endrit Demiri."
+    }
+  ]
 }
