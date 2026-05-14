@@ -75,12 +75,13 @@ jobs:
           Correct reservation format:
 
           ```text
-          NN. Topic Title — (Taken by Full Name <email@example.com>)
+          NN. Topic Title — (Taken by Full Name <email@example.com>; Stack: Chosen stack)
           ```
 
           How to fix it:
           - Edit only `CLOUD_TOPICS_2026.md`.
-          - Change exactly one existing topic line from `(Available)` to `(Taken by Full Name <email@example.com>)`.
+          - Change exactly one existing topic line from `(Available)` to `(Taken by Full Name <email@example.com>; Stack: Chosen stack)`.
+          - If the topic is already yours, you may edit the same topic line to add or change `; Stack: ...`, but keep the same name or email.
           - Keep the topic title exactly the same.
           - Keep the `Cloud focus` and `Score` lines.
           - Do not edit `mcc-2026.html`.
@@ -96,12 +97,13 @@ jobs:
           Formati i saktë:
 
           ```text
-          NN. Titulli i temës — (Taken by Emri Mbiemri <email@example.com>)
+          NN. Titulli i temës — (Taken by Emri Mbiemri <email@example.com>; Stack: Stack-u i zgjedhur)
           ```
 
           Si ta rregulloni:
           - Ndryshoni vetëm `CLOUD_TOPICS_2026.md`.
-          - Ndryshoni saktësisht një rresht ekzistues nga `(Available)` në `(Taken by Emri Mbiemri <email@example.com>)`.
+          - Ndryshoni saktësisht një rresht ekzistues nga `(Available)` në `(Taken by Emri Mbiemri <email@example.com>; Stack: Stack-u i zgjedhur)`.
+          - Nëse tema është tashmë e juaja, mund të editoni po atë rresht për të shtuar ose ndryshuar `; Stack: ...`, por mbani të njëjtin emër ose email.
           - Ruani titullin e temës pa ndryshime.
           - Mos fshini rreshtat `Cloud focus` dhe `Score`.
           - Mos editoni `mcc-2026.html`.

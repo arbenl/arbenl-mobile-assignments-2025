@@ -17,7 +17,7 @@ Each topic can be claimed by **exactly one** student.
 - [`SUBMISSIONS_2026.md`](SUBMISSIONS_2026.md) — final solution submission links.
 
 Reservations are **first in, first served**: the first valid PR that passes automatic validation is merged automatically, reserves the topic, and makes it visible on the public site.
-Students may change only the status segment of one available topic line when reserving. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
+Students may change only one topic line when reserving or correcting their own reservation. New reservations use `Taken by Full Name <email@example.com>`, and students may include or later update `; Stack: Chosen stack` on that same line. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
 
 ## 🚀 Quick Claim Checklist
 
@@ -35,7 +35,7 @@ Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_20
 1) Fork this repository to your GitHub account.
 2) Open the correct catalogue in your fork: `TOPICS.md` for Mobile Programming or `CLOUD_TOPICS_2026.md` for Cloud Computing/MCC 2026.
 3) Find the topic you want (use the ID like `#07`).
-4) Change the status from **(Available)** to **(Taken by YOUR FULL NAME <email@example.com>)**.
+4) Change the status from **(Available)** to **(Taken by YOUR FULL NAME <email@example.com>; Stack: YOUR CHOSEN STACK)**.
 5) Do not change the score line or any description line. Scores are instructor-managed and shown as `0/30` or `Not graded`.
 6) Commit the change in your fork and **open a Pull Request** back to this repo.
 7) Fill the PR template completely (catalogue, name, email, topic ID, chosen stack, cloud/mobile services if relevant, 1-week plan, AI tools).
@@ -46,7 +46,7 @@ Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_20
 
 Common mistakes that are rejected: editing `mcc-2026.html`, renaming `CLOUD_TOPICS_2026.md`, deleting `Cloud focus` or `Score` lines, duplicating the topic title inside the status, or putting two students on one topic.
 
-Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
+Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To add or change your stack, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
 
 ## ✉️ Failed PR email notifications
 
@@ -88,7 +88,7 @@ Use `Demo: N/A` only when the project cannot reasonably be deployed, and explain
    ```bash
    git checkout -b claim-topic-07
    ```
-5. **Përditëso vetëm rreshtin e temës tënde në katalogun përkatës:** Ndrysho segmentin `— (Available)` në `— (Taken by EMRI MBIEMRI <email@example.com>)` duke ruajtur identik pjesën tjetër të rreshtit. Mos modifiko titullin, ID-në apo përshkrimin.
+5. **Përditëso vetëm rreshtin e temës tënde në katalogun përkatës:** Ndrysho segmentin `— (Available)` në `— (Taken by EMRI MBIEMRI <email@example.com>; Stack: STACK-U I ZGJEDHUR)` duke ruajtur identik pjesën tjetër të rreshtit. Nëse e ke rezervuar tashmë temën, mund ta ndryshosh vetëm po atë rresht për të shtuar/ndryshuar `; Stack: ...`, por duhet të mbetet i njëjti emër ose i njëjti email.
 6. **Ruaj dhe kontrollo ndryshimin:**  
    ```bash
    git status

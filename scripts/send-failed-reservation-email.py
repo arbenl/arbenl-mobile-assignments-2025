@@ -115,11 +115,12 @@ What went wrong:
 {validation_output}
 
 Correct format:
-NN. Topic Title — (Taken by Full Name <email@example.com>)
+NN. Topic Title — (Taken by Full Name <email@example.com>; Stack: Chosen stack)
 
 How to fix it:
 - Edit only CLOUD_TOPICS_2026.md.
-- Change exactly one existing topic line from (Available) to (Taken by Full Name <email@example.com>).
+- Change exactly one existing topic line from (Available) to (Taken by Full Name <email@example.com>; Stack: Chosen stack).
+- If the topic is already yours, edit the same line to add/change ; Stack: ..., keeping the same name or email.
 - Keep the topic ID and title exactly the same.
 - Keep the Cloud focus and Score lines.
 - Do not edit mcc-2026.html.
@@ -140,11 +141,12 @@ Cfare shkoi gabim:
 {validation_output}
 
 Formati i sakte:
-NN. Titulli i temes — (Taken by Emri Mbiemri <email@example.com>)
+NN. Titulli i temes — (Taken by Emri Mbiemri <email@example.com>; Stack: Stack-u i zgjedhur)
 
 Si ta rregulloni:
 - Ndryshoni vetem CLOUD_TOPICS_2026.md.
-- Ndryshoni saktesisht nje rresht ekzistues nga (Available) ne (Taken by Emri Mbiemri <email@example.com>).
+- Ndryshoni saktesisht nje rresht ekzistues nga (Available) ne (Taken by Emri Mbiemri <email@example.com>; Stack: Stack-u i zgjedhur).
+- Nese tema eshte tashme e juaja, editoni po ate rresht per te shtuar/ndryshuar ; Stack: ..., duke mbajtur te njejtin emer ose email.
 - Ruani ID-ne dhe titullin e temes pa ndryshime.
 - Mos fshini rreshtat Cloud focus dhe Score.
 - Mos editoni mcc-2026.html.

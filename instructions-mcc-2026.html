@@ -335,7 +335,7 @@
       <aside class="rules" aria-label="Main rules">
         <div class="rule">
           <strong>Name and email are mandatory.</strong>
-          <span>The reservation format is `Taken by Full Name &lt;email@example.com&gt;`.</span>
+          <span>The reservation format is `Taken by Full Name &lt;email@example.com&gt;; Stack: Chosen stack`.</span>
         </div>
         <div class="rule">
           <strong>Change exactly one line.</strong>
@@ -368,17 +368,17 @@
       <ol class="steps">
         <li>Open `mcc-2026.html`, find a topic, and check that it is `Available`.</li>
         <li>Click `Reserve`, enter your full name and email. Both are required.</li>
-        <li>Click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
+        <li>Choose your stack, then click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
         <li>Click `Edit on GitHub`; GitHub opens `CLOUD_TOPICS_2026.md` directly for editing.</li>
         <li>Replace only your topic line with the copied line, then click `Propose changes` and create a Pull Request.</li>
         <li>Wait for the automatic validation. The first valid PR is merged automatically; if another PR reserved the same topic first, your PR will stay unmerged and must be changed.</li>
       </ol>
-      <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;)</code></pre>
+      <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;; Stack: Next.js + serverless functions)</code></pre>
       <div class="warning">One student can reserve only one assignment. Validation rejects repeated names or emails.</div>
       <div class="grid">
         <div class="panel">
           <h3>Valid reservation PR</h3>
-          <p>Change exactly one line in `CLOUD_TOPICS_2026.md`: replace only `(Available)` with `(Taken by Full Name &lt;email@example.com&gt;)`.</p>
+          <p>Change exactly one line in `CLOUD_TOPICS_2026.md`: replace only `(Available)` with `(Taken by Full Name &lt;email@example.com&gt;; Stack: Chosen stack)`. If your topic is already reserved, use `Check your reservation`, choose/change the stack, and open a correction PR that edits only your same topic line.</p>
         </div>
         <div class="panel">
           <h3>Invalid PRs</h3>

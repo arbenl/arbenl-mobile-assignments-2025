@@ -1290,7 +1290,7 @@
         'mine.title': 'Check your reservation',
         'mine.copy': 'Use the same full name or email from your merged PR.',
         'mine.find': 'Find mine',
-        'rules.main': 'Edit only `CLOUD_TOPICS_2026.md` and only one topic line. Keep Cloud focus and Score. Do not edit this page, rename files, duplicate the title, or put two students on one topic.',
+        'rules.main': 'Edit only one topic line in `CLOUD_TOPICS_2026.md`. After reserving, the same student may edit that same line to add or change `; Stack: ...`. Keep Cloud focus and Score unchanged.',
         'rules.auto': 'A copied claim line is not official until the Pull Request passes validation and is merged automatically.',
         empty: 'No topics match the current filters.',
         'form.fullName': 'Full name',
@@ -1299,8 +1299,8 @@
         'form.stack': 'Chosen stack',
         'form.services': 'Cloud/mobile-cloud services',
         'form.servicesPlaceholder': 'Auth, database, object storage, functions, push notifications, monitoring...',
-        'claim.reserveInstruction': 'Copy this line, then replace the same topic line on GitHub:',
-        'claim.correctionInstruction': 'For your own correction PR, replace the same topic line on GitHub with:',
+        'claim.reserveInstruction': 'Copy this line with your stack, then replace the same topic line on GitHub:',
+        'claim.correctionInstruction': 'For your own stack/name/email correction PR, replace the same topic line on GitHub with:',
         'claim.reserveNote': 'GitHub will guide you to propose the change as a Pull Request. Valid reservation PRs are checked and merged automatically.',
         'claim.correctionNote': 'This topic is already reserved. Only the same student should correct it, and the validator requires the same name or the same email to remain.',
         'actions.copyClaim': 'Copy claim line',
@@ -1312,6 +1312,7 @@
         available: 'Available',
         takenBy: 'Taken by',
         score: 'Score',
+        stack: 'Stack',
         notGraded: 'Not graded',
         categoryAll: 'All',
         pendingTopic: 'Topic {id} is pending in PR #{pr}. Opening the PR.',
@@ -1374,7 +1375,7 @@
         'mine.title': 'Kontrollo rezervimin tënd',
         'mine.copy': 'Përdor të njëjtin emër të plotë ose email nga PR-ja e bashkuar.',
         'mine.find': 'Gjej timen',
-        'rules.main': 'Ndryshoni vetëm `CLOUD_TOPICS_2026.md` dhe vetëm një rresht teme. Ruani Cloud focus dhe Score. Mos editoni këtë faqe, mos riemërtoni fajlla, mos përsëritni titullin dhe mos vendosni dy studentë në një temë.',
+        'rules.main': 'Ndryshoni vetëm një rresht teme në `CLOUD_TOPICS_2026.md`. Pas rezervimit, i njëjti student mund ta editojë po atë rresht për të shtuar ose ndryshuar `; Stack: ...`. Ruani Cloud focus dhe Score pa ndryshim.',
         'rules.auto': 'Rreshti i kopjuar nuk është rezervim zyrtar derisa Pull Request të kalojë validimin dhe të bashkohet automatikisht.',
         empty: 'Asnjë temë nuk përputhet me filtrat aktualë.',
         'form.fullName': 'Emri i plotë',
@@ -1383,8 +1384,8 @@
         'form.stack': 'Stack-u i zgjedhur',
         'form.services': 'Shërbime cloud/mobile-cloud',
         'form.servicesPlaceholder': 'Auth, databazë, object storage, funksione, push notifications, monitorim...',
-        'claim.reserveInstruction': 'Kopjoni këtë rresht dhe zëvendësoni të njëjtin rresht teme në GitHub:',
-        'claim.correctionInstruction': 'Për korrigjimin tënd, zëvendëso të njëjtin rresht teme në GitHub me:',
+        'claim.reserveInstruction': 'Kopjoni këtë rresht me stack-un tuaj dhe zëvendësoni të njëjtin rresht teme në GitHub:',
+        'claim.correctionInstruction': 'Për korrigjimin e stack-ut/emrit/email-it, zëvendëso të njëjtin rresht teme në GitHub me:',
         'claim.reserveNote': 'GitHub do t’ju udhëzojë ta propozoni ndryshimin si Pull Request. PR-të e vlefshme kontrollohen dhe bashkohen automatikisht.',
         'claim.correctionNote': 'Kjo temë është tashmë e rezervuar. Vetëm i njëjti student duhet ta korrigjojë, dhe validatori kërkon të mbetet i njëjti emër ose i njëjti email.',
         'actions.copyClaim': 'Kopjo rreshtin',
@@ -1396,6 +1397,7 @@
         available: 'E lirë',
         takenBy: 'Rezervuar nga',
         score: 'Pikët',
+        stack: 'Stack-u',
         notGraded: 'Pa vlerësim',
         categoryAll: 'Të gjitha',
         pendingTopic: 'Tema {id} është në pritje në PR #{pr}. Po hapet PR-ja.',
@@ -1590,6 +1592,7 @@
             title: match[2],
             name: identity.name,
             email: identity.email,
+            stack: identity.stack || '',
             prNumber: pull.number,
             prTitle: pull.title,
             prUrl: pull.html_url,
@@ -1629,6 +1632,7 @@
           status,
           reservedBy: reservation ? reservation.name : '',
           reservedEmail: reservation ? reservation.email : '',
+          reservedStack: reservation ? reservation.stack : '',
           category,
           focus: focusMatch ? focusMatch[1] : '',
           scoreLabel: score.label,
@@ -1656,6 +1660,7 @@
           status: topic.status === 'Taken' ? 'Taken' : 'Pending',
           reservedBy: topic.status === 'Taken' ? topic.reservedBy : pending[0].name,
           reservedEmail: topic.status === 'Taken' ? topic.reservedEmail : pending[0].email,
+          reservedStack: topic.status === 'Taken' ? topic.reservedStack : (pending[0].stack || ''),
           rawStatus: topic.status === 'Taken'
             ? topic.rawStatus
             : `Pending PR #${pending.map((claim) => claim.prNumber).join(', #')}`,
@@ -1667,9 +1672,12 @@
       if (!rawStatus.startsWith('Taken by ')) return null;
 
       const value = rawStatus.replace(/^Taken by\s+/, '').trim();
-      const emailMatch = value.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
+      const stackMatch = value.match(/(?:;|\|)\s*Stack:\s*([^)|;]+)\s*$/i);
+      const stack = stackMatch ? stackMatch[1].replace(/\s+/g, ' ').trim() : '';
+      const identityValue = value.replace(/\s*(?:;|\|)\s*Stack:\s*[^)]+$/i, '').trim();
+      const emailMatch = identityValue.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
       const email = emailMatch ? (emailMatch[1] || emailMatch[2]).trim() : '';
-      const name = value
+      const name = identityValue
         .replace(/<[^<>]+>/g, '')
         .replace(/[^\s]+@[^\s]+/g, '')
         .replace(/[(),]+/g, ' ')
@@ -1677,8 +1685,9 @@
         .trim();
 
       return {
-        name: name || value,
+        name: name || identityValue,
         email,
+        stack,
       };
     }
 
@@ -1791,12 +1800,13 @@
         const student = topic.reservedEmail
           ? `${escapeHtml(topic.reservedBy)} &lt;${escapeHtml(topic.reservedEmail)}&gt;`
           : escapeHtml(topic.reservedBy);
+        const stackInfo = topic.reservedStack ? ` · ${t('stack')}: ${escapeHtml(topic.reservedStack)}` : '';
 
         return `
           <article class="reserved-item" style="--set: ${theme.color}">
             <strong>${topic.id}. ${escapeHtml(topic.title)}</strong>
             <span>${t('reserved.by')} ${student}</span>
-            <small>${escapeHtml(categoryLabel(topic.category))} · ${t('reserved.score')}: ${escapeHtml(scoreLabel(topic.scoreLabel))}</small>
+            <small>${escapeHtml(categoryLabel(topic.category))} · ${t('reserved.score')}: ${escapeHtml(scoreLabel(topic.scoreLabel))}${stackInfo}</small>
             <button class="reserved-check" type="button" data-topic-id="${topic.id}">${t('mine.title')}</button>
           </article>
         `;
@@ -1837,6 +1847,7 @@
           <div class="topic-meta">
             <span class="category-pill">${escapeHtml(categoryLabel(topic.category))}</span>
             <span class="score-display ${topic.scoreValue === null ? '' : 'graded'}">${t('score')}: ${escapeHtml(scoreLabel(topic.scoreLabel))}</span>
+            ${topic.reservedStack ? `<span class="score-display">${t('stack')}: ${escapeHtml(topic.reservedStack)}</span>` : ''}
           </div>
           <div class="topic-foot">
             <button class="reserve ${topic.status === 'Available' ? '' : 'check'}" type="button">
@@ -1876,6 +1887,11 @@
       modalFocus.textContent = topic.focus;
       studentName.value = isReserved ? topic.reservedBy : '';
       studentEmail.value = isReserved ? topic.reservedEmail : '';
+      if (topic.reservedStack) {
+        stackChoice.value = topic.reservedStack;
+      } else {
+        stackChoice.selectedIndex = 0;
+      }
       cloudServices.value = '';
       claimInstruction.textContent = isReserved
         ? t('claim.correctionInstruction')
@@ -1901,7 +1917,9 @@
       if (!state.selectedTopic) return;
       const name = studentName.value.trim() || 'YOUR FULL NAME';
       const email = studentEmail.value.trim() || 'YOUR EMAIL';
-      claimLine.textContent = `${state.selectedTopic.id}. ${state.selectedTopic.title} — (Taken by ${name} <${email}>)`;
+      const stack = stackChoice.value.trim();
+      const stackSegment = stack ? `; Stack: ${stack}` : '';
+      claimLine.textContent = `${state.selectedTopic.id}. ${state.selectedTopic.title} — (Taken by ${name} <${email}>${stackSegment})`;
     }
 
     async function copyClaimLine() {
@@ -2119,6 +2137,7 @@
     statusFilter.addEventListener('change', applyFilters);
     studentName.addEventListener('input', updateClaimLine);
     studentEmail.addEventListener('input', updateClaimLine);
+    stackChoice.addEventListener('change', updateClaimLine);
 
     copyClaim.addEventListener('click', () => {
       copyClaimLine();

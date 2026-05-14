@@ -12,9 +12,10 @@ const topicLinePattern = /^(\d{2})\.\s+(.+?)\s—\s\((Available|Taken by [^)]+)\
 const claimLinePattern = /^(\d{2})\.\s+(.+?)\s—\s\(Taken by ([^)]+)\)$/;
 
 function parseClaimIdentity(value) {
-  const emailMatch = value.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
+  const identityValue = value.replace(/\s*(?:;|\|)\s*Stack:\s*[^)]+$/i, '').trim();
+  const emailMatch = identityValue.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
   const email = emailMatch ? (emailMatch[1] || emailMatch[2]).trim() : '';
-  const name = value
+  const name = identityValue
     .replace(/<[^<>]+>/g, '')
     .replace(/[^\s]+@[^\s]+/g, '')
     .replace(/[(),]+/g, ' ')
@@ -22,6 +23,11 @@ function parseClaimIdentity(value) {
     .trim();
 
   return { name, email };
+}
+
+function parseClaimStack(value) {
+  const stackMatch = value.match(/(?:;|\|)\s*Stack:\s*([^)|;]+)\s*$/i);
+  return stackMatch ? stackMatch[1].replace(/\s+/g, ' ').trim() : '';
 }
 
 function normalizeName(name) {
@@ -51,6 +57,7 @@ function parseOfficialClaims() {
         title: match[2],
         name: identity.name,
         email: identity.email,
+        stack: parseClaimStack(match[3]),
       };
     });
 }
@@ -70,6 +77,7 @@ function parseClaimsFromPatch(patch, pull) {
         title: match[2],
         name: identity.name,
         email: identity.email,
+        stack: parseClaimStack(match[3]),
         prNumber: pull.number,
         prTitle: pull.title,
         prUrl: pull.html_url,

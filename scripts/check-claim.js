@@ -16,6 +16,15 @@ const scoreLinePattern = /^\s+-\s+Score:\s+(Not graded \(0-30\)|([0-9]|[12][0-9]
 const submissionOpenPattern = /^(\d{2})\.\s+(.+?)\s—\s\(Not submitted\)$/;
 const submissionDonePattern = /^(\d{2})\.\s+(.+?)\s—\s\(Submitted by ([^)]+)\)\s—\sRepo:\s+(https?:\/\/\S+)\s—\sDemo:\s+(https?:\/\/\S+|N\/A|n\/a|NA|na)$/;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const allowedStacks = new Set([
+  'Next.js + serverless functions',
+  'React + Node.js API',
+  'FastAPI + managed database',
+  'Flutter + cloud backend',
+  'React Native + cloud backend',
+  'Kotlin/Swift + cloud backend',
+  'Docker/Kubernetes service',
+]);
 
 const existingClaims = [];
 let currentClaimContext = null;
@@ -112,9 +121,10 @@ function validateSubmissionFile(errors) {
 }
 
 function parseClaimIdentity(value) {
-  const emailMatch = value.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
+  const identityValue = value.replace(/\s*(?:;|\|)\s*Stack:\s*[^)]+$/i, '').trim();
+  const emailMatch = identityValue.match(/<([^<>\s@]+@[^<>\s@]+\.[^<>\s@]+)>|([^\s<>@]+@[^\s<>@]+\.[^\s<>@]+)/);
   const email = emailMatch ? (emailMatch[1] || emailMatch[2]).trim() : '';
-  const name = value
+  const name = identityValue
     .replace(/<[^<>]+>/g, '')
     .replace(/[^\s]+@[^\s]+/g, '')
     .replace(/[(),]+/g, ' ')
@@ -122,6 +132,11 @@ function parseClaimIdentity(value) {
     .trim();
 
   return { name, email };
+}
+
+function parseClaimStack(value) {
+  const stackMatch = value.match(/(?:;|\|)\s*Stack:\s*([^)|;]+)\s*$/i);
+  return stackMatch ? stackMatch[1].replace(/\s+/g, ' ').trim() : '';
 }
 
 function normalizeName(name) {
@@ -438,6 +453,7 @@ if (!courseMaintenancePr && diff.trim()) {
     } else {
       const claimedId = claimMatch[1];
       const identity = parseClaimIdentity(claimMatch[3]);
+      const stack = parseClaimStack(claimMatch[3]);
       currentClaimContext = {
         filePath: changedTopicFiles[0],
         claimedId,
@@ -448,6 +464,9 @@ if (!courseMaintenancePr && diff.trim()) {
       }
       if (!emailPattern.test(identity.email)) {
         errors.push('Please provide a valid email inside "(Taken by YOUR FULL NAME <email@example.com>)".');
+      }
+      if (stack && !allowedStacks.has(stack)) {
+        errors.push(`Stack must be one of the allowed options shown on the MCC page. Received: "${stack}".`);
       }
 
       if (isReservationCorrection) {
