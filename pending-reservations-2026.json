@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-14T14:28:46.667Z",
+  "generatedAt": "2026-05-14T14:31:12.476Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "13",
+      "title": "Image Thumbnail Processing Pipeline",
+      "name": "amar ibishi",
+      "email": "amar.ibisi@universitetiaab.com",
+      "stack": "React + Node.js API",
+      "prNumber": 118,
+      "prTitle": "Update assignment details for Image Thumbnail Processing",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/118",
+      "author": "ibishiamar",
+      "createdAt": "2026-05-14T14:30:47Z"
+    }
+  ],
   "conflicts": []
 }
