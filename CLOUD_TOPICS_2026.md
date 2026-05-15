@@ -84,7 +84,7 @@
 25. Data Backup and Restore Portal — (Taken by Visar Maloku <visar.maloku@universitetiaab.com>)
   - Cloud focus: Export database snapshots to object storage, list backup versions, and implement a safe restore simulation.
   - Score: Not graded (0-30)
-26. Cloud File Sharing with Expiring Links — (Available)
+26. Cloud File Sharing with Expiring Links — (Taken by Endi Makolli <endi.makolli@universitetiaab.com>)
   - Cloud focus: Store files in object storage, create signed links with expiry, track downloads, and enforce owner permissions.
   - Score: Not graded (0-30)
 27. Stream Processing Demo for Click Events — (Available)
