@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-14T19:03:02.652Z",
+  "generatedAt": "2026-05-15T19:14:29.036Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "22",
-      "title": "Object Storage Photo Archive",
-      "name": "Vjosa Shala",
-      "email": "vjosa.shala@universitetiaab.com",
-      "stack": "",
-      "prNumber": 120,
-      "prTitle": "22. Object Storage Photo Archive — Taken by Vjosa Shala",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/120",
-      "author": "vjosashala2",
-      "createdAt": "2026-05-14T19:02:51Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }

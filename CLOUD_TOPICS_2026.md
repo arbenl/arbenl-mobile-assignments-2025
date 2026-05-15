@@ -72,7 +72,7 @@
 21. Cloud Data Warehouse Mini Dashboard — (Available)
   - Cloud focus: Ingest CSV data into a managed database or warehouse, transform it, and visualize KPIs in a hosted dashboard.
   - Score: Not graded (0-30)
-22. Object Storage Photo Archive — (Available)
+22. Object Storage Photo Archive — (Taken by Vjosa Shala <vjosa.shala@universitetiaab.com>)
   - Cloud focus: Upload photos, store metadata, generate signed URLs, tag content, and support search/filter workflows.
   - Score: Not graded (0-30)
 23. IoT Sensor Data Ingestion Pipeline — (Available)
