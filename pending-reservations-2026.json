@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-15T21:20:44.246Z",
+  "generatedAt": "2026-05-19T09:54:04.055Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "26",
-      "title": "Cloud File Sharing with Expiring Links",
-      "name": "Endi Makolli",
-      "email": "endi.makolli@universitetiaab.com",
-      "stack": "",
-      "prNumber": 123,
-      "prTitle": "Update Cloud File Sharing assignment details",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/123",
-      "author": "EndiMakolli",
-      "createdAt": "2026-05-15T21:20:31Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
