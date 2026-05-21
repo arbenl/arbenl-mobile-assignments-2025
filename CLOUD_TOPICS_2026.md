@@ -186,7 +186,14 @@
 57. Mobile Chat with Cloud Realtime Backend — (Taken by Valdet <valdet2.demiri@universitetiaab.com>)
   - MCC focus: Use managed auth, real-time message channels, media storage, and read receipts or typing indicators.
   - Score: Not graded (0-30)
-58. Field Data Collection App for Surveys — (Available)
+58. Course catalogue: CLOUD_TOPICS_2026.md
+Full Name: Halim Asllani
+Email: halim.asllani@universitetiaab.com
+Topic ID: 58
+Topic Title: Field Data Collection App for Surveys
+Chosen Stack: React + Node.js API
+Cloud/mobile-cloud services: Auth, database, storage/functions as needed
+Validator result: node scripts/check-claim.js should print "✅ Claim format looks valid."
   - MCC focus: Capture survey responses offline, sync when online, store photos/GPS data, and export submissions.
   - Score: Not graded (0-30)
 59. Mobile Cloud Fitness Tracker — (Taken by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>)
