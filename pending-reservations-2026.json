@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-21T10:45:57.350Z",
+  "generatedAt": "2026-05-21T10:51:03.461Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "58",
+      "title": "Field Data Collection App for Surveys",
+      "name": "Halim Asllani",
+      "email": "halim.asllani@universitetiaab.com",
+      "stack": "React + Node.js API",
+      "prNumber": 127,
+      "prTitle": "Update project status for Field Data Collection App",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/127",
+      "author": "HalimAsllani",
+      "createdAt": "2026-05-21T10:50:49Z"
+    }
+  ],
   "conflicts": []
 }
