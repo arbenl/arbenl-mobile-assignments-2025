@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-23T22:57:54.892Z",
+  "generatedAt": "2026-05-23T23:04:23.775Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "33",
-      "title": "Infrastructure as Code Starter Stack",
-      "name": "Edonard Hergaja",
-      "email": "edonard.hergaja@universitetiaab.com",
-      "stack": "",
-      "prNumber": 135,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/135",
-      "author": "edonardhergaja-gif",
-      "createdAt": "2026-05-23T22:57:45Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
