@@ -107,7 +107,7 @@
 32. CI/CD Pipeline for a Cloud Web App — (Taken by Skifter Bytyqi <skifter.bytyci@universitetiaab.com>)
   - Cloud focus: Build automated tests, preview deployments, production deploy gates, and environment-specific variables.
   - Score: Not graded (0-30)
-33. Infrastructure as Code Starter Stack — (Available)
+33. Infrastructure as Code Starter Stack — (Taken by Edonard Hergaja <edonard.hergaja@universitetiaab.com>)
   - Cloud focus: Provision database, storage, and compute resources with IaC, then document apply/destroy workflows.
   - Score: Not graded (0-30)
 34. Blue-Green Deployment Simulator — (Available)
