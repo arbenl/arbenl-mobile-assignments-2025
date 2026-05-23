@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-23T23:04:36.870Z",
+  "generatedAt": "2026-05-23T23:12:22.573Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "34",
+      "title": "Blue-Green Deployment Simulator",
+      "name": "Edonard Hergaja",
+      "email": "edonard.hergaja@universitetiaab.com",
+      "stack": "",
+      "prNumber": 136,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/136",
+      "author": "edonardhergaja-gif",
+      "createdAt": "2026-05-23T23:12:11Z"
+    }
+  ],
   "conflicts": []
 }
