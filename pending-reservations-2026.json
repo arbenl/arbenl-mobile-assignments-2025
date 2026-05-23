@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-23T22:51:38.692Z",
+  "generatedAt": "2026-05-23T22:56:15.059Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "34",
-      "title": "Blue-Green Deployment Simulator",
-      "name": "Edonard Hergaja",
-      "email": "edonard.hergaja@universitetiaab.com",
-      "stack": "Node.js, Docker, NGINX",
-      "prNumber": 134,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/134",
-      "author": "edonardhergaja-gif",
-      "createdAt": "2026-05-23T22:51:28Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
