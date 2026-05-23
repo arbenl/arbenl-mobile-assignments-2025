@@ -1,20 +1,6 @@
 {
-  "generatedAt": "2026-05-21T12:19:51.850Z",
+  "generatedAt": "2026-05-23T20:11:00.130Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [],
-  "conflicts": [
-    {
-      "id": "45",
-      "title": "OAuth Login Integration Demo",
-      "name": "Gent Veseli",
-      "email": "gent.veseli@universitetiaab.com",
-      "stack": "Next.js + serverless functions",
-      "prNumber": 129,
-      "prTitle": "Update CLOUD_TOPICS_2026.md - university email",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/129",
-      "author": "gentveseli-aab",
-      "createdAt": "2026-05-21T12:19:39Z",
-      "reason": "Topic 45 is already officially reserved by Gent Veseli."
-    }
-  ]
+  "conflicts": []
 }

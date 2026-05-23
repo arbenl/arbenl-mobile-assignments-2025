@@ -145,7 +145,7 @@
 44. Cloud Security Posture Checklist Tool — (Available)
   - Cloud focus: Build a checklist app for common controls, persist evidence links, score readiness, and export reports.
   - Score: Not graded (0-30)
-45. OAuth Login Integration Demo — (Taken by Gent Veseli <gent.veseli1@gmail.com>; Stack: Next.js + serverless functions)
+45. OAuth Login Integration Demo — (Taken by Gent Veseli <gent.veseli@universitetiaab.com>; Stack: Next.js + serverless functions)
   - Cloud focus: Add third-party OAuth login, map user profiles, protect API routes, and handle callback errors.
   - Score: Not graded (0-30)
 46. API Rate Limiting and Abuse Protection — (Taken by Besiana Dauti <besiana.dauti@universitetiaab.com>)
