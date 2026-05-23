@@ -110,9 +110,9 @@
 33. Infrastructure as Code Starter Stack — (Available)
   - Cloud focus: Provision database, storage, and compute resources with IaC, then document apply/destroy workflows.
   - Score: Not graded (0-30)
-34. Blue-Green Deployment Simulator — (Available)
-  - Cloud focus: Deploy two app versions, switch traffic gradually or manually, monitor errors, and implement rollback.
-  - Score: Not graded (0-30)
+34. Blue-Green Deployment Simulator – (Taken by Edonard Hergaja <edonard.hergaja@universitetiaab.com>)
+   - Cloud focus: Deploy two app versions, switch traffic gradually or manually, monitor errors, and implement rollback.
+   - Score: Not graded (0-30)
 35. Cloud Monitoring and Alerting Dashboard — (Available)
   - Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
   - Score: Not graded (0-30)
