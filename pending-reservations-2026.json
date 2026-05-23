@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-23T22:30:53.688Z",
+  "generatedAt": "2026-05-23T22:33:09.495Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -7,7 +7,7 @@
       "title": "Blue-Green Deployment Simulator",
       "name": "Edonard Hergaja",
       "email": "edonard.hergaja@universitetiaab.com",
-      "stack": "",
+      "stack": "Node.js, Docker, NGINX",
       "prNumber": 133,
       "prTitle": "Patch edonard 3",
       "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/133",
