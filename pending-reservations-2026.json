@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-24T19:13:48.820Z",
+  "generatedAt": "2026-05-25T17:52:10.559Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "33",
-      "title": "Infrastructure as Code Starter Stack",
-      "name": "Almir Hyseni",
-      "email": "almir.hyseni@universitetiaab.com",
-      "stack": "",
-      "prNumber": 137,
-      "prTitle": "Update assignment status for Infrastructure as Code",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/137",
-      "author": "AlmirHyseni",
-      "createdAt": "2026-05-24T19:13:39Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
