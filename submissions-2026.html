@@ -723,6 +723,22 @@
       return submissions;
     }
 
+    function parseEvaluations(markdown) {
+      const evaluations = new Map();
+
+      markdown.split(/\r?\n/).forEach((line) => {
+        const evaluated = line.match(/^(\d{2})\.\s+.+?\s—\sScore:\s+(\d{1,2}\/30)\s—\sStatus:\s+(Reviewed|Needs fixes|Pending review)\s—\sFeedback EN:\s+.+?\s—\sFeedback SQ:\s+.+$/);
+        if (!evaluated) return;
+
+        evaluations.set(evaluated[1], {
+          scoreLabel: evaluated[2],
+          status: evaluated[3],
+        });
+      });
+
+      return evaluations;
+    }
+
     function scoreValue(label) {
       const match = String(label).match(/^(\d{1,2})\/30$/);
       if (!match) return null;
@@ -758,7 +774,11 @@
       const filter = statusFilter.value;
       const visible = rows.filter((row) => {
         const status = statusFor(row);
-        const matchesFilter = filter === 'all' || status === filter || (filter === 'reserved' && row.reservedBy);
+        const matchesFilter = filter === 'all'
+          || status === filter
+          || (filter === 'reserved' && row.reservedBy)
+          || (filter === 'submitted' && row.submission)
+          || (filter === 'graded' && row.scoreValue !== null);
         const haystack = [
           row.id,
           row.title,
@@ -831,19 +851,25 @@
 
     async function init() {
       try {
-        const [topicText, submissionText] = await Promise.all([
+        const [topicText, submissionText, evaluationText] = await Promise.all([
           fetchText('CLOUD_TOPICS_2026.md'),
           fetchText('SUBMISSIONS_2026.md'),
+          fetchText('EVALUATIONS_2026.md'),
         ]);
         const topics = parseTopics(topicText);
         const submissions = parseSubmissions(submissionText);
+        const evaluations = parseEvaluations(evaluationText);
 
         rows = Array.from(topics.values()).map((topic) => {
           const submission = submissions.get(topic.id) || null;
+          const evaluation = evaluations.get(topic.id) || null;
+          const scoreLabel = evaluation ? evaluation.scoreLabel : topic.scoreLabel;
           return {
             ...topic,
             submission,
-            scoreValue: scoreValue(topic.scoreLabel),
+            evaluation,
+            scoreLabel,
+            scoreValue: scoreValue(scoreLabel),
           };
         });
 
