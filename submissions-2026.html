@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloud & MCC 2026 Submissions and Scores</title>
   <meta name="description" content="Read-only Cloud and MCC 2026 submission and scoring dashboard for students and instructor.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -457,6 +460,14 @@
   </style>
 </head>
 <body>
+  <script>
+    const dashboardVersion = '20260526-1837';
+    const currentUrl = new URL(window.location.href);
+    if (!currentUrl.searchParams.has('v')) {
+      currentUrl.searchParams.set('v', dashboardVersion);
+      window.location.replace(currentUrl.toString());
+    }
+  </script>
   <main class="shell">
     <header class="topbar">
       <div class="brand">
