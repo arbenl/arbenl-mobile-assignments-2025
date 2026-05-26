@@ -675,8 +675,14 @@
       return Number.isFinite(value) ? value : null;
     }
 
+    function effectiveStatus(row) {
+      if (!row.evaluation) return 'pending-review';
+      if (row.evaluation.status === 'needs-fixes') return 'needs-fixes';
+      return 'reviewed';
+    }
+
     function updateStats() {
-      const reviewed = rows.filter((row) => row.evaluation && row.evaluation.status !== 'pending-review').length;
+      const reviewed = rows.filter((row) => row.evaluation).length;
       const pending = rows.length - reviewed;
       const scored = rows
         .map((row) => row.evaluation ? scoreValue(row.evaluation.score) : null)
@@ -697,7 +703,13 @@
       const query = searchInput.value.trim().toLowerCase();
       const filter = statusFilter.value;
       const visible = rows.filter((row) => {
-        const status = row.evaluation ? row.evaluation.status : 'pending-review';
+        const status = effectiveStatus(row);
+        const matchesFilter = (
+          filter === 'all'
+          || (filter === 'reviewed' && row.evaluation)
+          || (filter === 'needs-fixes' && status === 'needs-fixes')
+          || (filter === 'pending-review' && !row.evaluation)
+        );
         const feedback = row.evaluation
           ? `${row.evaluation.feedbackEn} ${row.evaluation.feedbackSq}`
           : '';
@@ -709,12 +721,12 @@
           row.topic ? row.topic.category : '',
           feedback,
         ].join(' ').toLowerCase();
-        return (filter === 'all' || status === filter) && (!query || haystack.includes(query));
+        return matchesFilter && (!query || haystack.includes(query));
       });
 
       grid.innerHTML = visible.map((row) => {
         const evaluation = row.evaluation;
-        const status = evaluation ? evaluation.status : 'pending-review';
+        const status = effectiveStatus(row);
         const score = evaluation ? evaluation.score : (row.topic ? row.topic.scoreLabel : 'Not graded (0-30)');
         const feedback = evaluation
           ? (activeLanguage === 'sq' ? evaluation.feedbackSq : evaluation.feedbackEn)
