@@ -1,20 +1,6 @@
 {
-  "generatedAt": "2026-05-26T18:25:21.059Z",
+  "generatedAt": "2026-05-26T18:27:17.955Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [],
-  "conflicts": [
-    {
-      "id": "59",
-      "title": "Mobile Cloud Fitness Tracker",
-      "name": "Jetmir Alshiqi Stack: React Native + Firebase",
-      "email": "jetmir.alshiqi@universitetiaab.com",
-      "stack": "",
-      "prNumber": 150,
-      "prTitle": "Add submission details for Mobile Cloud Fitness Tracker",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/150",
-      "author": "Jetmir-Al",
-      "createdAt": "2026-05-26T18:25:09Z",
-      "reason": "Topic 59 is already officially reserved by Jetmir Alshiqi."
-    }
-  ]
+  "conflicts": []
 }
