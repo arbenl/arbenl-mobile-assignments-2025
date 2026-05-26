@@ -7,6 +7,10 @@ on:
     inputs:
       dry_run:
         description: 'Validate and grade without merging or committing: true or false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
         default: 'false'
 
 permissions:
