@@ -13,6 +13,8 @@ on:
       dry_run:
         description: 'Preview recipients without sending email: true or false'
         default: 'false'
+  repository_dispatch:
+    types: [email-evaluations]
 
 permissions:
   contents: read
@@ -37,8 +39,8 @@ jobs:
           SMTP_SSL: ${{ secrets.SMTP_SSL }}
           BEFORE_SHA: ${{ github.event.before }}
           AFTER_SHA: ${{ github.sha }}
-          EVALUATION_IDS: ${{ github.event.inputs.evaluation_ids || '' }}
-          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          EVALUATION_IDS: ${{ github.event.inputs.evaluation_ids || github.event.client_payload.evaluation_ids || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
         run: |
           set -euo pipefail
           python3 scripts/send-evaluation-emails.py

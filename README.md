@@ -66,7 +66,7 @@ If these secrets are not configured, the workflow skips email delivery and still
 
 When the instructor adds or changes a line in `EVALUATIONS_2026.md`, GitHub Actions can email the evaluated student with the score, English/Albanian feedback, repository/demo links, the public evaluation page, and correction instructions. The recipient email is read from `SUBMISSIONS_2026.md`, with `CLOUD_TOPICS_2026.md` used as a fallback.
 
-This uses the same SMTP repository secrets listed above. If they are missing, the workflow logs that email delivery was skipped. To send feedback to already evaluated students, run **Email Evaluation Feedback** manually from GitHub Actions with `evaluation_ids` set to `all`, or use comma-separated topic IDs such as `02,16,26`.
+This uses the same SMTP repository secrets listed above. If they are missing, the workflow logs that email delivery was skipped. To send feedback to already evaluated students, run **Email Evaluation Feedback** manually from GitHub Actions with `evaluation_ids` set to `all`, or use comma-separated topic IDs such as `02,16,26`. The same workflow also supports a `repository_dispatch` event named `email-evaluations` for CLI/API triggering.
 
 ## ✅ How to submit the final solution
 
