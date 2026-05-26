@@ -48,7 +48,7 @@
 42. Secrets Rotation Practice App — (Not submitted)
 43. Secure File Vault with Audit Logs — (Not submitted)
 44. Cloud Security Posture Checklist Tool — (Not submitted)
-45. OAuth Login Integration Demo — (Not submitted)
+45. OAuth Login Integration Demo — (Submitted by Gent Veseli <gent.veseli@universitetiaab.com>) — Repo: https://github.com/gentveseli-aab/oauth-login-integration-demo — Demo: https://oauth-login-integration-demo-w8vx.vercel.app
 46. API Rate Limiting and Abuse Protection — (Not submitted)
 47. Data Privacy Request Manager — (Not submitted)
 48. Secure Configuration Scanner — (Not submitted)
