@@ -9,11 +9,9 @@ on:
     inputs:
       evaluation_ids:
         description: 'Comma-separated topic IDs to email, or all'
-        required: true
         default: 'all'
       dry_run:
         description: 'Preview recipients without sending email: true or false'
-        required: true
         default: 'false'
 
 permissions:
