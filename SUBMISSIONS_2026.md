@@ -5,7 +5,7 @@
 > `NN. Topic Title — (Submitted by Full Name <email@example.com>) — Repo: https://github.com/user/repo — Demo: https://demo-url-or-na`
 
 01. Cloud-hosted Task Collaboration Platform — (Not submitted)
-02. Multi-tenant Course Resource Portal — (Not submitted)
+02. Multi-tenant Course Resource Portal — (Submitted by Jonila Dumani <joniladumani2@gmail.com>) — Repo: https://github.com/jonila12700/multi-tenant-course-portal — Demo: https://courseportal.42web.io
 03. Server-rendered Portfolio CMS on the Cloud — (Not submitted)
 04. Cloud Expense Tracker with Budget Alerts — (Not submitted)
 05. Real-time Classroom Polling System — (Not submitted)
@@ -29,7 +29,7 @@
 23. IoT Sensor Data Ingestion Pipeline — (Not submitted)
 24. Log Analytics Explorer — (Not submitted)
 25. Data Backup and Restore Portal — (Not submitted)
-26. Cloud File Sharing with Expiring Links — (Not submitted)
+26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
 27. Stream Processing Demo for Click Events — (Not submitted)
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
