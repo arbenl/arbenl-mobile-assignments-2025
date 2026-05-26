@@ -49,7 +49,7 @@
 14. PDF Invoice Generator API — (Taken by Anida Vitija <anida.vitija@universitetiaab.com>)
   - Cloud focus: Accept structured invoice data, generate PDFs in a serverless function, store outputs, and secure download links.
   - Score: Not graded (0-30)
-15. Webhook Receiver and Event Replay Tool — (Available)
+15. Webhook Receiver and Event Replay Tool — (Taken by Rigon Vebiji <rigon.vebiji@universitetiaab.com>; Stack: Next.js + serverless functions)
   - Cloud focus: Receive external webhooks, validate signatures, persist raw events, and provide replay from an admin UI.
   - Score: Not graded (0-30)
 16. URL Shortener with Analytics — (Taken by Aulona Kerqeli <aulonakerqeli1@gmail.com>)
