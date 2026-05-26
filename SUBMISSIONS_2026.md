@@ -13,7 +13,7 @@
 07. Cloud-hosted Knowledge Base with Search — (Not submitted)
 08. Subscription Newsletter Platform — (Not submitted)
 09. Team Kanban Board with Activity Stream — (Not submitted)
-10. Cloud-native Resume Builder — (Not submitted)
+10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
 11. Serverless Contact Form with Spam Scoring — (Not submitted)
 12. Scheduled Weather Digest Service — (Not submitted)
 13. Image Thumbnail Processing Pipeline — (Not submitted)
