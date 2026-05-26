@@ -29,7 +29,7 @@
 23. IoT Sensor Data Ingestion Pipeline — (Not submitted)
 24. Log Analytics Explorer — (Not submitted)
 25. Data Backup and Restore Portal — (Not submitted)
-26. Cloud File Sharing with Expiring Links — (Not submitted)
+26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
 27. Stream Processing Demo for Click Events — (Not submitted)
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
