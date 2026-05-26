@@ -62,5 +62,5 @@
 56. Edge AI Image Labeling Prototype — (Not submitted)
 57. Mobile Chat with Cloud Realtime Backend — (Not submitted)
 58. Field Data Collection App for Surveys — (Not submitted)
-59. Mobile Cloud Fitness Tracker — (Not submitted)
+59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
