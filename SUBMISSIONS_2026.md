@@ -48,14 +48,14 @@
 42. Secrets Rotation Practice App — (Not submitted)
 43. Secure File Vault with Audit Logs — (Not submitted)
 44. Cloud Security Posture Checklist Tool — (Not submitted)
-45. OAuth Login Integration Demo — (Not submitted)
+45. OAuth Login Integration Demo — (Submitted by Gent Veseli <gent.veseli@universitetiaab.com>) — Repo: https://github.com/gentveseli-aab/oauth-login-integration-demo — Demo: https://oauth-login-integration-demo-w8vx.vercel.app
 46. API Rate Limiting and Abuse Protection — (Not submitted)
 47. Data Privacy Request Manager — (Not submitted)
 48. Secure Configuration Scanner — (Not submitted)
 49. Cloud Audit Log Anomaly Detector — (Not submitted)
 50. Encrypted Notes with Cloud Sync — (Not submitted)
 51. Mobile Cloud Notes with Offline Sync — (Not submitted)
-52. Push Notification Reminder Service — (Not submitted)
+52. Push Notification Reminder Service — (Submitted by Meriton Cakiqi <meritoncakiqi173@gmail.com>) — Repo: https://github.com/meritonca/-Push-Notification-Reminder — Demo: N/A
 53. Mobile Photo Backup to Cloud Storage — (Not submitted)
 54. Location-based Campus Alerts App — (Not submitted)
 55. Mobile Expense Splitter with Serverless Sync — (Not submitted)
