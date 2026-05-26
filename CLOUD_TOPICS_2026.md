@@ -58,7 +58,7 @@
 17. Cloud Function Job Queue Dashboard — (Available)
   - Cloud focus: Model queued jobs, process them with background workers or scheduled functions, and show retry/error states.
   - Score: Not graded (0-30)
-18. Automated Certificate Expiry Monitor — (Available)
+18. Automated Certificate Expiry Monitor — (Taken by Rron Isenaj <rron.isenaj@universitetiaab.com>)
   - Cloud focus: Schedule domain checks, persist certificate metadata, trigger alerts before expiry, and display history.
   - Score: Not graded (0-30)
 19. Serverless Form Builder — (Taken by Luela Krasniqi <luela.krasniqi@universitetiaab.com>)
