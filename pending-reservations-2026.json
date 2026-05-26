@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-26T08:34:30.712Z",
+  "generatedAt": "2026-05-26T08:35:34.279Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "05",
+      "title": "Real-time Classroom Polling System",
+      "name": "Valentina Halilaj",
+      "email": "valentinahalilaj68@gmail.com",
+      "stack": "React Native + cloud backend",
+      "prNumber": 144,
+      "prTitle": "Update Real-time Classroom Polling System details",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/144",
+      "author": "valentina829",
+      "createdAt": "2026-05-26T08:35:21Z"
+    }
+  ],
   "conflicts": []
 }
