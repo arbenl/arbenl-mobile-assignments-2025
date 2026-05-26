@@ -37,7 +37,7 @@
 31. Containerized Microservice Deployment — (Not submitted)
 32. CI/CD Pipeline for a Cloud Web App — (Not submitted)
 33. Infrastructure as Code Starter Stack — (Not submitted)
-34. Blue-Green Deployment Simulator — (Submitted by Edonard Hergaja <edonard.hergaja@universitetiaab.com>) — Repo: https://github.com/edonardhergaja-gif/arbenl-mobile-assignments-2025 — Demo: N/A
+34. Blue-Green Deployment Simulator — (Submitted by Edonard Hergaja <edonard.hergaja@universitetiaab.com>) — Repo: https://github.com/edonardhergaja-gif/arbenl-mobile-assignments-2025 — Demo: https://arbenl-mobile-assignments-2025.vercel.app
 35. Cloud Monitoring and Alerting Dashboard — (Not submitted)
 36. Distributed Tracing Demo App — (Not submitted)
 37. Kubernetes Mini Lab for a Web API — (Not submitted)
