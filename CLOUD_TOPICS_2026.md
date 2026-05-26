@@ -10,7 +10,7 @@
   - Score: Not graded (0-30)
 02. Multi-tenant Course Resource Portal — (Taken by Jonila Dumani <joniladumani2@gmail.com>)
   - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
-  - Score: 24/30
+  - Score: 25/30
 03. Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
   - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
   - Score: Not graded (0-30)
