@@ -385,10 +385,12 @@ if (!courseMaintenancePr && diff.trim()) {
     const removedLine = removals[0].slice(1).trim();
 
     const addedMatch = addedLine.match(submissionDonePattern);
-    const removedMatch = removedLine.match(submissionOpenPattern);
+    const removedOpenMatch = removedLine.match(submissionOpenPattern);
+    const removedDoneMatch = removedLine.match(submissionDonePattern);
+    const removedMatch = removedOpenMatch || removedDoneMatch;
 
     if (!removedMatch) {
-      errors.push('The submission entry you are updating was not marked as "(Not submitted)".');
+      errors.push('The submission entry you are updating was not marked as "(Not submitted)" or as your existing submission.');
     }
     if (!addedMatch) {
       errors.push('The new submission line must follow: "NN. Title — (Submitted by Full Name <email>) — Repo: https://... — Demo: https://...|N/A".');
@@ -405,6 +407,13 @@ if (!courseMaintenancePr && diff.trim()) {
       }
       if (!emailPattern.test(identity.email)) {
         errors.push('Please provide a valid email in the submission line.');
+      }
+
+      if (removedDoneMatch) {
+        const previousIdentity = parseClaimIdentity(removedDoneMatch[3]);
+        if (!sameStudentIdentity(previousIdentity, identity)) {
+          errors.push('You may edit an existing submission only when the same name or email remains on that topic.');
+        }
       }
 
       const reservation = existingClaims.find((claim) => (
