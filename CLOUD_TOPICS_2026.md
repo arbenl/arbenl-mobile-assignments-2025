@@ -170,7 +170,7 @@
   - Score: Not graded (0-30)
 52. Push Notification Reminder Service — (Taken by Meriton Cakiqi <meritoncakiqi173@gmail.com>)
   - MCC focus: Register devices, store notification preferences, send scheduled push reminders, and show delivery history.
-  - Score: Not graded (0-30)
+  - Score: 22/30
 53. Mobile Photo Backup to Cloud Storage — (Taken by Drin Musa <drin9915@gmail.com>)
   - MCC focus: Pick images from a device, upload to object storage, generate thumbnails, and support offline retry.
   - Score: Not graded (0-30)
