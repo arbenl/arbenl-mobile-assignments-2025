@@ -77,6 +77,7 @@ The workflow:
 - merges valid reservation or final-submission PRs that change exactly one allowed line;
 - comments on invalid PRs without repeating the same daily comment;
 - then scans `SUBMISSIONS_2026.md` and adds preliminary `EVALUATIONS_2026.md` rows only for submitted topics that do not already have an evaluation.
+- publishes the updated catalogues, submissions, evaluations, and static pages to `gh-pages`.
 
 The preliminary grader uses public evidence only: GitHub repository reachability, README/setup guidance, source/dependency structure, cloud/MCC signals, demo availability, `AI-log.txt`, recent commits, and deployment/CI files. It does **not** execute student code, and it does not overwrite instructor-managed evaluation rows.
 
