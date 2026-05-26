@@ -2,6 +2,7 @@
 
 > Instructor-managed public evaluation summaries for submitted assignments.
 > Keep feedback concise and academic. Detailed/private feedback should be sent directly to the student when needed.
+> Evaluation email notifications run automatically when evaluation rows are added or changed, if SMTP secrets are configured.
 > Format:
 > `NN. Topic Title — Score: N/30 — Status: Reviewed|Needs fixes|Pending review — Feedback EN: ... — Feedback SQ: ...`
 
