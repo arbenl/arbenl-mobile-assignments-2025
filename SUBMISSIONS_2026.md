@@ -54,7 +54,7 @@
 48. Secure Configuration Scanner — (Not submitted)
 49. Cloud Audit Log Anomaly Detector — (Not submitted)
 50. Encrypted Notes with Cloud Sync — (Not submitted)
-51. Mobile Cloud Notes with Offline Sync — (Not submitted)
+51. Mobile Cloud Notes with Offline Sync — (Submitted by Endrit Demiri <endrit.demiri@universitetiaab.com>) — Repo: https://github.com/Endritfx/Mobile-Notes — Demo: https://mobile-n0tes.web.app
 52. Push Notification Reminder Service — (Submitted by Meriton Cakiqi <meritoncakiqi173@gmail.com>) — Repo: https://github.com/meritonca/-Push-Notification-Reminder — Demo: https://projekti-cloud.web.app/
 53. Mobile Photo Backup to Cloud Storage — (Not submitted)
 54. Location-based Campus Alerts App — (Not submitted)
