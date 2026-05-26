@@ -189,7 +189,7 @@
 58. Field Data Collection App for Surveys — (Taken by Halim Asllani <halim.asllani@universitetiaab.com>; Stack: React + Node.js API)
   - MCC focus: Capture survey responses offline, sync when online, store photos/GPS data, and export submissions.
   - Score: Not graded (0-30)
-59. Mobile Cloud Fitness Tracker — (Taken by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>)
+59. Mobile Cloud Fitness Tracker — (Taken by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com> Stack: React Native + Firebase - Submited)
   - MCC focus: Record workouts locally, sync progress to a cloud backend, calculate weekly summaries, and send milestone notifications.
   - Score: Not graded (0-30)
 60. Mobile Incident Reporter with Cloud Workflow — (Available)
