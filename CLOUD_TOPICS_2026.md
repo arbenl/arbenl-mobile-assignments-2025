@@ -10,14 +10,14 @@
   - Score: Not graded (0-30)
 02. Multi-tenant Course Resource Portal — (Taken by Jonila Dumani <joniladumani2@gmail.com>)
   - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
-  - Score: 24/30
+  - Score: 25/30
 03. Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
   - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
   - Score: Not graded (0-30)
 04. Cloud Expense Tracker with Budget Alerts — (Taken by Erblina Kalludra <erblina.kalludra@universitetiaab.com>)
   - Cloud focus: Store transactions in a managed database, schedule monthly budget checks, and send email or push alerts.
   - Score: Not graded (0-30)
-05. Real-time Classroom Polling System — (Available)
+  05. Real-time Classroom Polling System — (Taken by Valentina Halilaj <valentinahalilaj68@gmail.com>; Stack: React Native + cloud backend)
   - Cloud focus: Use real-time channels or WebSockets, managed auth, live charts, and deployment logs for debugging.
   - Score: Not graded (0-30)
 06. Event Registration Platform with QR Check-in — (Taken by Xhevrije Xhelili <dzevrije.dzelili@universitetiaab.com>)
