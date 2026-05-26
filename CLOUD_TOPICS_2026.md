@@ -17,7 +17,7 @@
 04. Cloud Expense Tracker with Budget Alerts — (Taken by Erblina Kalludra <erblina.kalludra@universitetiaab.com>)
   - Cloud focus: Store transactions in a managed database, schedule monthly budget checks, and send email or push alerts.
   - Score: Not graded (0-30)
-05. Real-time Classroom Polling System — (Available)
+05. Real-time Classroom Polling System — (Taken by Valentina Halilaj <valentinahalilaj68@gmail.com>; Stack: React Native + cloud backend))
   - Cloud focus: Use real-time channels or WebSockets, managed auth, live charts, and deployment logs for debugging.
   - Score: Not graded (0-30)
 06. Event Registration Platform with QR Check-in — (Taken by Xhevrije Xhelili <dzevrije.dzelili@universitetiaab.com>)
