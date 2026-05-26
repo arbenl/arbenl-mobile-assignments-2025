@@ -12,10 +12,9 @@ on:
         required: true
         default: 'all'
       dry_run:
-        description: 'Preview recipients without sending email'
+        description: 'Preview recipients without sending email: true or false'
         required: true
-        type: boolean
-        default: false
+        default: 'false'
 
 permissions:
   contents: read
