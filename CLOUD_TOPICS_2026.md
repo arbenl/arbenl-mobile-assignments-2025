@@ -10,7 +10,7 @@
   - Score: Not graded (0-30)
 02. Multi-tenant Course Resource Portal — (Taken by Jonila Dumani <joniladumani2@gmail.com>)
   - Cloud focus: Implement tenant-aware data models, role-based access, hosted file uploads, and separate instructor/student views.
-  - Score: Not graded (0-30)
+  - Score: 24/30
 03. Server-rendered Portfolio CMS on the Cloud — (Taken by Altina Berisha <altina2.berisha@universitetiaab.com>)
   - Cloud focus: Build a small CMS with managed SQL, image storage, preview deployments, and automated production release.
   - Score: Not graded (0-30)
@@ -86,7 +86,7 @@
   - Score: Not graded (0-30)
 26. Cloud File Sharing with Expiring Links — (Taken by Endi Makolli <endi.makolli@universitetiaab.com>)
   - Cloud focus: Store files in object storage, create signed links with expiry, track downloads, and enforce owner permissions.
-  - Score: Not graded (0-30)
+  - Score: 10/30
 27. Stream Processing Demo for Click Events — (Available)
   - Cloud focus: Generate clickstream events, process them in batches or streams, and show near-real-time aggregates.
   - Score: Not graded (0-30)
@@ -147,7 +147,7 @@
   - Score: Not graded (0-30)
 45. OAuth Login Integration Demo — (Taken by Gent Veseli <gent.veseli@universitetiaab.com>; Stack: Next.js + serverless functions)
   - Cloud focus: Add third-party OAuth login, map user profiles, protect API routes, and handle callback errors.
-  - Score: Not graded (0-30)
+  - Score: 25/30
 46. API Rate Limiting and Abuse Protection — (Taken by Besiana Dauti <besiana.dauti@universitetiaab.com>)
   - Cloud focus: Implement per-user limits, request logging, admin override, and clear client error responses.
   - Score: Not graded (0-30)
