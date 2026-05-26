@@ -1,0 +1,181 @@
+name: Daily PR Merge and Submission Grading
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Validate and grade without merging or committing: true or false'
+        default: 'false'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: daily-pr-merge-and-grade
+  cancel-in-progress: false
+
+jobs:
+  process-prs-and-grade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout trusted main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Merge valid student PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+
+          cd main
+          git switch main 2>/dev/null || git switch --create main origin/main
+          mapfile -t prs < <(
+            gh pr list \
+              --repo "$GITHUB_REPOSITORY" \
+              --base main \
+              --state open \
+              --json number,createdAt \
+              --jq 'sort_by(.createdAt) | .[].number'
+          )
+
+          if [ "${#prs[@]}" -eq 0 ]; then
+            echo "No open PRs to process."
+            exit 0
+          fi
+
+          for pr in "${prs[@]}"; do
+            echo "Processing PR #$pr"
+            files="$(
+              gh pr view "$pr" \
+                --repo "$GITHUB_REPOSITORY" \
+                --json files \
+                --jq '.files[].path'
+            )"
+
+            if ! printf '%s\n' "$files" | grep -Eq '^(TOPICS.md|CLOUD_TOPICS_2026.md|SUBMISSIONS_2026.md)$'; then
+              echo "Skipping PR #$pr because it does not touch a supported student file."
+              continue
+            fi
+
+            workdir="../pr-$pr"
+            rm -rf "$workdir"
+            git clone --quiet "https://github.com/${GITHUB_REPOSITORY}.git" "$workdir"
+            cd "$workdir"
+            git fetch --quiet origin "pull/$pr/head:pr-$pr"
+            git switch --quiet "pr-$pr"
+            git fetch --quiet origin main
+            git branch --track main origin/main >/dev/null 2>&1 || true
+
+            if printf '%s\n' "$files" | grep -Eq '^SUBMISSIONS_2026.md$' \
+              && ! printf '%s\n' "$files" | grep -Eq '^(TOPICS.md|CLOUD_TOPICS_2026.md)$'; then
+              git restore --source=origin/main -- TOPICS.md CLOUD_TOPICS_2026.md
+            fi
+
+            printf '{"pull_request":{"number":%s}}\n' "$pr" > "../event-$pr.json"
+
+            set +e
+            GITHUB_BASE_REF=main \
+            GITHUB_EVENT_PATH="$(pwd)/../event-$pr.json" \
+            SKIP_OPEN_PR_DUPLICATE_CHECK=1 \
+            GITHUB_TOKEN="$GITHUB_TOKEN" \
+            GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
+              node ../main/scripts/check-claim.js > "../validation-$pr.txt" 2>&1
+            validation_status=$?
+            set -e
+
+            cd ../main
+
+            if [ "$validation_status" -eq 0 ]; then
+              sed -n '1,120p' "../validation-$pr.txt"
+              if [ "$DRY_RUN" = "true" ]; then
+                echo "DRY RUN: PR #$pr is valid and would be merged."
+              else
+                gh pr merge "$pr" \
+                  --repo "$GITHUB_REPOSITORY" \
+                  --merge \
+                  --delete-branch
+                git pull --ff-only origin main
+                echo "Merged PR #$pr."
+              fi
+              continue
+            fi
+
+            echo "PR #$pr failed validation."
+            sed -n '1,120p' "../validation-$pr.txt"
+
+            marker="<!-- mcc-daily-pr-validation -->"
+            existing_comments="$(
+              gh api "repos/$GITHUB_REPOSITORY/issues/$pr/comments" \
+                --jq '.[].body' || true
+            )"
+
+            if printf '%s\n' "$existing_comments" | grep -Fq "$marker"; then
+              echo "Validation comment already exists on PR #$pr."
+              continue
+            fi
+
+            {
+              echo "$marker"
+              echo "Daily automation checked this PR and could not merge it because the validator failed."
+              echo
+              echo '```text'
+              sed -n '1,120p' "../validation-$pr.txt"
+              echo '```'
+              echo
+              echo "Fix the PR so it changes exactly one allowed line in the correct file, then push again."
+            } > "../comment-$pr.md"
+
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "DRY RUN: would comment on PR #$pr."
+            else
+              gh pr comment "$pr" \
+                --repo "$GITHUB_REPOSITORY" \
+                --body-file "../comment-$pr.md"
+            fi
+          done
+
+      - name: Grade submitted assignments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+
+          cd main
+          git switch main 2>/dev/null || git switch --create main origin/main
+          git pull --ff-only origin main
+
+          if [ "$DRY_RUN" = "true" ]; then
+            node scripts/auto-grade-submissions.js --dry-run
+            exit 0
+          fi
+
+          node scripts/auto-grade-submissions.js --apply
+
+          if git diff --quiet -- EVALUATIONS_2026.md; then
+            echo "No evaluation changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add EVALUATIONS_2026.md
+          git commit -m "Add automated submission evaluations"
+          git pull --rebase origin main
+          git push

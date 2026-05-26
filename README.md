@@ -68,6 +68,18 @@ When the instructor adds or changes a line in `EVALUATIONS_2026.md`, GitHub Acti
 
 This uses the same SMTP repository secrets listed above. If they are missing, the workflow logs that email delivery was skipped. To send feedback to already evaluated students, run **Email Evaluation Feedback** manually from GitHub Actions with `evaluation_ids` set to `all`, or use comma-separated topic IDs such as `02,16,26`. The same workflow also supports a `repository_dispatch` event named `email-evaluations` for CLI/API triggering.
 
+## 🕑 Daily PR merge and preliminary grading
+
+GitHub Actions also runs **Daily PR Merge and Submission Grading** every 24 hours at `02:00 UTC`, and it can be started manually with a dry-run option.
+
+The workflow:
+- checks open PRs against `main` in creation order;
+- merges valid reservation or final-submission PRs that change exactly one allowed line;
+- comments on invalid PRs without repeating the same daily comment;
+- then scans `SUBMISSIONS_2026.md` and adds preliminary `EVALUATIONS_2026.md` rows only for submitted topics that do not already have an evaluation.
+
+The preliminary grader uses public evidence only: GitHub repository reachability, README/setup guidance, source/dependency structure, cloud/MCC signals, demo availability, `AI-log.txt`, recent commits, and deployment/CI files. It does **not** execute student code, and it does not overwrite instructor-managed evaluation rows.
+
 ## ✅ How to submit the final solution
 
 1) Build the solution in your own GitHub repository.
