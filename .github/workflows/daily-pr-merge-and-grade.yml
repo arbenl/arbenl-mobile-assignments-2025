@@ -223,11 +223,15 @@ jobs:
             main/poc-solutions/topic-01-cloud-task-collaboration/ \
             pages/poc-solutions/topic-01-cloud-task-collaboration/
 
+          touch pages/.nojekyll
+
           cd pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f --ignore-unmatch .env
 
           git add \
+            .nojekyll \
             CLOUD_TOPICS_2026.md \
             SUBMISSIONS_2026.md \
             EVALUATIONS_2026.md \
