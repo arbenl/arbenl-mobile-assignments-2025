@@ -19,7 +19,7 @@
 13. Image Thumbnail Processing Pipeline — (Not submitted)
 14. PDF Invoice Generator API — (Not submitted)
 15. Webhook Receiver and Event Replay Tool — (Not submitted)
-16. URL Shortener with Analytics — (Not submitted)
+16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo:  https://url-shortener-6ac1f.web.app
 17. Cloud Function Job Queue Dashboard — (Not submitted)
 18. Automated Certificate Expiry Monitor — (Not submitted)
 19. Serverless Form Builder — (Not submitted)
