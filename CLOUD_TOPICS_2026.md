@@ -64,7 +64,7 @@
 19. Serverless Form Builder — (Taken by Luela Krasniqi <luela.krasniqi@universitetiaab.com>)
   - Cloud focus: Let users define forms, publish hosted endpoints, store submissions, and export CSV from cloud storage.
   - Score: Not graded (0-30)
-20. API Gateway for Public Dataset Access — (Available)
+20. API Gateway for Public Dataset Access — (Taken by Berin Kasapi <berin.kasapi@universitetiaab.com>)
   - Cloud focus: Wrap a dataset behind authenticated endpoints, add caching, pagination, request logging, and usage quotas.
   - Score: Not graded (0-30)
 
