@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-27T19:55:35.279Z",
+  "generatedAt": "2026-05-27T20:16:26.747Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "20",
+      "title": "API Gateway for Public Dataset Access",
+      "name": "Berin Kasapi",
+      "email": "berin.kasapi@universitetiaab.com",
+      "stack": "",
+      "prNumber": 154,
+      "prTitle": "Update API Gateway project assignment details",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/154",
+      "author": "BerinKasapi",
+      "createdAt": "2026-05-27T20:16:11Z"
+    }
+  ],
   "conflicts": []
 }
