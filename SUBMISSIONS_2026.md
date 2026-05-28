@@ -9,7 +9,7 @@
 03. Server-rendered Portfolio CMS on the Cloud — (Not submitted)
 04. Cloud Expense Tracker with Budget Alerts — (Not submitted)
 05. Real-time Classroom Polling System — (Not submitted)
-06. Event Registration Platform with QR Check-in — (Not submitted)
+06. Event Registration Platform with QR Check-in — (Submitted by Xhevrije Xhelili <dzevrje.dzelili@universitetiaab.com>) — Repo: https://github.com/xhevrije12/event-registration-qr — Demo: https://cinecloud-eight.vercel.app
 07. Cloud-hosted Knowledge Base with Search — (Not submitted)
 08. Subscription Newsletter Platform — (Not submitted)
 09. Team Kanban Board with Activity Stream — (Not submitted)
