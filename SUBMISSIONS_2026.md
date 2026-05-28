@@ -26,7 +26,7 @@
 20. API Gateway for Public Dataset Access — (Not submitted)
 21. Cloud Data Warehouse Mini Dashboard — (Not submitted)
 22. Object Storage Photo Archive — (Not submitted)
-23. IoT Sensor Data Ingestion Pipeline — (Not submitted)
+23. IoT Sensor Data Ingestion Pipeline — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
 24. Log Analytics Explorer — (Not submitted)
 25. Data Backup and Restore Portal — (Not submitted)
 26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
