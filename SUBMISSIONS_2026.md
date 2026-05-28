@@ -44,7 +44,7 @@
 38. Feature Flag Service for Cloud Releases — (Not submitted)
 39. Cloud Cost Estimator Dashboard — (Not submitted)
 40. Resilient Cloud App with Retry Patterns — (Not submitted)
-41. Authentication and Role Management Portal — (Not submitted)
+41. Authentication and Role Management Portal — (Submitted by Dea Prapashtica <dea.prapashtica@universitetiaab.com>) — Repo: https://github.com/deaprapashtica/autoshkolla-cloud — Demo: N/A|N/A)
 42. Secrets Rotation Practice App — (Not submitted)
 43. Secure File Vault with Audit Logs — (Not submitted)
 44. Cloud Security Posture Checklist Tool — (Not submitted)
