@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-28T11:39:35.692Z",
+  "generatedAt": "2026-05-28T11:41:17.644Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "60",
+      "title": "Mobile Incident Reporter with Cloud Workflow",
+      "name": "Orges Kasumi",
+      "email": "orges.kasumi@universitetiaab.com",
+      "stack": "React + Node.js API",
+      "prNumber": 180,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/180",
+      "author": "OrgesKasumii",
+      "createdAt": "2026-05-28T11:41:06Z"
+    }
+  ],
   "conflicts": []
 }
