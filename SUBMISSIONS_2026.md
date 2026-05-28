@@ -64,3 +64,4 @@
 58. Field Data Collection App for Surveys — (Not submitted)
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
+61.Ecommerce architecutre and cloud menagment  — (Submitted by Dion Salihu <dion3.salihu@universitetiaab.com>) — Repo: https://github.com/DionSalihu123/VibePrints — Demo:https://vibe-prints.vercel.app/
