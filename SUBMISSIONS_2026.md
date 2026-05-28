@@ -34,7 +34,7 @@
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
 30. Cloud Database Migration Playground — (Not submitted)
-31. Containerized Microservice Deployment — (Not submitted)
+31. Containerized Microservice Deployment — (Submitted by Dineta Avydi <dineta.avdyli@euniversitetiaab.com>) — Repo: https://github.com/dineetaa/banking-frontend.git, Repo: https://github.com/dineetaa/banking-frontend.git — Demo: https://bankingfrontend-nu.vercel.app/
 32. CI/CD Pipeline for a Cloud Web App — (Submitted by Skifter Bytyqi <skifterbytyqi2005@gmail.com>) — Repo: https://github.com/Skifta40/WeatherApp-CI-CD-Pipiline-Skifter-Bytyqi-2026- — Demo: https://weatherapp-ci-cd-pipiline-skifter-bytyqi.onrender.com
 33. Infrastructure as Code Starter Stack — (Not submitted)
 34. Blue-Green Deployment Simulator — (Submitted by Edonard Hergaja <edonard.hergaja@universitetiaab.com>) — Repo: https://github.com/edonardhergaja-gif/arbenl-mobile-assignments-2025 — Demo: https://arbenl-mobile-assignments-2025.vercel.app
