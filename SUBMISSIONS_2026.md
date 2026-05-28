@@ -28,7 +28,7 @@
 22. Object Storage Photo Archive — (Not submitted)
 23. IoT Sensor Data Ingestion Pipeline — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
 24. Log Analytics Explorer — (Not submitted)
-25. Data Backup and Restore Portal — (Not submitted)
+25. Data Backup and Restore Portal — (Submitted by Visar Maloku <visar.maloku@universitetiaab.com>) — Repo: https://github.com/visarmaloku-lgtm/data-backup-restore-portal — Demo:https://data-backup-restore-portal.vercel.app
 26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
 27. Stream Processing Demo for Click Events — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
 28. Geospatial Store Locator API — (Not submitted)
