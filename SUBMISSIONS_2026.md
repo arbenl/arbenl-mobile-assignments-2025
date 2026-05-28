@@ -64,3 +64,5 @@
 58. Field Data Collection App for Surveys — (Not submitted)
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
+61. Student Notes — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
+62. Bletaria Amë — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
