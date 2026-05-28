@@ -4,7 +4,7 @@
 > Format:
 > `NN. Topic Title — (Submitted by Full Name <email@example.com>) — Repo: https://github.com/user/repo — Demo: https://demo-url-or-na`
 
-01. Cloud-hosted Task Collaboration Platform — (Not submitted)
+01. Cloud-hosted Task Collaboration Platform — (Submitted by Ejona Shala <ejona.shala@universitetiaab.com>) — Repo: https://github.com/ejonashala/RealTimeCollaborationSystem — Demo: N/A
 02. Multi-tenant Course Resource Portal — (Submitted by Jonila Dumani <joniladumani2@gmail.com>) — Repo: https://github.com/jonila12700/multi-tenant-course-portal — Demo: https://courseportal.42web.io
 03. Server-rendered Portfolio CMS on the Cloud — (Submitted by Altina Berisha <altinaberisha70@gmail.com>) — Repo: https://github.com/altina1911/Portfolio — Demo: N/A
 04. Cloud Expense Tracker with Budget Alerts — (Not submitted)
@@ -12,7 +12,7 @@
 06. Event Registration Platform with QR Check-in — (Submitted by Xhevrije Xhelili <dzevrje.dzelili@universitetiaab.com>) — Repo: https://github.com/xhevrije12/event-registration-qr — Demo: https://cinecloud-eight.vercel.app
 07. Cloud-hosted Knowledge Base with Search — (Not submitted)
 08. Subscription Newsletter Platform — (Not submitted)
-09. Team Kanban Board with Activity Stream — (Not submitted)
+09. Team Kanban Board with Activity Stream — (Submitted by Zuale Alili <zualealili5@gmail.com>) — Repo: https://github.com/Zuale-Dev/kanban-cloud-board — Demo: https://kanban-cloud-board.vercel.app
 10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
 11. Serverless Contact Form with Spam Scoring — (Not submitted)
 12. Scheduled Weather Digest Service — (Not submitted)
