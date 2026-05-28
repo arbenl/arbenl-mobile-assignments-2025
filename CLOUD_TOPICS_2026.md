@@ -69,7 +69,7 @@
   - Score: Not graded (0-30)
 
 ## Data, Storage & Analytics
-21. Cloud Data Warehouse Mini Dashboard — (Available)
+21. Cloud Data Warehouse Mini Dashboard — (Taken by Hamez Ejupi <hamzejupi@gmail.com>; Stack: Next.js + serverless functions)
   - Cloud focus: Ingest CSV data into a managed database or warehouse, transform it, and visualize KPIs in a hosted dashboard.
   - Score: Not graded (0-30)
 22. Object Storage Photo Archive — (Taken by Vjosa Shala <vjosa.shala@universitetiaab.com>)
