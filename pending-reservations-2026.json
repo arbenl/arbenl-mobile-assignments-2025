@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-28T07:38:37.733Z",
+  "generatedAt": "2026-05-28T07:42:14.765Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "21",
-      "title": "Cloud Data Warehouse Mini Dashboard",
-      "name": "Hamez Ejupi",
-      "email": "hamzejupi@gmail.com",
-      "stack": "Next.js + serverless functions",
-      "prNumber": 156,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/156",
-      "author": "hamzejupi",
-      "createdAt": "2026-05-28T07:38:23Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
