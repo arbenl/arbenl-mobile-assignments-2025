@@ -75,7 +75,7 @@
 22. Object Storage Photo Archive — (Taken by Vjosa Shala <vjosa.shala@universitetiaab.com>)
   - Cloud focus: Upload photos, store metadata, generate signed URLs, tag content, and support search/filter workflows.
   - Score: Not graded (0-30)
-23. IoT Sensor Data Ingestion Pipeline — (Available)
+23. IoT Sensor Data Ingestion Pipeline — (Taken by Vlera Murati <vlera.murati@universitetiaab.com>)
   - Cloud focus: Simulate device telemetry, ingest through HTTP or MQTT, store time-series records, and chart live metrics.
   - Score: Not graded (0-30)
 24. Log Analytics Explorer — (Available)
@@ -87,7 +87,7 @@
 26. Cloud File Sharing with Expiring Links — (Taken by Endi Makolli <endi.makolli@universitetiaab.com>)
   - Cloud focus: Store files in object storage, create signed links with expiry, track downloads, and enforce owner permissions.
   - Score: 10/30
-27. Stream Processing Demo for Click Events — (Available)
+27. Stream Processing Demo for Click Events — (Taken by Hava Jusufi <hava.jusufi@universitetiaab.com>)
   - Cloud focus: Generate clickstream events, process them in batches or streams, and show near-real-time aggregates.
   - Score: Not graded (0-30)
 28. Geospatial Store Locator API — (Available)
@@ -194,10 +194,4 @@
   - Score: Not graded (0-30)
 60. Mobile Incident Reporter with Cloud Workflow — (Available)
   - MCC focus: Capture reports with photo/location, upload evidence, trigger a serverless triage workflow, and show status updates.
-  - Score: Not graded (0-30)
-61. Student Notes — (Taken by Vlera Murati <vlera.murati@universitetiaab.com>)
-  - MCC focus: Build a student note-taking app with cloud storage, search or categorization, and a hosted demo for managing study materials.
-  - Score: Not graded (0-30)
-62. Bletaria Amë — (Taken by Hava Jusufi <hava.jusufi@universitetiaab.com>)
-  - MCC focus: Build a cloud-hosted beekeeping management app with persisted records, hosted pages, and clear workflow support for hive or product tracking.
   - Score: Not graded (0-30)

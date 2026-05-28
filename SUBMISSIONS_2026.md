@@ -26,16 +26,16 @@
 20. API Gateway for Public Dataset Access — (Not submitted)
 21. Cloud Data Warehouse Mini Dashboard — (Not submitted)
 22. Object Storage Photo Archive — (Not submitted)
-23. IoT Sensor Data Ingestion Pipeline — (Not submitted)
+23. IoT Sensor Data Ingestion Pipeline — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
 24. Log Analytics Explorer — (Not submitted)
 25. Data Backup and Restore Portal — (Not submitted)
 26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
-27. Stream Processing Demo for Click Events — (Not submitted)
+27. Stream Processing Demo for Click Events — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
 30. Cloud Database Migration Playground — (Not submitted)
 31. Containerized Microservice Deployment — (Not submitted)
-32. CI/CD Pipeline for a Cloud Web App — (Not submitted)
+32. CI/CD Pipeline for a Cloud Web App — (Submitted by Skifter Bytyqi <skifterbytyqi2005@gmail.com>) — Repo: https://github.com/Skifta40/WeatherApp-CI-CD-Pipiline-Skifter-Bytyqi-2026- — Demo: https://weatherapp-ci-cd-pipiline-skifter-bytyqi.onrender.com
 33. Infrastructure as Code Starter Stack — (Not submitted)
 34. Blue-Green Deployment Simulator — (Submitted by Edonard Hergaja <edonard.hergaja@universitetiaab.com>) — Repo: https://github.com/edonardhergaja-gif/arbenl-mobile-assignments-2025 — Demo: https://arbenl-mobile-assignments-2025.vercel.app
 35. Cloud Monitoring and Alerting Dashboard — (Not submitted)
@@ -64,5 +64,3 @@
 58. Field Data Collection App for Surveys — (Not submitted)
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
-61. Student Notes — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
-62. Bletaria Amë — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
