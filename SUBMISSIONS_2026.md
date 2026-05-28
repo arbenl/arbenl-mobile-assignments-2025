@@ -7,7 +7,7 @@
 01. Cloud-hosted Task Collaboration Platform — (Not submitted)
 02. Multi-tenant Course Resource Portal — (Not submitted)
 03. Server-rendered Portfolio CMS on the Cloud — (Not submitted)
-04. Cloud Expense Tracker with Budget Alerts — (Not submitted)
+04. Cloud Expense Tracker with Budget Alerts — (Submitted by Erblina Kalludra <erblinakalludra5@gmail.com>) — Repo: https://github.com/erblina555/expense-tracker — Demo: https://expense-tracker-topaz-xi-52.vercel.app
 05. Real-time Classroom Polling System — (Not submitted)
 06. Event Registration Platform with QR Check-in — (Not submitted)
 07. Cloud-hosted Knowledge Base with Search — (Not submitted)
