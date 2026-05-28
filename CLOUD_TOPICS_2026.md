@@ -192,6 +192,6 @@
 59. Mobile Cloud Fitness Tracker — (Taken by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>; Stack: React Native + Firebase)
   - MCC focus: Record workouts locally, sync progress to a cloud backend, calculate weekly summaries, and send milestone notifications.
   - Score: Not graded (0-30)
-60. Mobile Incident Reporter with Cloud Workflow — (Available)
+60. Mobile Incident Reporter with Cloud Workflow — (Taken by Orges Kasumi <orges.kasumi@universitetiaab.com>; Stack: React + Node.js API)
   - MCC focus: Capture reports with photo/location, upload evidence, trigger a serverless triage workflow, and show status updates.
   - Score: Not graded (0-30)
