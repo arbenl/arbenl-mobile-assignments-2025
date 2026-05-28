@@ -60,7 +60,7 @@
 54. Location-based Campus Alerts App — (Not submitted)
 55. Mobile Expense Splitter with Serverless Sync — (Not submitted)
 56. Edge AI Image Labeling Prototype — (Not submitted)
-57. Mobile Chat with Cloud Realtime Backend — (Not submitted)
+57. Mobile Chat with Cloud Realtime Backend — (Submitted by Valdet Demiri <valdet2.demiri@universitetiaab.com>) — Repo: https://github.com/Valdet2/Chat-App — Demo: https://chatapp-12d97.web.app/
 58. Field Data Collection App for Surveys — (Not submitted)
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
