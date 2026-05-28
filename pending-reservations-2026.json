@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-05-28T18:14:32.723Z",
+  "generatedAt": "2026-05-28T20:06:48.809Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "56",
+      "title": "Edge AI Image Labeling Prototype",
+      "name": "Dion Salihu",
+      "email": "dion3.salihu@universitetiaab.com",
+      "stack": "Next.js + serverless functions",
+      "prNumber": 182,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/182",
+      "author": "DionSalihu123",
+      "createdAt": "2026-05-28T20:06:32Z"
+    }
+  ],
   "conflicts": []
 }
