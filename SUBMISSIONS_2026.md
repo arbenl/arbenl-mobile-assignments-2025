@@ -30,7 +30,7 @@
 24. Log Analytics Explorer — (Not submitted)
 25. Data Backup and Restore Portal — (Not submitted)
 26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
-27. Stream Processing Demo for Click Events — (Not submitted)
+27. Stream Processing Demo for Click Events — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
 30. Cloud Database Migration Playground — (Not submitted)
