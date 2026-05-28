@@ -180,7 +180,7 @@
 55. Mobile Expense Splitter with Serverless Sync — (Available)
   - MCC focus: Build offline expense entry, sync with a serverless API, resolve participant balances, and expose shared trips.
   - Score: Not graded (0-30)
-56. Edge AI Image Labeling Prototype — (Available)
+56. Edge AI Image Labeling Prototype — (Taken by Dion Salihu <dion3.salihu@universitetiaab.com>; Stack: Next.js + serverless functions)
   - MCC focus: Run lightweight on-device or browser inference, upload labels to the cloud, and compare local versus cloud processing.
   - Score: Not graded (0-30)
 57. Mobile Chat with Cloud Realtime Backend — (Taken by Valdet <valdet2.demiri@universitetiaab.com>)
