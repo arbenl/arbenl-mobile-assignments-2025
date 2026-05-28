@@ -99,6 +99,13 @@
       background: var(--teal);
       color: white;
     }
+
+    .button.active,
+    .button[aria-current="page"] {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: white;
+    }
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -311,10 +318,13 @@
         </div>
       </div>
       <div class="actions" aria-label="Main links">
-        <a class="button primary" href="mcc-2026.html">Topic catalogue</a>
+        <a class="button" href="index.html">Back to Home</a>
+        <a class="button" href="mcc-2026.html">Topic catalogue</a>
+        <a class="button" href="syllabus-mcc-2026.html">Syllabus</a>
+        <a class="button active" href="instructions-mcc-2026.html" aria-current="page">Instructions EN</a>
         <a class="button" href="udhezime-mcc-2026.html">Shqip</a>
-        <a class="button" href="mcc-2026.html">Visual catalogue</a>
-        <a class="button" href="SUBMISSIONS_2026.md">Submissions</a>
+        <a class="button" href="submissions-2026.html">Submissions</a>
+        <a class="button" href="evaluations-2026.html">Evaluations</a>
       </div>
     </header>
 
@@ -326,7 +336,7 @@
       <aside class="rules" aria-label="Main rules">
         <div class="rule">
           <strong>Name and email are mandatory.</strong>
-          <span>The reservation format is `Taken by Full Name &lt;email@example.com&gt;`.</span>
+          <span>The reservation format is `Taken by Full Name &lt;email@example.com&gt;; Stack: Chosen stack`.</span>
         </div>
         <div class="rule">
           <strong>Change exactly one line.</strong>
@@ -359,17 +369,17 @@
       <ol class="steps">
         <li>Open `mcc-2026.html`, find a topic, and check that it is `Available`.</li>
         <li>Click `Reserve`, enter your full name and email. Both are required.</li>
-        <li>Click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
+        <li>Choose your stack, then click `Copy claim line`; the correct line is copied, but this is not an official reservation yet.</li>
         <li>Click `Edit on GitHub`; GitHub opens `CLOUD_TOPICS_2026.md` directly for editing.</li>
         <li>Replace only your topic line with the copied line, then click `Propose changes` and create a Pull Request.</li>
         <li>Wait for the automatic validation. The first valid PR is merged automatically; if another PR reserved the same topic first, your PR will stay unmerged and must be changed.</li>
       </ol>
-      <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;)</code></pre>
+      <pre><code>01. Cloud-hosted Task Collaboration Platform — (Taken by Full Name &lt;email@example.com&gt;; Stack: Next.js + serverless functions)</code></pre>
       <div class="warning">One student can reserve only one assignment. Validation rejects repeated names or emails.</div>
       <div class="grid">
         <div class="panel">
           <h3>Valid reservation PR</h3>
-          <p>Change exactly one line in `CLOUD_TOPICS_2026.md`: replace only `(Available)` with `(Taken by Full Name &lt;email@example.com&gt;)`.</p>
+          <p>Change exactly one line in `CLOUD_TOPICS_2026.md`: replace only `(Available)` with `(Taken by Full Name &lt;email@example.com&gt;; Stack: Chosen stack)`. If your topic is already reserved, use `Check your reservation`, choose/change the stack, and open a correction PR that edits only your same topic line.</p>
         </div>
         <div class="panel">
           <h3>Invalid PRs</h3>

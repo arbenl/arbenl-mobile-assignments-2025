@@ -10,13 +10,14 @@ Each topic can be claimed by **exactly one** student.
 - [`CLOUD_TOPICS_2026.md`](CLOUD_TOPICS_2026.md) — Cloud Computing and Mobile Cloud Computing (MCC) topics for 2026.
 - [`index.html`](index.html) — professional course profile where students choose catalogues by topic area and year.
 - [`mcc-2026.html`](mcc-2026.html) — main visual browsing/reservation page for the MCC 2026 catalogue, including read-only scores for students.
+- [`syllabus-mcc-2026.html`](syllabus-mcc-2026.html) — bilingual Cloud/MCC 2026 syllabus with free AWS SimuLearn modules for each week.
 - [`submissions-2026.html`](submissions-2026.html) — read-only visual dashboard for final submissions and instructor scores.
 - [`instructions-mcc-2026.html`](instructions-mcc-2026.html) — English static guide for reserving, solving, testing, and submitting assignments.
 - [`udhezime-mcc-2026.html`](udhezime-mcc-2026.html) — Albanian static guide for reserving, solving, testing, and submitting assignments.
 - [`SUBMISSIONS_2026.md`](SUBMISSIONS_2026.md) — final solution submission links.
 
 Reservations are **first in, first served**: the first valid PR that passes automatic validation is merged automatically, reserves the topic, and makes it visible on the public site.
-Students may change only the status segment of one available topic line when reserving. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
+Students may change only one topic line when reserving or correcting their own reservation. New reservations use `Taken by Full Name <email@example.com>`, and students may include or later update `; Stack: Chosen stack` on that same line. Catalogue descriptions, score lines, pages, workflows, scripts, and docs are read-only for student claim PRs. One student can reserve only one assignment, and both full name and email are required. Final solutions are submitted later by changing exactly one line in `SUBMISSIONS_2026.md`.
 
 ## 🚀 Quick Claim Checklist
 
@@ -34,7 +35,7 @@ Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_20
 1) Fork this repository to your GitHub account.
 2) Open the correct catalogue in your fork: `TOPICS.md` for Mobile Programming or `CLOUD_TOPICS_2026.md` for Cloud Computing/MCC 2026.
 3) Find the topic you want (use the ID like `#07`).
-4) Change the status from **(Available)** to **(Taken by YOUR FULL NAME <email@example.com>)**.
+4) Change the status from **(Available)** to **(Taken by YOUR FULL NAME <email@example.com>; Stack: YOUR CHOSEN STACK)**.
 5) Do not change the score line or any description line. Scores are instructor-managed and shown as `0/30` or `Not graded`.
 6) Commit the change in your fork and **open a Pull Request** back to this repo.
 7) Fill the PR template completely (catalogue, name, email, topic ID, chosen stack, cloud/mobile services if relevant, 1-week plan, AI tools).
@@ -45,7 +46,40 @@ Mos bëj këto gabime: mos edito `mcc-2026.html`, mos riemërto `CLOUD_TOPICS_20
 
 Common mistakes that are rejected: editing `mcc-2026.html`, renaming `CLOUD_TOPICS_2026.md`, deleting `Cloud focus` or `Score` lines, duplicating the topic title inside the status, or putting two students on one topic.
 
-Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To correct it, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
+Need to check or correct your own reservation? On `mcc-2026.html`, use **Check your reservation** with the same full name or email from your merged PR. To add or change your stack, open another PR that changes only your existing topic line, keeping the same name or the same email so the validator can identify it as your reservation.
+
+## ✉️ Failed PR email notifications
+
+When a reservation PR fails, GitHub Actions always posts correction instructions as a PR comment. The workflow can also email the student automatically if these repository secrets are configured:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USERNAME`
+- `SMTP_PASSWORD`
+- `SMTP_FROM`
+- `SMTP_REPLY_TO` optional
+- `SMTP_SSL` optional, use `true` for port `465`
+
+If these secrets are not configured, the workflow skips email delivery and still leaves the PR comment. The recipient email is extracted from the changed reservation line or, if needed, from the PR title/body.
+
+## ✉️ Evaluation email notifications
+
+When the instructor adds or changes a line in `EVALUATIONS_2026.md`, GitHub Actions can email the evaluated student with the score, English/Albanian feedback, repository/demo links, the public evaluation page, and correction instructions. The recipient email is read from `SUBMISSIONS_2026.md`, with `CLOUD_TOPICS_2026.md` used as a fallback.
+
+This uses the same SMTP repository secrets listed above. If they are missing, the workflow logs that email delivery was skipped. To send feedback to already evaluated students, run **Email Evaluation Feedback** manually from GitHub Actions with `evaluation_ids` set to `all`, or use comma-separated topic IDs such as `02,16,26`. The same workflow also supports a `repository_dispatch` event named `email-evaluations` for CLI/API triggering.
+
+## 🕑 Daily PR merge and preliminary grading
+
+GitHub Actions also runs **Daily PR Merge and Submission Grading** every 24 hours at `02:00 UTC`, and it can be started manually with a dry-run option.
+
+The workflow:
+- checks open PRs against `main` in creation order;
+- merges valid reservation or final-submission PRs that change exactly one allowed line;
+- comments on invalid PRs without repeating the same daily comment;
+- then scans `SUBMISSIONS_2026.md` and adds preliminary `EVALUATIONS_2026.md` rows only for submitted topics that do not already have an evaluation.
+- publishes the updated catalogues, submissions, evaluations, and static pages to `gh-pages`.
+
+The preliminary grader uses public evidence only: GitHub repository reachability, README/setup guidance, source/dependency structure, cloud/MCC signals, demo availability, `AI-log.txt`, recent commits, and deployment/CI files. It does **not** execute student code, and it does not overwrite instructor-managed evaluation rows.
 
 ## ✅ How to submit the final solution
 
@@ -73,7 +107,7 @@ Use `Demo: N/A` only when the project cannot reasonably be deployed, and explain
    ```bash
    git checkout -b claim-topic-07
    ```
-5. **Përditëso vetëm rreshtin e temës tënde në katalogun përkatës:** Ndrysho segmentin `— (Available)` në `— (Taken by EMRI MBIEMRI <email@example.com>)` duke ruajtur identik pjesën tjetër të rreshtit. Mos modifiko titullin, ID-në apo përshkrimin.
+5. **Përditëso vetëm rreshtin e temës tënde në katalogun përkatës:** Ndrysho segmentin `— (Available)` në `— (Taken by EMRI MBIEMRI <email@example.com>; Stack: STACK-U I ZGJEDHUR)` duke ruajtur identik pjesën tjetër të rreshtit. Nëse e ke rezervuar tashmë temën, mund ta ndryshosh vetëm po atë rresht për të shtuar/ndryshuar `; Stack: ...`, por duhet të mbetet i njëjti emër ose i njëjti email.
 6. **Ruaj dhe kontrollo ndryshimin:**  
    ```bash
    git status

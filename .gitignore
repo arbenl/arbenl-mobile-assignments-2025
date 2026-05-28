@@ -1,0 +1,6 @@
+.DS_Store
+.env
+.genkit/
+.playwright-mcp/
+__pycache__/
+*.py[cod]

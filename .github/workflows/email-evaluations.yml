@@ -1,0 +1,46 @@
+name: Email Evaluation Feedback
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - EVALUATIONS_2026.md
+  workflow_dispatch:
+    inputs:
+      evaluation_ids:
+        description: 'Comma-separated topic IDs to email, or all'
+        default: 'all'
+      dry_run:
+        description: 'Preview recipients without sending email: true or false'
+        default: 'false'
+  repository_dispatch:
+    types: [email-evaluations]
+
+permissions:
+  contents: read
+
+jobs:
+  email-evaluations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Send evaluation emails
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_REPLY_TO: ${{ secrets.SMTP_REPLY_TO }}
+          SMTP_SSL: ${{ secrets.SMTP_SSL }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          EVALUATION_IDS: ${{ github.event.inputs.evaluation_ids || github.event.client_payload.evaluation_ids || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || github.event.client_payload.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+          python3 scripts/send-evaluation-emails.py

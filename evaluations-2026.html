@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud & MCC 2026 Submissions and Scores</title>
-  <meta name="description" content="Read-only Cloud and MCC 2026 submission and scoring dashboard for students and instructor.">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <title>Cloud & MCC 2026 Public Evaluations</title>
+  <meta name="description" content="Public instructor evaluation summaries for Cloud and MCC 2026 student submissions.">
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,14 +52,15 @@
     }
 
     .shell {
-      width: min(1360px, calc(100% - 32px));
+      width: min(1280px, calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 48px;
     }
 
     .topbar,
+    .hero,
     .toolbar,
-    .section-head,
+    .card-head,
     .card-foot {
       display: flex;
       align-items: center;
@@ -83,7 +81,7 @@
       height: 44px;
       place-items: center;
       border-radius: var(--radius);
-      background: conic-gradient(from 120deg, var(--teal), var(--blue), var(--amber), var(--teal));
+      background: conic-gradient(from 120deg, var(--green), var(--teal), var(--blue), var(--green));
       color: white;
       font-weight: 900;
     }
@@ -109,22 +107,20 @@
     }
 
     h3 {
-      margin-bottom: 10px;
-      font-size: 1.02rem;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
       line-height: 1.35;
       letter-spacing: 0;
     }
 
     .brand p,
-    .hero-copy,
     .muted,
-    .submission-card p,
+    .evaluation-card p,
     .empty {
       color: var(--muted);
     }
 
     .top-actions,
-    .chips,
     .card-links,
     .language-switch {
       display: flex;
@@ -133,7 +129,6 @@
     }
 
     .button,
-    .chip,
     .language-switch button {
       min-height: 42px;
       border: 1px solid var(--line);
@@ -149,57 +144,43 @@
     .button.primary,
     .button.active,
     .button[aria-current="page"],
-    .chip.active,
     .language-switch button.active {
       border-color: var(--teal);
       background: var(--teal);
       color: #fff;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
-      gap: 18px;
-      margin: 22px 0 18px;
-    }
-
     .panel {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       box-shadow: var(--shadow);
     }
 
-    .hero-panel {
-      min-height: 230px;
+    .hero {
+      align-items: flex-start;
+      margin: 22px 0 18px;
       padding: 22px;
       background:
-        linear-gradient(135deg, rgba(16, 24, 40, 0.88), rgba(0, 121, 107, 0.78)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+        linear-gradient(135deg, rgba(16, 24, 40, 0.90), rgba(23, 128, 61, 0.78)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80");
       background-position: center;
       background-size: cover;
       color: white;
     }
 
-    .hero-panel h2 {
-      max-width: 760px;
-      margin-top: 42px;
-      font-size: 2.55rem;
+    .hero h2 {
+      max-width: 780px;
+      margin-bottom: 12px;
+      font-size: 2.45rem;
       line-height: 1;
     }
 
-    .hero-copy {
-      max-width: 760px;
+    .hero p {
+      max-width: 780px;
       margin-bottom: 0;
-      color: rgba(255, 255, 255, 0.84);
+      color: rgba(255, 255, 255, 0.86);
       font-size: 1.05rem;
-    }
-
-    .rules-panel {
-      display: grid;
-      align-content: start;
-      gap: 12px;
-      padding: 18px;
     }
 
     .eyebrow {
@@ -211,13 +192,8 @@
       text-transform: uppercase;
     }
 
-    .rules-panel ul {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-weight: 650;
+    .hero .eyebrow {
+      color: rgba(255, 255, 255, 0.74);
     }
 
     .stats {
@@ -237,7 +213,7 @@
     }
 
     .stat:nth-child(2) {
-      border-left-color: var(--blue);
+      border-left-color: var(--green);
     }
 
     .stat:nth-child(3) {
@@ -245,7 +221,7 @@
     }
 
     .stat:nth-child(4) {
-      border-left-color: var(--green);
+      border-left-color: var(--blue);
     }
 
     .stat strong,
@@ -290,43 +266,33 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 14px;
     }
 
-    .submission-card {
+    .evaluation-card {
       display: grid;
       gap: 12px;
-      min-height: 278px;
+      min-height: 280px;
       padding: 16px;
       border: 1px solid var(--line);
-      border-top: 5px solid var(--teal);
+      border-top: 5px solid var(--amber);
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       box-shadow: 0 12px 26px rgba(16, 24, 40, 0.06);
     }
 
-    .submission-card.available {
-      border-top-color: var(--line);
-    }
-
-    .submission-card.submitted {
-      border-top-color: var(--blue);
-    }
-
-    .submission-card.graded {
+    .evaluation-card.reviewed {
       border-top-color: var(--green);
     }
 
-    .card-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
+    .evaluation-card.needs-fixes {
+      border-top-color: var(--rose);
     }
 
     .topic-id,
-    .status {
+    .status,
+    .score {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -344,26 +310,22 @@
     }
 
     .status {
-      background: #f1f5f9;
-      color: var(--muted);
+      background: rgba(180, 83, 9, 0.12);
+      color: var(--amber);
     }
 
-    .status.reserved {
-      background: rgba(0, 121, 107, 0.12);
-      color: var(--teal);
-    }
-
-    .status.submitted {
-      background: rgba(36, 87, 214, 0.12);
-      color: var(--blue);
-    }
-
-    .status.graded {
+    .status.reviewed {
       background: rgba(23, 128, 61, 0.13);
       color: var(--green);
     }
 
-    .identity {
+    .status.needs-fixes {
+      background: rgba(199, 54, 95, 0.12);
+      color: var(--rose);
+    }
+
+    .identity,
+    .feedback {
       display: grid;
       gap: 5px;
       padding: 10px;
@@ -385,20 +347,14 @@
     }
 
     .score {
-      display: inline-flex;
       width: max-content;
-      min-height: 34px;
-      align-items: center;
-      border-radius: var(--radius);
-      padding: 0 11px;
-      background: #f8fafc;
-      color: var(--muted);
-      font-weight: 900;
+      background: rgba(36, 87, 214, 0.12);
+      color: var(--blue);
     }
 
-    .score.graded {
-      background: rgba(23, 128, 61, 0.13);
-      color: var(--green);
+    .score.pending {
+      background: #f1f5f9;
+      color: var(--muted);
     }
 
     .card-links a {
@@ -419,18 +375,17 @@
 
     @media (max-width: 980px) {
       .topbar,
-      .toolbar,
-      .section-head {
+      .hero,
+      .toolbar {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .hero,
       .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
-      .hero-panel h2 {
+      .hero h2 {
         font-size: 2rem;
       }
 
@@ -442,17 +397,18 @@
 
     @media (max-width: 640px) {
       .shell {
-        width: min(100% - 24px, 1360px);
+        width: min(100% - 24px, 1280px);
       }
 
       h1 {
         font-size: 1.4rem;
       }
 
-      .hero-panel h2 {
+      .hero h2 {
         font-size: 1.72rem;
       }
 
+      .stats,
       .grid {
         grid-template-columns: 1fr;
       }
@@ -460,29 +416,21 @@
   </style>
 </head>
 <body>
-  <script>
-    const dashboardVersion = '20260526-1837';
-    const currentUrl = new URL(window.location.href);
-    if (!currentUrl.searchParams.has('v')) {
-      currentUrl.searchParams.set('v', dashboardVersion);
-      window.location.replace(currentUrl.toString());
-    }
-  </script>
   <main class="shell">
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">30</div>
         <div>
-          <h1 data-i18n="page.heading">Cloud & MCC 2026 Submissions and Scores</h1>
-          <p data-i18n="page.subtitle">Read-only status for reservations, final submissions, and instructor scores.</p>
+          <h1 data-i18n="page.heading">Cloud & MCC 2026 Public Evaluations</h1>
+          <p data-i18n="page.subtitle">Read-only instructor feedback summaries for submitted assignments.</p>
         </div>
       </div>
       <div class="top-actions">
         <a class="button" href="index.html" data-i18n="nav.backHome">Back to Home</a>
         <a class="button" href="mcc-2026.html" data-i18n="nav.reserve">Reservations</a>
+        <a class="button" href="submissions-2026.html" data-i18n="nav.submissions">Submissions</a>
+        <a class="button active" href="evaluations-2026.html" aria-current="page" data-i18n="nav.evaluations">Evaluations</a>
         <a class="button" href="syllabus-mcc-2026.html" data-i18n="nav.syllabus">Syllabus</a>
-        <a class="button active" href="submissions-2026.html" aria-current="page" data-i18n="nav.submissions">Submissions</a>
-        <a class="button" href="evaluations-2026.html" data-i18n="nav.evaluations">Evaluations</a>
         <a class="button" href="instructions-mcc-2026.html" data-i18n="nav.instructionsEn">Instructions EN</a>
         <a class="button" href="udhezime-mcc-2026.html" data-i18n="nav.instructionsSq">Udhëzime Shqip</a>
         <div class="language-switch" aria-label="Language switch">
@@ -492,150 +440,120 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-panel panel">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Submission phase</p>
-        <h2 data-i18n="hero.title">Submit once, keep the same name and email, then follow your score here.</h2>
-        <p class="hero-copy" data-i18n="hero.copy">Students edit only their own line in SUBMISSIONS_2026.md. Scores from 0 to 30 are instructor-managed and displayed publicly after grading.</p>
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Instructor review</p>
+        <h2 data-i18n="hero.title">Public scores and concise feedback for each submitted project.</h2>
+        <p data-i18n="hero.copy">This page shows only academic summary feedback. Personal or detailed correction notes should be sent privately or through the student PR when needed.</p>
       </div>
-      <aside class="rules-panel panel" aria-label="Submission rules">
-        <p class="eyebrow" data-i18n="rules.eyebrow">Rules</p>
-        <ul>
-          <li data-i18n="rules.one">One student can reserve and submit only one assignment.</li>
-          <li data-i18n="rules.same">Use the same full name and email used in the reservation PR.</li>
-          <li data-i18n="rules.links">Submit a GitHub repository link and a demo link, or Demo: N/A with local run instructions in your README.</li>
-          <li data-i18n="rules.score">Students can see scores, but only the instructor changes score lines.</li>
-        </ul>
-      </aside>
     </section>
 
-    <section class="stats" aria-label="Submission statistics">
-      <div class="stat"><strong id="reservedCount">0</strong><span data-i18n="stats.reserved">reserved</span></div>
+    <section class="stats" aria-label="Evaluation statistics">
       <div class="stat"><strong id="submittedCount">0</strong><span data-i18n="stats.submitted">submitted</span></div>
-      <div class="stat"><strong id="gradedCount">0</strong><span data-i18n="stats.graded">graded</span></div>
+      <div class="stat"><strong id="reviewedCount">0</strong><span data-i18n="stats.reviewed">reviewed</span></div>
+      <div class="stat"><strong id="pendingCount">0</strong><span data-i18n="stats.pending">pending review</span></div>
       <div class="stat"><strong id="averageScore">-</strong><span data-i18n="stats.average">average score</span></div>
     </section>
 
     <section class="toolbar panel" aria-label="Filters">
       <div>
         <p class="eyebrow" data-i18n="filters.eyebrow">Find</p>
-        <h2 data-i18n="filters.title">Student and topic status</h2>
+        <h2 data-i18n="filters.title">Evaluation list</h2>
       </div>
       <div class="filters">
-        <input id="searchInput" type="search" data-i18n-placeholder="filters.search" placeholder="Search topic, student, or email">
+        <input id="searchInput" type="search" data-i18n-placeholder="filters.search" placeholder="Search topic, student, or feedback">
         <select id="statusFilter" aria-label="Filter by status">
-          <option value="all" data-i18n="filter.all">All topics</option>
-          <option value="reserved" data-i18n="filter.reserved">Reserved</option>
-          <option value="submitted" data-i18n="filter.submitted">Submitted</option>
-          <option value="graded" data-i18n="filter.graded">Graded</option>
-          <option value="open" data-i18n="filter.open">Available / not reserved</option>
+          <option value="all" data-i18n="filter.all">All submissions</option>
+          <option value="reviewed" data-i18n="filter.reviewed">Reviewed</option>
+          <option value="needs-fixes" data-i18n="filter.needsFixes">Needs fixes</option>
+          <option value="pending-review" data-i18n="filter.pending">Pending review</option>
         </select>
       </div>
     </section>
 
-    <section class="grid" id="submissionGrid" aria-live="polite"></section>
-    <div class="empty" id="emptyState" data-i18n="empty">No matching submissions.</div>
+    <section class="grid" id="evaluationGrid" aria-live="polite"></section>
+    <div class="empty" id="emptyState" data-i18n="empty">No matching evaluations.</div>
   </main>
 
   <script>
     const translations = {
       en: {
-        pageTitle: 'Cloud & MCC 2026 Submissions and Scores',
-        pageDescription: 'Read-only Cloud and MCC 2026 submission and scoring dashboard for students and instructor.',
-        'page.heading': 'Cloud & MCC 2026 Submissions and Scores',
-        'page.subtitle': 'Read-only status for reservations, final submissions, and instructor scores.',
-        'nav.reserve': 'Reservations',
+        pageTitle: 'Cloud & MCC 2026 Public Evaluations',
+        pageDescription: 'Public instructor evaluation summaries for Cloud and MCC 2026 student submissions.',
+        'page.heading': 'Cloud & MCC 2026 Public Evaluations',
+        'page.subtitle': 'Read-only instructor feedback summaries for submitted assignments.',
         'nav.backHome': 'Back to Home',
-        'nav.syllabus': 'Syllabus',
+        'nav.reserve': 'Reservations',
         'nav.submissions': 'Submissions',
         'nav.evaluations': 'Evaluations',
+        'nav.syllabus': 'Syllabus',
         'nav.instructionsEn': 'Instructions EN',
         'nav.instructionsSq': 'Udhëzime Shqip',
-        'hero.eyebrow': 'Submission phase',
-        'hero.title': 'Submit once, keep the same name and email, then follow your score here.',
-        'hero.copy': 'Students edit only their own line in SUBMISSIONS_2026.md. Scores from 0 to 30 are instructor-managed and displayed publicly after grading.',
-        'rules.eyebrow': 'Rules',
-        'rules.one': 'One student can reserve and submit only one assignment.',
-        'rules.same': 'Use the same full name and email used in the reservation PR.',
-        'rules.links': 'Submit a GitHub repository link and a demo link, or Demo: N/A with local run instructions in your README.',
-        'rules.score': 'Students can see scores, but only the instructor changes score lines.',
-        'stats.reserved': 'reserved',
+        'hero.eyebrow': 'Instructor review',
+        'hero.title': 'Public scores and concise feedback for each submitted project.',
+        'hero.copy': 'This page shows only academic summary feedback. Personal or detailed correction notes should be sent privately or through the student PR when needed.',
         'stats.submitted': 'submitted',
-        'stats.graded': 'graded',
+        'stats.reviewed': 'reviewed',
+        'stats.pending': 'pending review',
         'stats.average': 'average score',
         'filters.eyebrow': 'Find',
-        'filters.title': 'Student and topic status',
-        'filters.search': 'Search topic, student, or email',
-        'filter.all': 'All topics',
-        'filter.reserved': 'Reserved',
-        'filter.submitted': 'Submitted',
-        'filter.graded': 'Graded',
-        'filter.open': 'Available / not reserved',
-        'empty': 'No matching submissions.',
-        reserved: 'Reserved',
-        submitted: 'Submitted',
-        graded: 'Graded',
-        open: 'Available',
-        notReserved: 'Not reserved',
-        notSubmitted: 'Not submitted',
-        notGraded: 'Not graded',
+        'filters.title': 'Evaluation list',
+        'filters.search': 'Search topic, student, or feedback',
+        'filter.all': 'All submissions',
+        'filter.reviewed': 'Reviewed',
+        'filter.needsFixes': 'Needs fixes',
+        'filter.pending': 'Pending review',
+        'empty': 'No matching evaluations.',
+        pendingReview: 'Pending review',
+        reviewed: 'Reviewed',
+        needsFixes: 'Needs fixes',
         score: 'Score',
         repo: 'Repository',
         demo: 'Demo',
-        source: 'Source files',
-        topicFile: 'topics/scores',
-        submissionFile: 'submissions',
+        feedback: 'Feedback',
+        source: 'Evaluation source',
+        noEvaluation: 'Evaluation is not published yet.',
       },
       sq: {
-        pageTitle: 'Dorëzimet dhe Pikët Cloud & MCC 2026',
-        pageDescription: 'Pamje vetëm për lexim për dorëzimet dhe pikët e Cloud dhe MCC 2026.',
-        'page.heading': 'Dorëzimet dhe pikët Cloud & MCC 2026',
-        'page.subtitle': 'Status vetëm për lexim për rezervime, dorëzime finale dhe pikë të vendosura nga mësimdhënësi.',
-        'nav.reserve': 'Rezervimet',
+        pageTitle: 'Vlerësimet Publike Cloud & MCC 2026',
+        pageDescription: 'Përmbledhje publike të vlerësimeve të mësimdhënësit për dorëzimet Cloud dhe MCC 2026.',
+        'page.heading': 'Vlerësimet publike Cloud & MCC 2026',
+        'page.subtitle': 'Feedback i shkurtër, vetëm për lexim, për detyrat e dorëzuara.',
         'nav.backHome': 'Kthehu në ballinë',
-        'nav.syllabus': 'Syllabusi',
+        'nav.reserve': 'Rezervimet',
         'nav.submissions': 'Dorëzimet',
         'nav.evaluations': 'Vlerësimet',
-        'nav.instructionsEn': 'Instructions EN',
+        'nav.syllabus': 'Syllabusi',
+        'nav.instructionsEn': 'Udhëzime EN',
         'nav.instructionsSq': 'Udhëzime Shqip',
-        'hero.eyebrow': 'Faza e dorëzimit',
-        'hero.title': 'Dorëzo vetëm një herë, mbaj të njëjtin emër dhe email, pastaj ndiq pikët këtu.',
-        'hero.copy': 'Studentët ndryshojnë vetëm rreshtin e tyre në SUBMISSIONS_2026.md. Pikët nga 0 deri në 30 menaxhohen nga mësimdhënësi dhe shfaqen publikisht pas vlerësimit.',
-        'rules.eyebrow': 'Rregullat',
-        'rules.one': 'Një student mund të rezervojë dhe dorëzojë vetëm një detyrë.',
-        'rules.same': 'Përdor të njëjtin emër të plotë dhe email si në PR-në e rezervimit.',
-        'rules.links': 'Dorëzo linkun e repository në GitHub dhe linkun e demos, ose Demo: N/A me udhëzime lokale në README.',
-        'rules.score': 'Studentët mund t’i shohin pikët, por vetëm mësimdhënësi ndryshon rreshtat e pikëve.',
-        'stats.reserved': 'të rezervuara',
+        'hero.eyebrow': 'Vlerësimi i mësimdhënësit',
+        'hero.title': 'Pikët publike dhe feedback i shkurtër për çdo projekt të dorëzuar.',
+        'hero.copy': 'Kjo faqe shfaq vetëm përmbledhje akademike. Vërejtjet personale ose korrigjimet e hollësishme duhet të dërgohen privatisht ose në PR-në e studentit kur nevojitet.',
         'stats.submitted': 'të dorëzuara',
-        'stats.graded': 'të vlerësuara',
+        'stats.reviewed': 'të vlerësuara',
+        'stats.pending': 'në pritje',
         'stats.average': 'mesatarja e pikëve',
         'filters.eyebrow': 'Gjej',
-        'filters.title': 'Statusi i studentit dhe temës',
-        'filters.search': 'Kërko temën, studentin ose email-in',
-        'filter.all': 'Të gjitha temat',
-        'filter.reserved': 'Të rezervuara',
-        'filter.submitted': 'Të dorëzuara',
-        'filter.graded': 'Të vlerësuara',
-        'filter.open': 'Të lira / pa rezervim',
-        'empty': 'Nuk ka dorëzime që përputhen.',
-        reserved: 'E rezervuar',
-        submitted: 'E dorëzuar',
-        graded: 'E vlerësuar',
-        open: 'E lirë',
-        notReserved: 'Pa rezervim',
-        notSubmitted: 'Pa dorëzim',
-        notGraded: 'Pa pikë',
+        'filters.title': 'Lista e vlerësimeve',
+        'filters.search': 'Kërko temën, studentin ose feedback-un',
+        'filter.all': 'Të gjitha dorëzimet',
+        'filter.reviewed': 'Të vlerësuara',
+        'filter.needsFixes': 'Kërkojnë korrigjime',
+        'filter.pending': 'Në pritje të vlerësimit',
+        'empty': 'Nuk ka vlerësime që përputhen.',
+        pendingReview: 'Në pritje të vlerësimit',
+        reviewed: 'E vlerësuar',
+        needsFixes: 'Kërkon korrigjime',
         score: 'Pikët',
         repo: 'Repository',
         demo: 'Demo',
-        source: 'Fajllat burimorë',
-        topicFile: 'temat/pikët',
-        submissionFile: 'dorëzimet',
+        feedback: 'Feedback',
+        source: 'Burimi i vlerësimeve',
+        noEvaluation: 'Vlerësimi ende nuk është publikuar.',
       },
     };
 
-    const grid = document.getElementById('submissionGrid');
+    const grid = document.getElementById('evaluationGrid');
     const emptyState = document.getElementById('emptyState');
     const searchInput = document.getElementById('searchInput');
     const statusFilter = document.getElementById('statusFilter');
@@ -681,9 +599,9 @@
     }
 
     function parseTopics(markdown) {
-      const lines = markdown.split(/\r?\n/);
       const topics = new Map();
       let category = 'Uncategorized';
+      const lines = markdown.split(/\r?\n/);
 
       lines.forEach((line, index) => {
         const heading = line.match(/^##\s+(.+)$/);
@@ -695,19 +613,11 @@
         const topic = line.match(/^(\d{2})\.\s+(.+?)\s—\s\((Available|Taken by [^)]+)\)$/);
         if (!topic) return;
 
-        const identity = topic[3].startsWith('Taken by ')
-          ? parseIdentity(topic[3].replace(/^Taken by\s+/, ''))
-          : null;
-        const focus = (lines[index + 1] || '').match(/^\s+-\s+(.+)$/);
         const score = (lines[index + 2] || '').match(/^\s+-\s+Score:\s+(.+)$/);
-
         topics.set(topic[1], {
           id: topic[1],
           title: topic[2],
           category,
-          focus: focus ? focus[1] : '',
-          reservedBy: identity ? identity.name : '',
-          reservedEmail: identity ? identity.email : '',
           scoreLabel: score ? score[1].trim() : 'Not graded (0-30)',
         });
       });
@@ -724,6 +634,8 @@
 
         const identity = parseIdentity(submitted[3]);
         submissions.set(submitted[1], {
+          id: submitted[1],
+          title: submitted[2],
           name: identity.name,
           email: identity.email,
           repo: submitted[4].trim(),
@@ -738,16 +650,22 @@
       const evaluations = new Map();
 
       markdown.split(/\r?\n/).forEach((line) => {
-        const evaluated = line.match(/^(\d{2})\.\s+.+?\s—\sScore:\s+(\d{1,2}\/30)\s—\sStatus:\s+(Reviewed|Needs fixes|Pending review)\s—\sFeedback EN:\s+.+?\s—\sFeedback SQ:\s+.+$/);
+        const evaluated = line.match(/^(\d{2})\.\s+(.+?)\s—\sScore:\s+(\d{1,2}\/30)\s—\sStatus:\s+(Reviewed|Needs fixes|Pending review)\s—\sFeedback EN:\s+(.+?)\s—\sFeedback SQ:\s+(.+)$/);
         if (!evaluated) return;
 
         evaluations.set(evaluated[1], {
-          scoreLabel: evaluated[2],
-          status: evaluated[3],
+          score: evaluated[3],
+          status: normalizeStatus(evaluated[4]),
+          feedbackEn: evaluated[5].trim(),
+          feedbackSq: evaluated[6].trim(),
         });
       });
 
       return evaluations;
+    }
+
+    function normalizeStatus(value) {
+      return String(value).trim().toLowerCase().replace(/\s+/g, '-');
     }
 
     function scoreValue(label) {
@@ -757,24 +675,25 @@
       return Number.isFinite(value) ? value : null;
     }
 
-    function statusFor(row) {
-      if (row.scoreValue !== null) return 'graded';
-      if (row.submission) return 'submitted';
-      if (row.reservedBy) return 'reserved';
-      return 'open';
+    function effectiveStatus(row) {
+      if (!row.evaluation) return 'pending-review';
+      if (row.evaluation.status === 'needs-fixes') return 'needs-fixes';
+      return 'reviewed';
     }
 
     function updateStats() {
-      const reserved = rows.filter((row) => row.reservedBy).length;
-      const submitted = rows.filter((row) => row.submission).length;
-      const gradedRows = rows.filter((row) => row.scoreValue !== null);
-      const totalScore = gradedRows.reduce((sum, row) => sum + row.scoreValue, 0);
+      const reviewed = rows.filter((row) => row.evaluation).length;
+      const pending = rows.length - reviewed;
+      const scored = rows
+        .map((row) => row.evaluation ? scoreValue(row.evaluation.score) : null)
+        .filter((value) => value !== null);
+      const totalScore = scored.reduce((sum, value) => sum + value, 0);
 
-      document.getElementById('reservedCount').textContent = reserved;
-      document.getElementById('submittedCount').textContent = submitted;
-      document.getElementById('gradedCount').textContent = gradedRows.length;
-      document.getElementById('averageScore').textContent = gradedRows.length
-        ? `${(totalScore / gradedRows.length).toFixed(1)}/30`
+      document.getElementById('submittedCount').textContent = rows.length;
+      document.getElementById('reviewedCount').textContent = reviewed;
+      document.getElementById('pendingCount').textContent = pending;
+      document.getElementById('averageScore').textContent = scored.length
+        ? `${(totalScore / scored.length).toFixed(1)}/30`
         : '-';
     }
 
@@ -784,65 +703,73 @@
       const query = searchInput.value.trim().toLowerCase();
       const filter = statusFilter.value;
       const visible = rows.filter((row) => {
-        const status = statusFor(row);
-        const matchesFilter = filter === 'all'
-          || status === filter
-          || (filter === 'reserved' && row.reservedBy)
-          || (filter === 'submitted' && row.submission)
-          || (filter === 'graded' && row.scoreValue !== null);
+        const status = effectiveStatus(row);
+        const matchesFilter = (
+          filter === 'all'
+          || (filter === 'reviewed' && row.evaluation)
+          || (filter === 'needs-fixes' && status === 'needs-fixes')
+          || (filter === 'pending-review' && !row.evaluation)
+        );
+        const feedback = row.evaluation
+          ? `${row.evaluation.feedbackEn} ${row.evaluation.feedbackSq}`
+          : '';
         const haystack = [
           row.id,
           row.title,
-          row.category,
-          row.focus,
-          row.reservedBy,
-          row.reservedEmail,
-          row.submission ? row.submission.name : '',
-          row.submission ? row.submission.email : '',
+          row.name,
+          row.email,
+          row.topic ? row.topic.category : '',
+          feedback,
         ].join(' ').toLowerCase();
         return matchesFilter && (!query || haystack.includes(query));
       });
 
       grid.innerHTML = visible.map((row) => {
-        const status = statusFor(row);
-        const reservedName = row.reservedBy || t('notReserved');
-        const reservedEmail = row.reservedEmail || '';
-        const submission = row.submission;
-        const scoreClass = row.scoreValue === null ? 'score' : 'score graded';
-        const scoreText = row.scoreValue === null ? t('notGraded') : row.scoreLabel;
-        const submissionLabel = submission ? t('submitted') : t('notSubmitted');
-        const submittedBy = submission
-          ? `<div class="identity"><strong>${escapeHtml(submission.name)}</strong><span>${escapeHtml(submission.email)}</span></div>`
-          : `<div class="identity"><strong>${t('notSubmitted')}</strong><span>${escapeHtml(row.category)}</span></div>`;
-        const links = submission
-          ? `<div class="card-links"><a href="${escapeAttribute(submission.repo)}">${t('repo')}</a><a href="${escapeAttribute(submission.demo)}">${t('demo')}</a></div>`
-          : `<div class="card-links"><a href="SUBMISSIONS_2026.md">${t('submissionFile')}</a><a href="CLOUD_TOPICS_2026.md">${t('topicFile')}</a></div>`;
+        const evaluation = row.evaluation;
+        const status = effectiveStatus(row);
+        const score = evaluation ? evaluation.score : (row.topic ? row.topic.scoreLabel : 'Not graded (0-30)');
+        const feedback = evaluation
+          ? (activeLanguage === 'sq' ? evaluation.feedbackSq : evaluation.feedbackEn)
+          : t('noEvaluation');
+        const demoHref = row.demo.toUpperCase() === 'N/A' ? 'SUBMISSIONS_2026.md' : row.demo;
 
         return `
-          <article class="submission-card ${status}">
+          <article class="evaluation-card ${status}">
             <div class="card-head">
               <span class="topic-id">${escapeHtml(row.id)}</span>
-              <span class="status ${status}">${t(status)}</span>
+              <span class="status ${status}">${statusLabel(status)}</span>
             </div>
             <div>
               <h3>${escapeHtml(row.title)}</h3>
-              <p>${escapeHtml(row.focus)}</p>
+              <p>${escapeHtml(row.topic ? row.topic.category : '')}</p>
             </div>
             <div class="identity">
-              <strong>${escapeHtml(reservedName)}</strong>
-              <span>${escapeHtml(reservedEmail || row.category)}</span>
+              <strong>${escapeHtml(row.name)}</strong>
+              <span>${escapeHtml(row.email)}</span>
             </div>
-            ${submittedBy}
+            <div class="feedback">
+              <strong>${t('feedback')}</strong>
+              <span>${escapeHtml(feedback)}</span>
+            </div>
             <div class="card-foot">
-              <span class="${scoreClass}">${t('score')}: ${escapeHtml(scoreText)}</span>
-              <span class="muted">${submissionLabel}</span>
+              <span class="score ${evaluation ? '' : 'pending'}">${t('score')}: ${escapeHtml(score)}</span>
             </div>
-            ${links}
+            <div class="card-links">
+              <a href="${escapeAttribute(row.repo)}">${t('repo')}</a>
+              <a href="${escapeAttribute(demoHref)}">${t('demo')}</a>
+              <a href="EVALUATIONS_2026.md">${t('source')}</a>
+            </div>
           </article>
         `;
       }).join('');
 
       emptyState.style.display = visible.length ? 'none' : 'block';
+    }
+
+    function statusLabel(status) {
+      if (status === 'reviewed') return t('reviewed');
+      if (status === 'needs-fixes') return t('needsFixes');
+      return t('pendingReview');
     }
 
     function escapeHtml(value) {
@@ -856,8 +783,8 @@
 
     function escapeAttribute(value) {
       const raw = String(value);
-      if (!/^https?:\/\//i.test(raw) && raw.toUpperCase() !== 'N/A') return '#';
-      return escapeHtml(raw.toUpperCase() === 'N/A' ? 'SUBMISSIONS_2026.md' : raw);
+      if (!/^https?:\/\//i.test(raw) && !/^[A-Z0-9_-]+\.md$/i.test(raw)) return '#';
+      return escapeHtml(raw);
     }
 
     async function init() {
@@ -871,18 +798,11 @@
         const submissions = parseSubmissions(submissionText);
         const evaluations = parseEvaluations(evaluationText);
 
-        rows = Array.from(topics.values()).map((topic) => {
-          const submission = submissions.get(topic.id) || null;
-          const evaluation = evaluations.get(topic.id) || null;
-          const scoreLabel = evaluation ? evaluation.scoreLabel : topic.scoreLabel;
-          return {
-            ...topic,
-            submission,
-            evaluation,
-            scoreLabel,
-            scoreValue: scoreValue(scoreLabel),
-          };
-        });
+        rows = Array.from(submissions.values()).map((submission) => ({
+          ...submission,
+          topic: topics.get(submission.id) || null,
+          evaluation: evaluations.get(submission.id) || null,
+        }));
 
         updateStats();
         applyLanguage(activeLanguage);

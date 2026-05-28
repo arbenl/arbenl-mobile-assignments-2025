@@ -143,6 +143,13 @@
       background: rgba(255,255,255,0.12);
     }
 
+    .top-links a.active,
+    .top-links a[aria-current="page"] {
+      color: var(--ink);
+      background: #fff;
+      border-color: #fff;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
@@ -605,7 +612,9 @@
           </div>
           <div class="nav-actions">
             <nav class="top-links" aria-label="Primary links">
+              <a class="active" href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
               <a href="mcc-2026.html">Cloud & MCC 2026</a>
+              <a href="syllabus-mcc-2026.html" data-i18n="nav.syllabus">Syllabus</a>
               <a href="instructions-mcc-2026.html" data-i18n="nav.instructions">Instructions</a>
               <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025">GitHub</a>
             </nav>
@@ -681,7 +690,9 @@
           </div>
           <div class="course-actions">
             <a class="action primary" href="mcc-2026.html" data-i18n="actions.openVisual">Open visual catalogue</a>
+            <a class="action" href="syllabus-mcc-2026.html" data-i18n="actions.syllabus">Syllabus</a>
             <a class="action" href="submissions-2026.html" data-i18n="actions.submissionsScores">Submissions & scores</a>
+            <a class="action" href="evaluations-2026.html" data-i18n="actions.evaluations">Evaluations</a>
             <a class="action" href="CLOUD_TOPICS_2026.md" data-i18n="actions.source">Source file</a>
             <a class="action" href="udhezime-mcc-2026.html" data-i18n="actions.instructionsSq">Udhëzime</a>
           </div>
@@ -714,6 +725,7 @@
             <a href="instructions-mcc-2026.html"><span data-i18n="workflow.linkEn">Reserve, build, test, submit</span> <span data-i18n="workflow.english">English</span></a>
             <a href="udhezime-mcc-2026.html"><span data-i18n="workflow.linkSq">Rezervo, zhvillo, testo, dorezo</span> <span data-i18n="workflow.albanian">Shqip</span></a>
             <a href="submissions-2026.html"><span data-i18n="workflow.submissions">Final solution submissions and scores</span> <span>2026</span></a>
+            <a href="evaluations-2026.html"><span data-i18n="workflow.evaluations">Public instructor evaluations</span> <span>2026</span></a>
           </div>
         </section>
 
@@ -723,6 +735,7 @@
           <div class="link-list">
             <a href="https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls"><span data-i18n="instructor.review">Review open PRs</span> <span>GitHub</span></a>
             <a href="submissions-2026.html"><span data-i18n="instructor.scoreboard">Public submissions and scores</span> <span>0-30</span></a>
+            <a href="evaluations-2026.html"><span data-i18n="instructor.evaluations">Public evaluation summaries</span> <span>Feedback</span></a>
             <a href="CLOUD_TOPICS_2026.md"><span data-i18n="instructor.sourceScores">Source file and scores</span> <span>0-30</span></a>
             <a href="README.md"><span data-i18n="instructor.docs">Repository guide</span> <span>Docs</span></a>
           </div>
@@ -842,6 +855,8 @@
         pageTitle: 'Arben Lila - Lectures and Student Assignments',
         'identity.subtitle': 'Program Manager @ KADC · PhD candidate · Lecturer at AAB',
         'nav.instructions': 'Instructions',
+        'nav.syllabus': 'Syllabus',
+        'nav.home': 'Home',
         'hero.title': 'Lectures and student assignment catalogues.',
         'hero.copy': 'This page presents my academic background, lectures held across the years, and the assignment catalogues students use to choose and reserve project topics.',
         'hero.policyTitle': 'Reservation policy',
@@ -864,7 +879,9 @@
         'metrics.reserved': 'reserved',
         'metrics.available': 'available',
         'actions.openVisual': 'Open visual catalogue',
+        'actions.syllabus': 'Syllabus',
         'actions.submissionsScores': 'Submissions & scores',
+        'actions.evaluations': 'Evaluations',
         'actions.source': 'Source file',
         'actions.instructionsSq': 'Albanian guide',
         'actions.sourceTopics': 'Source topics',
@@ -876,10 +893,12 @@
         'workflow.linkSq': 'Reserve, build, test, submit',
         'workflow.albanian': 'Albanian',
         'workflow.submissions': 'Final solution submissions and scores',
+        'workflow.evaluations': 'Public instructor evaluations',
         'instructor.title': 'Instructor view',
         'instructor.copy': 'Reservations, pending PRs, scores, and final submissions stay in the repository so the public site and GitHub history remain aligned.',
         'instructor.review': 'Review open PRs',
         'instructor.scoreboard': 'Public submissions and scores',
+        'instructor.evaluations': 'Public evaluation summaries',
         'instructor.sourceScores': 'Source file and scores',
         'instructor.docs': 'Repository guide',
         'notice.reserve': 'Students should reserve only through the active course page for their semester. If a reservation fails, GitHub comments on the PR with the exact correction steps in English and Albanian.',
@@ -915,6 +934,8 @@
         pageTitle: 'Arben Lila - Ligjeratat dhe Detyrat e Studentëve',
         'identity.subtitle': 'Menaxher programi në KADC · Kandidat për PhD · Ligjërues në AAB',
         'nav.instructions': 'Udhëzime',
+        'nav.syllabus': 'Syllabusi',
+        'nav.home': 'Ballina',
         'hero.title': 'Ligjerata dhe katalogë detyrash për studentë.',
         'hero.copy': 'Kjo faqe paraqet sfondin tim akademik, ligjeratat e mbajtura ndër vite dhe katalogët e detyrave ku studentët zgjedhin dhe rezervojnë temat e projekteve.',
         'hero.policyTitle': 'Rregulli i rezervimit',
@@ -937,7 +958,9 @@
         'metrics.reserved': 'të rezervuara',
         'metrics.available': 'të lira',
         'actions.openVisual': 'Hap katalogun vizual',
+        'actions.syllabus': 'Syllabusi',
         'actions.submissionsScores': 'Dorëzimet dhe pikët',
+        'actions.evaluations': 'Vlerësimet',
         'actions.source': 'Fajlli burimor',
         'actions.instructionsSq': 'Udhëzime shqip',
         'actions.sourceTopics': 'Temat burimore',
@@ -949,10 +972,12 @@
         'workflow.linkSq': 'Rezervo, zhvillo, testo, dorëzo',
         'workflow.albanian': 'Shqip',
         'workflow.submissions': 'Dorëzimet finale dhe pikët',
+        'workflow.evaluations': 'Vlerësimet publike të mësimdhënësit',
         'instructor.title': 'Pamja për mësimdhënësin',
         'instructor.copy': 'Rezervimet, PR-të në pritje, pikët dhe dorëzimet finale mbeten në repository që faqja publike dhe historia në GitHub të jenë të sinkronizuara.',
         'instructor.review': 'Shiko PR-të e hapura',
         'instructor.scoreboard': 'Dorëzimet dhe pikët publike',
+        'instructor.evaluations': 'Përmbledhjet publike të vlerësimit',
         'instructor.sourceScores': 'Fajlli burimor dhe pikët',
         'instructor.docs': 'Udhëzuesi i repository',
         'notice.reserve': 'Studentët duhet të rezervojnë vetëm përmes faqes aktive të ligjeratës për semestrin e tyre. Nëse rezervimi dështon, GitHub komenton në PR me hapat e saktë për korrigjim në anglisht dhe shqip.',

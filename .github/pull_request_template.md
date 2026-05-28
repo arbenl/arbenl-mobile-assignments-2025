@@ -18,7 +18,7 @@
 
 ### I confirm / Konfirmoj:
 - I edited exactly one allowed line. / Kam ndryshuar saktësisht një rresht të lejuar.
-- For reservation, I replaced **(Available)** with **(Taken by MY FULL NAME <MY EMAIL>)**. / Për rezervim, kam zëvendësuar **(Available)** me **(Taken by EMRI IM <EMAIL>)**.
+- For reservation, I replaced **(Available)** with **(Taken by MY FULL NAME <MY EMAIL>; Stack: MY STACK)**, or edited my same reserved line to update the stack. / Për rezervim, kam zëvendësuar **(Available)** me **(Taken by EMRI IM <EMAIL>; Stack: STACK-U IM)**, ose kam edituar të njëjtin rresht tim të rezervuar për ta përditësuar stack-un.
 - For final submission, I changed only my line in `SUBMISSIONS_2026.md`. / Për dorëzim final, kam ndryshuar vetëm rreshtin tim në `SUBMISSIONS_2026.md`.
 - I confirm I have not reserved another assignment in this repository. / Konfirmoj që nuk kam rezervuar detyrë tjetër në këtë repo.
 - I did not change descriptions, score lines, pages, scripts, workflows, or docs. / Nuk kam ndryshuar përshkrime, pikë, faqe, skripta, workflows ose dokumente.
