@@ -93,7 +93,7 @@
 28. Geospatial Store Locator API — (Available)
   - Cloud focus: Store locations with coordinates, query nearest entries, cache frequent requests, and expose map-ready results.
   - Score: Not graded (0-30)
-29. Student Performance Analytics Platform — (Available)
+29. Student Performance Analytics Platform — (Taken by Blendi Ibrahimi <blendi.ibrahimi@universitetiaab.com>; Stack: React + Node.js API)
   - Cloud focus: Import assessment data, compute summaries in scheduled jobs, and present role-based analytics.
   - Score: Not graded (0-30)
 30. Cloud Database Migration Playground — (Available)
