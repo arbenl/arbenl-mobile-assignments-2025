@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-05-28T08:57:28.950Z",
+  "generatedAt": "2026-05-28T09:26:28.203Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "29",
-      "title": "Student Performance Analytics Platform",
-      "name": "Blendi Ibrahimi",
-      "email": "blendi.ibrahimi@universitetiaab.com",
-      "stack": "React + Node.js API",
-      "prNumber": 171,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/171",
-      "author": "BlendiAAB",
-      "createdAt": "2026-05-28T08:57:12Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
