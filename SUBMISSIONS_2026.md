@@ -19,7 +19,7 @@
 13. Image Thumbnail Processing Pipeline — (Not submitted)
 14. PDF Invoice Generator API — (Not submitted)
 15. Webhook Receiver and Event Replay Tool — (Not submitted)
-16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo:  https://url-shortener-6ac1f.web.app
+16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo: https://url-shortener-6ac1f.web.app
 17. Cloud Function Job Queue Dashboard — (Not submitted)
 18. Automated Certificate Expiry Monitor — (Not submitted)
 19. Serverless Form Builder — (Not submitted)
@@ -44,7 +44,7 @@
 38. Feature Flag Service for Cloud Releases — (Not submitted)
 39. Cloud Cost Estimator Dashboard — (Not submitted)
 40. Resilient Cloud App with Retry Patterns — (Not submitted)
-41. Authentication and Role Management Portal — (Submitted by Dea Prapashtica <dea.prapashtica@universitetiaab.com>) — Repo: https://github.com/deaprapashtica/autoshkolla-cloud — Demo: N/A|N/A)
+41. Authentication and Role Management Portal — (Submitted by Dea Prapashtica <dea.prapashtica@universitetiaab.com>) — Repo: https://github.com/deaprapashtica/autoshkolla-cloud — Demo: N/A
 42. Secrets Rotation Practice App — (Not submitted)
 43. Secure File Vault with Audit Logs — (Not submitted)
 44. Cloud Security Posture Checklist Tool — (Not submitted)
