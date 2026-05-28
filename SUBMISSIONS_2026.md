@@ -12,7 +12,7 @@
 06. Event Registration Platform with QR Check-in — (Submitted by Xhevrije Xhelili <dzevrje.dzelili@universitetiaab.com>) — Repo: https://github.com/xhevrije12/event-registration-qr — Demo: https://cinecloud-eight.vercel.app
 07. Cloud-hosted Knowledge Base with Search — (Not submitted)
 08. Subscription Newsletter Platform — (Not submitted)
-09. Team Kanban Board with Activity Stream — (Not submitted)
+09. Team Kanban Board with Activity Stream — (Submitted by Zuale Alili <zualealili5@gmail.com>) — Repo: https://github.com/Zuale-Dev/kanban-cloud-board — Demo: https://kanban-cloud-board.vercel.app
 10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
 11. Serverless Contact Form with Spam Scoring — (Not submitted)
 12. Scheduled Weather Digest Service — (Not submitted)
