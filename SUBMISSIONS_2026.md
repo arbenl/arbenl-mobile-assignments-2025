@@ -6,7 +6,7 @@
 
 01. Cloud-hosted Task Collaboration Platform — (Not submitted)
 02. Multi-tenant Course Resource Portal — (Submitted by Jonila Dumani <joniladumani2@gmail.com>) — Repo: https://github.com/jonila12700/multi-tenant-course-portal — Demo: https://courseportal.42web.io
-03. Server-rendered Portfolio CMS on the Cloud — (Not submitted)
+03. Server-rendered Portfolio CMS on the Cloud — (Submitted by Altina Berisha <altinaberisha70@gmail.com>) — Repo: https://github.com/altina1911/Portfolio — Demo: N/A
 04. Cloud Expense Tracker with Budget Alerts — (Not submitted)
 05. Real-time Classroom Polling System — (Not submitted)
 06. Event Registration Platform with QR Check-in — (Submitted by Xhevrije Xhelili <dzevrje.dzelili@universitetiaab.com>) — Repo: https://github.com/xhevrije12/event-registration-qr — Demo: https://cinecloud-eight.vercel.app
@@ -61,6 +61,6 @@
 55. Mobile Expense Splitter with Serverless Sync — (Not submitted)
 56. Edge AI Image Labeling Prototype — (Not submitted)
 57. Mobile Chat with Cloud Realtime Backend — (Submitted by Valdet Demiri <valdet2.demiri@universitetiaab.com>) — Repo: https://github.com/Valdet2/Chat-App — Demo: https://chatapp-12d97.web.app/
-58. Field Data Collection App for Surveys — (Not submitted)
+58. Field Data Collection App for Surveys — (Submitted by Halim Asllani <halim.asllani@universitetiaab.com>) — Repo: https://github.com/HalimAsllani/Field-Data-Collection-App-for-Surveys — Demo: https://field-collection-jci8.onrender.com/
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
 60. Mobile Incident Reporter with Cloud Workflow — (Not submitted)
