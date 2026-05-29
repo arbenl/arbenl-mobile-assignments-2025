@@ -14,7 +14,7 @@
 08. Subscription Newsletter Platform — (Not submitted)
 09. Team Kanban Board with Activity Stream — (Submitted by Zuale Alili <zualealili5@gmail.com>) — Repo: https://github.com/Zuale-Dev/kanban-cloud-board — Demo: https://kanban-cloud-board.vercel.app
 10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
-11. Serverless Contact Form with Spam Scoring — (Not submitted)
+11. Serverless Contact Form with Spam Scoring — (Submitted by Alma Hoxha <alma.hoxha@universitetiaab.com>) — Repo: https://github.com/hoxhaalma95-blip/contact-form — Demo: https://contact-form-final.vercel.app/
 12. Scheduled Weather Digest Service — (Not submitted)
 13. Image Thumbnail Processing Pipeline — (Submitted by Amar Ibisi <amar.ibisi@universitetiaab.com>) — Repo: https://github.com/ibishiamar/projectphotography — Demo: https://projectphotography.vercel.app/
 14. PDF Invoice Generator API — (Not submitted)
