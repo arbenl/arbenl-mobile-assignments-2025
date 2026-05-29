@@ -109,7 +109,13 @@ async function githubJson(path) {
   const response = await fetchWithTimeout(`https://api.github.com${path}`, {
     headers: { Accept: 'application/vnd.github+json' },
   });
-  if (!response.ok) return null;
+  if (!response.ok) {
+    const remaining = response.headers.get('x-ratelimit-remaining');
+    if (response.status === 403 || response.status === 429 || remaining === '0') {
+      throw new Error(`GitHub API limit or permission failure for ${path}: HTTP ${response.status}`);
+    }
+    return null;
+  }
   return response.json();
 }
 
