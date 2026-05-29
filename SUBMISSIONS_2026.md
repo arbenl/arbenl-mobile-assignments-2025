@@ -16,7 +16,7 @@
 10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
 11. Serverless Contact Form with Spam Scoring — (Not submitted)
 12. Scheduled Weather Digest Service — (Not submitted)
-13. Image Thumbnail Processing Pipeline — (Not submitted)
+13. Image Thumbnail Processing Pipeline — (Submitted by Amar Ibisi <amar.ibisi@universitetiaab.com>) — Repo: https://github.com/ibishiamar/projectphotography — Demo: https://projectphotography.vercel.app/
 14. PDF Invoice Generator API — (Not submitted)
 15. Webhook Receiver and Event Replay Tool — (Not submitted)
 16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo: https://url-shortener-6ac1f.web.app
