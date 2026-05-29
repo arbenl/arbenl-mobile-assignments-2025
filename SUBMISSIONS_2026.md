@@ -16,7 +16,7 @@
 10. Cloud-native Resume Builder — (Submitted by Dion Gashi <dion.gashi@universitetiaab.com>) — Repo: https://github.com/diongashii15/Cloud-Resume — Demo: https://cloud-resume-hubb.lovable.app/
 11. Serverless Contact Form with Spam Scoring — (Not submitted)
 12. Scheduled Weather Digest Service — (Not submitted)
-13. Image Thumbnail Processing Pipeline — (Not submitted)
+13. Image Thumbnail Processing Pipeline — (Submitted by Amar Ibisi <amar.ibisi@universitetiaab.com>) — Repo: https://github.com/ibishiamar/projectphotography — Demo: https://projectphotography.vercel.app/
 14. PDF Invoice Generator API — (Not submitted)
 15. Webhook Receiver and Event Replay Tool — (Not submitted)
 16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo: https://url-shortener-6ac1f.web.app
@@ -28,7 +28,7 @@
 22. Object Storage Photo Archive — (Not submitted)
 23. IoT Sensor Data Ingestion Pipeline — (Submitted by Vlera Murati <vlera.murati@universitetiaab.com>) — Repo: https://github.com/vlera-murati/StudyScan — Demo: https://student-notes-app-7de55.web.app/?assignment=AmQGpsb9OHuAKw4HlgLX
 24. Log Analytics Explorer — (Not submitted)
-25. Data Backup and Restore Portal — (Not submitted)
+25. Data Backup and Restore Portal — (Submitted by Visar Maloku <visar.maloku@universitetiaab.com>) — Repo: https://github.com/visarmaloku-lgtm/data-backup-restore-portal — Demo: https://data-backup-restore-portal.vercel.app
 26. Cloud File Sharing with Expiring Links — (Submitted by Endi Makolli <endimakolli38@gmail.com>) — Repo: https://github.com/EndiMakolli/cloud-file-sharing.git — Demo: https://cloud-file-sharing-ten.vercel.app/
 27. Stream Processing Demo for Click Events — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
 28. Geospatial Store Locator API — (Not submitted)
