@@ -166,11 +166,11 @@ jobs:
           git pull --ff-only origin main
 
           if [ "$DRY_RUN" = "true" ]; then
-            node scripts/auto-grade-submissions.js --dry-run
+            node scripts/auto-grade-submissions.js --dry-run --refresh-existing
             exit 0
           fi
 
-          node scripts/auto-grade-submissions.js --apply
+          node scripts/auto-grade-submissions.js --apply --refresh-existing
 
           if git diff --quiet -- EVALUATIONS_2026.md; then
             echo "No evaluation changes to commit."

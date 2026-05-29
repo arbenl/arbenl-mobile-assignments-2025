@@ -10,6 +10,7 @@ const submissionsFile = 'SUBMISSIONS_2026.md';
 const evaluationsFile = 'EVALUATIONS_2026.md';
 const token = process.env.GITHUB_TOKEN || '';
 const dryRun = process.argv.includes('--dry-run') || !process.argv.includes('--apply');
+const refreshExisting = process.argv.includes('--refresh-existing');
 
 const submissionPattern = /^(\d{2})\.\s+(.+?)\s—\s\(Submitted by ([^)]+)\)\s—\sRepo:\s+(\S+)\s—\sDemo:\s+(.+)$/;
 const evaluationPattern = /^(\d{2})\.\s+(.+?)\s—\sScore:\s+(\d{1,2})\/30\s—\sStatus:\s+(Reviewed|Needs fixes|Pending review)\s—\sFeedback EN:\s+(.+?)\s—\sFeedback SQ:\s+(.+)$/;
@@ -398,12 +399,17 @@ function renderEvaluations(header, rows) {
 async function main() {
   const submissions = parseSubmissions(readText(submissionsFile));
   const { header, rows, evaluations } = parseEvaluations(readText(evaluationsFile));
-  const additions = [];
+  const nextRows = rows.slice();
+  const changes = [];
 
   for (const submission of submissions) {
-    if (evaluations.has(submission.id)) continue;
+    const existing = evaluations.get(submission.id);
+    if (existing) {
+      const isAutomated = existing.feedbackEn.startsWith('Automated preliminary score');
+      if (!refreshExisting || !isAutomated) continue;
+    }
 
-    console.log(`Checking submission ${submission.id}: ${submission.title}`);
+    console.log(`${existing ? 'Rechecking' : 'Checking'} submission ${submission.id}: ${submission.title}`);
     const repo = await inspectGithubRepo(submission.repoUrl);
     const demo = await inspectDemo(submission.demoUrl);
     const grade = gradeSubmission(submission, repo, demo);
@@ -412,26 +418,43 @@ async function main() {
       title: submission.title,
       ...grade,
     };
-    additions.push(row);
-    console.log(`Prepared ${submission.id}: ${grade.score}/30 (${grade.status})`);
+    const rendered = renderEvaluation(row);
+
+    if (existing && rendered === existing.raw) {
+      console.log(`No change for ${submission.id}: ${grade.score}/30 (${grade.status})`);
+      continue;
+    }
+
+    if (existing) {
+      const index = nextRows.findIndex((candidate) => candidate.id === submission.id);
+      if (index !== -1) nextRows[index] = row;
+      changes.push({ type: 'Updated', row });
+    } else {
+      nextRows.push(row);
+      changes.push({ type: 'Added', row });
+    }
+
+    console.log(`${existing ? 'Updated' : 'Prepared'} ${submission.id}: ${grade.score}/30 (${grade.status})`);
   }
 
-  if (!additions.length) {
-    console.log('No unevaluated submitted assignments found.');
+  if (!changes.length) {
+    console.log(refreshExisting
+      ? 'No missing or changed automated evaluations found.'
+      : 'No unevaluated submitted assignments found.');
     return;
   }
 
-  additions.forEach((row) => {
-    console.log(renderEvaluation(row));
+  changes.forEach((change) => {
+    console.log(`${change.type}: ${renderEvaluation(change.row)}`);
   });
 
   if (dryRun) {
-    console.log(`Dry run only. Would add ${additions.length} evaluation row(s).`);
+    console.log(`Dry run only. Would apply ${changes.length} evaluation change(s).`);
     return;
   }
 
-  fs.writeFileSync(evaluationsFile, renderEvaluations(header, [...rows, ...additions]));
-  console.log(`Added ${additions.length} evaluation row(s) to ${evaluationsFile}.`);
+  fs.writeFileSync(evaluationsFile, renderEvaluations(header, nextRows));
+  console.log(`Applied ${changes.length} evaluation change(s) to ${evaluationsFile}.`);
 }
 
 main().catch((error) => {
