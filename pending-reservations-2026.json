@@ -1,20 +1,6 @@
 {
-  "generatedAt": "2026-05-31T15:31:23.932Z",
+  "generatedAt": "2026-05-31T20:15:24.519Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [],
-  "conflicts": [
-    {
-      "id": "35",
-      "title": "35. Cloud Monitoring and Alerting Dashboard",
-      "name": "Valentina Halilaj",
-      "email": "valentine.halilaj@universitetiaab.com",
-      "stack": "React + Node.js API",
-      "prNumber": 191,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/191",
-      "author": "valentina829",
-      "createdAt": "2026-05-31T15:31:12Z",
-      "reason": "Valentina Halilaj already officially reserved topic 05."
-    }
-  ]
+  "conflicts": []
 }
