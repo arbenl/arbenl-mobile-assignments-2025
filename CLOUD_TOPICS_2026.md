@@ -113,8 +113,8 @@
 34. Blue-Green Deployment Simulator — (Taken by Edonard Hergaja <edonard.hergaja@universitetiaab.com>)
   - Cloud focus: Deploy two app versions, switch traffic gradually or manually, monitor errors, and implement rollback.
   - Score: Not graded (0-30)
-35. Cloud Monitoring and Alerting Dashboard — (Available)
-  - Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
+35. 35. Cloud Monitoring and Alerting Dashboard — (Taken by Valentina Halilaj <valentine.halilaj@universitetiaab.com>; Stack: React + Node.js API)
+Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
   - Score: Not graded (0-30)
 36. Distributed Tracing Demo App — (Available)
   - Cloud focus: Split a workflow across two or more services, propagate trace IDs, and inspect latency across calls.
