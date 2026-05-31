@@ -113,7 +113,14 @@
 34. Blue-Green Deployment Simulator — (Taken by Edonard Hergaja <edonard.hergaja@universitetiaab.com>)
   - Cloud focus: Deploy two app versions, switch traffic gradually or manually, monitor errors, and implement rollback.
   - Score: Not graded (0-30)
-35. Cloud Monitoring and Alerting Dashboard — (Available)
+35. Course catalogue: CLOUD_TOPICS_2026.md
+Full Name: Valentina Halilaj
+Email: valentina.halilaj4@gmail.com
+Topic ID: 35
+Topic Title: Cloud Monitoring and Alerting Dashboard
+Chosen Stack: Next.js + serverless functions
+Cloud/mobile-cloud services: Auth, database, storage/functions as needed
+Validator result: node scripts/check-claim.js should print "✅ Claim format looks valid."
   - Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
   - Score: Not graded (0-30)
 36. Distributed Tracing Demo App — (Available)
