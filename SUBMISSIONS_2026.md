@@ -36,7 +36,7 @@
 30. Cloud Database Migration Playground — (Not submitted)
 31. Containerized Microservice Deployment — (Submitted by Dineta Avdyli <dineta.avdyli@universitetiaab.com>) — Repo: https://github.com/dineetaa/banking-api.git — Demo: https://bankingfrontend-nu.vercel.app/)
 32. CI/CD Pipeline for a Cloud Web App — (Submitted by Skifter Bytyqi <skifterbytyqi2005@gmail.com>) — Repo: https://github.com/Skifta40/WeatherApp-CI-CD-Pipiline-Skifter-Bytyqi-2026- — Demo: https://weatherapp-ci-cd-pipiline-skifter-bytyqi.onrender.com
-33. Infrastructure as Code Starter Stack — (Submitted by Almir Hyseni <almir.hyseni@universitetiaab.com>) — Repo: https://github.com/AlmirHyseni/StackOps-Hub — Demo: https://stack-ops-app.vercel.app/
+33. Infrastructure as Code Starter Stack — (Taken by Almir Hyseni <almir.hyseni@universitetiaab.com>; Stack: Next.js, Node.js, MongoDB) — Repo: https://github.com/AlmirHyseni/StackOps-Hub — Demo: https://stack-ops-app.vercel.app/
 34. Blue-Green Deployment Simulator — (Submitted by Edonard Hergaja <edonard.hergaja@universitetiaab.com>) — Repo: https://github.com/edonardhergaja-gif/arbenl-mobile-assignments-2025 — Demo: https://arbenl-mobile-assignments-2025.vercel.app
 35. Cloud Monitoring and Alerting Dashboard — (Not submitted)
 36. Distributed Tracing Demo App — (Not submitted)
