@@ -22,7 +22,7 @@
 16. URL Shortener with Analytics — (Submitted by Aulona Kerqeli <aulonakerqeli1@gmail.com>) — Repo: https://github.com/aulonakerqeli1-svg/firebase-url-shortener — Demo: https://url-shortener-6ac1f.web.app
 17. Cloud Function Job Queue Dashboard — (Not submitted)
 18. Automated Certificate Expiry Monitor — (Not submitted)
-19. Serverless Form Builder — (Not submitted)
+19. Serverless Form Builder — (Submitted by Luela Krasniqi <luela.krasniqi@universitetiaab.com>) — Repo: https://github.com/LuelaKrasniqi/serverless-form-builder — Demo: https://serverless-form-builder.vercel.app
 20. API Gateway for Public Dataset Access — (Not submitted)
 21. Cloud Data Warehouse Mini Dashboard — (Not submitted)
 22. Object Storage Photo Archive — (Not submitted)
