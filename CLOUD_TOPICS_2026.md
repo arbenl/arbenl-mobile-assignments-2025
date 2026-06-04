@@ -174,7 +174,7 @@
 53. Mobile Photo Backup to Cloud Storage — (Taken by Drin Musa <drin9915@gmail.com>)
   - MCC focus: Pick images from a device, upload to object storage, generate thumbnails, and support offline retry.
   - Score: Not graded (0-30)
-54. Location-based Campus Alerts App — (Available)
+54. 54. Location-based Campus Alerts App — (Taken by Blendi Dulaku <blendidulaku@gmail.com>; Stack: React + Node.js API)
   - MCC focus: Send device location updates, match nearby alerts in the cloud, and show push or in-app notifications.
   - Score: Not graded (0-30)
 55. Mobile Expense Splitter with Serverless Sync — (Available)
