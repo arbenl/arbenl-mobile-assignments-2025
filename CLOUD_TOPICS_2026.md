@@ -142,7 +142,7 @@
 43. Secure File Vault with Audit Logs — (Available)
   - Cloud focus: Enforce file ownership, use signed URLs, record access attempts, and display an auditable activity trail.
   - Score: Not graded (0-30)
-44. Cloud Security Posture Checklist Tool — (Available)
+44. Cloud Security Posture Checklist Tool — (Taken by Misin Halilaj <misinhalilaj@gmail.com>; Stack: React + Node.js API)
   - Cloud focus: Build a checklist app for common controls, persist evidence links, score readiness, and export reports.
   - Score: Not graded (0-30)
 45. OAuth Login Integration Demo — (Taken by Gent Veseli <gent.veseli@universitetiaab.com>; Stack: Next.js + serverless functions)
