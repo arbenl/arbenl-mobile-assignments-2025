@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-06-04T12:09:44.784Z",
+  "generatedAt": "2026-06-04T12:28:00.320Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "54",
+      "title": "Location-based Campus Alerts App",
+      "name": "Blendi Dulaku",
+      "email": "blendidulaku@gmail.com",
+      "stack": "React + Node.js API",
+      "prNumber": 198,
+      "prTitle": "Update project details for Location-based Campus Alerts App",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/198",
+      "author": "blendidulaku",
+      "createdAt": "2026-06-04T12:27:49Z"
+    }
+  ],
   "conflicts": []
 }
