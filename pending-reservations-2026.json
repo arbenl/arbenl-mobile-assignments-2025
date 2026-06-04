@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-06-04T12:28:12.500Z",
+  "generatedAt": "2026-06-04T12:36:08.666Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
-      "id": "54",
-      "title": "Location-based Campus Alerts App",
-      "name": "Blendi Dulaku",
-      "email": "blendidulaku@gmail.com",
+      "id": "44",
+      "title": "Cloud Security Posture Checklist Tool",
+      "name": "Misin Halilaj",
+      "email": "misinhalilaj@gmail.com",
       "stack": "React + Node.js API",
-      "prNumber": 198,
-      "prTitle": "Update project details for Location-based Campus Alerts App",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/198",
-      "author": "blendidulaku",
-      "createdAt": "2026-06-04T12:27:49Z"
+      "prNumber": 197,
+      "prTitle": "Update Cloud Security Posture Checklist Tool status",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/197",
+      "author": "Misin0003",
+      "createdAt": "2026-06-04T12:27:46Z"
     }
   ],
   "conflicts": []
