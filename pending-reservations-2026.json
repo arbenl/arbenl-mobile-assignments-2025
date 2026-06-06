@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-06-04T12:36:08.666Z",
+  "generatedAt": "2026-06-06T11:54:28.030Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "44",
-      "title": "Cloud Security Posture Checklist Tool",
-      "name": "Misin Halilaj",
-      "email": "misinhalilaj@gmail.com",
-      "stack": "React + Node.js API",
-      "prNumber": 197,
-      "prTitle": "Update Cloud Security Posture Checklist Tool status",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/197",
-      "author": "Misin0003",
-      "createdAt": "2026-06-04T12:27:46Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
