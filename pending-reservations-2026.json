@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-06-07T19:39:40.980Z",
+  "generatedAt": "2026-06-07T21:18:24.914Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "30",
-      "title": "Cloud Database Migration Playground",
-      "name": "Dafina Rushiti",
-      "email": "dafina2.rushiti@universitetiaab.com",
-      "stack": "",
-      "prNumber": 200,
-      "prTitle": "Claim topic 30: Cloud Database Migration Playground",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/200",
-      "author": "DafinaRushiti",
-      "createdAt": "2026-06-07T19:26:18Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
