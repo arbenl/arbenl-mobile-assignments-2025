@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-06-06T11:54:28.030Z",
+  "generatedAt": "2026-06-07T19:26:30.254Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "30",
+      "title": "Restaurant Management Analytics Platform",
+      "name": "Dafina Rushiti",
+      "email": "dafina2.rushiti@universitetiaab.com",
+      "stack": "",
+      "prNumber": 200,
+      "prTitle": "Claim topic 30: Restaurant Management Analytics Platform",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/200",
+      "author": "DafinaRushiti",
+      "createdAt": "2026-06-07T19:26:18Z"
+    }
+  ],
   "conflicts": []
 }
