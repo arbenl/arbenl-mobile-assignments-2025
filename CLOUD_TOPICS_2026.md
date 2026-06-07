@@ -96,8 +96,8 @@
 29. Student Performance Analytics Platform — (Taken by Blendi Ibrahimi <blendi.ibrahimi@universitetiaab.com>; Stack: React + Node.js API)
   - Cloud focus: Import assessment data, compute summaries in scheduled jobs, and present role-based analytics.
   - Score: Not graded (0-30)
-30. Restaurant Management Analytics Platform — (Taken by Dafina Rushiti <dafina2.rushiti@universitetiaab.com>)
-  - Cloud focus: Host a restaurant management with a managed database for orders, inventory, users, and reports, dashboard for sales and operational KPIs.
+30. Cloud Database Migration Playground — (Taken by Dafina Rushiti <dafina2.rushiti@universitetiaab.com>; Stack: React + Node.js + Express + MySQL + Sequelize)
+  - Cloud focus: Design schema migrations, seed sample data, run migration checks in CI, and document rollback steps.
   - Score: Not graded (0-30)
 
 ## DevOps, Containers & Observability
