@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-07T19:36:47.710Z",
+  "generatedAt": "2026-06-07T19:39:40.980Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
   "claims": [
     {
@@ -7,9 +7,9 @@
       "title": "Cloud Database Migration Playground",
       "name": "Dafina Rushiti",
       "email": "dafina2.rushiti@universitetiaab.com",
-      "stack": "React + Node.js + Express + MySQL + Sequelize",
+      "stack": "",
       "prNumber": 200,
-      "prTitle": "Claim topic 30: Restaurant Management Analytics Platform",
+      "prTitle": "Claim topic 30: Cloud Database Migration Playground",
       "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/200",
       "author": "DafinaRushiti",
       "createdAt": "2026-06-07T19:26:18Z"
