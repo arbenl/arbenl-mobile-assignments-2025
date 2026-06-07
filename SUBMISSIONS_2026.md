@@ -33,7 +33,7 @@
 27. Stream Processing Demo for Click Events — (Submitted by Hava Jusufi <hava.jusufi@universitetiaab.com>) — Repo: https://github.com/Hava05/Pjc_Bletaria — Demo: https://bletariaame-63dcc.web.app/page1.html#
 28. Geospatial Store Locator API — (Not submitted)
 29. Student Performance Analytics Platform — (Not submitted)
-30. Cloud Database Migration Playground — (Not submitted)
+30. Cloud Database Migration Playground — (Submitted by Dafina Rushiti <dafina2.rushiti@universitetiaab.com>) — Repo: https://github.com/DafinaRushiti/mcc-2026-topic-30-dafina-rushiti — Demo: https://mcc-2026-topic-30-dafina-rushiti.vercel.app 
 31. Containerized Microservice Deployment — (Submitted by Dineta Avdyli <dineta.avdyli@universitetiaab.com>) — Repo: https://github.com/dineetaa/banking-api.git — Demo: https://bankingfrontend-nu.vercel.app/)
 32. CI/CD Pipeline for a Cloud Web App — (Submitted by Skifter Bytyqi <skifterbytyqi2005@gmail.com>) — Repo: https://github.com/Skifta40/WeatherApp-CI-CD-Pipiline-Skifter-Bytyqi-2026- — Demo: https://weatherapp-ci-cd-pipiline-skifter-bytyqi.onrender.com
 33. Infrastructure as Code Starter Stack — (Not submitted)
