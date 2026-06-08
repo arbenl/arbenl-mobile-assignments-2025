@@ -59,7 +59,7 @@
 53. Mobile Photo Backup to Cloud Storage — (Not submitted)
 54. Location-based Campus Alerts App — (Not submitted)
 55. Mobile Expense Splitter with Serverless Sync — (Not submitted)
-56. Edge AI Image Labeling Prototype — (Not submitted)
+56. Edge AI Image Labeling Prototype — (Submitted by Dion Salihu <dion3.salihu@universitetiaab.com> ) — Repo: https://github.com/DionSalihu123/VibePrints — Demo: https://vibe-prints.vercel.app/
 57. Mobile Chat with Cloud Realtime Backend — (Submitted by Valdet Demiri <valdet2.demiri@universitetiaab.com>) — Repo: https://github.com/Valdet2/Chat-App — Demo: https://chatapp-12d97.web.app/
 58. Field Data Collection App for Surveys — (Submitted by Halim Asllani <halim.asllani@universitetiaab.com>) — Repo: https://github.com/HalimAsllani/Field-Data-Collection-App-for-Surveys — Demo: https://field-collection-jci8.onrender.com/
 59. Mobile Cloud Fitness Tracker — (Submitted by Jetmir Alshiqi <jetmir.alshiqi@universitetiaab.com>) — Repo: https://github.com/Jetmir-Al/FitnessTracker — Demo: https://fitnesstracker-b45c6.web.app/
