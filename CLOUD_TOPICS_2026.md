@@ -1,4 +1,4 @@
-# Cloud Computing and MCC Project Topics 2026 (IDs 01-60)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/78d418e5-a835-4023-be65-4f38128f020d" /># Cloud Computing and MCC Project Topics 2026 (IDs 01-60)
 
 > Medium difficulty, suitable for Cloud Computing and Mobile Cloud Computing students.
 > Each topic is first in, first served: reserve exactly one available topic by Pull Request.
@@ -151,7 +151,7 @@
 46. API Rate Limiting and Abuse Protection — (Taken by Besiana Dauti <besiana.dauti@universitetiaab.com>)
   - Cloud focus: Implement per-user limits, request logging, admin override, and clear client error responses.
   - Score: Not graded (0-30)
-47. Data Privacy Request Manager — (Available)
+47. Data Privacy Request Manager — (Taken by Jon Osmani <jonflorkosova@gmail.com>; Stack: Next.js + serverless functions))
   - Cloud focus: Track export/delete requests, queue background jobs, store evidence, and model privacy workflow states.
   - Score: Not graded (0-30)
 48. Secure Configuration Scanner — (Available)
