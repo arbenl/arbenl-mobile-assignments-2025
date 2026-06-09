@@ -151,7 +151,7 @@
 46. API Rate Limiting and Abuse Protection — (Taken by Besiana Dauti <besiana.dauti@universitetiaab.com>)
   - Cloud focus: Implement per-user limits, request logging, admin override, and clear client error responses.
   - Score: Not graded (0-30)
-47. Data Privacy Request Manager — (Available)
+47. Data Privacy Request Manager — (Taken by Jon Osmani <jonflorkosova@gmail.com>; Stack: Next.js + serverless functions)
   - Cloud focus: Track export/delete requests, queue background jobs, store evidence, and model privacy workflow states.
   - Score: Not graded (0-30)
 48. Secure Configuration Scanner — (Available)
