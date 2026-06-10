@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-06-09T23:22:35.333Z",
+  "generatedAt": "2026-06-10T06:39:05.245Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "47",
-      "title": "Data Privacy Request Manager",
-      "name": "Jon Osmani",
-      "email": "jonflorkosova@gmail.com",
-      "stack": "Next.js + serverless functions",
-      "prNumber": 204,
-      "prTitle": "Update CLOUD_TOPICS_2026.md",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/204",
-      "author": "Joni-432",
-      "createdAt": "2026-06-09T23:22:23Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
