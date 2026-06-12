@@ -116,7 +116,7 @@
 35. Cloud Monitoring and Alerting Dashboard — (Available)
   - Cloud focus: Instrument an app with metrics, define alert rules, collect logs, and explain incident response steps.
   - Score: Not graded (0-30)
-36. Distributed Tracing Demo App — (Available)
+36. Distributed Tracing Demo App —  (Taken by Asllan Cufaj <asllancufaj7@gmail.com>; Stack: React + Node.js API))
   - Cloud focus: Split a workflow across two or more services, propagate trace IDs, and inspect latency across calls.
   - Score: Not graded (0-30)
 37. Kubernetes Mini Lab for a Web API — (Available)
