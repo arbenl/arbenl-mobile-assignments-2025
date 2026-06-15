@@ -50,7 +50,7 @@
 44. Cloud Security Posture Checklist Tool — (Not submitted)
 45. OAuth Login Integration Demo — (Submitted by Gent Veseli <gent.veseli@universitetiaab.com>) — Repo: https://github.com/gentveseli-aab/oauth-login-integration-demo — Demo: https://oauth-login-integration-demo-w8vx.vercel.app
 46. API Rate Limiting and Abuse Protection — (Submitted by Besiana Dauti <besiana.dauti@universitetiaab.com>) — Repo: https://github.com/BesianaDauti/rate-limiter-api — Demo: http://ratelimiter-frontend-012619468189-eu-north-1-an.s3-website.eu-north-1.amazonaws.com
-47. Data Privacy Request Manager — (Not submitted)
+47. Data Privacy Request Manager — (Submitted by Jon Osmani<jonflorkosova@gmail.com>) — Repo: https://github.com/Joni-432/data-privacy-manager — Demo: https://data-privacy-manager-peach.vercel.app
 48. Secure Configuration Scanner — (Not submitted)
 49. Cloud Audit Log Anomaly Detector — (Not submitted)
 50. Encrypted Notes with Cloud Sync — (Not submitted)
