@@ -56,7 +56,7 @@
 50. Encrypted Notes with Cloud Sync — (Not submitted)
 51. Mobile Cloud Notes with Offline Sync — (Submitted by Endrit Demiri <endrit.demiri@universitetiaab.com>) — Repo: https://github.com/Endritfx/Mobile-Notes — Demo: https://mobile-n0tes.web.app
 52. Push Notification Reminder Service — (Submitted by Meriton Cakiqi <meritoncakiqi173@gmail.com>) — Repo: https://github.com/meritonca/-Push-Notification-Reminder — Demo: https://projekti-cloud.web.app/
-53. Mobile Photo Backup to Cloud Storage — (Not submitted)
+53. Mobile Photo Backup to Cloud Storage — (Submitted by Drin Musa <drin.musa@universitetiaab.com>) - Repo: (https://github.com/drinmusa/mcc-2026-topic-53-drin-musa) - Demo: https://mcc-2026-topic-53-drin-musa.onrender.com/api/ping
 54. Location-based Campus Alerts App — (Not submitted)
 55. Mobile Expense Splitter with Serverless Sync — (Not submitted)
 56. Edge AI Image Labeling Prototype — (Submitted by Dion Salihu <dion3.salihu@universitetiaab.com> ) — Repo: https://github.com/DionSalihu123/VibePrints — Demo: https://vibe-prints.vercel.app/
