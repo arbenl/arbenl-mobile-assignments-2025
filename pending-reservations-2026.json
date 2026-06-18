@@ -1,6 +1,19 @@
 {
-  "generatedAt": "2026-06-18T07:21:45.763Z",
+  "generatedAt": "2026-06-18T11:01:17.475Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [],
+  "claims": [
+    {
+      "id": "37",
+      "title": "37. Kubernetes Mini Lab for a Web API",
+      "name": "Drenit Gashi",
+      "email": "drenit2.gashi@universitetiaab.com",
+      "stack": "",
+      "prNumber": 214,
+      "prTitle": "Update CLOUD_TOPICS_2026.md",
+      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/214",
+      "author": "drenit2gashi-lang",
+      "createdAt": "2026-06-18T11:01:04Z"
+    }
+  ],
   "conflicts": []
 }
