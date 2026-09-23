@@ -1,0 +1,40 @@
+name: "Mobile · Java 02: skica dhe PRD"
+description: "Dorëzo linkun e skicës dhe specifikimit njëfaqësh."
+title: "[MOBILE J02] "
+body:
+  - type: markdown
+    attributes:
+      value: "Ngarko java-02.md dhe skica.jpg/png në repository-n tënd, pastaj vendos linkun këtu. Ky dorëzim është për Mobile 2026/27. Mos përfshi Student ID, fjalëkalime ose të dhëna klientësh. Llogaria GitHub e identifikon autorin."
+  - type: input
+    id: project
+    attributes:
+      label: Emri i projektit
+      placeholder: "p.sh. Termini im"
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Linku i punës në GitHub
+      placeholder: "https://github.com/llogaria/projekti"
+      description: "Repository ose dosja ku hapen java-02.md dhe skica. Për repo privat, fto profesorin arbenl si collaborator."
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Një përmirësim pas provës me kolegun
+      placeholder: "Ndryshova ... sepse kolegu ..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Kontrolli para dorëzimit
+      options:
+        - label: "Fotografia e tri ekraneve lexohet dhe PRD-ja është plotësuar."
+          required: true
+        - label: "Profesori mund t'i hapë skedarët."
+          required: true
+        - label: "E kuptoj që hapja e issue është dorëzim, jo notim automatik."
+          required: true

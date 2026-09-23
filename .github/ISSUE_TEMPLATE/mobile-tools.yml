@@ -1,0 +1,14 @@
+name: "Mobile · Kontrolli i mjeteve"
+description: "Raporto provat e Git, GitHub, Node.js, npm, VS Code dhe Vercel."
+title: "[MJETET] "
+body:
+  - type: markdown
+    attributes:
+      value: "Plotëso fillimisht https://arbenl.github.io/materials/java-02/kontrolli-mjeteve.html dhe kopjo raportin këtu. Ky është vetëdeklarim pas provës, që profesori e verifikon në klasë. Mos ngarko fjalëkalime, token, Student ID ose të dhëna private. Nëse ke raport të mëparshëm, përditëso atë."
+  - type: textarea
+    id: report
+    attributes:
+      label: Raporti i mjeteve
+      placeholder: "Git: Punon / Ka problem / Mungon ..."
+    validations:
+      required: true
