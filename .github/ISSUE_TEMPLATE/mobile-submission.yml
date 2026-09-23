@@ -1,0 +1,34 @@
+name: "Mobile · Dorëzo detyrën (Java 1 ose 2)"
+description: "Zgjidh javën dhe vendos linkun. Merr kontrollin automatik këtu."
+title: "[MOBILE DORËZIM] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Puno në repository-n tënd personal**, jo te repository i profesorit.
+        [Nuk ke repository? Ndiq 3 hapat këtu.](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html)
+        Java 1: Exit Ticket + PRD. Java 2: java-02.md + skica.png/jpg. Ngarkoji në faqen kryesore të repository-t.
+        Pa Student ID, email privat, fjalëkalime ose të dhëna reale udhëtarësh. Dorëzimi dhe dokumentet publike shihen nga të tjerët.
+  - type: dropdown
+    id: week
+    attributes:
+      label: Java
+      options:
+        - "Java 1"
+        - "Java 2"
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Linku i punës në GitHub
+      placeholder: "https://github.com/llogaria-jote/rideshare-mobile"
+      description: "Linku kryesor i repository-t publik në llogarinë tënde. Nëse e ke krijuar me emër tjetër, përdor atë; nuk nevojitet repository i ri."
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Kliko **Create / Submit new issue**. Prit kontrollin dhe rifresko këtë faqe; raporti shfaqet poshtë.
+        Ruaje këtë faqe. Pas korrigjimit të dokumenteve, shkruaj **rikontrollo** si koment këtu.
+        Kontrolli tregon skedarët që mungojnë, jo notën e cilësisë. Afatin e njofton profesori.

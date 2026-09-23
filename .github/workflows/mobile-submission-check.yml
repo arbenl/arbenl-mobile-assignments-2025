@@ -1,0 +1,28 @@
+name: Mobile submission check
+on:
+  issues:
+    types: [opened, edited, reopened]
+  issue_comment:
+    types: [created]
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: mobile-submission-${{ github.event.issue.number }}
+  cancel-in-progress: false
+jobs:
+  check:
+    if: >-
+      !github.event.issue.pull_request &&
+      (startsWith(github.event.issue.title, '[MOBILE DORËZIM]') || startsWith(github.event.issue.title, '[MOBILE J02]')) &&
+      (github.event_name == 'issues' || (github.event.comment.body == 'rikontrollo' && github.event.comment.user.login == github.event.issue.user.login))
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            await require('./scripts/check-mobile-submission.cjs').run({github, context});
