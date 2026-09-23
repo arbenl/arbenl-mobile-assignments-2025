@@ -168,3 +168,11 @@ Good luck!
 - **Leverage AI effectively:** Keep a running `AI-log.txt` that records meaningful prompts and outputs you used for ideation, debugging, or asset creation.
 - **Iterate and test:** Develop the app incrementally, demoing features on a device/emulator and validating Supabase integration as you go.
 - **Reflect and share:** When finished, publish a concise case study or README section explaining what you built, challenges faced, and what you learned.
+
+## Mobile 2026/27 — Java 2
+
+Për ushtrimet e javës 2, filloni me [kontrollin praktik të mjeteve](https://arbenl.github.io/materials/java-02/kontrolli-mjeteve.html). Përgatitni raportin pas provës dhe dërgojeni në GitHub; profesori e verifikon në klasë. Mos vendosni Student ID ose sekrete në issue publike.
+
+Ngarkoni skicën dhe `java-02.md` në repository-n tuaj personal, pastaj [dorëzoni linkun këtu](https://github.com/arbenl/arbenl-mobile-assignments-2025/issues/new?template=mobile-java-02.yml). [Udhëzimet e plota](https://arbenl.github.io/materials/java-02/ushtrimet.html) shpjegojnë ngarkimin nga shfletuesi. Për këtë ushtrim nuk kërkohet Pull Request. Dorëzimi nuk është notim automatik.
+
+Kjo rrugë vlen për ushtrimin Mobile të javës 2; rezervimet e temave dhe dorëzimet Cloud/MCC vazhdojnë me rregullat e mësipërme.
