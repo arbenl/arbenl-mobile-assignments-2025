@@ -3,6 +3,8 @@ Student assignments - Mobile Programming, Cloud Computing, and Mobile Cloud Comp
 
 # 📚 Student Project Topic Catalogues
 
+**Mobile 2026/27 — javët 1–2:** [Nis këtu për RideShare dhe dorëzimin me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Udhëzimet e rezervimit me PR më poshtë nuk kërkohen për këto dy javë.
+
 Welcome! This repo contains assignment pools that students reserve with Pull Requests (PRs).
 Each topic can be claimed by **exactly one** student.
 
@@ -169,10 +171,16 @@ Good luck!
 - **Iterate and test:** Develop the app incrementally, demoing features on a device/emulator and validating Supabase integration as you go.
 - **Reflect and share:** When finished, publish a concise case study or README section explaining what you built, challenges faced, and what you learned.
 
-## Mobile 2026/27 — Java 2
+## Mobile 2026/27 — RideShare, javët 1–2
 
-Për ushtrimet e javës 2, filloni me [kontrollin praktik të mjeteve](https://arbenl.github.io/materials/java-02/kontrolli-mjeteve.html). Përgatitni raportin pas provës dhe dërgojeni në GitHub; profesori e verifikon në klasë. Mos vendosni Student ID ose sekrete në issue publike.
+Në ushtrime zhvillojmë RideShare gjatë semestrit. Secili student krijon një repository personal `rideshare-mobile` (Public + README), ose vazhdon në repository-n personal që ka. Dokumentet ngarkohen aty, jo në këtë repository të profesorit.
 
-Ngarkoni skicën dhe `java-02.md` në repository-n tuaj personal, pastaj [dorëzoni linkun këtu](https://github.com/arbenl/arbenl-mobile-assignments-2025/issues/new?template=mobile-java-02.yml). [Udhëzimet e plota](https://arbenl.github.io/materials/java-02/ushtrimet.html) shpjegojnë ngarkimin nga shfletuesi. Për këtë ushtrim nuk kërkohet Pull Request. Dorëzimi nuk është notim automatik.
+1. Ngarko dokumentet nga shfletuesi: Add file → Upload files → Commit changes.
+2. Java 1: `exit-ticket.md` dhe `prd.md` (pranohen edhe PDF/DOCX/TXT). Java 2: `java-02.md` dhe `skica.jpg/png`.
+3. [Dorëzo linkun](https://github.com/arbenl/arbenl-mobile-assignments-2025/issues/new?template=mobile-submission.yml), zgjidh javën dhe kliko Create / Submit new issue. Raporti automatik shfaqet si koment në atë faqe.
 
-Kjo rrugë vlen për ushtrimin Mobile të javës 2; rezervimet e temave dhe dorëzimet Cloud/MCC vazhdojnë me rregullat e mësipërme.
+[Udhëzimi i plotë me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Nuk kërkohet terminal, push, fork ose Pull Request për këto dorëzime. Mos publiko Student ID, sekrete ose të dhëna reale udhëtarësh. Repository privat kërkon dorëzim të asistuar; ftimi vetëm i profesorit nuk i jep qasje automatizimit.
+
+Pas korrigjimit të skedarëve, komento `rikontrollo` në të njëjtin issue. Kontrolli teknik i skedarëve nuk është notë e cilësisë. Nuk përdor AI dhe nuk ekzekuton kodin e studentit. Lexon një version të repository-t përmes GitHub API dhe përditëson një raport, pa grumbulluar pikë nga tentimet.
+
+Kjo rrugë është vetëm për Mobile. Rezervimet dhe dorëzimet Cloud/MCC vazhdojnë me rregullat e tyre.
