@@ -1,5 +1,5 @@
 name: "Mobile · Dorëzo detyrën (Javët 1–15)"
-description: "Zgjidh javën dhe vendos linkun. Merr kontrollin automatik këtu."
+description: "15 dorëzime javore; 10 ushtrime me pikë. Zgjidh javën dhe vendos linkun."
 title: "[MOBILE DORËZIM] "
 body:
   - type: markdown
@@ -7,6 +7,7 @@ body:
       value: |
         **Puno në repository-n tënd personal**, jo te repository i profesorit.
         [Nuk ke repository? Ndiq 3 hapat këtu.](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html)
+        **15 javë = 15 dorëzime.** Pikë laboratori (deri në 3 secila) marrin javët 2–6, 8–10, 12 dhe 14. Javët 1, 7, 11, 13 dhe 15 dorëzohen për feedback, pa pikë shtesë laboratori.
         Java 1: Exit Ticket + PRD. Java 2: java-02.md + skica.png/jpg. Javët 3–15: raporti java-NN.md pranë README dhe kodi Next.js (në rrënjë ose aplikacioni/). Hap faqen e javës për provat dhe modelin.
         Pa Student ID, email privat, fjalëkalime ose të dhëna reale udhëtarësh. Dorëzimi dhe dokumentet publike shihen nga të tjerët.
   - type: dropdown
