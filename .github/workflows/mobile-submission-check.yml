@@ -15,7 +15,7 @@ jobs:
     if: >-
       !github.event.issue.pull_request &&
       (startsWith(github.event.issue.title, '[MOBILE DORËZIM]') || startsWith(github.event.issue.title, '[MOBILE J02]')) &&
-      (github.event_name == 'issues' || (github.event.comment.body == 'rikontrollo' && github.event.comment.user.login == github.event.issue.user.login))
+      (github.event_name == 'issues' || (contains(github.event.comment.body, 'rikontrollo') && github.event.comment.user.login == github.event.issue.user.login))
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
