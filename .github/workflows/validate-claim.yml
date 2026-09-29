@@ -20,6 +20,9 @@ jobs:
           node-version: 18
 
       - name: Run claim validator
+        # Instructor maintenance PRs may update the checker; student PRs still
+        # must change exactly one allowed catalogue line.
+        if: github.event.pull_request.user.login != 'arbenl'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
