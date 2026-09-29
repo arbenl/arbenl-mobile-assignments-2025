@@ -1,4 +1,4 @@
-const VERSION = 'semester-v2';
+const VERSION = 'semester-v3';
 const MARKER = '<!-- mobile-submission-check-v1 -->';
 function field(body, label) {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -37,6 +37,7 @@ async function checkFiles(submission, github, previousBody='') {
   const listing=await github.rest.repos.getContent({owner,repo,path:'',ref});
   if(!Array.isArray(listing.data)) throw new Error('Nuk u lexua lista e skedarëve. Provoje përsëri.');
   const checks=[];
+  let weeklyReport='';
   for(const item of (names[week] || [{label:`Raporti i javës ${week}`,files:[`java-${String(week).padStart(2,'0')}.md`,`java-${String(week).padStart(2,'0')}.txt`]}])) {
     const file=listing.data.find(f=>f.type==='file' && item.files.includes(f.name.toLowerCase()));
     if(!file){checks.push({ok:false,message:`${item.label}: mungon. Me Add file → Upload files, ngarko ${item.files[0]} në faqen kryesore të repository-t, jo brenda ZIP-it.`});continue;}
@@ -47,6 +48,7 @@ async function checkFiles(submission, github, previousBody='') {
       if(result.data.encoding!=='base64'){checks.push({ok:false,message:`${item.label}: nuk u lexua përmbajtja. Ruaje si .md ose .txt të zakonshëm.`});continue;}
       const text=Buffer.from(result.data.content,'base64').toString('utf8');
       if(text.trim().length<80 || /\[PLOTËSO\]/iu.test(text)){checks.push({ok:false,message:`${item.label}: plotëso përgjigjet, hiq shenjat [PLOTËSO] dhe ruaje përsëri. Mos dorëzo modelin bosh.`});continue;}
+      if(week===3)weeklyReport=text;
     }
     checks.push({ok:true,message:`${item.label}: skedari u gjet dhe nuk është bosh. Përmbajtja dhe cilësia nuk janë vlerësuar nga ky kontroll.`});
   }
@@ -67,12 +69,36 @@ async function checkFiles(submission, github, previousBody='') {
       }catch{/* Invalid JSON is a failed check; no student code is executed. */}
     }
     checks.push({ok:valid,message:valid?'Projekti Next.js: u gjet package.json me komandat dev/build. Ky kontroll nuk e ekzekuton ose vlerëson aplikacionin.':'Projekti Next.js: mungon package.json i vlefshëm në rrënjë ose në aplikacioni/. Ruaj kodin me GitHub Desktop → Commit → Push origin; mos ngarko ZIP ose node_modules.'});
+    if(week===3) {
+      const missing=[1,2,3].filter(number=>{
+        const section=weeklyReport.match(new RegExp(`^###\\s+Prova\\s+${number}\\b[^\\n]*\\n([\\s\\S]*?)(?=^#{2,3}\\s|$(?![\\s\\S]))`,'mi'))?.[1] || '';
+        return section.trim().length<25;
+      });
+      checks.push({ok:missing.length===0,message:missing.length===0?'Tri provat: raporti përmban një rezultat të shkruar për secilën provë. Kontrollo vetë që rezultatet janë të vërteta.':`Tri provat: plotëso seksionet Prova ${missing.join(', ')} në java-03.md me hapat dhe rezultatin real (të paktën një fjali secila).`});
+      const treeSha=branch.data.commit.commit?.tree?.sha;
+      if(!treeSha)throw new Error('GitHub nuk ktheu listën e skedarëve për kontrollin e Javës 3. Provo përsëri me rikontrollo.');
+      const tree=await github.rest.git.getTree({owner,repo,tree_sha:treeSha,recursive:'1'});
+      if(tree.data.truncated)throw new Error('Repository ka shumë skedarë për kontrollin e Javës 3. Hiq node_modules dhe .next nga GitHub ose kërko ndihmë nga profesori.');
+      const paths=new Set(tree.data.tree.filter(item=>item.type==='blob').map(item=>item.path));
+      const root=packageFile?.path==='aplikacioni/package.json'?'aplikacioni/':'';
+      const app=paths.has(`${root}src/app/page.tsx`)?`${root}src/app/`:`${root}app/`;
+      const needed=[
+        ['Lista',`${app}page.tsx`],
+        ['Detajet',`${app}udhetimi/[id]/page.tsx`],
+        ['Simulimi i kërkesës',`${app}udhetimi/[id]/kerkesa/page.tsx`]
+      ];
+      const absent=needed.filter(([,path])=>!paths.has(path));
+      checks.push({ok:absent.length===0,message:absent.length===0?'Tri faqet e RideShare u gjetën në GitHub. Kontrolli nuk i ekzekuton.':`Faqet RideShare që mungojnë: ${absent.map(([name,path])=>`${name} (${path})`).join('; ')}. Krijoji, pastaj Commit → Push origin.`});
+      const components=[`${root}src/components/`,`${root}components/`];
+      const hasComponent=[...paths].some(path=>components.some(folder=>path.startsWith(folder) && /\.tsx$/.test(path)));
+      checks.push({ok:hasComponent,message:hasComponent?'Komponenti: u gjet një skedar .tsx në dosjen components. Provo vetë që karta shfaqet dhe lidhjet punojnë.':`Komponenti: krijo ${root}src/components/KartaUdhetimi.tsx (ose components/ pa src), pastaj Commit → Push origin.`});
+    }
   }
   return {checks,ref,key};
 }
 function report({checks=[],ref,key,error}={}) {
   const count=checks.filter(c=>c.ok).length;
-  return `${MARKER}\n${key || ''}\n## Kontrolli automatik i dorëzimit\n\n${error?'⚠️ '+error:`**${count}/${checks.length} skedarë kaluan kontrollin teknik.**\n\n`+checks.map(c=>`${c.ok?'✅':'❌'} ${c.message}`).join('\n\n')}\n\n${ref?`Versioni i kontrolluar: \`${ref}\`.\n\n`:''}Ky është kontroll i dorëzimit, **jo notë**. PDF/DOCX dhe fotografia kontrollohen vetëm për praninë dhe madhësinë; modeli bosh ose cilësia mund të kërkojnë kontroll nga profesori.\n\n**Si e rregulloj?** Hape repository-n tënd → Add file → Upload files → ngarko versionin e korrigjuar → Commit changes. Pastaj këtu poshtë shkruaj vetëm **rikontrollo** dhe kliko Comment. Përditësohet ky raport; mos hap dorëzim tjetër për të njëjtën javë.\n\n[Udhëzimi me hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html)`;
+  return `${MARKER}\n${key || ''}\n## Kontrolli automatik i dorëzimit\n\n${error?'⚠️ '+error:`**${count}/${checks.length} kontrolle teknike kaluan.**\n\n`+checks.map(c=>`${c.ok?'✅':'❌'} ${c.message}`).join('\n\n')}\n\n${ref?`Versioni i kontrolluar: \`${ref}\`.\n\n`:''}Ky është kontroll i dorëzimit, **jo notë**. Kodi nuk ekzekutohet; funksionimi i faqeve dhe cilësia e provave duhet të verifikohen në klasë. PDF/DOCX dhe fotografia kontrollohen vetëm për praninë dhe madhësinë.\n\n**Si e rregulloj?** Hape repository-n tënd → korrigjo skedarët → Commit → Push origin. Pastaj këtu poshtë shkruaj vetëm **rikontrollo** dhe kliko Comment. Përditësohet ky raport; mos hap dorëzim tjetër për të njëjtën javë.\n\n[Udhëzimi me hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html)`;
 }
 async function run({github,context}) {
   const args={...context.repo,issue_number:context.issue.number};

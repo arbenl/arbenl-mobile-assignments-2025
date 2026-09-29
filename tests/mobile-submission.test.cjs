@@ -8,7 +8,7 @@ test('parse form; reject other owners, arbitrary hosts and nested paths',()=>{
  assert.equal(parseSubmission({...issue(),title:'[MOBILE J02] RideShare'}).week,2);
 });
 function api(files,text='Përgjigjja ime mbi problemin dhe përdoruesit e RideShare. '.repeat(3)) {
- return {rest:{repos:{get:async()=>({data:{private:false,default_branch:'main'}}),getBranch:async()=>({data:{commit:{sha:'abc'}}}),getContent:async args=>({data:args.path?{encoding:'base64',content:Buffer.from(text).toString('base64')}:files})}}};
+ return {rest:{repos:{get:async()=>({data:{private:false,default_branch:'main'}}),getBranch:async()=>({data:{commit:{sha:'abc',commit:{tree:{sha:'tree-abc'}}}}}),getContent:async args=>({data:args.path?{encoding:'base64',content:Buffer.from(text).toString('base64')}:files})}}};
 }
 const file=(name,size=500)=>({name,path:name,size,type:'file'});
 test('missing files and blank template get actionable feedback; completed document passes',async()=>{
@@ -38,11 +38,16 @@ test('all fifteen weeks are accepted and out-of-range weeks are refused',()=>{
 });
 function laterApi(nested=false,broken=false){
  const github=api([]);let reads=0;
+ const prefix=nested?'aplikacioni/':'';
+ github.rest.git={getTree:async({tree_sha})=>{assert.equal(tree_sha,'tree-abc');return {data:{truncated:false,tree:[
+  `${prefix}src/app/page.tsx`,`${prefix}src/app/udhetimi/[id]/page.tsx`,
+  `${prefix}src/app/udhetimi/[id]/kerkesa/page.tsx`,`${prefix}src/components/KartaUdhetimi.tsx`
+ ].map(path=>({path,type:'blob'}))}}}};
  github.rest.repos.getContent=async({path,ref})=>{
   assert.equal(ref,'abc');reads++;
   if(!path)return {data:[file('java-03.md'),nested?{name:'aplikacioni',type:'dir'}:file('package.json')]};
   if(path==='aplikacioni')return {data:[{...file('package.json'),path:'aplikacioni/package.json'}]};
-  const text=path.endsWith('package.json')?(broken?'not json':JSON.stringify({dependencies:{next:'16'},scripts:{dev:'next dev',build:'next build'}})):'Unë ndërtova listën, detajet dhe kërkesën. Provat e navigimit dhe kthimit funksionuan në telefon.'.repeat(2);
+  const text=path.endsWith('package.json')?(broken?'not json':JSON.stringify({dependencies:{next:'16'},scripts:{dev:'next dev',build:'next build'}})):'# Java 3\n### Prova 1: Lista\nUdhëtimet u shfaqën në telefon pa lëvizje horizontale.\n### Prova 2: Detajet\nUdhëtimi i dytë tregoi orën dhe vendtakimin e pritur.\n### Prova 3: Kërkesa\nSimulimi shfaqi Në pritje dhe nuk pretendoi rezervim real.\n';
   return {data:{encoding:'base64',content:Buffer.from(text).toString('base64')}};
  };
  return {github,reads:()=>reads};
@@ -50,18 +55,30 @@ function laterApi(nested=false,broken=false){
 test('later weeks check report and root or nested Next.js metadata, without executing code',async()=>{
  for(const nested of [false,true]){
   const {github}=laterApi(nested);const result=await checkFiles({owner:'arta',repo:'r',week:3},github);
-  assert.equal(result.checks.filter(c=>c.ok).length,2);assert.match(result.checks[1].message,/nuk e ekzekuton/);
+  assert.equal(result.checks.filter(c=>c.ok).length,5);assert.match(result.checks[1].message,/nuk e ekzekuton/);
  }
  const {github}=laterApi(false,true);const result=await checkFiles({owner:'arta',repo:'r',week:3},github);
  assert.equal(result.checks[0].ok,true);assert.equal(result.checks[1].ok,false);
+});
+test('week 3 gives specific feedback for missing routes, component and unfilled probes',async()=>{
+ const {github}=laterApi();
+ github.rest.git.getTree=async()=>({data:{truncated:false,tree:[{path:'src/app/page.tsx',type:'blob'}]}});
+ const original=github.rest.repos.getContent;
+ github.rest.repos.getContent=async args=>args.path==='java-03.md'?{data:{encoding:'base64',content:Buffer.from('Ky është raporti im i gjatë për RideShare, por ende nuk i kam plotësuar tri provat në klasë.').toString('base64')}}:original(args);
+ const result=await checkFiles({owner:'arta',repo:'r',week:3},github);
+ assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/Prova 1, 2, 3/);
+ assert.equal(result.checks[3].ok,false);assert.match(result.checks[3].message,/Detajet/);
+ assert.equal(result.checks[4].ok,false);assert.match(result.checks[4].message,/KartaUdhetimi/);
+ assert.match(report(result),/2\/5 kontrolle teknike/);
 });
 test('unchanged revision reuses report; week or revision changes cannot reuse it',async()=>{
  const {github,reads}=laterApi();const sub={owner:'arta',repo:'r',week:3};
  const first=await checkFiles(sub,github);const before=reads();
  assert.deepEqual(await checkFiles(sub,github,report(first)),{unchanged:true});assert.equal(reads(),before);
  const changedWeek=await checkFiles({...sub,week:4},github,report(first));assert.ok(changedWeek.checks);assert.equal(changedWeek.checks[0].ok,false);
- github.rest.repos.getBranch=async()=>({data:{commit:{sha:'def'}}});
+ github.rest.repos.getBranch=async()=>({data:{commit:{sha:'def',commit:{tree:{sha:'tree-def'}}}}});
  let receivedRef;github.rest.repos.getContent=async args=>{receivedRef=args.ref;return {data:[]};};
+ github.rest.git.getTree=async({tree_sha})=>{assert.equal(tree_sha,'tree-def');return {data:{truncated:false,tree:[]}};};
  await checkFiles(sub,github,report(first));assert.equal(receivedRef,'def');
 });
 test('recheck accepts case/whitespace; unrelated comments and forged cache are ignored',async()=>{
