@@ -121,7 +121,7 @@
 
 - React Native + Expo Snack: Organizoi planin me `CalendarList`, sinkronizo në Supabase dhe ofro plane javore të sugjeruara nga një generator JavaScript.
 
-29. Portfolio Tracker (projects{id, title, url, user_id}) — (Available)
+29. Portfolio Tracker (projects{id, title, url, user_id}) — (Taken by Klejdi Abazi, klejdi.abazi@universitetiaab.com)
 
 - React Native + Expo Snack: Shfaq projektet si `Card` me buton `Linking.openURL`, ruaj të dhënat në Supabase dhe krijo përmbledhje statistikore me hooks.
 
