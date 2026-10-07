@@ -96,3 +96,43 @@ test('API failures produce a retry instruction without pretending to award grade
  await run({github,context:{repo:{owner:'arbenl',repo:'course'},issue:{number:1},eventName:'issues'}});
  assert.match(body,/Provo më vonë/);assert.match(body,/jo notë/);
 });
+
+function week4Api({nested=false,src=true,omit=[],env=false,driver=true,reportText}={}) {
+ const {github,reads}=laterApi(nested);
+ const prefix=nested?'aplikacioni/':'';
+ const source=prefix+(src?'src/':'');
+ const required=[prefix+'schema.sql',source+'lib/db.ts',source+'lib/udhetimet.ts',source+'app/page.tsx',source+'app/udhetimi/[id]/page.tsx',source+'app/udhetimi/[id]/kerkesa/page.tsx'];
+ github.rest.git.getTree=async()=>({data:{truncated:false,tree:[...required.filter(p=>!omit.some(o=>p.endsWith(o))),prefix+'.env.example',...(env?[prefix+'.env.local']:[])].map(path=>({path,type:'blob'}))}});
+ const original=github.rest.repos.getContent;
+ github.rest.repos.getContent=async args=>{
+  if(!args.path)return {data:[file('java-04.md'),nested?{name:'aplikacioni',type:'dir'}:file('package.json')]};
+  if(args.path.endsWith('package.json'))return {data:{encoding:'base64',content:Buffer.from(JSON.stringify({dependencies:{next:'16',...(driver?{'@neondatabase/serverless':'1','server-only':'0.0.1'}:{})},scripts:{dev:'next dev',build:'next build'}})).toString('base64')}};
+  if(args.path==='java-04.md')return {data:{encoding:'base64',content:Buffer.from(reportText||'# Java 4\n### Prova 1\nOra e ID 2 ndryshoi në listë dhe në detaje pas rifreskimit.\n### Prova 2\nWHERE false shfaqi mesazhin e listës bosh dhe kartat u rikthyen.\n### Prova 3\nPa konfigurim doli gabim lidhjeje; riktheva emrin dhe punoi përsëri.').toString('base64')}};
+  return original(args);
+ };
+ return {github,reads};
+}
+test('week 4 accepts root/nested apps, src or app layout and safe env examples',async()=>{
+ for(const nested of [false,true])for(const src of [false,true]) {
+  const {github}=week4Api({nested,src});const result=await checkFiles({owner:'arta',repo:'r',week:4},github);
+  assert.equal(result.checks.filter(c=>c.ok).length,5,JSON.stringify(result.checks));
+  assert.match(report(result),/5\/5 kontrolle teknike/);
+ }
+});
+test('week 4 identifies missing Neon files, dependencies, empty probes and tracked secrets',async()=>{
+ const {github}=week4Api({omit:['schema.sql','lib/db.ts'],env:true,driver:false,reportText:'Ky është raporti im për RideShare me Neon por nuk i kam dokumentuar ende provat e kërkuara gjatë orës.'});
+ const result=await checkFiles({owner:'arta',repo:'r',week:4},github);
+ assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/Prova 1, 2, 3/);
+ assert.equal(result.checks[3].ok,false);assert.match(result.checks[3].message,/schema.sql/);assert.match(result.checks[3].message,/npm install/);
+ assert.equal(result.checks[4].ok,false);assert.match(result.checks[4].message,/\.env.local/);
+ assert.match(result.checks[4].message,/ndërro fjalëkalimin/);
+});
+test('week 4 refuses truncated file lists and reads only metadata/documents',async()=>{
+ const {github}=week4Api();
+ github.rest.git.getTree=async()=>({data:{truncated:true,tree:[]}});
+ await assert.rejects(checkFiles({owner:'arta',repo:'r',week:4},github),/shumë skedarë/);
+ const calls=[];const clean=week4Api().github;const original=clean.rest.repos.getContent;
+ clean.rest.repos.getContent=async args=>{calls.push(args.path);return original(args);};
+ await checkFiles({owner:'arta',repo:'r',week:4},clean);
+ assert.deepEqual(calls,['','java-04.md','package.json']);
+});
