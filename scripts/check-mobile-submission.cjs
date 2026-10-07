@@ -1,4 +1,4 @@
-const VERSION = 'semester-v3';
+const VERSION = 'semester-v4-neon';
 const MARKER = '<!-- mobile-submission-check-v1 -->';
 function field(body, label) {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -48,7 +48,7 @@ async function checkFiles(submission, github, previousBody='') {
       if(result.data.encoding!=='base64'){checks.push({ok:false,message:`${item.label}: nuk u lexua përmbajtja. Ruaje si .md ose .txt të zakonshëm.`});continue;}
       const text=Buffer.from(result.data.content,'base64').toString('utf8');
       if(text.trim().length<80 || /\[PLOTËSO\]/iu.test(text)){checks.push({ok:false,message:`${item.label}: plotëso përgjigjet, hiq shenjat [PLOTËSO] dhe ruaje përsëri. Mos dorëzo modelin bosh.`});continue;}
-      if(week===3)weeklyReport=text;
+      if(week===3 || week===4)weeklyReport=text;
     }
     checks.push({ok:true,message:`${item.label}: skedari u gjet dhe nuk është bosh. Përmbajtja dhe cilësia nuk janë vlerësuar nga ky kontroll.`});
   }
@@ -61,10 +61,11 @@ async function checkFiles(submission, github, previousBody='') {
       packageFile=source.find(f=>f.type==='file' && f.name==='package.json');
     }
     let valid=false;
+    let pkg;
     if(packageFile && packageFile.size>0 && packageFile.size<=100000) {
       const result=await github.rest.repos.getContent({owner,repo,path:packageFile.path,ref});
       if(result.data.encoding==='base64')try {
-        const pkg=JSON.parse(Buffer.from(result.data.content,'base64').toString('utf8'));
+        pkg=JSON.parse(Buffer.from(result.data.content,'base64').toString('utf8'));
         valid=Boolean((pkg.dependencies?.next || pkg.devDependencies?.next) && typeof pkg.scripts?.dev==='string' && typeof pkg.scripts?.build==='string');
       }catch{/* Invalid JSON is a failed check; no student code is executed. */}
     }
@@ -92,6 +93,27 @@ async function checkFiles(submission, github, previousBody='') {
       const components=[`${root}src/components/`,`${root}components/`];
       const hasComponent=[...paths].some(path=>components.some(folder=>path.startsWith(folder) && /\.tsx$/.test(path)));
       checks.push({ok:hasComponent,message:hasComponent?'Komponenti: u gjet një skedar .tsx në dosjen components. Provo vetë që karta shfaqet dhe lidhjet punojnë.':`Komponenti: krijo ${root}src/components/KartaUdhetimi.tsx (ose components/ pa src), pastaj Commit → Push origin.`});
+    }
+    if(week===4) {
+      const missing=[1,2,3].filter(number=>{
+        const section=weeklyReport.match(new RegExp(`^###\\s+Prova\\s+${number}\\b[^\\n]*\\n([\\s\\S]*?)(?=^#{2,3}\\s|$(?![\\s\\S]))`,'mi'))?.[1] || '';
+        return section.trim().length<25;
+      });
+      checks.push({ok:missing.length===0,message:missing.length===0?'Tri provat: u gjetën rezultatet e shkruara për ndryshimin, listën bosh dhe lidhjen e munguar. Demonstroji në klasë.':`Tri provat: plotëso Prova ${missing.join(', ')} në java-04.md me hapat dhe rezultatin real (të paktën një fjali secila).`});
+      const treeSha=branch.data.commit.commit?.tree?.sha;
+      if(!treeSha)throw new Error('GitHub nuk ktheu skedarët për Javën 4. Provo përsëri me rikontrollo.');
+      const tree=await github.rest.git.getTree({owner,repo,tree_sha:treeSha,recursive:'1'});
+      if(tree.data.truncated)throw new Error('Repository ka shumë skedarë për kontrollin. Hiq node_modules dhe .next nga GitHub ose kërko ndihmë.');
+      const paths=new Set(tree.data.tree.filter(item=>item.type==='blob').map(item=>item.path));
+      const root=packageFile?.path==='aplikacioni/package.json'?'aplikacioni/':'';
+      const src=paths.has(`${root}src/app/page.tsx`)?`${root}src/`:root;
+      const needed=[`${root}schema.sql`,`${src}lib/db.ts`,`${src}lib/udhetimet.ts`,`${src}app/page.tsx`,`${src}app/udhetimi/[id]/page.tsx`,`${src}app/udhetimi/[id]/kerkesa/page.tsx`];
+      const absent=needed.filter(path=>!paths.has(path));
+      const hasDriver=Boolean(pkg?.dependencies?.['@neondatabase/serverless']);
+      const hasBoundary=Boolean(pkg?.dependencies?.['server-only']);
+      checks.push({ok:absent.length===0 && hasDriver && hasBoundary,message:absent.length===0 && hasDriver && hasBoundary?'Neon: u gjetën schema.sql, helper-at, tri faqet dhe paketat. Lidhjen reale dhe pyetjet i provon ti; kontrolli nuk hap databazën.':`Neon: ${[...(!hasDriver || !hasBoundary?['në dosjen e aplikacionit ekzekuto npm install @neondatabase/serverless server-only']:[]),...(absent.length?['ruaj skedarët '+absent.join(', ')]:[])].join('; ')}. Pastaj Commit → Push origin.`});
+      const envFiles=[...paths].filter(path=>/(^|\/)\.env(?:$|\.(?!(?:example|sample|template)$))/i.test(path));
+      checks.push({ok:envFiles.length===0,message:envFiles.length===0?'Skedarët privatë: nuk u gjet skedar .env i publikuar. Ky kontroll i emrave nuk zbulon çdo sekret; kontrollo vetë kodin dhe pamjet.':`Skedarë privatë në GitHub: ${envFiles.join(', ')}. Ndalo publikimin e kredencialeve, ndërro fjalëkalimin e Neon nëse u ekspozua dhe kërko ndihmën e profesorit. Shto .env* te .gitignore; mos e shkruaj sekretin në Issue.`});
     }
   }
   return {checks,ref,key};
