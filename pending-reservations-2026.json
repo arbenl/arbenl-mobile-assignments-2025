@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-10-11T14:29:46.263Z",
+  "generatedAt": "2026-10-11T22:16:43.111Z",
   "source": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pulls",
-  "claims": [
-    {
-      "id": "24",
-      "title": "Log Analytics Explorer",
-      "name": "Vehbi Durguti",
-      "email": "vehbi.durguti@universitetiaab.com",
-      "stack": "Next.js + serverless functions",
-      "prNumber": 488,
-      "prTitle": "Update project topics for Cloud Computing 2026",
-      "prUrl": "https://github.com/arbenl/arbenl-mobile-assignments-2025/pull/488",
-      "author": "vehbu",
-      "createdAt": "2026-10-11T14:29:34Z"
-    }
-  ],
+  "claims": [],
   "conflicts": []
 }
