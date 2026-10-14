@@ -125,7 +125,7 @@ test('week 4 identifies missing Neon files, dependencies, empty probes and track
  assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/Prova 1, 2, 3/);
  assert.equal(result.checks[3].ok,false);assert.match(result.checks[3].message,/schema.sql/);assert.match(result.checks[3].message,/npm install/);
  assert.equal(result.checks[4].ok,false);assert.match(result.checks[4].message,/\.env.local/);
- assert.match(result.checks[4].message,/ndërro fjalëkalimin/);
+ assert.match(result.checks[4].message,/ndërro kredencialet/);
 });
 test('week 4 refuses truncated file lists and reads only metadata/documents',async()=>{
  const {github}=week4Api();
@@ -135,4 +135,23 @@ test('week 4 refuses truncated file lists and reads only metadata/documents',asy
  clean.rest.repos.getContent=async args=>{calls.push(args.path);return original(args);};
  await checkFiles({owner:'arta',repo:'r',week:4},clean);
  assert.deepEqual(calls,['','java-04.md','package.json']);
+});
+
+function week5Api({nested=false,src=true,env=false,auth=true,omit=[],reportText}={}) {
+ const {github}=week4Api({nested,src,env});const root=nested?'aplikacioni/':'';const source=root+(src?'src/':'');
+ const paths=[root+'schema-java05.sql',source+'lib/auth.ts',source+'lib/lejet.ts',source+'lib/db.ts',source+'app/page.tsx',source+'app/api/auth/[...nextauth]/route.ts',source+'app/panel/page.tsx',source+'app/panel/actions.ts',source+'components/Hyrja.tsx'];
+ github.rest.git.getTree=async()=>({data:{truncated:false,tree:[...paths.filter(p=>!omit.some(x=>p.endsWith(x))),root+'.env.example',...(env?[root+'.env.local']:[])].map(path=>({path,type:'blob'}))}});
+ const original=github.rest.repos.getContent;
+ github.rest.repos.getContent=async args=>{
+  if(!args.path)return {data:[file('java-05.md'),nested?{name:'aplikacioni',type:'dir'}:file('package.json')]};
+  if(args.path==='java-05.md')return {data:{encoding:'base64',content:Buffer.from(reportText||'# Java 5\n### Prova 1\nPas hyrjes dhe rifreskimit mbeti emri; pas daljes kërkoi hyrje.\n### Prova 2\nShoferi ruajti 08:25; lista, detajet dhe Neon treguan ndryshimin.\n### Prova 3\nID tjetër dhe formulari pas daljes u refuzuan pa ndryshuar databazën.').toString('base64')}};
+  if(args.path.endsWith('package.json'))return {data:{encoding:'base64',content:Buffer.from(JSON.stringify({dependencies:{next:'16','@neondatabase/serverless':'1','server-only':'0.0.1',...(auth?{'next-auth':'4.24.15'}:{})},scripts:{dev:'next dev',build:'next build'}})).toString('base64')}};
+  return original(args);
+ };return {github};
+}
+test('week 5 accepts root/nested apps and src/no-src with five bounded checks',async()=>{
+ for(const nested of [false,true])for(const src of [false,true]){const {github}=week5Api({nested,src});const calls=[];const read=github.rest.repos.getContent;github.rest.repos.getContent=async args=>{calls.push(args.path);return read(args)};const result=await checkFiles({owner:'arta',repo:'r',week:5},github);assert.equal(result.checks.filter(c=>c.ok).length,5,JSON.stringify(result.checks));assert.ok(calls.every(p=>!p||p==='aplikacioni'||p==='java-05.md'||p.endsWith('package.json')));}
+});
+test('week 5 explains missing auth route, dependency, evidence and private env files',async()=>{
+ const {github}=week5Api({auth:false,env:true,omit:['api/auth/[...nextauth]/route.ts'],reportText:'Këtë javë ndërtova panelin por ende nuk i kam dokumentuar rezultatet e provave të hyrjes, pronësisë dhe daljes.'});const result=await checkFiles({owner:'arta',repo:'r',week:5},github);assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/java-05.md/);assert.equal(result.checks[3].ok,false);assert.match(result.checks[3].message,/next-auth@4.24.15/);assert.match(result.checks[3].message,/route.ts/);assert.equal(result.checks[4].ok,false);
 });
