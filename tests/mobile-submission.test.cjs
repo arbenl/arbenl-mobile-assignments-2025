@@ -155,3 +155,59 @@ test('week 5 accepts root/nested apps and src/no-src with five bounded checks',a
 test('week 5 explains missing auth route, dependency, evidence and private env files',async()=>{
  const {github}=week5Api({auth:false,env:true,omit:['api/auth/[...nextauth]/route.ts'],reportText:'Këtë javë ndërtova panelin por ende nuk i kam dokumentuar rezultatet e provave të hyrjes, pronësisë dhe daljes.'});const result=await checkFiles({owner:'arta',repo:'r',week:5},github);assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/java-05.md/);assert.equal(result.checks[3].ok,false);assert.match(result.checks[3].message,/next-auth@4.24.15/);assert.match(result.checks[3].message,/route.ts/);assert.equal(result.checks[4].ok,false);
 });
+
+function week6Api({nested=false,src=true,omit=[],env=[],reportText,reportName='java-06.md',validPackage=true}={}) {
+ const root=nested?'aplikacioni/':'';const source=root+(src?'src/':'');const calls=[];
+ const paths=[source+'app/manifest.ts',source+'app/layout.tsx',source+'app/api/udhetimet/route.ts',source+'components/Pwa.tsx',root+'public/sw.js',root+'public/offline.html',root+'public/icons/icon-192.png',root+'public/icons/icon-512.png'];
+ const github={rest:{repos:{
+  get:async args=>{calls.push(['metadata',args]);return {data:{private:false,default_branch:'main'}};},
+  getBranch:async args=>{calls.push(['branch',args]);return {data:{commit:{sha:'abc',commit:{tree:{sha:'tree-abc'}}}}};},
+  getContent:async args=>{
+   calls.push(['content',args]);assert.equal(args.ref,'abc');
+   if(!args.path)return {data:[file(reportName),nested?{name:'aplikacioni',type:'dir'}:file('package.json')]};
+   if(args.path==='aplikacioni')return {data:[{...file('package.json'),path:root+'package.json'}]};
+   assert.ok([reportName,root+'package.json'].includes(args.path),'only report and package contents may be read');
+   const text=args.path===reportName?(reportText??'# Java 6\n### Prova 1\nManifesti dhe ikonat u shfaqën në panelin Application të shfletuesit.\n### Prova 2\nService Worker u regjistrua dhe ruajti faqen rezervë gjatë provës.\n### Prova 3\nPa rrjet u shfaq offline.html dhe API ktheu mesazhin e pritshëm.'):
+    JSON.stringify(validPackage?{dependencies:{next:'16'},scripts:{dev:'next dev',build:'next build'}}:{scripts:{dev:'next dev'}});
+   return {data:{encoding:'base64',content:Buffer.from(text).toString('base64')}};
+  }
+ },git:{getTree:async args=>{calls.push(['tree',args]);assert.equal(args.tree_sha,'tree-abc');assert.equal(args.recursive,'1');return {data:{truncated:false,tree:[...paths.filter(path=>!omit.some(suffix=>path.endsWith(suffix))),root+'.env.example',root+'.env.sample',root+'.env.template',...env].map(path=>({path,type:'blob'}))}};}}}};
+ return {github,calls};
+}
+test('week 6 accepts root/nested PWA files with or without src and keeps reads bounded to a pinned commit',async()=>{
+ for(const nested of [false,true])for(const src of [false,true]) {
+  const {github,calls}=week6Api({nested,src});const result=await checkFiles({owner:'arta',repo:'r',week:6},github);
+  assert.equal(result.checks.length,5);assert.ok(result.checks.every(check=>check.ok),JSON.stringify(result.checks));
+  assert.equal(calls.filter(([type])=>type==='tree').length,1);assert.ok(calls.length<=7);
+  assert.deepEqual(calls.filter(([type])=>type==='content').map(([,args])=>args.path),nested?['','java-06.md','aplikacioni','aplikacioni/package.json']:['','java-06.md','package.json']);
+  assert.match(result.checks[3].message,/PWA/);assert.match(result.checks[3].message,/nuk.*(?:ekzekuton|verifikon)/);
+  assert.match(report(result),/5\/5 kontrolle teknike/);assert.match(report(result),/jo notë/);
+ }
+});
+test('week 6 identifies each missing PWA file by filename',async()=>{
+ for(const omitted of ['app/manifest.ts','app/layout.tsx','app/api/udhetimet/route.ts','components/Pwa.tsx','public/sw.js','public/offline.html','public/icons/icon-192.png','public/icons/icon-512.png']) {
+  const {github}=week6Api({omit:[omitted]});const result=await checkFiles({owner:'arta',repo:'r',week:6},github);
+  assert.equal(result.checks[3].ok,false);assert.ok(result.checks[3].message.includes(omitted));assert.equal(result.checks.filter(check=>check.ok).length,4);
+ }
+});
+test('week 6 requires the markdown report and meaningful results in all three probe sections',async()=>{
+ const {github}=week6Api({reportText:'# Java 6\n### Prova 1\nManifesti dhe ikonat shfaqen në Application dhe lexohen në telefon.\n### Prova 2\nU krye.\n### Prova 3\nPa rrjet shfaqet faqja rezervë gjatë provës së raportuar në klasë.'});
+ const result=await checkFiles({owner:'arta',repo:'r',week:6},github);assert.equal(result.checks[0].ok,true);assert.equal(result.checks[2].ok,false);assert.match(result.checks[2].message,/Prova 2/);assert.match(result.checks[2].message,/java-06.md/);
+ const txt=await checkFiles({owner:'arta',repo:'r',week:6},week6Api({reportName:'java-06.txt'}).github);assert.equal(txt.checks[0].ok,false);assert.match(txt.checks[0].message,/java-06.md/);
+});
+test('week 6 retains Next metadata and rejects exposed env files while accepting example filenames',async()=>{
+ const {github}=week6Api({nested:true,validPackage:false,env:['aplikacioni/.env','aplikacioni/.env.local','aplikacioni/.env.production','aplikacioni/.env.example.local']});
+ const result=await checkFiles({owner:'arta',repo:'r',week:6},github);assert.equal(result.checks[1].ok,false);assert.equal(result.checks[4].ok,false);
+ for(const name of ['.env,','.env.local','.env.production','.env.example.local'])assert.ok(result.checks[4].message.includes(name));
+ assert.match(result.checks[4].message,/ndërro kredencialet/);
+});
+test('week 6 invalidates old two-check reports and reuses only the current commit report',async()=>{
+ const {github,calls}=week6Api({nested:true});const sub={owner:'arta',repo:'r',week:6};
+ const old='<!-- mobile-submission-check-v1 -->\n<!-- semester-v5-auth:arta/r:6:abc -->\n**2/2 kontrolle teknike kaluan.**';
+ const result=await checkFiles(sub,github,old);assert.equal(result.checks.length,5);
+ const before=calls.length;assert.deepEqual(await checkFiles(sub,github,report(result)),{unchanged:true});assert.equal(calls.length-before,2);
+});
+test('week 6 refuses incomplete recursive trees instead of claiming file checks passed',async()=>{
+ const {github}=week6Api();github.rest.git.getTree=async()=>({data:{truncated:true,tree:[]}});
+ await assert.rejects(checkFiles({owner:'arta',repo:'r',week:6},github),/shumë skedarë/);
+});

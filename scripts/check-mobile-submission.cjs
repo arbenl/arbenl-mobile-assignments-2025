@@ -1,4 +1,4 @@
-const VERSION = 'semester-v5-auth';
+const VERSION = 'semester-v6-pwa';
 const MARKER = '<!-- mobile-submission-check-v1 -->';
 function field(body, label) {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -23,7 +23,8 @@ const names = {
   2: [
     {label:'PRD e javës 2', files:['java-02.md','java-02.pdf','java-02.docx','java-02.txt']},
     {label:'Skica', files:['skica.jpg','skica.jpeg','skica.png','skica.pdf']}
-  ]
+  ],
+  6: [{label:'Raporti i javës 6',files:['java-06.md']}]
 };
 function cacheKey({owner,repo,week},ref) {return `<!-- ${VERSION}:${owner.toLowerCase()}/${repo.toLowerCase()}:${week}:${ref} -->`;}
 async function checkFiles(submission, github, previousBody='') {
@@ -48,7 +49,7 @@ async function checkFiles(submission, github, previousBody='') {
       if(result.data.encoding!=='base64'){checks.push({ok:false,message:`${item.label}: nuk u lexua përmbajtja. Ruaje si .md ose .txt të zakonshëm.`});continue;}
       const text=Buffer.from(result.data.content,'base64').toString('utf8');
       if(text.trim().length<80 || /\[PLOTËSO\]/iu.test(text)){checks.push({ok:false,message:`${item.label}: plotëso përgjigjet, hiq shenjat [PLOTËSO] dhe ruaje përsëri. Mos dorëzo modelin bosh.`});continue;}
-      if(week===3 || week===4 || week===5)weeklyReport=text;
+      if(week>=3 && week<=6)weeklyReport=text;
     }
     checks.push({ok:true,message:`${item.label}: skedari u gjet dhe nuk është bosh. Përmbajtja dhe cilësia nuk janë vlerësuar nga ky kontroll.`});
   }
@@ -94,25 +95,31 @@ async function checkFiles(submission, github, previousBody='') {
       const hasComponent=[...paths].some(path=>components.some(folder=>path.startsWith(folder) && /\.tsx$/.test(path)));
       checks.push({ok:hasComponent,message:hasComponent?'Komponenti: u gjet një skedar .tsx në dosjen components. Provo vetë që karta shfaqet dhe lidhjet punojnë.':`Komponenti: krijo ${root}src/components/KartaUdhetimi.tsx (ose components/ pa src), pastaj Commit → Push origin.`});
     }
-    if(week===4 || week===5) {
+    if(week>=4 && week<=6) {
       const missing=[1,2,3].filter(number=>{
         const section=weeklyReport.match(new RegExp(`^###\\s+Prova\\s+${number}\\b[^\\n]*\\n([\\s\\S]*?)(?=^#{2,3}\\s|$(?![\\s\\S]))`,'mi'))?.[1] || '';
         return section.trim().length<25;
       });
-      checks.push({ok:missing.length===0,message:missing.length===0?(week===5?'Tri provat: u gjetën rezultatet për sesionin, ruajtjen e lejuar dhe refuzimin e veprimit pa leje. Demonstroji në klasë.':'Tri provat: u gjetën rezultatet e shkruara për ndryshimin, listën bosh dhe lidhjen e munguar. Demonstroji në klasë.'):`Tri provat: plotëso Prova ${missing.join(', ')} në java-0${week}.md me hapat dhe rezultatin real (të paktën një fjali secila).`});
+      checks.push({ok:missing.length===0,message:missing.length===0?(week===6?'Tri provat: raporti përmban rezultate të shkruara për manifestin, rifreskimin pa rrjet dhe rikthimin e lidhjes. Demonstroji në klasë; ky kontroll nuk verifikon funksionimin offline.':week===5?'Tri provat: u gjetën rezultatet për sesionin, ruajtjen e lejuar dhe refuzimin e veprimit pa leje. Demonstroji në klasë.':'Tri provat: u gjetën rezultatet e shkruara për ndryshimin, listën bosh dhe lidhjen e munguar. Demonstroji në klasë.'):`Tri provat: plotëso Prova ${missing.join(', ')} në java-0${week}.md me hapat dhe rezultatin real (të paktën një fjali secila).`});
       const treeSha=branch.data.commit.commit?.tree?.sha;
       if(!treeSha)throw new Error(`GitHub nuk ktheu skedarët për Javën ${week}. Provo përsëri me rikontrollo.`);
       const tree=await github.rest.git.getTree({owner,repo,tree_sha:treeSha,recursive:'1'});
       if(tree.data.truncated)throw new Error('Repository ka shumë skedarë për kontrollin. Hiq node_modules dhe .next nga GitHub ose kërko ndihmë.');
       const paths=new Set(tree.data.tree.filter(item=>item.type==='blob').map(item=>item.path));
       const root=packageFile?.path==='aplikacioni/package.json'?'aplikacioni/':'';
-      const src=paths.has(`${root}src/app/page.tsx`)?`${root}src/`:root;
-      const needed=week===5?[`${root}schema-java05.sql`,`${src}lib/auth.ts`,`${src}lib/lejet.ts`,`${src}lib/db.ts`,`${src}app/page.tsx`,`${src}app/api/auth/[...nextauth]/route.ts`,`${src}app/panel/page.tsx`,`${src}app/panel/actions.ts`,`${src}components/Hyrja.tsx`]:[`${root}schema.sql`,`${src}lib/db.ts`,`${src}lib/udhetimet.ts`,`${src}app/page.tsx`,`${src}app/udhetimi/[id]/page.tsx`,`${src}app/udhetimi/[id]/kerkesa/page.tsx`];
-      const absent=needed.filter(path=>!paths.has(path));
-      const hasDriver=Boolean(pkg?.dependencies?.['@neondatabase/serverless']);
-      const hasBoundary=Boolean(pkg?.dependencies?.['server-only']);
-      const hasAuth=week!==5 || /^[~^]?4\./.test(pkg?.dependencies?.['next-auth'] || '');
-      checks.push({ok:absent.length===0 && hasDriver && hasBoundary && hasAuth,message:absent.length===0 && hasDriver && hasBoundary && hasAuth?(week===5?'Hyrja dhe lejet: skedarët dhe paketat u gjetën. Sesionin, pronësinë dhe refuzimin real i provon ti; kontrolli nuk ekzekuton kodin.':'Neon: u gjetën schema.sql, helper-at, tri faqet dhe paketat. Lidhjen reale dhe pyetjet i provon ti; kontrolli nuk hap databazën.'):`${week===5?'Hyrja dhe lejet':'Neon'}: ${[...(!hasDriver || !hasBoundary?['në dosjen e aplikacionit ekzekuto npm install @neondatabase/serverless server-only']:[]),...(!hasAuth?['instalo npm install next-auth@4.24.15 sipas udhëzimit të Javës 5']:[]),...(absent.length?['ruaj skedarët '+absent.join(', ')]:[])].join('; ')}. Pastaj Commit → Push origin.`});
+      const src=(week===6?['app/manifest.ts','app/layout.tsx','app/api/udhetimet/route.ts','components/Pwa.tsx'].some(path=>paths.has(`${root}src/${path}`)):paths.has(`${root}src/app/page.tsx`))?`${root}src/`:root;
+      if(week===6) {
+        const needed=[`${src}app/manifest.ts`,`${src}app/layout.tsx`,`${src}app/api/udhetimet/route.ts`,`${src}components/Pwa.tsx`,`${root}public/sw.js`,`${root}public/offline.html`,`${root}public/icons/icon-192.png`,`${root}public/icons/icon-512.png`];
+        const absent=needed.filter(path=>!paths.has(path));
+        checks.push({ok:absent.length===0,message:absent.length===0?'PWA: u gjetën manifesti, layout, rruga API, komponenti, Service Worker, faqja offline dhe ikonat. Kontrolli nuk ekzekuton kodin dhe nuk verifikon instalimin ose funksionimin offline.':`PWA: ruaj skedarët që mungojnë: ${absent.join(', ')}. Pastaj Commit → Push origin. Prania e skedarëve nuk verifikon funksionimin offline.`});
+      } else {
+        const needed=week===5?[`${root}schema-java05.sql`,`${src}lib/auth.ts`,`${src}lib/lejet.ts`,`${src}lib/db.ts`,`${src}app/page.tsx`,`${src}app/api/auth/[...nextauth]/route.ts`,`${src}app/panel/page.tsx`,`${src}app/panel/actions.ts`,`${src}components/Hyrja.tsx`]:[`${root}schema.sql`,`${src}lib/db.ts`,`${src}lib/udhetimet.ts`,`${src}app/page.tsx`,`${src}app/udhetimi/[id]/page.tsx`,`${src}app/udhetimi/[id]/kerkesa/page.tsx`];
+        const absent=needed.filter(path=>!paths.has(path));
+        const hasDriver=Boolean(pkg?.dependencies?.['@neondatabase/serverless']);
+        const hasBoundary=Boolean(pkg?.dependencies?.['server-only']);
+        const hasAuth=week!==5 || /^[~^]?4\./.test(pkg?.dependencies?.['next-auth'] || '');
+        checks.push({ok:absent.length===0 && hasDriver && hasBoundary && hasAuth,message:absent.length===0 && hasDriver && hasBoundary && hasAuth?(week===5?'Hyrja dhe lejet: skedarët dhe paketat u gjetën. Sesionin, pronësinë dhe refuzimin real i provon ti; kontrolli nuk ekzekuton kodin.':'Neon: u gjetën schema.sql, helper-at, tri faqet dhe paketat. Lidhjen reale dhe pyetjet i provon ti; kontrolli nuk hap databazën.'):`${week===5?'Hyrja dhe lejet':'Neon'}: ${[...(!hasDriver || !hasBoundary?['në dosjen e aplikacionit ekzekuto npm install @neondatabase/serverless server-only']:[]),...(!hasAuth?['instalo npm install next-auth@4.24.15 sipas udhëzimit të Javës 5']:[]),...(absent.length?['ruaj skedarët '+absent.join(', ')]:[])].join('; ')}. Pastaj Commit → Push origin.`});
+      }
       const envFiles=[...paths].filter(path=>/(^|\/)\.env(?:$|\.(?!(?:example|sample|template)$))/i.test(path));
       checks.push({ok:envFiles.length===0,message:envFiles.length===0?'Skedarët privatë: nuk u gjet skedar .env i publikuar. Ky kontroll i emrave nuk zbulon çdo sekret; kontrollo vetë kodin dhe pamjet.':`Skedarë privatë në GitHub: ${envFiles.join(', ')}. Ndalo publikimin e kredencialeve, ndërro kredencialet e Neon/GitHub ose sekretin e sesionit nëse u ekspozuan dhe kërko ndihmën e profesorit. Shto .env* te .gitignore; mos e shkruaj sekretin në Issue.`});
     }
