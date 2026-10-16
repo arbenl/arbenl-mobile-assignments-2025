@@ -188,7 +188,7 @@ def build_message(evaluation: Evaluation, student: Student) -> EmailMessage:
     repo_line = f"Repository: {student.repo}" if student.repo else "Repository: not found in SUBMISSIONS_2026.md"
     demo_line = f"Demo: {student.demo}" if student.demo else "Demo: not found in SUBMISSIONS_2026.md"
     instruction_en, instruction_sq = status_instruction(evaluation.status)
-    public_url = "https://arbenl.github.io/arbenl-mobile-assignments-2025/evaluations-2026.html"
+    public_url = "https://arbenl.github.io/arbenl-mobile-assignments-2026-2027/evaluations-2026.html"
 
     body = f"""Hello {student.name or 'student'},
 

@@ -1,9 +1,9 @@
-# arbenl-mobile-assignments-2025
+# Programimi për Pajisje Mobile · 2026/2027
 Student assignments - Mobile Programming, Cloud Computing, and Mobile Cloud Computing
 
 # 📚 Student Project Topic Catalogues
 
-**Mobile 2026/27 — javët 1–2:** [Nis këtu për RideShare dhe dorëzimin me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Udhëzimet e rezervimit me PR më poshtë nuk kërkohen për këto dy javë.
+**Mobile 2026/27 — javët 1–15:** [Nis këtu për RideShare dhe dorëzimin me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Dorëzimet javore përdorin formularin Issue; rezervimet me PR më poshtë u përkasin katalogëve të temave. Ky është repository i profesorit për lëndën aktuale 2026/2027; materialet historike mbeten të ruajtura.
 
 Welcome! This repo contains assignment pools that students reserve with Pull Requests (PRs).
 Each topic can be claimed by **exactly one** student.
@@ -102,8 +102,8 @@ Use `Demo: N/A` only when the project cannot reasonably be deployed, and explain
 2. **Krijo fork në GitHub:** Kliko `Fork` në repo kryesor, në mënyrë që të punosh në kopjen tënde.
 3. **Klono fork-un lokalisht:**  
    ```bash
-   git clone https://github.com/<username>/arbenl-mobile-assignments-2025.git
-   cd arbenl-mobile-assignments-2025
+   git clone https://github.com/<username>/arbenl-mobile-assignments-2026-2027.git
+   cd arbenl-mobile-assignments-2026-2027
    ```
 4. **Krijo një degë pune (opsionale por e rekomanduar):**  
    ```bash
@@ -171,15 +171,15 @@ Good luck!
 - **Iterate and test:** Develop the app incrementally, demoing features on a device/emulator and validating Supabase integration as you go.
 - **Reflect and share:** When finished, publish a concise case study or README section explaining what you built, challenges faced, and what you learned.
 
-## Mobile 2026/27 — RideShare, javët 1–2
+## Mobile 2026/2027 — RideShare, javët 1–15
 
 Në ushtrime zhvillojmë RideShare gjatë semestrit. Secili student krijon një repository personal `rideshare-mobile` (Public + README), ose vazhdon në repository-n personal që ka. Dokumentet ngarkohen aty, jo në këtë repository të profesorit.
 
 1. Ngarko dokumentet nga shfletuesi: Add file → Upload files → Commit changes.
-2. Java 1: `exit-ticket.md` dhe `prd.md` (pranohen edhe PDF/DOCX/TXT). Java 2: `java-02.md` dhe `skica.jpg/png`.
-3. [Dorëzo linkun](https://github.com/arbenl/arbenl-mobile-assignments-2025/issues/new?template=mobile-submission.yml), zgjidh javën dhe kliko Create / Submit new issue. Raporti automatik shfaqet si koment në atë faqe.
+2. Java 1: `exit-ticket.md` dhe `prd.md` (pranohen edhe PDF/DOCX/TXT). Java 2: `java-02.md` dhe `skica.jpg/png`. Javët 3–15: raporti `java-NN.md` dhe kodi Next.js i përditësuar sipas udhëzimit të javës.
+3. [Dorëzo linkun](https://github.com/arbenl/arbenl-mobile-assignments-2026-2027/issues/new?template=mobile-submission.yml), zgjidh javën dhe kliko Create / Submit new issue. Raporti automatik shfaqet si koment në atë faqe.
 
-[Udhëzimi i plotë me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Nuk kërkohet terminal, push, fork ose Pull Request për këto dorëzime. Mos publiko Student ID, sekrete ose të dhëna reale udhëtarësh. Repository privat kërkon dorëzim të asistuar; ftimi vetëm i profesorit nuk i jep qasje automatizimit.
+[Udhëzimi i plotë me 3 hapa](https://arbenl.github.io/lendet/2026-2027/mobile/dorezimet.html). Për javët 1–2 mjafton ngarkimi nga shfletuesi. Nga java 3 ruaj kodin me Commit → Push; dorëzimi i linkut vazhdon me të njëjtin formular Issue. Nuk kërkohet fork ose Pull Request për dorëzimet javore. Mos publiko Student ID, sekrete ose të dhëna reale udhëtarësh. Repository privat kërkon dorëzim të asistuar; ftimi vetëm i profesorit nuk i jep qasje automatizimit.
 
 Pas korrigjimit të skedarëve, komento `rikontrollo` në të njëjtin issue. Kontrolli teknik i skedarëve nuk është notë e cilësisë. Nuk përdor AI dhe nuk ekzekuton kodin e studentit. Lexon një version të repository-t përmes GitHub API dhe përditëson një raport, pa grumbulluar pikë nga tentimet.
 

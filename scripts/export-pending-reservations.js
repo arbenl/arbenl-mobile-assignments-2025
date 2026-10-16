@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 
-const repo = process.env.GITHUB_REPOSITORY || 'arbenl/arbenl-mobile-assignments-2025';
+const repo = process.env.GITHUB_REPOSITORY || 'arbenl/arbenl-mobile-assignments-2026-2027';
 const token = process.env.GITHUB_TOKEN || '';
 const outputPath = process.argv[2] || 'pending-reservations-2026.json';
 const topicFile = 'CLOUD_TOPICS_2026.md';
