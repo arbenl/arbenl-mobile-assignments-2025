@@ -173,6 +173,8 @@ Good luck!
 
 ## Mobile 2026/2027 — RideShare, javët 1–15
 
+Detyrën mund ta dorëzosh gjatë ushtrimeve ose gjatë javës. Dorëzimi brenda orës është synim për të marrë ndihmë në klasë, jo afat i detyrueshëm. Kontrolli automatik dhe komanda `rikontrollo` punojnë edhe jashtë orarit të mësimit. Afatin përfundimtar e njofton profesori.
+
 Në ushtrime zhvillojmë RideShare gjatë semestrit. Secili student krijon një repository personal `rideshare-mobile` (Public + README), ose vazhdon në repository-n personal që ka. Dokumentet ngarkohen aty, jo në këtë repository të profesorit.
 
 1. Ngarko dokumentet nga shfletuesi: Add file → Upload files → Commit changes.
