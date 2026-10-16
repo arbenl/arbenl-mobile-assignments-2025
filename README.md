@@ -1,4 +1,4 @@
-# arbenl-mobile-assignments-2025
+# Programimi për Pajisje Mobile · 2026/2027
 The students assignments 2025 - Mobile Programming
 
 # 📚 Mobile Programming – Student Project Topics (2025)
